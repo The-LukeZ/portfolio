@@ -174,6 +174,7 @@
 <!-- Mobile Menu Overlay -->
 {#if mobileMenuOpen}
   <div
+    aria-label="Close mobile menu"
     class="mobile-overlay open no-select"
     role="button"
     tabindex="0"
@@ -185,7 +186,11 @@
 
 <!-- Mobile Menu -->
 <div class="mobile-menu no-select" class:open={mobileMenuOpen}>
-  <button class="close-btn" onclick={closeMobileMenu}>
+  <button
+    class="close-btn"
+    onclick={closeMobileMenu}
+    aria-label="Close mobile menu"
+  >
     <XIcon />
   </button>
 
