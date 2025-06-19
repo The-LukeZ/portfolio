@@ -1,16 +1,27 @@
 <script lang="ts">
-  import { getMessage, projects, socialLinks } from "$lib";
+  import { calculateAge, getMessage, projects, socialLinks } from "$lib";
   import { m } from "$lib/paraglide/messages";
   import { setLocale, type Locale, getLocale } from "$lib/paraglide/runtime";
   import { scrollY } from "svelte/reactivity/window";
   import { Menu, XIcon, ExternalLink } from "$lib/assets/index.js";
   import { browser } from "$app/environment";
   import { fade } from "svelte/transition";
+  import { env } from "$env/dynamic/public";
 
+  const BASE_BG_IMG_OPACITY = 0.4;
   let observedElements: HTMLElement[] = [];
   let mobileMenuOpen = $state(false);
-  let bgImage: HTMLDivElement | null = null;
-  let heroSection: HTMLElement | null = null;
+  let bgImage: HTMLDivElement | null = $state(null);
+  let heroSection: HTMLElement | null = $state(null);
+  let screenDimensions = $state<{
+    width: number | null;
+    height: number | null;
+  }>({
+    width: null,
+    height: null,
+  });
+
+  $inspect(screenDimensions);
 
   function toggleMobileMenu() {
     mobileMenuOpen = !mobileMenuOpen;
@@ -20,31 +31,40 @@
     mobileMenuOpen = false;
   }
 
-  $effect(() => {
-    console.log("Locale:", getLocale());
-  });
-
   function scrollToSection(sectionId: string) {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
     closeMobileMenu();
   }
 
   $effect(() => {
+    // Set the background image URL based on screen dimensions (We don't want this on resize, only on initial load)
+    if (
+      bgImage &&
+      browser &&
+      screenDimensions.width &&
+      screenDimensions.height
+    ) {
+      bgImage.style.backgroundImage = `url(https://picsum.photos/${screenDimensions.width}/${screenDimensions.height}.webp)`;
+    }
+  });
+
+  $effect(() => {
     if (bgImage && heroSection && scrollY.current) {
       // Slowly decrease opacity based on scroll position
 
       const heroBottom = heroSection.offsetTop + heroSection.offsetHeight - 70; // 60px for the height of the nav + 10px for some padding
-      if (scrollY.current < heroBottom) {
-        const opacity = 1 - Math.min(1, scrollY.current / heroBottom);
-        bgImage.style.opacity = opacity.toString();
-      } else {
-        bgImage.style.opacity = "0";
-      }
+      const opacity =
+        BASE_BG_IMG_OPACITY -
+        Math.min(
+          BASE_BG_IMG_OPACITY,
+          (scrollY.current / heroBottom) * BASE_BG_IMG_OPACITY
+        );
+      bgImage.style.opacity = opacity.toString();
     }
 
     return () => {
       if (bgImage) {
-        bgImage.style.opacity = "1"; // Reset opacity when component is destroyed
+        bgImage.style.opacity = BASE_BG_IMG_OPACITY.toString(); // Reset opacity when component is destroyed
       }
     };
   });
@@ -89,6 +109,15 @@
   });
 </script>
 
+<svelte:window
+  {@attach (w) => {
+    screenDimensions = {
+      width: w.innerWidth,
+      height: w.innerHeight,
+    };
+  }}
+/>
+
 <svelte:head>
   <title>LukeZ - Portfolio</title>
   <meta
@@ -98,10 +127,17 @@
 </svelte:head>
 
 {#snippet navItems()}
-  <li><a href="#about">{m["navigation.about"]()}</a></li>
-  <li><a href="#projects">{m["navigation.projects"]()}</a></li>
-  <li><a href="#social">{m["navigation.contact"]()}</a></li>
-  <!-- Language Switcher -->
+  <li>
+    <a href="#about" onclick={closeMobileMenu}>{m["navigation.about"]()}</a>
+  </li>
+  <li>
+    <a href="#projects" onclick={closeMobileMenu}
+      >{m["navigation.projects"]()}</a
+    >
+  </li>
+  <li>
+    <a href="#social" onclick={closeMobileMenu}>{m["navigation.contact"]()}</a>
+  </li>
   <li>
     <select
       id="language-select"
@@ -118,13 +154,16 @@
   </li>
 {/snippet}
 
-<!-- TODO: Fix this -->
-<div id="bg-image" bind:this={bgImage}></div>
+<div
+  id="bg-image"
+  bind:this={bgImage}
+  style="opacity: {BASE_BG_IMG_OPACITY};"
+></div>
 
 <!-- Navigation -->
 <nav class="nav no-select">
   <div class="nav-container">
-    <a href="/" class="logo">LukeZ</a>
+    <a href="/" class="logo font-inter">LukeZ</a>
 
     <ul class="nav-links">
       {@render navItems()}
@@ -154,8 +193,7 @@
     <XIcon />
   </button>
 
-  <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
-  <ul class="mobile-nav-links" onclick={closeMobileMenu} onkeydown={() => {}}>
+  <ul class="mobile-nav-links">
     {@render navItems()}
   </ul>
 </div>
@@ -180,7 +218,12 @@
   <section id="about" class="section about">
     <h2 class="section-title fade-in">{m["about.title"]()}</h2>
     <div class="about-content fade-in">
-      <p>{m["about.description"]()}</p>
+      <p>
+        {m["about.description"]({
+          age: calculateAge(new Date(env.PUBLIC_DATE_OF_BIRTH)),
+          country: m["about.country"](),
+        })}
+      </p>
     </div>
   </section>
 
