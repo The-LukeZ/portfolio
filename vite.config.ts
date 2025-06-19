@@ -9,7 +9,7 @@ export default defineConfig({
     paraglideVitePlugin({
       project: "./project.inlang",
       outdir: "./src/lib/paraglide",
-      strategy: ["localStorage", "preferredLanguage", "baseLocale"],
+      strategy: ["url", "preferredLanguage", "baseLocale"],
       localStorageKey: "paraglide-lang",
       disableAsyncLocalStorage: true, // Disable async local storage for serverless environments
       cleanOutdir: true, // Clean the output directory before generating files
