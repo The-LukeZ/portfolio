@@ -125,23 +125,19 @@
 
 {#snippet navItems()}
   <li>
-    <a href={localizeHref("#about")} onclick={closeMobileMenu}
-      >{m["navigation.about"]()}</a
-    >
+    <a href={"#about"} onclick={closeMobileMenu}>{m["navigation.about"]()}</a>
   </li>
   <li>
-    <a href={localizeHref("#projects")} onclick={closeMobileMenu}
+    <a href={"#projects"} onclick={closeMobileMenu}
       >{m["navigation.projects"]()}</a
     >
   </li>
   <li>
-    <a href={localizeHref("#social")} onclick={closeMobileMenu}
-      >{m["navigation.contact"]()}</a
+    <a href={"#social"} onclick={closeMobileMenu}>{m["navigation.contact"]()}</a
     >
   </li>
   <li>
-    <a href={localizeHref("#social")} onclick={closeMobileMenu}
-      >{m["navigation.contact"]()}</a
+    <a href={"#social"} onclick={closeMobileMenu}>{m["navigation.contact"]()}</a
     >
   </li>
   <li>
@@ -220,7 +216,7 @@
       <h1>LukeZ</h1>
       <p class="subtitle">{m["hero.subtitle"]()}</p>
       <a
-        href={localizeHref("#about")}
+        href={"#about"}
         class="cta-button"
         onclick={() => scrollToSection("about")}
       >
