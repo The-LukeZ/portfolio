@@ -161,7 +161,7 @@
       {@render navItems()}
     </ul>
 
-    <button class="mobile-menu-btn" onclick={toggleMobileMenu}>
+    <button class="mobile-menu-btn" onclick={toggleMobileMenu} aria-label="Toggle mobile menu">
       <Menu />
     </button>
   </div>
