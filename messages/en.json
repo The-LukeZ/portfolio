@@ -2,8 +2,8 @@
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "navigation": {
     "about": "About",
-    "contact": "Contact",
-    "projects": "Projects"
+    "projects": "Projects",
+    "contact": "Find Me"
   },
   "hero": {
     "subtitle": "Full-Stack Developer & Creative Problem Solver",
