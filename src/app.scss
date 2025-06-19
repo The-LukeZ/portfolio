@@ -220,7 +220,7 @@ body {
   background-image: url(https://picsum.photos/1920/1080.webp);
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -228,7 +228,7 @@ body {
   backdrop-filter: blur(0.75vh);
   filter: blur(0.75vh);
   -webkit-filter: blur(0.75vh);
-  box-shadow: 0 0 200px rgba(0, 0, 0, 0.9) inset;
+  box-shadow: 0 0 200px rgba(0, 0, 0, 0.99) inset;
   z-index: -1;
 }
 
@@ -245,6 +245,7 @@ main {
   margin: 0 auto;
   padding-left: 2rem;
   padding-right: 2rem;
+  background-color: $primary-bg;
 
   @media (max-width: $mobile-breakpoint) {
     padding: 3rem 1rem;
@@ -297,7 +298,7 @@ main {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: linear-gradient(135deg, $primary-bg 0%, $secondary-bg 100%);
+  background-color: color-mix(in oklab, $primary-bg 50%, transparent);
 
   .hero-content {
     max-width: 800px;
@@ -460,8 +461,28 @@ main {
 
 // Footer
 .footer {
+  background-color: $primary-bg;
   text-align: center;
   padding: 2rem;
   border-top: 1px solid $border-color;
   color: $text-secondary;
+}
+
+// Helper classes for observer effects
+.fade-in {
+  opacity: 0;
+  transition: opacity 500ms ease-in-out;
+
+  &.visible {
+    opacity: 1;
+  }
+}
+
+.scale-up {
+  transform: scale(0.95);
+  transition: transform 500ms ease-in-out;
+
+  &.visible {
+    transform: scale(1);
+  }
 }
