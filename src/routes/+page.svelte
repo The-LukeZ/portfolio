@@ -11,6 +11,7 @@
     FileText,
   } from "$lib/assets/index.js";
   import { m } from "$lib/paraglide/messages";
+  import { setLocale, type Locale, getLocale } from "$lib/paraglide/runtime";
 
   let mobileMenuOpen = $state(false);
 
@@ -21,6 +22,8 @@
   function closeMobileMenu() {
     mobileMenuOpen = false;
   }
+
+  $inspect(getLocale());
 
   function scrollToSection(sectionId: string) {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
@@ -80,14 +83,28 @@
 </svelte:head>
 
 {#snippet navItems()}
-  <li><a href="#home">{m["navigation.home"]()}</a></li>
   <li><a href="#about">{m["navigation.about"]()}</a></li>
   <li><a href="#projects">{m["navigation.projects"]()}</a></li>
   <li><a href="#social">{m["navigation.contact"]()}</a></li>
+  <!-- Language Switcher -->
+  <li>
+    <select
+      id="language-select"
+      aria-label="Select Language"
+      class="language-select"
+      onchange={(e) => {
+        const lang = e.currentTarget.value;
+        setLocale(lang as Locale, { reload: true });
+      }}
+    >
+      <option value="en" selected={getLocale() === "en"}>English</option>
+      <option value="de" selected={getLocale() === "de"}>Deutsch</option>
+    </select>
+  </li>
 {/snippet}
 
 <!-- TODO: Fix this -->
-<!-- <div class="bg-image"></div> -->
+<div id="bg-image"></div>
 
 <!-- Navigation -->
 <nav class="nav no-select">
@@ -175,9 +192,9 @@
 
   <!-- Social Links Section -->
   <section id="social" class="section social">
-    <h2 class="section-title">{m["connect.title"]()}</h2>
+    <h2 class="section-title">{m["findMe.title"]()}</h2>
     <p class="section-description">
-      {m["connect.description"]()}
+      {m["findMe.description"]()}
     </p>
     <div class="social-links">
       {#each socialLinks as social}
@@ -197,5 +214,5 @@
 
 <!-- Footer -->
 <footer class="footer">
-  <p>&copy; 2024 Your Name. All rights reserved.</p>
+  <p>&copy; 2024 LukeZ. All rights reserved.</p>
 </footer>
