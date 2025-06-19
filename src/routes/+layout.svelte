@@ -1,15 +1,13 @@
 <script lang="ts">
+  import "../app.scss";
+  import "../app.css";
   import { page } from "$app/state";
   import { locales, localizeHref } from "$lib/paraglide/runtime";
-  import "../app.scss";
-  interface Props {
-    children?: import("svelte").Snippet;
-  }
 
-  let { children }: Props = $props();
+  let { children } = $props();
 </script>
 
-{@render children?.()}
+{@render children()}
 
 <div style="display:none">
   {#each locales as locale}
