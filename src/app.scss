@@ -1,16 +1,74 @@
-// Variables
-$primary-bg: oklch(14.479% 0.00002 271.152);
-$secondary-bg: oklch(21.779% 0.00002 271.152);
-$accent-color: oklch(75.053% 0.17907 58.273);
-$accent-background: oklch(75.053% 0.17907 58.273 / 0.1);
-$accent-hover: oklch(80.357% 0.16873 73.344);
-$text-primary: white;
-$text-secondary: oklch(80% 0 271);
-$border-color: oklch(32% 0 271);
+@use "sass:map";
+@use "sass:color";
+
+// Color palette
+$colors: (
+  primary-bg: oklch(14.479% 0.00002 271.152),
+  secondary-bg: oklch(21.779% 0.00002 271.152),
+  accent: oklch(75.053% 0.17907 58.273),
+  accent-hover: oklch(80.357% 0.16873 73.344),
+  text-primary: white,
+  text-secondary: oklch(80% 0 271),
+  border: oklch(32% 0 271)
+);
+
+// Derived colors
+$accent-background: color.change(map.get($colors, accent), $alpha: 0.1);
+$nav-overlay: oklch(0% 0 0 / 0.3);
+$mobile-overlay: oklch(0% 0 0 / 0.5);
+
+// Layout
 $nav-height: 60px;
 $mobile-breakpoint: 700px;
+$max-width: 1200px;
 
-// Reset and base styles
+// Mixins
+@mixin center-content {
+  max-width: $max-width;
+  margin: 0 auto;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin transition($properties: all, $duration: 0.3s, $timing: ease-in-out) {
+  transition: $properties $duration $timing;
+}
+
+@mixin hover-lift {
+  @include transition(transform);
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: $mobile-breakpoint) {
+    @content;
+  }
+}
+
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: no-preference) {
+    @content;
+  }
+}
+
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  @include transition();
+}
+
+// Base styles
 * {
   margin: 0;
   padding: 0;
@@ -30,57 +88,66 @@ html {
 }
 
 body {
-  background-color: $primary-bg;
-  color: $text-primary;
+  background-color: map.get($colors, primary-bg);
+  color: map.get($colors, text-primary);
   line-height: 1.6;
   overflow-x: hidden;
 }
 
 .no-select {
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Chrome/Safari/Opera */
-  -khtml-user-select: none; /* Konqueror */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera, and Firefox */
+  user-select: none;
 }
 
-// Navigation styles
+// Background
+#bg-image {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: {
+    size: cover;
+    position: center;
+    repeat: no-repeat;
+  }
+  object-fit: cover;
+  backdrop-filter: blur(0.75vh);
+  filter: blur(0.75vh);
+  box-shadow: 0 0 200px rgba(0, 0, 0, 0.99) inset;
+  z-index: -1;
+}
+
+// Navigation
 .nav {
   position: fixed;
-  height: $nav-height;
   top: 0;
   left: 0;
   right: 0;
-  background: oklch(0% 0 0 / 0.3);
+  height: $nav-height;
+  background: $nav-overlay;
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid $border-color;
+  border-bottom: 1px solid map.get($colors, border);
   z-index: 1000;
-  padding-block: 0.5rem;
-  padding-inline: 1.5rem;
-  display: flex;
-  align-items: center;
+  padding: 0.5rem 1.5rem;
+  @include flex-center;
 
   .nav-container {
+    @include center-content;
     width: 100%;
-    max-width: 1200px;
-    margin-inline: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     .mobile-menu-btn {
-      display: none;
+      @include button-base;
       background: none;
-      border: 1px solid $border-color;
-      border-radius: 0.5rem;
-      color: $text-primary;
+      border: 1px solid map.get($colors, border);
+      color: map.get($colors, text-primary);
       font-size: 1.5rem;
       margin-left: auto;
       padding: 0.5rem;
-      cursor: pointer;
+      display: none;
 
-      @media screen and (max-width: $mobile-breakpoint) {
+      @include mobile {
         display: flex;
       }
     }
@@ -89,12 +156,12 @@ body {
   .logo {
     font-size: 1.5rem;
     font-weight: 700;
-    color: $accent-color;
+    color: map.get($colors, accent);
     text-decoration: none;
-    transition: color 150ms ease;
+    @include transition(color, 150ms);
 
     &:hover {
-      color: $accent-hover;
+      color: map.get($colors, accent-hover);
     }
   }
 
@@ -103,11 +170,9 @@ body {
     align-items: center;
     list-style: none;
     gap: 2rem;
-    transition:
-      transform 0.3s ease,
-      opacity 0.3s ease;
+    @include transition((transform, opacity));
 
-    @media (max-width: $mobile-breakpoint) {
+    @include mobile {
       transform: translateX(200%);
       opacity: 0;
       pointer-events: none;
@@ -115,26 +180,28 @@ body {
     }
 
     a {
-      color: $text-secondary;
+      color: map.get($colors, text-secondary);
       text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s ease;
+      font-weight: 600;
+      font-size: 1.075rem;
+      @include transition(color);
 
       &:hover {
-        color: $accent-color;
+        color: map.get($colors, accent);
       }
     }
   }
 }
 
+// Mobile menu
 .mobile-menu {
   position: fixed;
   top: 0;
   right: -100%;
   width: 300px;
   height: 100vh;
-  background: $secondary-bg;
-  transition: right 250ms ease;
+  background: map.get($colors, secondary-bg);
+  @include transition(right, 250ms);
   z-index: 1001;
   padding: 2rem;
 
@@ -149,7 +216,7 @@ body {
     padding: 0.5rem;
     background: none;
     border: none;
-    color: $text-primary;
+    color: map.get($colors, text-primary);
     font-size: 1.5rem;
     cursor: pointer;
   }
@@ -163,62 +230,29 @@ body {
     }
 
     a {
-      color: $text-primary;
+      display: block;
+      width: 100%;
+      color: map.get($colors, text-primary);
       text-decoration: none;
       font-size: 1.2rem;
       font-weight: 500;
-      transition: color 0.3s ease;
+      @include transition(color);
 
       &:hover {
-        color: $accent-color;
+        color: map.get($colors, accent);
       }
     }
   }
 }
 
-// This is a select element styled as a language switcher
-.language-select {
-  display: flex;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background: $secondary-bg;
-  border: 1px solid $border-color;
-  border-radius: 8px;
-  padding: 0.5rem 1rem;
-  color: $text-primary;
-  font-size: 1rem;
-  font-weight: 500;
-  outline: none;
-  width: 100%;
-  cursor: pointer;
-  transition: all 200ms ease;
-
-  &:hover {
-    border-color: $accent-color;
-    background: $accent-background;
-  }
-
-  option {
-    background: $secondary-bg;
-    color: $text-primary;
-    width: fit-content;
-  }
-}
-
 .mobile-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: oklch(0% 0 0 / 0.5);
+  inset: 0;
+  background: $mobile-overlay;
   z-index: 1000;
   opacity: 0;
   visibility: hidden;
-  transition:
-    opacity 0.3s ease,
-    visibility 0.3s ease;
+  @include transition((opacity, visibility));
 
   &.open {
     opacity: 1;
@@ -226,37 +260,41 @@ body {
   }
 }
 
-#bg-image {
+// Language select
+.language-select {
+  @include button-base;
+  appearance: none;
+  background: map.get($colors, secondary-bg);
+  border: 1px solid map.get($colors, border);
+  padding: 0.5rem 1rem;
+  color: map.get($colors, text-primary);
+  font-size: 1rem;
   width: 100%;
-  height: 100%;
-  position: fixed;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  object-fit: cover;
-  backdrop-filter: blur(0.75vh);
-  filter: blur(0.75vh);
-  -webkit-filter: blur(0.75vh);
-  box-shadow: 0 0 200px rgba(0, 0, 0, 0.99) inset;
-  z-index: -1;
+  @include transition(all, 200ms);
+
+  &:hover {
+    border-color: map.get($colors, accent);
+    background: $accent-background;
+  }
+
+  option {
+    background: map.get($colors, secondary-bg);
+    color: map.get($colors, text-primary);
+    width: fit-content;
+  }
 }
 
 // Main content
 main {
   margin-top: $nav-height;
-  z-index: auto;
 }
 
-// Section styles
+// Section base
 .section {
-  padding: 5rem 0;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  // background-color: $primary-bg;
+  padding: 5rem 2rem;
+  @include center-content;
 
-  @media (max-width: $mobile-breakpoint) {
+  @include mobile {
     padding: 3rem 1rem;
   }
 
@@ -264,10 +302,10 @@ main {
     font-size: 2.5rem;
     font-weight: 700;
     text-align: center;
-    color: $accent-color;
+    color: map.get($colors, accent);
     margin-bottom: 1rem;
 
-    @media (max-width: $mobile-breakpoint) {
+    @include mobile {
       font-size: 2rem;
     }
   }
@@ -275,13 +313,8 @@ main {
   &:not(:has(.section-description)) {
     .section-title {
       margin-bottom: 3rem;
-    }
 
-    @media (max-width: $mobile-breakpoint) {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-
-      &:last-child {
+      @include mobile {
         margin-bottom: 2rem;
       }
     }
@@ -289,11 +322,11 @@ main {
 
   .section-description {
     font-size: 1.2rem;
-    color: $text-secondary;
+    color: map.get($colors, text-secondary);
     text-align: center;
     margin-bottom: 3rem;
 
-    @media (max-width: $mobile-breakpoint) {
+    @include mobile {
       font-size: 1rem;
       margin-bottom: 2rem;
     }
@@ -303,52 +336,47 @@ main {
 // Hero section
 .hero {
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-center;
   text-align: center;
 
   .hero-content {
     max-width: 800px;
 
     h1 {
-      $light-accent: color-mix(in oklch, $accent-color 65%, white);
       font-size: 4rem;
       font-weight: 700;
       margin-bottom: 1rem;
-      background: linear-gradient(135deg, $text-primary 0%, $accent-color 60%);
+      background: linear-gradient(135deg, map.get($colors, text-primary) 0%, map.get($colors, accent) 60%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
 
-      @media (max-width: $mobile-breakpoint) {
+      @include mobile {
         font-size: 2.5rem;
       }
     }
 
     .subtitle {
       font-size: 1.5rem;
-      color: $text-secondary;
+      color: map.get($colors, text-secondary);
       margin-bottom: 2rem;
 
-      @media (max-width: $mobile-breakpoint) {
+      @include mobile {
         font-size: 1.2rem;
       }
     }
 
     .cta-button {
-      display: inline-block;
-      background: $accent-color;
-      color: $primary-bg;
+      @include button-base;
+      @include hover-lift;
+      background: map.get($colors, accent);
+      color: map.get($colors, primary-bg);
       padding: 1rem 2rem;
-      text-decoration: none;
       border-radius: 50px;
       font-weight: 600;
-      transition: all 0.3s ease;
 
       &:hover {
-        background: $accent-hover;
-        transform: translateY(-2px);
+        background: map.get($colors, accent-hover);
       }
     }
   }
@@ -356,7 +384,7 @@ main {
 
 // About section
 .about {
-  background: $secondary-bg;
+  background: map.get($colors, secondary-bg);
 
   .about-content {
     max-width: 800px;
@@ -366,7 +394,7 @@ main {
     p {
       text-wrap: balance;
       font-size: 1.2rem;
-      color: $text-secondary;
+      color: map.get($colors, text-secondary);
       line-height: 1.8;
     }
   }
@@ -382,48 +410,43 @@ main {
   }
 
   .project-card {
-    background: $secondary-bg;
-    border: 1px solid $border-color;
+    background: map.get($colors, secondary-bg);
+    border: 1px solid map.get($colors, border);
     border-radius: 12px;
     padding: 2rem;
-    transition: all 0.3s ease;
+    @include transition();
     display: flex;
     flex-direction: column;
-    justify-content: start;
 
     &:hover {
       transform: translateY(-5px);
-      border-color: $accent-color;
+      border-color: map.get($colors, accent);
       box-shadow: 0 10px 30px $accent-background;
     }
 
     h3 {
       font-size: 1.3rem;
       margin-bottom: 1rem;
-      color: $accent-color;
+      color: map.get($colors, accent);
     }
 
     p {
-      color: $text-secondary;
+      color: map.get($colors, text-secondary);
       margin-bottom: 1.5rem;
       font-size: 0.95rem;
     }
 
     .project-link {
-      display: inline-flex;
-      align-items: center;
+      @include button-base;
       gap: 0.5rem;
-      color: $accent-color;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s ease;
+      color: map.get($colors, accent);
       margin-top: auto;
 
       &:hover {
-        color: $accent-hover;
+        color: map.get($colors, accent-hover);
       }
 
-      @media screen and (max-width: $mobile-breakpoint) {
+      @include mobile {
         font-size: 1rem;
       }
     }
@@ -432,7 +455,7 @@ main {
 
 // Social section
 .social {
-  background: $secondary-bg;
+  background: map.get($colors, secondary-bg);
 
   .social-links {
     display: flex;
@@ -441,22 +464,18 @@ main {
     flex-wrap: wrap;
 
     .social-link {
-      display: flex;
-      align-items: center;
+      @include button-base;
+      @include hover-lift;
       gap: 0.5rem;
       padding: 1rem 1.5rem;
-      background: $primary-bg;
-      border: 1px solid $border-color;
+      background: map.get($colors, primary-bg);
+      border: 1px solid map.get($colors, border);
       border-radius: 50px;
-      color: $text-primary;
-      text-decoration: none;
-      font-weight: 500;
-      transition: all 0.3s ease;
+      color: map.get($colors, text-primary);
 
       &:hover {
-        border-color: $accent-color;
+        border-color: map.get($colors, accent);
         background: $accent-background;
-        transform: translateY(-2px);
       }
 
       svg {
@@ -469,18 +488,18 @@ main {
 
 // Footer
 .footer {
-  background-color: $primary-bg;
+  background-color: map.get($colors, primary-bg);
   text-align: center;
   padding: 2rem;
-  border-top: 1px solid $border-color;
-  color: $text-secondary;
+  border-top: 1px solid map.get($colors, border);
+  color: map.get($colors, text-secondary);
 }
 
-// Helper classes for observer effects
-@media (prefers-reduced-motion: no-preference) {
+// Animation classes
+@include reduced-motion {
   .fade-in {
     opacity: 0;
-    transition: opacity 400ms ease-in-out;
+    @include transition(opacity, 400ms, ease-in-out);
 
     &.in-view {
       opacity: 1;
@@ -489,7 +508,7 @@ main {
 
   .scale-up {
     transform: scale(0.7);
-    transition: transform 400ms ease-in-out;
+    @include transition(transform, 400ms, ease-in-out);
 
     &.in-view {
       transform: scale(1);
