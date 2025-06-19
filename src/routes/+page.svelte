@@ -118,14 +118,6 @@
   }}
 />
 
-<svelte:head>
-  <title>LukeZ - Portfolio</title>
-  <meta
-    name="description"
-    content="Full-stack developer passionate about creating innovative web solutions"
-  />
-</svelte:head>
-
 {#snippet navItems()}
   <li>
     <a href="#about" onclick={closeMobileMenu}>{m["navigation.about"]()}</a>

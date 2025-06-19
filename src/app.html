@@ -10,6 +10,24 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <!-- Since there is only a single page, we can put the meta tags in the html file and avoid hydration from svelte -->
+    <title>LukeZ - Portfolio</title>
+    <meta
+      name="description"
+      content="Full-stack developer passionate about creating innovative web solutions"
+    />
+    <!-- OG Tags -->
+    <meta property="og:title" content="LukeZ - Portfolio" />
+    <meta
+      property="og:description"
+      content="Full-stack developer passionate about creating innovative web solutions"
+    />
+    <meta property="og:image" content="/LukeZ.webp" />
+    <meta property="og:url" content="https://lukez.sherpa.software" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="LukeZ Portfolio" />
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://lukez.sherpa.software" />
     %sveltekit.head%
   </head>
   <body data-sveltekit-preload-data="hover">
