@@ -166,7 +166,7 @@
             rel="noopener noreferrer"
           >
             {m["projects.cta"]()}
-            <ExternalLink size={16} />
+            <ExternalLink size={14} />
           </a>
         </div>
       {/each}
