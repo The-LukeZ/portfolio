@@ -1,7 +1,12 @@
 <script lang="ts">
   import { calculateAge, getMessage, projects, socialLinks } from "$lib";
   import { m } from "$lib/paraglide/messages";
-  import { setLocale, type Locale, getLocale } from "$lib/paraglide/runtime";
+  import {
+    setLocale,
+    type Locale,
+    getLocale,
+    localizeHref,
+  } from "$lib/paraglide/runtime";
   import { scrollY } from "svelte/reactivity/window";
   import { Menu, XIcon, ExternalLink } from "$lib/assets/index.js";
   import { browser } from "$app/environment";
@@ -120,15 +125,24 @@
 
 {#snippet navItems()}
   <li>
-    <a href="#about" onclick={closeMobileMenu}>{m["navigation.about"]()}</a>
+    <a href={localizeHref("#about")} onclick={closeMobileMenu}
+      >{m["navigation.about"]()}</a
+    >
   </li>
   <li>
-    <a href="#projects" onclick={closeMobileMenu}
+    <a href={localizeHref("#projects")} onclick={closeMobileMenu}
       >{m["navigation.projects"]()}</a
     >
   </li>
   <li>
-    <a href="#social" onclick={closeMobileMenu}>{m["navigation.contact"]()}</a>
+    <a href={localizeHref("#social")} onclick={closeMobileMenu}
+      >{m["navigation.contact"]()}</a
+    >
+  </li>
+  <li>
+    <a href={localizeHref("#social")} onclick={closeMobileMenu}
+      >{m["navigation.contact"]()}</a
+    >
   </li>
   <li>
     <select
@@ -155,7 +169,7 @@
 <!-- Navigation -->
 <nav class="nav no-select">
   <div class="nav-container">
-    <a href="/" class="logo font-inter">LukeZ</a>
+    <a href={localizeHref("/")} class="logo font-inter">LukeZ</a>
 
     <button
       class="mobile-menu-btn"
@@ -206,7 +220,7 @@
       <h1>LukeZ</h1>
       <p class="subtitle">{m["hero.subtitle"]()}</p>
       <a
-        href="#about"
+        href={localizeHref("#about")}
         class="cta-button"
         onclick={() => scrollToSection("about")}
       >
