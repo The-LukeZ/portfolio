@@ -1,19 +1,13 @@
 <script lang="ts">
-  import { getMessage } from "$lib";
-  import {
-    Menu,
-    XIcon,
-    ExternalLink,
-    Github,
-    YouTube,
-    Discord,
-    Music,
-    FileText,
-  } from "$lib/assets/index.js";
+  import { getMessage, projects, socialLinks } from "$lib";
   import { m } from "$lib/paraglide/messages";
   import { setLocale, type Locale, getLocale } from "$lib/paraglide/runtime";
+  import { scrollY } from "svelte/reactivity/window";
+  import { Menu, XIcon, ExternalLink } from "$lib/assets/index.js";
 
   let mobileMenuOpen = $state(false);
+  let bgImage: HTMLDivElement | null = null;
+  let heroSection: HTMLElement | null = null;
 
   function toggleMobileMenu() {
     mobileMenuOpen = !mobileMenuOpen;
@@ -23,55 +17,28 @@
     mobileMenuOpen = false;
   }
 
-  $inspect(getLocale());
+  $effect(() => {
+    console.log("Locale:", getLocale());
+  });
 
   function scrollToSection(sectionId: string) {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
     closeMobileMenu();
   }
 
-  const projects = [
-    {
-      id: "supportmail",
-      link: "https://supportmail.dev",
-    },
-    {
-      id: "burningdezibelz",
-      link: "https://github.com/The-LukeZ/burning-dezibelz-v2",
-    },
-    {
-      id: "portfolio",
-      link: "https://github.com/The-LukeZ/portfolio",
-    },
-    {
-      id: "lukez-monitor",
-      link: "https://github.com/The-LukeZ/lukez-monitor",
-    },
-    {
-      id: "djs-command-helper",
-      link: "https://github.com/supportmailapp/djsCommandHelper",
-    },
-    {
-      id: "timestring-py",
-      link: "https://github.com/The-LukeZ/TimestringPy",
-    },
-  ];
+  $effect(() => {
+    if (bgImage && heroSection && scrollY.current) {
+      // Slowly decrease opacity based on scroll position
 
-  const socialLinks = [
-    { name: "GitHub", icon: Github, url: "https://github.com/The-LukeZ" },
-    {
-      name: "YouTube",
-      icon: YouTube,
-      url: "https://youtube.com/@The_LukeZ",
-    },
-    { name: "Dev.to", icon: FileText, url: "https://dev.to/thelukez" },
-    {
-      name: "Discord",
-      icon: Discord,
-      url: "https://discord.com/users/506893652266844162",
-    },
-    { name: "Spotify", icon: Music, url: "https://stats.fm/lukez" },
-  ];
+      const heroBottom = heroSection.offsetTop + heroSection.offsetHeight - 70; // 60px for the height of the nav + 10px for some padding
+      if (scrollY.current < heroBottom) {
+        const opacity = 1 - Math.min(1, scrollY.current / heroBottom);
+        bgImage.style.opacity = opacity.toString();
+      } else {
+        bgImage.style.opacity = "0";
+      }
+    }
+  });
 </script>
 
 <svelte:head>
@@ -104,7 +71,7 @@
 {/snippet}
 
 <!-- TODO: Fix this -->
-<div id="bg-image"></div>
+<div id="bg-image" bind:this={bgImage}></div>
 
 <!-- Navigation -->
 <nav class="nav no-select">
@@ -145,7 +112,7 @@
 
 <main>
   <!-- Hero Section -->
-  <section id="home" class="hero">
+  <section id="home" class="hero" bind:this={heroSection}>
     <div class="hero-content">
       <h1>LukeZ</h1>
       <p class="subtitle">{m["hero.subtitle"]()}</p>
@@ -198,12 +165,7 @@
     </p>
     <div class="social-links">
       {#each socialLinks as social}
-        <a
-          href={social.url}
-          class="social-link"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href={social.url} class="social-link" target="_blank">
           <social.icon />
           {social.name}
         </a>
