@@ -56,7 +56,7 @@ body {
   border-bottom: 1px solid $border-color;
   z-index: 1000;
   padding-block: 0.5rem;
-  padding-inline: 1rem;
+  padding-inline: 1.5rem;
   display: flex;
   align-items: center;
 
@@ -67,6 +67,22 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: 1px solid $border-color;
+      border-radius: 0.5rem;
+      color: $text-primary;
+      font-size: 1.5rem;
+      margin-left: auto;
+      padding: 0.5rem;
+      cursor: pointer;
+
+      @media screen and (max-width: $mobile-breakpoint) {
+        display: flex;
+      }
+    }
   }
 
   .logo {
@@ -86,9 +102,10 @@ body {
       opacity 0.3s ease;
 
     @media (max-width: $mobile-breakpoint) {
-      transform: translateX(100%);
+      transform: translateX(200%);
       opacity: 0;
       pointer-events: none;
+      position: absolute;
     }
 
     a {
@@ -102,20 +119,6 @@ body {
       }
     }
   }
-
-  .mobile-menu-btn {
-    display: none;
-    background: none;
-    border: none;
-    color: $text-primary;
-    font-size: 1.5rem;
-    padding: 0.5rem;
-    cursor: pointer;
-
-    @media (max-width: $mobile-breakpoint) {
-      display: flex;
-    }
-  }
 }
 
 .mobile-menu {
@@ -125,7 +128,7 @@ body {
   width: 300px;
   height: 100vh;
   background: $secondary-bg;
-  transition: right 0.3s ease;
+  transition: right 250ms ease;
   z-index: 1001;
   padding: 2rem;
 
@@ -469,20 +472,22 @@ main {
 }
 
 // Helper classes for observer effects
-.fade-in {
-  opacity: 0;
-  transition: opacity 500ms ease-in-out;
+@media (prefers-reduced-motion: no-preference) {
+  .fade-in {
+    opacity: 0;
+    transition: opacity 400ms ease-in-out;
 
-  &.in-view {
-    opacity: 1;
+    &.in-view {
+      opacity: 1;
+    }
   }
-}
 
-.scale-up {
-  transform: scale(0.5);
-  transition: transform 500ms ease-in-out;
+  .scale-up {
+    transform: scale(0.7);
+    transition: transform 400ms ease-in-out;
 
-  &.in-view {
-    transform: scale(1);
+    &.in-view {
+      transform: scale(1);
+    }
   }
 }
