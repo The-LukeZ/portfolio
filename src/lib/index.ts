@@ -65,3 +65,13 @@ const socialLinks = [
 ];
 
 export { projects, socialLinks };
+
+/**
+ * Calculates the age in years from a given date of birth.
+ * @param dob - The date of birth as a `Date` object.
+ * @returns The calculated age in years.
+ */
+export function calculateAge(dob: Date): number {
+  // Calculate the absolute value of the difference in years between the age Date object and the year 1970 (UNIX epoch)
+  return Math.abs(new Date(Date.now() - dob.getTime()).getUTCFullYear() - 1970);
+}
