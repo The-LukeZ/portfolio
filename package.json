@@ -1,5 +1,6 @@
 {
   "name": "portfolio",
+	"description": "My personal portfolio built with SvelteKit",
   "private": true,
   "version": "1.0.0",
   "type": "module",
