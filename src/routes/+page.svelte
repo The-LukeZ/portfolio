@@ -157,13 +157,17 @@
   <div class="nav-container">
     <a href="/" class="logo font-inter">LukeZ</a>
 
+    <button
+      class="mobile-menu-btn"
+      onclick={toggleMobileMenu}
+      aria-label="Toggle mobile menu"
+    >
+      <Menu />
+    </button>
+
     <ul class="nav-links">
       {@render navItems()}
     </ul>
-
-    <button class="mobile-menu-btn" onclick={toggleMobileMenu} aria-label="Toggle mobile menu">
-      <Menu />
-    </button>
   </div>
 </nav>
 
