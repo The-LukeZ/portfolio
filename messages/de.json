@@ -1,7 +1,6 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "navigation": {
-    "home": "Startseite",
     "about": "Über mich",
     "contact": "Kontakt",
     "projects": "Projekte"
@@ -42,8 +41,8 @@
     "title": "TimestringPy",
     "description": "Ein Python-Port des NPM Timestring-Pakets. Es ermöglicht das Parsen von menschenlesbaren Zeitangaben in Sekunden oder eine bestimmte Rückgabeeinheit. Bietet auch mehr Konfigurationsoptionen als das ursprüngliche Paket."
   },
-  "connect": {
-    "title": "Kontakt aufnehmen",
-    "description": "Zögere nicht, mich auf einer der unten stehenden Plattformen zu kontaktieren."
+  "findMe": {
+    "title": "Finde mich",
+    "description": "Finde mich auf verschiedenen Plattformen unten. Zögere nicht, mich zu kontaktieren, wenn du Fragen hast oder einfach nur chatten möchtest!"
   }
 }

@@ -1,7 +1,6 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "navigation": {
-    "home": "Home",
     "about": "About",
     "contact": "Contact",
     "projects": "Projects"
@@ -42,8 +41,8 @@
     "title": "TimestringPy",
     "description": "A Python port of the NPM Timestring package. It allows you to parse human-readable time strings into seconds or a specified return unit. Also allows more configuration options than the original package."
   },
-  "connect": {
-    "title": "Let's Connect",
-    "description": "Feel free to reach out to me on any of the platforms below."
+  "findMe": {
+    "title": "Find Me",
+    "description": "Find me on various platforms below. Feel free to reach out if you have any questions or just want to chat!"
   }
 }
