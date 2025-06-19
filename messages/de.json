@@ -1,0 +1,49 @@
+{
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+  "navigation": {
+    "home": "Startseite",
+    "about": "Über mich",
+    "contact": "Kontakt",
+    "projects": "Projekte"
+  },
+  "hero": {
+    "subtitle": "Full-Stack Entwickler & kreativer Problemlöser",
+    "cta": "Mehr über mich erfahren"
+  },
+  "about": {
+    "title": "Über mich",
+    "description": "Ich bin ein leidenschaftlicher Full-Stack-Entwickler mit einer Vorliebe für die Entwicklung nützlicher Tools. Mit Fachkenntnissen in modernen Technologien wie SvelteKit und Node.js entwickle ich gerne benutzerfreundliche Anwendungen, die reale Probleme lösen. Wenn ich nicht gerade programmiere, erkunde ich neue Technologien, beteilige mich an Open-Source-Projekten oder teile mein Wissen mit der Entwickler-Community durch Schreiben und Vorträge."
+  },
+  "projects": {
+    "title": "Ausgewählte Projekte",
+    "cta": "Projekt ansehen"
+  },
+  "project-supportmail": {
+    "title": "SupportMail",
+    "description": "Ein moderner Discord Modmail-Bot, einschließlich des Bots selbst (entwickelt mit Node.js und TypeScript) und umgebender Services wie einer Website, die mit SvelteKit erstellt wurde. Ein Dashboard ist derzeit in Entwicklung."
+  },
+  "project-burningdezibelz": {
+    "title": "Burning Dezibelz",
+    "description": "Die Website für die Band Burning Dezibelz (deren Mitglied ich bin). Entwickelt mit SvelteKit und Supabase, präsentiert sie die Band, Konzerte und verfügt über eine Galerie für unsere Bilder. Sie hat ein Dashboard zur Verwaltung von Konzerten, Veranstaltungsorten, Bildern und mehr."
+  },
+  "project-portfolio": {
+    "title": "Portfolio",
+    "description": "Diese Portfolio-Website, entwickelt mit SvelteKit, präsentiert meine Projekte und Fähigkeiten. Sie dient als Plattform, um meine Arbeit zu teilen und mich mit anderen in der Entwickler-Community zu vernetzen."
+  },
+  "project-lukez-monitor": {
+    "title": "LukeZ Monitor",
+    "description": "Ein Cloudflare Worker, der den Status meiner verschiedenen Projekte und Services überwacht. Er prüft die Verfügbarkeit und benachrichtigt mich über Telegram, wenn Probleme auftreten."
+  },
+  "project-djs-command-helper": {
+    "title": "DJS Command Helper",
+    "description": "Ein npm-Package, das eine einfache Möglichkeit bietet, Application Commands mit Discord.js zu verwalten."
+  },
+  "project-timestring-py": {
+    "title": "TimestringPy",
+    "description": "Ein Python-Port des NPM Timestring-Pakets. Es ermöglicht das Parsen von menschenlesbaren Zeitangaben in Sekunden oder eine bestimmte Rückgabeeinheit. Bietet auch mehr Konfigurationsoptionen als das ursprüngliche Paket."
+  },
+  "connect": {
+    "title": "Kontakt aufnehmen",
+    "description": "Zögere nicht, mich auf einer der unten stehenden Plattformen zu kontaktieren."
+  }
+}

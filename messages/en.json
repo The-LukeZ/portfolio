@@ -1,0 +1,49 @@
+{
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "projects": "Projects"
+  },
+  "hero": {
+    "subtitle": "Full-Stack Developer & Creative Problem Solver",
+    "cta": "Learn more about me"
+  },
+  "about": {
+    "title": "About Me",
+    "description": "I'm a passionate full-stack developer with a love for creating helpful tools. With expertise in modern technologies like SvelteKit and Node.js, I enjoy building user-friendly applications that solve real-world problems. When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing my knowledge with the developer community through writing and speaking."
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "cta": "View project"
+  },
+  "project-supportmail": {
+    "title": "SupportMail",
+    "description": "A modern Discord Modmail bot, including the bot itself (built with Node.js and Typescript) and surrounding services such as a website built with SvelteKit. A dashboard is currently in development."
+  },
+  "project-burningdezibelz": {
+    "title": "Burning Dezibelz",
+    "description": "The website for the Burning Dezibelz band (which I am a member of). Built with SvelteKit and Supabase, it showcases the band, concerts and has a gallery for our images. It has a dashboard for managing concerts, venues, images and more."
+  },
+  "project-portfolio": {
+    "title": "Portfolio",
+    "description": "This portfolio website, built with SvelteKit, showcases my projects and skills. It serves as a platform to share my work and connect with others in the developer community."
+  },
+  "project-lukez-monitor": {
+    "title": "LukeZ Monitor",
+    "description": "A Cloudflare Worker that monitors the status of my various projects and services. It checks for uptime and notifies me via Telegram if any issues arise."
+  },
+  "project-djs-command-helper": {
+    "title": "DJS Command Helper",
+    "description": "An npm package that provides a simple way to manage application commands with Discord.js."
+  },
+  "project-timestring-py": {
+    "title": "TimestringPy",
+    "description": "A Python port of the NPM Timestring package. It allows you to parse human-readable time strings into seconds or a specified return unit. Also allows more configuration options than the original package."
+  },
+  "connect": {
+    "title": "Let's Connect",
+    "description": "Feel free to reach out to me on any of the platforms below."
+  }
+}

@@ -1,0 +1,432 @@
+// Variables
+$primary-bg: oklch(14.479% 0.00002 271.152);
+$secondary-bg: oklch(21.779% 0.00002 271.152);
+$accent-color: oklch(75.053% 0.17907 58.273);
+$accent-hover: oklch(79.268% 0.17097 70.665);
+$text-primary: oklch(100% 0.00011 271.152);
+$text-secondary: oklch(75.721% 0.00009 271.152);
+$border-color: oklch(32.109% 0.00004 271.152);
+$nav-height: 60px;
+$mobile-breakpoint: 650px;
+
+// Reset and base styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  background-color: $primary-bg;
+  color: $text-primary;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.no-select {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Chrome/Safari/Opera */
+  -khtml-user-select: none; /* Konqueror */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera, and Firefox */
+}
+
+// Navigation styles
+.nav {
+  position: fixed;
+  height: $nav-height;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: oklch(0% 0 0 / 0.3);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid $border-color;
+  z-index: 1000;
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+  display: flex;
+  align-items: center;
+
+  .nav-container {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $accent-color;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
+
+    @media (max-width: $mobile-breakpoint) {
+      transform: translateX(100%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    a {
+      color: $text-secondary;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $accent-color;
+      }
+    }
+  }
+
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: $text-primary;
+    font-size: 1.5rem;
+    cursor: pointer;
+
+    @media (max-width: $mobile-breakpoint) {
+      display: flex;
+    }
+  }
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 300px;
+  height: 100vh;
+  background: $secondary-bg;
+  transition: right 0.3s ease;
+  z-index: 1001;
+  padding: 2rem;
+
+  &.open {
+    right: 0;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: $text-primary;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  .mobile-nav-links {
+    list-style: none;
+    margin-top: 3rem;
+
+    li {
+      margin-bottom: 1.5rem;
+    }
+
+    a {
+      color: $text-primary;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $accent-color;
+      }
+    }
+  }
+}
+
+.mobile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: oklch(0% 0 0 / 0.5);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+// Main content
+main {
+  margin-top: $nav-height;
+}
+
+// Section styles
+.section {
+  padding: 5rem 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+
+  @media (max-width: $mobile-breakpoint) {
+    padding: 3rem 1rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    color: $accent-color;
+    margin-bottom: 1rem;
+
+    @media (max-width: $mobile-breakpoint) {
+      font-size: 2rem;
+    }
+  }
+
+  &:not(:has(.section-description)) {
+    .section-title {
+      margin-bottom: 3rem;
+    }
+
+    @media (max-width: $mobile-breakpoint) {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+
+      &:last-child {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+
+  .section-description {
+    font-size: 1.2rem;
+    color: $text-secondary;
+    text-align: center;
+    margin-bottom: 3rem;
+
+    @media (max-width: $mobile-breakpoint) {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+// Hero section
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, $primary-bg 0%, $secondary-bg 100%);
+
+  .hero-content {
+    max-width: 800px;
+
+    h1 {
+      $light-accent: color-mix(in oklch, $accent-color 65%, white);
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, $text-primary 0%, $accent-color 60%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+
+      @media (max-width: $mobile-breakpoint) {
+        font-size: 2.5rem;
+      }
+    }
+
+    .subtitle {
+      font-size: 1.5rem;
+      color: $text-secondary;
+      margin-bottom: 2rem;
+
+      @media (max-width: $mobile-breakpoint) {
+        font-size: 1.2rem;
+      }
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: $accent-color;
+      color: $primary-bg;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: $accent-hover;
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+// About section
+.about {
+  background: $secondary-bg;
+
+  .about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+
+    p {
+      font-size: 1.2rem;
+      color: $text-secondary;
+      line-height: 1.8;
+    }
+  }
+}
+
+// Projects section
+.projects {
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .project-card {
+    background: $secondary-bg;
+    border: 1px solid $border-color;
+    border-radius: 12px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+
+    &:hover {
+      transform: translateY(-5px);
+      border-color: $accent-color;
+      box-shadow: 0 10px 30px rgba(255, 140, 0, 0.1);
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: $accent-color;
+    }
+
+    p {
+      color: $text-secondary;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: $accent-color;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      margin-top: auto;
+
+      &:hover {
+        color: $accent-hover;
+      }
+
+      @media screen and (max-width: $mobile-breakpoint) {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+// Social section
+.social {
+  background: $secondary-bg;
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 1.5rem;
+      background: $primary-bg;
+      border: 1px solid $border-color;
+      border-radius: 50px;
+      color: $text-primary;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+
+      &:hover {
+        border-color: $accent-color;
+        background: rgba(255, 140, 0, 0.1);
+        transform: translateY(-2px);
+      }
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}
+
+// Footer
+.footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid $border-color;
+  color: $text-secondary;
+}
+
+.bg-image {
+  background-image: url(https://picsum.photos/1920/1080.webp);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  backdrop-filter: blur(0.75vh);
+  filter: blur(0.75vh);
+  -webkit-filter: blur(0.75vh);
+  box-shadow: 0 0 200px rgba(0, 0, 0, 0.9) inset;
+  z-index: -1;
+}
