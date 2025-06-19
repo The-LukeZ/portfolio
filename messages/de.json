@@ -11,7 +11,8 @@
   },
   "about": {
     "title": "Über mich",
-    "description": "Ich bin ein leidenschaftlicher Full-Stack-Entwickler mit einer Vorliebe für die Entwicklung nützlicher Tools. Mit guten Kenntnissen in Technologien wie SvelteKit und Node.js entwickle ich gerne benutzerfreundliche Anwendungen, die reale Probleme lösen, als sich auf abstrakte Konzepte zu konzentrieren. Wenn ich nicht gerade programmiere, spiele ich Schlagzeug (u.a. in der Band 'Burning Dezibelz'), spiele Videospiele oder kümmere mich um meine Familie und Katzen."
+    "description": "Ich bin ein {age}-jähriger, leidenschaftlicher Full-Stack-Entwickler aus {country} mit einer Vorliebe für die Entwicklung nützlicher Tools. Mit guten Kenntnissen in Technologien wie SvelteKit und Node.js entwickle ich gerne benutzerfreundliche Anwendungen, die reale Probleme lösen, als sich auf abstrakte Konzepte zu konzentrieren. Wenn ich nicht gerade programmiere, spiele ich Schlagzeug (u.a. in der Band 'Burning Dezibelz'), spiele Videospiele oder kümmere mich um meine Familie und Katzen.",
+    "country": "Deutschland"
   },
   "projects": {
     "title": "Ausgewählte Projekte",

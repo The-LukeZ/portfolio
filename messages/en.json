@@ -11,7 +11,8 @@
   },
   "about": {
     "title": "About Me",
-    "description": "I am a passionate full-stack developer with a penchant for developing useful tools. With strong knowledge of technologies such as SvelteKit and Node.js, I enjoy developing user-friendly applications that solve real-world problems rather than focusing on abstract concepts. When I'm not programming, I play the drums (including in the band ‘Burning Dezibelz’), play video games, or spend time with my family and cats."
+    "description": "I am a {age}-year-old passionate full-stack developer from {country} with a penchant for developing useful tools. With strong knowledge of technologies such as SvelteKit and Node.js, I enjoy developing user-friendly applications that solve real-world problems rather than focusing on abstract concepts. When I'm not programming, I play the drums (including in the band ´Burning Dezibelz´), play video games, or spend time with my family and cats.",
+    "country": "Germany"
   },
   "projects": {
     "title": "Featured Projects",
