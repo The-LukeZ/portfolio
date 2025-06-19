@@ -15,6 +15,14 @@ $mobile-breakpoint: 700px;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family:
+    "Poppins",
+    "Inter",
+    Roboto,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 }
 
 html {
@@ -22,13 +30,6 @@ html {
 }
 
 body {
-  font-family:
-    "Inter",
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    sans-serif;
   background-color: $primary-bg;
   color: $text-primary;
   line-height: 1.6;
@@ -186,7 +187,7 @@ body {
   outline: none;
   width: 100%;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 200ms ease;
 
   &:hover {
     border-color: $accent-color;
@@ -196,6 +197,7 @@ body {
   option {
     background: $secondary-bg;
     color: $text-primary;
+    width: fit-content;
   }
 }
 
@@ -220,7 +222,6 @@ body {
 }
 
 #bg-image {
-  background-image: url(https://picsum.photos/1920/1080.webp);
   width: 100%;
   height: 100%;
   position: fixed;
@@ -248,7 +249,7 @@ main {
   margin: 0 auto;
   padding-left: 2rem;
   padding-right: 2rem;
-  background-color: $primary-bg;
+  // background-color: $primary-bg;
 
   @media (max-width: $mobile-breakpoint) {
     padding: 3rem 1rem;
@@ -301,7 +302,6 @@ main {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: color-mix(in oklab, $primary-bg 50%, transparent);
 
   .hero-content {
     max-width: 800px;
@@ -490,4 +490,15 @@ main {
       transform: scale(1);
     }
   }
+}
+
+// Utility classes
+.font-inter {
+  font-family:
+    "Inter",
+    Roboto,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 }
