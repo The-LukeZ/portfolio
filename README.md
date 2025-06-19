@@ -1,7 +1,7 @@
 # LukeZ Portfolio
 
-This is the portfolio of LukeZ, built with SvelteKit and raw SCSS.
+This is the portfolio of LukeZ, built with SvelteKit and SCSS. Hosted on [sherpa.sh](https://sherpa.sh).
 
 ## TODO
 
-- [ ] Add language switcher for paraglide (but where???)
+- [x] Add language switcher for paraglide (but where???)
