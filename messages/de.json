@@ -1,5 +1,9 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
+  "seo": {
+    "description": "LukeZ, ein Full-Stack-Entwickler aus Deutschland, spezialisiert auf die Erstellung benutzerfreundlicher Anwendungen mit SvelteKit und Node.js. Entdecke meine Projekte und erfahre mehr über meine Arbeit.",
+    "keywords": "LukeZ, Full-Stack-Entwickler, SvelteKit, Node.js"
+  },
   "navigation": {
     "about": "Über mich",
     "projects": "Projekte",

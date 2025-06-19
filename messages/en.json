@@ -1,5 +1,9 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
+  "seo": {
+    "description": "LukeZ, a full-stack developer from Germany, specializes in creating user-friendly applications using SvelteKit and Node.js. Explore my projects and learn more about my work.",
+    "keywords": "LukeZ, full-stack developer, SvelteKit, Node.js"
+  },
   "navigation": {
     "about": "About",
     "projects": "Projects",
