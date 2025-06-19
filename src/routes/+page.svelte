@@ -7,6 +7,7 @@
   import { browser } from "$app/environment";
   import { fade } from "svelte/transition";
   import { env } from "$env/dynamic/public";
+  import { PUBLIC_DATE_OF_BIRTH } from "$env/static/public";
 
   const BASE_BG_IMG_OPACITY = 0.4;
   let observedElements: HTMLElement[] = [];
@@ -220,7 +221,7 @@
     <div class="about-content fade-in">
       <p>
         {m["about.description"]({
-          age: calculateAge(new Date(env.PUBLIC_DATE_OF_BIRTH)),
+          age: calculateAge(new Date(PUBLIC_DATE_OF_BIRTH)),
           country: m["about.country"](),
         })}
       </p>
