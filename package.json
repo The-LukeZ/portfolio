@@ -1,6 +1,6 @@
 {
   "name": "portfolio",
-	"description": "My personal portfolio built with SvelteKit",
+  "description": "My personal portfolio built with SvelteKit",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -16,7 +16,6 @@
   },
   "devDependencies": {
     "@inlang/paraglide-js": "2.1.0",
-    "@sveltejs/adapter-auto": "^6.0.1",
     "@sveltejs/kit": "^2.21.5",
     "@sveltejs/vite-plugin-svelte": "^5.1.0",
     "prettier": "^3.5.3",
@@ -27,5 +26,8 @@
     "typescript": "5.7.3",
     "vite": "^6.3.5"
   },
-  "packageManager": "pnpm@10.12.1"
+  "packageManager": "pnpm@10.12.1",
+  "dependencies": {
+    "@sveltejs/adapter-node": "^5.2.12"
+  }
 }
