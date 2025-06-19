@@ -473,16 +473,16 @@ main {
   opacity: 0;
   transition: opacity 500ms ease-in-out;
 
-  &.visible {
+  &.in-view {
     opacity: 1;
   }
 }
 
 .scale-up {
-  transform: scale(0.95);
+  transform: scale(0.5);
   transition: transform 500ms ease-in-out;
 
-  &.visible {
+  &.in-view {
     transform: scale(1);
   }
 }
