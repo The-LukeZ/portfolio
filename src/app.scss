@@ -3,10 +3,10 @@ $primary-bg: oklch(14.479% 0.00002 271.152);
 $secondary-bg: oklch(21.779% 0.00002 271.152);
 $accent-color: oklch(75.053% 0.17907 58.273);
 $accent-background: oklch(75.053% 0.17907 58.273 / 0.1);
-$accent-hover: oklch(79.268% 0.17097 70.665);
+$accent-hover: oklch(80.357% 0.16873 73.344);
 $text-primary: white;
-$text-secondary: oklch(75.721% 0.00009 271.152);
-$border-color: oklch(32.109% 0.00004 271.152);
+$text-secondary: oklch(80% 0 271);
+$border-color: oklch(32% 0 271);
 $nav-height: 60px;
 $mobile-breakpoint: 700px;
 
@@ -91,6 +91,11 @@ body {
     font-weight: 700;
     color: $accent-color;
     text-decoration: none;
+    transition: color 150ms ease;
+
+    &:hover {
+      color: $accent-hover;
+    }
   }
 
   .nav-links {
