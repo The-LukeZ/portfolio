@@ -4,7 +4,10 @@
   import { setLocale, type Locale, getLocale } from "$lib/paraglide/runtime";
   import { scrollY } from "svelte/reactivity/window";
   import { Menu, XIcon, ExternalLink } from "$lib/assets/index.js";
+  import { browser } from "$app/environment";
+  import { fade } from "svelte/transition";
 
+  let observedElements: HTMLElement[] = [];
   let mobileMenuOpen = $state(false);
   let bgImage: HTMLDivElement | null = null;
   let heroSection: HTMLElement | null = null;
@@ -37,6 +40,51 @@
       } else {
         bgImage.style.opacity = "0";
       }
+    }
+
+    return () => {
+      if (bgImage) {
+        bgImage.style.opacity = "1"; // Reset opacity when component is destroyed
+      }
+    };
+  });
+
+  $effect(() => {
+    if (browser) {
+      // Yes, we have to declare the observer here because it's not available on the server (???)
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // Add a class to the hero section when it is in view
+              entry.target.classList.add("in-view");
+            } else {
+              // Remove the class when it is out of view
+              entry.target.classList.remove("in-view");
+            }
+          });
+        },
+        { threshold: 0.1 } // Trigger when 10% of the element is visible
+      );
+
+      observedElements.push(
+        ...(document.querySelectorAll(
+          ".fade-in, .scale-up, .in-view"
+        ) as NodeListOf<HTMLElement>)
+      );
+      observedElements.forEach((el) => {
+        if (el) {
+          observer.observe(el);
+        }
+      });
+
+      return () => {
+        observedElements.forEach((el) => {
+          if (el) {
+            observer.unobserve(el);
+          }
+        });
+      };
     }
   });
 </script>
@@ -96,6 +144,7 @@
     tabindex="0"
     onclick={closeMobileMenu}
     onkeydown={() => {}}
+    transition:fade={{ duration: 250 }}
   ></div>
 {/if}
 
@@ -105,7 +154,8 @@
     <XIcon />
   </button>
 
-  <ul class="mobile-nav-links">
+  <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+  <ul class="mobile-nav-links" onclick={closeMobileMenu} onkeydown={() => {}}>
     {@render navItems()}
   </ul>
 </div>
@@ -128,19 +178,19 @@
 
   <!-- About Section -->
   <section id="about" class="section about">
-    <h2 class="section-title">{m["about.title"]()}</h2>
-    <div class="about-content">
+    <h2 class="section-title fade-in">{m["about.title"]()}</h2>
+    <div class="about-content fade-in">
       <p>{m["about.description"]()}</p>
     </div>
   </section>
 
   <!-- Projects Section -->
   <section id="projects" class="section projects">
-    <h2 class="section-title">{m["projects.title"]()}</h2>
+    <h2 class="section-title fade-in">{m["projects.title"]()}</h2>
     <div class="projects-grid">
       {#each projects as project}
         {@const projectMsgKey = `project-${project.id}`}
-        <div class="project-card">
+        <div class="project-card fade-in scale-up">
           <h3>{getMessage(`${projectMsgKey}.title`)()}</h3>
           <p>{getMessage(`${projectMsgKey}.description`)()}</p>
           <a
@@ -159,13 +209,13 @@
 
   <!-- Social Links Section -->
   <section id="social" class="section social">
-    <h2 class="section-title">{m["findMe.title"]()}</h2>
-    <p class="section-description">
+    <h2 class="section-title fade-in">{m["findMe.title"]()}</h2>
+    <p class="section-description fade-in">
       {m["findMe.description"]()}
     </p>
     <div class="social-links">
       {#each socialLinks as social}
-        <a href={social.url} class="social-link" target="_blank">
+        <a href={social.url} class="social-link scale-up" target="_blank">
           <social.icon />
           {social.name}
         </a>
