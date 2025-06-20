@@ -1,13 +1,13 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "seo": {
-    "description": "LukeZ, ein Full-Stack-Entwickler aus Deutschland, spezialisiert auf die Erstellung benutzerfreundlicher Anwendungen mit SvelteKit und Node.js. Entdecke meine Projekte und erfahre mehr über meine Arbeit.",
+    "description": "LukeZ, ein Full-Stack-Entwickler aus Deutschland, spezialisiert auf die Erstellung benutzerfreundlicher Anwendungen mit SvelteKit und Node.js. Entdecken Sie meine Projekte und erfahren Sie mehr über meine Arbeit.",
     "keywords": "LukeZ, Full-Stack-Entwickler, SvelteKit, Node.js"
   },
   "navigation": {
     "about": "Über mich",
     "projects": "Projekte",
-    "contact": "Finde mich"
+    "contact": "Soziale Medien"
   },
   "hero": {
     "subtitle": "Full-Stack Entwickler & kreativer Problemlöser",
@@ -47,7 +47,7 @@
     "description": "Ein Python-Port des NPM Timestring-Pakets. Es ermöglicht das Parsen von menschenlesbaren Zeitangaben in Sekunden oder eine bestimmte Rückgabeeinheit. Bietet auch mehr Konfigurationsoptionen als das ursprüngliche Paket."
   },
   "findMe": {
-    "title": "Finde mich",
-    "description": "Finde mich auf verschiedenen Plattformen unten. Zögere nicht, mich zu kontaktieren, wenn du Fragen hast oder einfach nur chatten möchtest!"
+    "title": "Soziale Medien",
+    "description": "Finden Sie mich auf den verschiedenen Plattformen unten."
   }
 }
