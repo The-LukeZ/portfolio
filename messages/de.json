@@ -1,13 +1,13 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "seo": {
-    "description": "LukeZ, ein Full-Stack-Entwickler aus Deutschland, spezialisiert auf die Erstellung benutzerfreundlicher Anwendungen mit SvelteKit und Node.js. Entdecke meine Projekte und erfahre mehr über meine Arbeit.",
+    "description": "LukeZ, ein Full-Stack-Entwickler aus Deutschland, spezialisiert auf die Erstellung benutzerfreundlicher Anwendungen mit SvelteKit und Node.js. Entdecken Sie meine Projekte und erfahren Sie mehr über meine Arbeit.",
     "keywords": "LukeZ, Full-Stack-Entwickler, SvelteKit, Node.js"
   },
   "navigation": {
     "about": "Über mich",
     "projects": "Projekte",
-    "contact": "Finde mich"
+    "contact": "Soziale Medien"
   },
   "hero": {
     "subtitle": "Full-Stack Entwickler & kreativer Problemlöser",
@@ -51,7 +51,7 @@
     "description": "(Aktuell nicht funktional) Eine kleine SPA, in der Sie Ihre Discord-Daten (Benutzerdaten und Server) einsehen und nur ausgewählte Felder in die Zwischenablage kopieren können. Sie wurde mit SvelteKit erstellt und verwendet einen Cache auf dem Server, um Accesstoken zu speichern, da ich mich nicht mit Datenschutzrichtlinien herumschlagen möchte."
   },
   "findMe": {
-    "title": "Finde mich",
-    "description": "Finde mich auf verschiedenen Plattformen unten. Zögere nicht, mich zu kontaktieren, wenn du Fragen hast oder einfach nur chatten möchtest!"
+    "title": "Soziale Medien",
+    "description": "Finden Sie mich auf den verschiedenen Plattformen unten."
   }
 }

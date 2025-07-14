@@ -275,5 +275,5 @@
 
 <!-- Footer -->
 <footer class="footer">
-  <p>&copy; 2024 LukeZ. All rights reserved.</p>
+  <p>&copy; 2025 LukeZ. All rights reserved.</p>
 </footer>
