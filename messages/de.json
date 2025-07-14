@@ -46,6 +46,10 @@
     "title": "TimestringPy",
     "description": "Ein Python-Port des NPM Timestring-Pakets. Es ermöglicht das Parsen von menschenlesbaren Zeitangaben in Sekunden oder eine bestimmte Rückgabeeinheit. Bietet auch mehr Konfigurationsoptionen als das ursprüngliche Paket."
   },
+  "project-ddv": {
+    "title": "DDV - Discord Data Viewer",
+    "description": "(Aktuell nicht funktional) Eine kleine SPA, in der Sie Ihre Discord-Daten (Benutzerdaten und Server) einsehen und nur ausgewählte Felder in die Zwischenablage kopieren können. Sie wurde mit SvelteKit erstellt und verwendet einen Cache auf dem Server, um Accesstoken zu speichern, da ich mich nicht mit Datenschutzrichtlinien herumschlagen möchte."
+  },
   "findMe": {
     "title": "Finde mich",
     "description": "Finde mich auf verschiedenen Plattformen unten. Zögere nicht, mich zu kontaktieren, wenn du Fragen hast oder einfach nur chatten möchtest!"

@@ -46,6 +46,10 @@ const projects = [
     id: "timestring-py",
     link: "https://github.com/The-LukeZ/TimestringPy",
   },
+  {
+    id: "ddv",
+    link: "https://discord-data-viewer.sherpa.software/",
+  },
 ];
 
 const socialLinks = [
