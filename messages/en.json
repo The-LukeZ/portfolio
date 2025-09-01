@@ -22,6 +22,10 @@
     "title": "Featured Projects",
     "cta": "View project"
   },
+  "project-ismycodeworking": {
+    "title": "IsMyCodeWorking.Today",
+    "description": "Get an answer to the eternal developer question. Over-engineered (but a fun and challenging project),  deployed with Clouflare Workers and uses Durable Objects for storage."
+  },
   "project-supportmail": {
     "title": "SupportMail",
     "description": "A modern Discord Modmail bot, including the bot itself (built with Node.js and Typescript) and surrounding services such as a website built with SvelteKit. A dashboard is currently in development."
