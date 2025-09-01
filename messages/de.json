@@ -22,6 +22,10 @@
     "title": "Ausgewählte Projekte",
     "cta": "Projekt ansehen"
   },
+  "project-ismycodeworking": {
+    "title": "IsMyCodeWorking.Today",
+    "description": "Erhalte eine Antwort auf die ewige Frage der Entwickler. Over-engineered (aber ein spaßiges und herausforderndes Projekt), deployed auf Clouflare Workers und verwendet Durable Objects als Speicher."
+  },
   "project-supportmail": {
     "title": "SupportMail",
     "description": "Ein moderner Discord Modmail-Bot, einschließlich des Bots selbst (entwickelt mit Node.js und TypeScript) und umgebender Services wie einer Website, die mit SvelteKit erstellt wurde. Ein Dashboard ist derzeit in Entwicklung."
