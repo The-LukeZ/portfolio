@@ -1,4 +1,10 @@
 // See https://svelte.dev/docs/kit/types#app.d.ts
+
+import type {
+  APIButtonComponentWithCustomId,
+  APIButtonComponentWithURL,
+} from "discord-api-types/v10";
+
 // for information about these interfaces
 declare global {
   namespace App {
@@ -8,6 +14,12 @@ declare global {
     // interface PageState {}
     // interface Platform {}
   }
+
+  type ActionRowButton =
+    | APIButtonComponentWithCustomId
+    | APIButtonComponentWithURL;
+
+  type TopLevelMessageComponent = 
 }
 
 export {};

@@ -9,7 +9,7 @@ $colors: (
   accent-hover: oklch(80.357% 0.16873 73.344),
   text-primary: white,
   text-secondary: oklch(80% 0 271),
-  border: oklch(32% 0 271)
+  border: oklch(32% 0 271),
 );
 
 // Derived colors
@@ -346,7 +346,11 @@ main {
       font-size: 4rem;
       font-weight: 700;
       margin-bottom: 1rem;
-      background: linear-gradient(135deg, map.get($colors, text-primary) 0%, map.get($colors, accent) 60%);
+      background: linear-gradient(
+        135deg,
+        map.get($colors, text-primary) 0%,
+        map.get($colors, accent) 60%
+      );
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
