@@ -160,7 +160,7 @@
 <!-- Navigation -->
 <nav class="nav no-select">
   <div class="nav-container">
-    <a href={localizeHref("/")} class="logo font-inter">LukeZ</a>
+    <a href={localizeHref("/")} class="logo font-inter">LukeZ Development - Inh. Luca Hentschel</a>
 
     <button
       class="mobile-menu-btn"

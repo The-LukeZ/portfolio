@@ -14,12 +14,6 @@ declare global {
     // interface PageState {}
     // interface Platform {}
   }
-
-  type ActionRowButton =
-    | APIButtonComponentWithCustomId
-    | APIButtonComponentWithURL;
-
-  type TopLevelMessageComponent = 
 }
 
 export {};

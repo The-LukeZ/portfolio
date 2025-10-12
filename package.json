@@ -29,10 +29,7 @@
     "vite-plugin-devtools-json": "^0.2.0"
   },
   "dependencies": {
-    "@discordjs/builders": "^1.11.3",
-    "@fontsource/poppins": "^5.2.6",
-    "@lucide/svelte": "^0.544.0",
-    "discord-api-types": "^0.38.26"
+    "@lucide/svelte": "^0.544.0"
   },
-  "packageManager": "pnpm@10.17.1"
+  "packageManager": "pnpm@10.18.2"
 }
