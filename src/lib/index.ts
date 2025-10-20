@@ -23,8 +23,8 @@ export const getMessage = (key: string) => {
 
 const projects = [
   {
-    id: "ismycodeworking",
-    link: "https://ismycodeworking.today"
+    id: "ticketon",
+    link: "https://ticketon.app",
   },
   {
     id: "supportmail",
@@ -37,6 +37,10 @@ const projects = [
   {
     id: "portfolio",
     link: "https://github.com/The-LukeZ/portfolio",
+  },
+  {
+    id: "ismycodeworking",
+    link: "https://ismycodeworking.today",
   },
   {
     id: "lukez-monitor",
@@ -83,4 +87,3 @@ export function calculateAge(dob: Date): number {
   // Calculate the absolute value of the difference in years between the age Date object and the year 1970 (UNIX epoch)
   return Math.abs(new Date(Date.now() - dob.getTime()).getUTCFullYear() - 1970);
 }
-
