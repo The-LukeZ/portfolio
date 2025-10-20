@@ -11,7 +11,6 @@
   import { Menu, XIcon, ExternalLink } from "$lib/assets/index.js";
   import { browser } from "$app/environment";
   import { fade } from "svelte/transition";
-  import { PUBLIC_DATE_OF_BIRTH } from "$env/static/public";
 
   const BASE_BG_IMG_OPACITY = 0.4;
   let observedElements: HTMLElement[] = [];
@@ -226,7 +225,7 @@
     <div class="about-content fade-in">
       <p>
         {m["about.description"]({
-          age: calculateAge(new Date(PUBLIC_DATE_OF_BIRTH)),
+          age: "21",
           country: m["about.country"](),
         })}
       </p> 
