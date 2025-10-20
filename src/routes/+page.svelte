@@ -229,7 +229,7 @@
           age: calculateAge(new Date(PUBLIC_DATE_OF_BIRTH)),
           country: m["about.country"](),
         })}
-      </p>
+      </p> 
     </div>
   </section>
 

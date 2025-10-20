@@ -24,7 +24,7 @@
   },
   "project-ticketon": {
     "title": "Ticketon",
-    "description": "Ein moderner Ticket-Bot für Discord. In nur etwa 120 Arbeitsstunden entwickelt verfügt er über ein mit SvelteKit erstelltes Web-Dashboard und den mit Discord.js erstellten Bot selbst. Alles läuft in einem Docker-Netzwerk."
+    "description": "Ein moderner Ticket-Bot für Discord. In nur etwa 120 Arbeitsstunden entwickelt verfügt er über ein mit SvelteKit erstelltes Web-Dashboard und den mit Discord.js erstellten Bot selbst. Alles läuft in einem Docker-Netzwerk. Die Dokumentation wurde mit Astro Starlight erstellt und läuft auf Cloudflare Pages. Ich liebe es!"
   },
   "project-ismycodeworking": {
     "title": "IsMyCodeWorking.Today",

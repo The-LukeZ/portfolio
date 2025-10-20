@@ -24,7 +24,7 @@
   },
   "project-ticketon": {
     "title": "Ticketon",
-    "description": "A modern ticketing bot for Discord. Made in just about 120 hours of work, it features a web dashboard built with SvelteKit and the bot itself built with Discord.js. Everything running in a Docker network."
+    "description": "A modern ticketing bot for Discord. Made in just about 120 hours of work, it features a web dashboard built with SvelteKit and the bot itself built with Discord.js. Everything running in a Docker network. The documentation is made with Astro Starlight and running on Cloudflare Pages. Love it!"
   },
   "project-ismycodeworking": {
     "title": "IsMyCodeWorking.Today",
