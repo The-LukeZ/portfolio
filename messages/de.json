@@ -42,6 +42,10 @@
     "title": "Portfolio",
     "description": "Diese Portfolio-Website, entwickelt mit SvelteKit, präsentiert meine Projekte und Fähigkeiten. Sie dient als Plattform, um meine Arbeit zu teilen und mich mit anderen in der Entwickler-Community zu vernetzen."
   },
+  "project-upvote-engine": {
+    "title": "Upvote Engine",
+    "description": "Ein performanter Discord Vote-Handler auf Basis einer FaaS-Architektur mit Cloudflare Workers, Queues und D1."
+  },
   "project-lukez-monitor": {
     "title": "LukeZ Monitor",
     "description": "Ein Cloudflare Worker, der den Status meiner verschiedenen Projekte und Services überwacht. Er prüft die Verfügbarkeit und benachrichtigt mich über Telegram, wenn Probleme auftreten."

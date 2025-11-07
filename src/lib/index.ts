@@ -43,6 +43,10 @@ const projects = [
     link: "https://ismycodeworking.today",
   },
   {
+    id: "upvote-engine",
+    link: "https://github.com/The-LukeZ/upvote-engine/",
+  },
+  {
     id: "lukez-monitor",
     link: "https://github.com/The-LukeZ/lukez-monitor",
   },
