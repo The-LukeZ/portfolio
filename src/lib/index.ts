@@ -31,6 +31,10 @@ const projects = [
     link: "https://supportmail.dev",
   },
   {
+    id: "upvote-engine",
+    link: "https://vote-handler.lukez.workers.dev/",
+  },
+  {
     id: "burningdezibelz",
     link: "https://github.com/The-LukeZ/burning-dezibelz-v2",
   },
@@ -41,10 +45,6 @@ const projects = [
   {
     id: "ismycodeworking",
     link: "https://ismycodeworking.today",
-  },
-  {
-    id: "upvote-engine",
-    link: "https://github.com/The-LukeZ/upvote-engine/",
   },
   {
     id: "lukez-monitor",
