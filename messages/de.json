@@ -23,23 +23,23 @@
   },
   "project-ticketon": {
     "title": "Ticketon",
-    "description": "Ein moderner Ticket-Bot für Discord. In nur etwa 120 Arbeitsstunden entwickelt verfügt er über ein mit SvelteKit erstelltes Web-Dashboard und den mit Discord.js erstellten Bot selbst. Alles läuft in einem Docker-Netzwerk. Die Dokumentation wurde mit Astro Starlight erstellt und läuft auf Cloudflare Pages. Ich liebe es!"
+    "description": "Ein moderner, umfangreicher Ticketing-Bot für Discord. Er wurde in nur etwa 120 Arbeitsstunden entwickelt und verfügt über ein mit SvelteKit erstelltes Web-Dashboard und den mit Discord.js erstellten Bot selbst. Alles läuft in einem Docker-Netzwerk. Die Dokumentation wurde mit Astro Starlight erstellt und läuft auf Cloudflare Pages. Ich liebe es!"
   },
-  "project-ismycodeworking": {
-    "title": "IsMyCodeWorking.Today",
-    "description": "Erhalte eine Antwort auf die ewige Frage der Entwickler. Over-engineered (aber ein spaßiges und herausforderndes Projekt), deployed auf Clouflare Workers und verwendet Durable Objects als Speicher."
+  "project-burningdezibelz": {
+    "title": "Burning Dezibelz",
+    "description": "Die Website für die Band Burning Dezibelz (deren Mitglied ich bin). Entwickelt mit SvelteKit und Supabase, präsentiert sie die Band, Konzerte und verfügt über eine Galerie für unsere Bilder. Sie hat ein Dashboard zur Verwaltung von Konzerten, Veranstaltungsorten, Bildern und mehr. Im Dezember 2025 wurde die Anmeldung komplett überarbeitet, sodass nun nicht mehr nur Google OAuth, sondern auch E-Mail/Passwort und Magic Links verwendet werden können."
   },
   "project-supportmail": {
     "title": "SupportMail",
     "description": "Ein moderner Discord Modmail-Bot, einschließlich des Bots selbst (entwickelt mit Node.js und TypeScript) und umgebender Services wie einer Website, die mit SvelteKit erstellt wurde. Ein Dashboard ist derzeit in Entwicklung."
   },
-  "project-burningdezibelz": {
-    "title": "Burning Dezibelz",
-    "description": "Die Website für die Band Burning Dezibelz (deren Mitglied ich bin). Entwickelt mit SvelteKit und Supabase, präsentiert sie die Band, Konzerte und verfügt über eine Galerie für unsere Bilder. Sie hat ein Dashboard zur Verwaltung von Konzerten, Veranstaltungsorten, Bildern und mehr."
+  "project-ismycodeworking": {
+    "title": "IsMyCodeWorking.Today",
+    "description": "Erhalte eine Antwort auf die ewige Frage der Entwickler. Over-engineered (aber ein spaßiges und herausforderndes Projekt), deployed auf Clouflare Workers und verwendet Durable Objects als Speicher."
   },
   "project-portfolio": {
     "title": "Portfolio",
-    "description": "Diese Portfolio-Website, entwickelt mit SvelteKit, präsentiert meine Projekte und Fähigkeiten. Sie dient als Plattform, um meine Arbeit zu teilen und mich mit anderen in der Entwickler-Community zu vernetzen."
+    "description": "Diese Portfolio-Website, entwickelt mit SvelteKit, präsentiert meine Projekte und Fähigkeiten. Sie dient als Plattform, um meine Arbeit zu teilen und mich mit anderen in der Entwickler-Community zu vernetzen. Im Dezember 2025 habe ich die Unterstützung für einen API-Endpunkt hinzugefügt, der ein zufälliges Bild von Unsplash zurückgibt, das durch Arcject geschützt ist."
   },
   "project-upvote-engine": {
     "title": "Upvote Engine",
@@ -47,7 +47,7 @@
   },
   "project-lukez-monitor": {
     "title": "LukeZ Monitor",
-    "description": "Ein Cloudflare Worker, der den Status meiner verschiedenen Projekte und Services überwacht. Er prüft die Verfügbarkeit und benachrichtigt mich über Telegram, wenn Probleme auftreten."
+    "description": "Ein Cloudflare Worker, der den Status meiner verschiedenen Projekte und Services überwacht. Er prüft die Verfügbarkeit und benachrichtigt mich über Telegram, wenn Probleme auftreten. Stand Dezember 2025 funktioniert das nur so semi."
   },
   "project-djs-command-helper": {
     "title": "DJS Command Helper",

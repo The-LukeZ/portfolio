@@ -23,23 +23,23 @@
   },
   "project-ticketon": {
     "title": "Ticketon",
-    "description": "A modern ticketing bot for Discord. Made in just about 120 hours of work, it features a web dashboard built with SvelteKit and the bot itself built with Discord.js. Everything running in a Docker network. The documentation is made with Astro Starlight and running on Cloudflare Pages. Love it!"
+    "description": "A modern, advanced ticketing bot for Discord. Made in just about 120 hours of work, it features a web dashboard built with SvelteKit and the bot itself built with Discord.js. Everything running in a Docker network. The documentation is made with Astro Starlight and running on Cloudflare Pages. Love it!"
   },
-  "project-ismycodeworking": {
-    "title": "IsMyCodeWorking.Today",
-    "description": "Get an answer to the eternal developer question. Over-engineered (but a fun and challenging project),  deployed with Clouflare Workers and uses Durable Objects for storage."
+  "project-burningdezibelz": {
+    "title": "Burning Dezibelz",
+    "description": "The website for the Burning Dezibelz band (which I am a member of). Built with SvelteKit and Supabase, it showcases the band, concerts and has a gallery for our images. It has a dashboard for managing concerts, venues, images and more. In December 2025, the login was completely revamped to not use only Google OAuth, but also email/password and magic links."
   },
   "project-supportmail": {
     "title": "SupportMail",
     "description": "A modern Discord Modmail bot, including the bot itself (built with Node.js and Typescript) and surrounding services such as a website built with SvelteKit. A dashboard is currently in development."
   },
-  "project-burningdezibelz": {
-    "title": "Burning Dezibelz",
-    "description": "The website for the Burning Dezibelz band (which I am a member of). Built with SvelteKit and Supabase, it showcases the band, concerts and has a gallery for our images. It has a dashboard for managing concerts, venues, images and more."
+  "project-ismycodeworking": {
+    "title": "IsMyCodeWorking.Today",
+    "description": "Get an answer to the eternal developer question. Over-engineered (but a fun and challenging project),  deployed with Clouflare Workers and uses Durable Objects for storage."
   },
   "project-portfolio": {
     "title": "Portfolio",
-    "description": "This portfolio website, built with SvelteKit, showcases my projects and skills. It serves as a platform to share my work and connect with others in the developer community."
+    "description": "This portfolio website, built with SvelteKit, showcases my projects and skills. It serves as a platform to share my work and connect with others in the developer community. In December 2025, I added support for an api-endpoint that returns a random image from Unsplash with arcject protecting it."
   },
   "project-upvote-engine": {
     "title": "Upvote Engine",
@@ -47,7 +47,7 @@
   },
   "project-lukez-monitor": {
     "title": "LukeZ Monitor",
-    "description": "A Cloudflare Worker that monitors the status of my various projects and services. It checks for uptime and notifies me via Telegram if any issues arise."
+    "description": "A Cloudflare Worker that monitors the status of my various projects and services. It checks for uptime and notifies me via Telegram if any issues arise. As of December 2025, this only works to a limited extent."
   },
   "project-djs-command-helper": {
     "title": "DJS Command Helper",
@@ -59,7 +59,7 @@
   },
   "project-ddv": {
     "title": "DDV - Discord Data Viewer",
-    "description": "(Currently not working) A small SPA, where you can see your Discord data (user data and servers) and copy just selected fields to the clipboard. It is built with SvelteKit and uses a cache on the server to store access tokens, because I don't want the hustle of dealing with Privacy Policies."
+    "description": "A small SPA, where you can see your Discord data (user data and servers) and copy just selected fields to the clipboard. It is built with SvelteKit and uses a cache on the server to store access tokens, because I don't want the hustle of dealing with Privacy Policies."
   },
   "findMe": {
     "title": "Find Me",
