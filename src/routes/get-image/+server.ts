@@ -7,9 +7,15 @@ function serializeCookieValue(value: string): CookieUnsplashImage | null {
     if (
       typeof parsed.url === "string" &&
       typeof parsed.authorName === "string" &&
-      typeof parsed.authorProfileUrl === "string"
+      typeof parsed.authorProfileUrl === "string" &&
+      typeof parsed.htmlUrl === "string"
     ) {
-      return { url: parsed.url, authorName: parsed.authorName, authorProfileUrl: parsed.authorProfileUrl };
+      return {
+        url: parsed.url,
+        authorName: parsed.authorName,
+        authorProfileUrl: parsed.authorProfileUrl,
+        htmlUrl: parsed.htmlUrl,
+      };
     }
   } catch {
     return null;
@@ -93,7 +99,8 @@ export async function GET(event) {
       url: unsplashRes.image.urls.full,
       authorName: unsplashRes.image.user.name,
       authorProfileUrl: unsplashRes.image.user.portfolio_url,
-    }),
+      htmlUrl: unsplashRes.image.links.html,
+    } as CookieUnsplashImage),
     { path: "/", maxAge: 60 * 60 * 24 }, // 1 day
   );
 

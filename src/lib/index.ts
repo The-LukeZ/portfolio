@@ -86,5 +86,5 @@ export const defaultUnsplashImage = {
     name: "Daniel Alexandre Páscoa",
     url: "https://unsplash.com/@daniel_pascoa",
   },
-  imageLink: "https://unsplash.com/de/fotos/blick-auf-eine-bergkette-von-der-spitze-eines-hugels-HfFq-_SNuZ8",
+  htmlUrl: "https://unsplash.com/de/fotos/blick-auf-eine-bergkette-von-der-spitze-eines-hugels-HfFq-_SNuZ8",
 };

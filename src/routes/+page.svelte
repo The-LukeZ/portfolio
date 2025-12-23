@@ -17,6 +17,7 @@
   let heroSection: HTMLElement | null = $state(null);
   let imageLoaded = $state(false);
   let imageData = $state<CookieUnsplashImage | null>(null);
+  let usingFallback = $state(false);
 
   let screenDimensions = $state<{
     width: number | null;
@@ -170,6 +171,7 @@
       }
     };
     img.src = defaultUnsplashImage.url;
+    usingFallback = true;
   }
 
   async function fetchBackgroundImage(width: number, height: number) {
@@ -189,6 +191,7 @@
           url: data.image.urls.full,
           authorName: data.image.user.name,
           authorProfileUrl: `https://unsplash.com/@${data.image.user.username}`,
+          htmlUrl: data.image.links.html,
         };
 
         // Render at small size (32x32) since it will be scaled up with CSS blur anyway
@@ -215,7 +218,7 @@
       } else if (data.type === "ratelimit") {
         // See if any cached image is returned
         imageData = {
-          ...data.image
+          ...data.image,
         };
       }
     } catch (e) {
@@ -486,6 +489,15 @@
       </a>
       on
       <a href={imageData.url} target="_blank">Unsplash</a>
+    </p>
+  {:else if usingFallback}
+    <p class="image-attribution">
+      Photo by
+      <a href={defaultUnsplashImage.author.url} target="_blank">
+        {defaultUnsplashImage.author.name}
+      </a>
+      on
+      <a href={defaultUnsplashImage.htmlUrl} target="_blank">Unsplash</a>
     </p>
   {/if}
 </footer>

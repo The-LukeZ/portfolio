@@ -17,6 +17,10 @@ declare global {
      */
     url: string;
     /**
+     * The url to the image page on Unsplash.
+     */
+    htmlUrl: string;
+    /**
      * The author of the image.
      */
     authorName: string;
