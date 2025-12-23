@@ -415,6 +415,7 @@ main {
     border: 1px solid map.get($colors, border);
     border-radius: 12px;
     overflow: hidden;
+    scroll-margin-top: calc(#{$nav-height} + 1rem);
     @include transition(border-color);
 
     &:hover {
