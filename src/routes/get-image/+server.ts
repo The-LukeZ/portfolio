@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken";
 function verifyToken(token: string): boolean {
   try {
     const decoded = jwt.verify(token, env.JWT_SECRET, {
-      algorithms: ["ES256"],
+      algorithms: ["HS512"],
       audience: "lukez-portfolio",
       issuer: "lukez-portfolio",
       subject: "img-access",

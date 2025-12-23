@@ -11,7 +11,7 @@ export async function load({ cookies, url }) {
     env.JWT_SECRET,
     {
       expiresIn: "1h",
-      algorithm: "ES256",
+      algorithm: "HS512",
       audience: "lukez-portfolio",
       issuer: "lukez-portfolio",
       subject: "img-access",
