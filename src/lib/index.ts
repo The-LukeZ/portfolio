@@ -1,7 +1,7 @@
 import type { ClassValue } from "svelte/elements";
 import { m } from "./paraglide/messages";
 
-import { Github, YouTube, Discord, Music, FileText } from "$lib/assets/index.js";
+import { Github, YouTube, Discord, Music, FileText, Email } from "$lib/assets/index.js";
 
 type MaybeClassValue = ClassValue | undefined | null;
 
@@ -68,9 +68,14 @@ const socialLinks = [
   {
     name: "Discord",
     icon: Discord,
-    url: "https://discord.com/users/506893652266844162",
+    url: "discord://-/users/506893652266844162",
   },
   { name: "Spotify", icon: Music, url: "https://stats.fm/lukez" },
+  {
+    name: "Email",
+    icon: Email,
+    url: "mailto:contact.lukez@proton.me",
+  },
 ];
 
 export { projects, socialLinks };

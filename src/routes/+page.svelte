@@ -485,14 +485,14 @@
     <p class="image-attribution">
       Photo by
       {#if imageAttribution.authorUrl}
-        <a href={imageAttribution.authorUrl} target="_blank" rel="noopener noreferrer">
+        <a href={imageAttribution.authorUrl} target="_blank">
           {imageAttribution.authorName}
         </a>
       {:else}
         {imageAttribution.authorName}
       {/if}
       on
-      <a href={imageAttribution.imageUrl} target="_blank" rel="noopener noreferrer">Unsplash</a>
+      <a href={imageAttribution.imageUrl} target="_blank">Unsplash</a>
     </p>
   {/if}
 </footer>
