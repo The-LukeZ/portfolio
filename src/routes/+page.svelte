@@ -1,16 +1,13 @@
 <script lang="ts">
   import { browser } from "$app/environment";
+  import { goto } from "$app/navigation";
   import { getMessage, projects, socialLinks } from "$lib";
   import { ExternalLink, Menu, XIcon } from "$lib/assets/index.js";
   import { m } from "$lib/paraglide/messages";
-  import {
-    getLocale,
-    localizeHref,
-    setLocale,
-    type Locale,
-  } from "$lib/paraglide/runtime";
+  import { getLocale, localizeHref, setLocale, type Locale } from "$lib/paraglide/runtime";
   import { scrollY } from "svelte/reactivity/window";
   import { fade } from "svelte/transition";
+  import { page } from "$app/state";
 
   const BASE_BG_IMG_OPACITY = 0.4;
   let observedElements: HTMLElement[] = [];
@@ -24,8 +21,6 @@
     width: null,
     height: null,
   });
-
-  $inspect(screenDimensions);
 
   function toggleMobileMenu() {
     mobileMenuOpen = !mobileMenuOpen;
@@ -42,12 +37,7 @@
 
   $effect(() => {
     // Set the background image URL based on screen dimensions (We don't want this on resize, only on initial load)
-    if (
-      bgImage &&
-      browser &&
-      screenDimensions.width &&
-      screenDimensions.height
-    ) {
+    if (bgImage && browser && screenDimensions.width && screenDimensions.height) {
       bgImage.style.backgroundImage = `url(https://picsum.photos/${screenDimensions.width}/${screenDimensions.height}.webp)`;
     }
   });
@@ -59,10 +49,7 @@
       const heroBottom = heroSection.offsetTop + heroSection.offsetHeight - 70; // 60px for the height of the nav + 10px for some padding
       const opacity =
         BASE_BG_IMG_OPACITY -
-        Math.min(
-          BASE_BG_IMG_OPACITY,
-          (scrollY.current / heroBottom) * BASE_BG_IMG_OPACITY
-        );
+        Math.min(BASE_BG_IMG_OPACITY, (scrollY.current / heroBottom) * BASE_BG_IMG_OPACITY);
       bgImage.style.opacity = opacity.toString();
     }
 
@@ -88,13 +75,11 @@
             }
           });
         },
-        { threshold: 0.1 } // Trigger when 10% of the element is visible
+        { threshold: 0.1 }, // Trigger when 10% of the element is visible
       );
 
       observedElements.push(
-        ...(document.querySelectorAll(
-          ".fade-in, .scale-up, .in-view"
-        ) as NodeListOf<HTMLElement>)
+        ...(document.querySelectorAll(".fade-in, .scale-up, .in-view") as NodeListOf<HTMLElement>),
       );
       observedElements.forEach((el) => {
         if (el) {
@@ -127,9 +112,7 @@
     <a href="#about" onclick={closeMobileMenu}>{m["navigation.about"]()}</a>
   </li>
   <li>
-    <a href="#projects" onclick={closeMobileMenu}
-      >{m["navigation.projects"]()}</a
-    >
+    <a href="#projects" onclick={closeMobileMenu}>{m["navigation.projects"]()}</a>
   </li>
   <li>
     <a href="#social" onclick={closeMobileMenu}>{m["navigation.contact"]()}</a>
@@ -150,22 +133,14 @@
   </li>
 {/snippet}
 
-<div
-  id="bg-image"
-  bind:this={bgImage}
-  style="opacity: {BASE_BG_IMG_OPACITY};"
-></div>
+<div id="bg-image" bind:this={bgImage} style="opacity: {BASE_BG_IMG_OPACITY};"></div>
 
 <!-- Navigation -->
 <nav class="nav no-select">
   <div class="nav-container">
     <a href={localizeHref("/")} class="logo font-inter">LukeZ</a>
 
-    <button
-      class="mobile-menu-btn"
-      onclick={toggleMobileMenu}
-      aria-label="Toggle mobile menu"
-    >
+    <button class="mobile-menu-btn" onclick={toggleMobileMenu} aria-label="Toggle mobile menu">
       <Menu />
     </button>
 
@@ -190,11 +165,7 @@
 
 <!-- Mobile Menu -->
 <div class="mobile-menu no-select" class:open={mobileMenuOpen}>
-  <button
-    class="close-btn"
-    onclick={closeMobileMenu}
-    aria-label="Close mobile menu"
-  >
+  <button class="close-btn" onclick={closeMobileMenu} aria-label="Close mobile menu">
     <XIcon />
   </button>
 
@@ -209,11 +180,7 @@
     <div class="hero-content">
       <h1>LukeZ</h1>
       <p class="subtitle">{m["hero.subtitle"]()}</p>
-      <a
-        href="#about"
-        class="cta-button"
-        onclick={() => scrollToSection("about")}
-      >
+      <a href="#about" class="cta-button" onclick={() => scrollToSection("about")}>
         {m["hero.cta"]()}
       </a>
     </div>
@@ -228,7 +195,7 @@
           age: "21",
           country: m["about.country"](),
         })}
-      </p> 
+      </p>
     </div>
   </section>
 
@@ -238,21 +205,31 @@
     <div class="projects-accordion fade-in">
       {#each projects as project, index}
         {@const projectMsgKey = `project-${project.id}`}
-        {@const accordionId = `accordion-${project.id}`}
-        <details class="accordion-item" name="projects-accordion">
+        <details
+          class="accordion-item"
+          name="projects-accordion"
+          id={projectMsgKey}
+          ontoggle={(e) => {
+            if (e.currentTarget.open) {
+              goto(`#${projectMsgKey}`, { noScroll: true, keepFocus: true });
+              return;
+            }
+
+            if (page.url.hash === `#${projectMsgKey}`) {
+              const newUrl = new URL($state.snapshot(page.url.toString()));
+              newUrl.hash = "";
+              goto(newUrl, { noScroll: true, keepFocus: true });
+            }
+          }}
+        >
           <summary class="accordion-header">
-            <span class="accordion-number">{String(index + 1).padStart(2, '0')}</span>
+            <span class="accordion-number">{String(index + 1).padStart(2, "0")}</span>
             <span class="accordion-title">{getMessage(`${projectMsgKey}.title`)()}</span>
             <span class="accordion-icon"></span>
           </summary>
           <div class="accordion-content">
             <p>{getMessage(`${projectMsgKey}.description`)()}</p>
-            <a
-              href={project.link}
-              class="project-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href={project.link} class="project-link" target="_blank" rel="noopener noreferrer">
               {m["projects.cta"]()}
               <ExternalLink size={14} />
             </a>
