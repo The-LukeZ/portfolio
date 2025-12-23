@@ -1,32 +1,5 @@
-import { dev } from "$app/environment";
-import { ARCJET_KEY, UNSPLASH_ACCESS_KEY, UNSPLASH_APP_ID } from "$env/static/private";
-import { isSpoofedBot } from "@arcjet/inspect";
-import arcjet, { detectBot, shield, tokenBucket } from "@arcjet/sveltekit";
+import { UNSPLASH_ACCESS_KEY, UNSPLASH_APP_ID } from "$env/static/private";
 import { error, json, type Cookies } from "@sveltejs/kit";
-
-const aj = arcjet({
-  key: ARCJET_KEY,
-  rules: [
-    // Shield protects from common attacks e.g. SQL injection
-    shield({ mode: dev ? "DRY_RUN" : "LIVE" }),
-    detectBot({
-      mode: dev ? "DRY_RUN" : "LIVE", // Blocks requests. Use "DRY_RUN" to log only
-      allow: [], // block all bots
-    }),
-    tokenBucket({
-      mode: dev ? "DRY_RUN" : "LIVE",
-      refillRate: 1,
-      interval: 300,
-      capacity: 1,
-    }),
-  ],
-  log: {
-    debug: console.debug,
-    info: console.info,
-    warn: console.warn,
-    error: console.error,
-  },
-});
 
 function serializeCookieValue(value: string): CookieUnsplashImage | null {
   try {
@@ -71,34 +44,18 @@ function getRandomImageFromCookies(cookies: Cookies): [CookieUnsplashImage | nul
 }
 
 export async function GET(event) {
-  const decision = await aj.protect(event, { requested: 1 });
+  const decision = await event.platform?.env.IMG_RATE_LIMITER.limit({ key: event.getClientAddress() });
 
-  if (decision.isDenied()) {
-    if (decision.reason.isRateLimit()) {
-      // Return random image from cache if rate limited
-      const [image] = getRandomImageFromCookies(event.cookies);
-      if (image) {
-        return json({
-          type: "ratelimit",
-          image: image,
-        });
-      }
-      return error(429, "Too Many Requests");
-    } else if (decision.reason.isBot()) {
-      return error(403, "No Bots Allowed");
-    } else {
-      return error(403, "Forbidden");
+  if (!decision?.success) {
+    // Return random image from cache if rate limited
+    const [image] = getRandomImageFromCookies(event.cookies);
+    if (image) {
+      return json({
+        type: "ratelimit",
+        image: image,
+      });
     }
-  }
-
-  if (decision.ip.isHosting()) {
-    console.log("Blocking hosting provider IP:", event.getClientAddress());
-    return error(403, "Forbidden");
-  }
-
-  if (decision.results.some(isSpoofedBot)) {
-    console.log("Blocking spoofed bot IP:", event.getClientAddress());
-    return error(403, "Forbidden");
+    return error(429, "Too Many Requests");
   }
 
   const dimensions = event.url.searchParams.get("dim") || "1920x1080";
