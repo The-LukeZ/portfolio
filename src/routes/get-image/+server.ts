@@ -59,7 +59,7 @@ export async function GET(event) {
     });
   }
 
-  if (unsplashRes.type === "cached") {
+  if (unsplashRes.cache) {
     event.setHeaders({
       "X-Image-Source": "cache",
       "X-Cache-Status": "HIT",
@@ -101,14 +101,14 @@ function randomSearchTerm(): string {
 async function getRandomUnsplashImage(
   orientation: "landscape" | "portrait" | "squarish" = "landscape",
   env?: Env,
-): Promise<{ type: "error"; image?: never } | { type: "success" | "cached"; image: UnsplashImage }> {
+): Promise<{ type: "error"; image?: never } | { type: "success"; image: UnsplashImage; cache?: true }> {
   const cacheKey = `unsplash_image_${orientation}`;
 
   // Check cache first - only fetch once per minute
   const cachedImg = await env?.UNSPLASH_CACHE.get<UnsplashImage>(cacheKey, "json");
   if (cachedImg) {
     try {
-      return { type: "cached", image: cachedImg };
+      return { type: "success", image: cachedImg, cache: true };
     } catch {
       // Cache corrupted, continue to fetch fresh
     }
