@@ -263,7 +263,9 @@
 
   async function fetchBackgroundImage(width: number, height: number) {
     try {
-      const res = await fetch(`/get-image?dim=${width}x${height}`);
+      const res = await fetch(`/get-image?dim=${width}x${height}`, {
+        credentials: "same-origin"
+      });
 
       if (!res.ok) {
         // Rate limited or other error - try to use cached image
