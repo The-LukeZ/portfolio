@@ -467,14 +467,17 @@
     </p>
     <div class="social-links">
       {#each socialLinks as social}
-        <a
-          href={social.url}
-          class="social-link scale-up"
-          target={social.url.startsWith("http") ? "_blank" : "_self"}
-        >
-          <social.icon />
-          {social.name}
-        </a>
+        {#if social.url.startsWith("mailto")}
+          <a href={social.url} class="social-link scale-up">
+            <social.icon />
+            {social.name}
+          </a>
+        {:else}
+          <a href={social.url} class="social-link scale-up" target="_blank">
+            <social.icon />
+            {social.name}
+          </a>
+        {/if}
       {/each}
     </div>
   </section>
