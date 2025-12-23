@@ -1,19 +1,30 @@
 <script lang="ts">
   import { browser } from "$app/environment";
   import { goto } from "$app/navigation";
-  import { getMessage, projects, socialLinks } from "$lib";
+  import { page } from "$app/state";
+  import { defaultUnsplashImage, getMessage, projects, socialLinks } from "$lib";
   import { ExternalLink, Menu, XIcon } from "$lib/assets/index.js";
   import { m } from "$lib/paraglide/messages";
   import { getLocale, localizeHref, setLocale, type Locale } from "$lib/paraglide/runtime";
   import { scrollY } from "svelte/reactivity/window";
   import { fade } from "svelte/transition";
-  import { page } from "$app/state";
 
   const BASE_BG_IMG_OPACITY = 0.4;
   let observedElements: HTMLElement[] = [];
   let mobileMenuOpen = $state(false);
   let bgImage: HTMLDivElement | null = $state(null);
+  let blurCanvas: HTMLCanvasElement | null = $state(null);
   let heroSection: HTMLElement | null = $state(null);
+  let imageLoaded = $state(false);
+  let imageData = $state<GetImageRes | null>(null);
+
+  // Attribution data for the background image - either from API or fallback
+  let imageAttribution = $state<{
+    authorName: string;
+    authorUrl: string | null;
+    imageUrl: string;
+  } | null>(null);
+
   let screenDimensions = $state<{
     width: number | null;
     height: number | null;
@@ -21,6 +32,208 @@
     width: null,
     height: null,
   });
+
+  /**
+   * Decodes a BlurHash string into pixel data for canvas rendering.
+   *
+   * BlurHash is a compact representation of an image placeholder - Unsplash provides these
+   * so we can show a blurred preview instantly while the full image loads, improving perceived performance.
+   *
+   * The algorithm works by:
+   * 1. Decoding the hash into DCT (Discrete Cosine Transform) color components
+   * 2. Reconstructing the image by summing cosine basis functions weighted by these components
+   * 3. Converting from linear color space back to sRGB for display
+   *
+   * @see https://blurha.sh for the algorithm specification
+   * 
+   * Note: Made by AI
+   */
+  function decodeBlurHash(
+    hash: string,
+    width: number,
+    height: number,
+    punch: number = 1,
+  ): Uint8ClampedArray | null {
+    // Base83 alphabet used by BlurHash - allows compact encoding of color data
+    const digitCharacters =
+      "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz#$%*+,-.:;=?@[]^_{|}~";
+
+    const decode83 = (str: string): number => {
+      let value = 0;
+      for (let i = 0; i < str.length; i++) {
+        const c = str[i];
+        const digit = digitCharacters.indexOf(c);
+        value = value * 83 + digit;
+      }
+      return value;
+    };
+
+    // sRGB uses gamma correction for human perception - we need linear values for accurate color math
+    const sRGBToLinear = (value: number): number => {
+      const v = value / 255;
+      return v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+    };
+
+    const linearToSRGB = (value: number): number => {
+      const v = Math.max(0, Math.min(1, value));
+      return v <= 0.0031308
+        ? Math.round(v * 12.92 * 255 + 0.5)
+        : Math.round((1.055 * Math.pow(v, 1 / 2.4) - 0.055) * 255 + 0.5);
+    };
+
+    // Signed power preserves the sign - needed because AC components can be negative
+    const signPow = (base: number, exp: number): number => Math.sign(base) * Math.pow(Math.abs(base), exp);
+
+    // DC component is the average color of the image
+    const decodeDC = (value: number): [number, number, number] => {
+      const intR = value >> 16;
+      const intG = (value >> 8) & 255;
+      const intB = value & 255;
+      return [sRGBToLinear(intR), sRGBToLinear(intG), sRGBToLinear(intB)];
+    };
+
+    // AC components represent the detail/variation from the average
+    const decodeAC = (value: number, maxVal: number): [number, number, number] => {
+      const quantR = Math.floor(value / (19 * 19));
+      const quantG = Math.floor(value / 19) % 19;
+      const quantB = value % 19;
+      return [
+        signPow((quantR - 9) / 9, 2.0) * maxVal,
+        signPow((quantG - 9) / 9, 2.0) * maxVal,
+        signPow((quantB - 9) / 9, 2.0) * maxVal,
+      ];
+    };
+
+    if (!hash || hash.length < 6) return null;
+
+    // First character encodes the grid size (how many frequency components)
+    const sizeFlag = decode83(hash[0]);
+    const numY = Math.floor(sizeFlag / 9) + 1;
+    const numX = (sizeFlag % 9) + 1;
+
+    // Second character encodes the maximum AC component value (for dequantization)
+    const quantisedMaxVal = decode83(hash[1]);
+    const maxVal = (quantisedMaxVal + 1) / 166;
+
+    const colors: [number, number, number][] = new Array(numX * numY);
+    colors[0] = decodeDC(decode83(hash.substring(2, 6)));
+
+    for (let i = 1; i < numX * numY; i++) {
+      colors[i] = decodeAC(decode83(hash.substring(4 + i * 2, 6 + i * 2)), maxVal * punch);
+    }
+
+    const pixels = new Uint8ClampedArray(width * height * 4);
+
+    // Reconstruct image by summing cosine waves at each pixel position
+    for (let y = 0; y < height; y++) {
+      for (let x = 0; x < width; x++) {
+        let r = 0,
+          g = 0,
+          b = 0;
+        for (let j = 0; j < numY; j++) {
+          for (let i = 0; i < numX; i++) {
+            const basis = Math.cos((Math.PI * x * i) / width) * Math.cos((Math.PI * y * j) / height);
+            const color = colors[i + j * numX];
+            r += color[0] * basis;
+            g += color[1] * basis;
+            b += color[2] * basis;
+          }
+        }
+        const idx = 4 * (x + y * width);
+        pixels[idx] = linearToSRGB(r);
+        pixels[idx + 1] = linearToSRGB(g);
+        pixels[idx + 2] = linearToSRGB(b);
+        pixels[idx + 3] = 255;
+      }
+    }
+    return pixels;
+  }
+
+  function renderBlurHash(canvas: HTMLCanvasElement, hash: string, width: number, height: number) {
+    const pixels = decodeBlurHash(hash, width, height);
+    if (!pixels) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    canvas.width = width;
+    canvas.height = height;
+    const imageData = ctx.createImageData(width, height);
+    imageData.data.set(pixels);
+    ctx.putImageData(imageData, 0, 0);
+  }
+
+  /**
+   * Uses the local fallback image when API fails or is unavailable.
+   * This ensures users always see a background even when the api fails.
+   */
+  function useFallbackImage() {
+    imageAttribution = {
+      authorName: defaultUnsplashImage.author.name,
+      authorUrl: defaultUnsplashImage.author.url,
+      imageUrl: defaultUnsplashImage.imageLink,
+    };
+
+    // Directly load the fallback - no blur hash available for local images
+    const img = new Image();
+    img.onload = () => {
+      imageLoaded = true;
+      if (bgImage) {
+        bgImage.style.backgroundImage = `url(${defaultUnsplashImage.url})`;
+      }
+    };
+    img.src = defaultUnsplashImage.url;
+  }
+
+  async function fetchBackgroundImage(width: number, height: number) {
+    try {
+      const res = await fetch(`/get-image?dim=${width}x${height}`);
+
+      if (!res.ok) {
+        console.warn("Image API returned error, using fallback");
+        useFallbackImage();
+        return;
+      }
+
+      const data: GetImageRes = await res.json();
+      imageData = data;
+
+      if (data.type === "success" && blurCanvas) {
+        // Store attribution for display - Unsplash requires crediting photographers
+        imageAttribution = {
+          authorName: data.image.user.name,
+          authorUrl: data.image.user.links.html,
+          imageUrl: data.image.links.html,
+        };
+
+        // Render at small size (32x32) since it will be scaled up with CSS blur anyway
+        // This keeps the decode fast while still providing color information
+        renderBlurHash(blurCanvas, data.image.blur_hash, 32, 32);
+
+        // Preload in background so we can fade in smoothly once ready
+        const img = new Image();
+        img.onload = () => {
+          imageLoaded = true;
+          if (bgImage) {
+            bgImage.style.backgroundImage = `url(${data.image.urls.full})`;
+          }
+        };
+        img.onerror = () => {
+          // Image URL from API might be invalid/expired - fall back gracefully
+          console.warn("Failed to load Unsplash image, using fallback");
+          useFallbackImage();
+        };
+        img.src = data.image.urls.full;
+      } else if (data.type === "error") {
+        console.warn("Image API returned error response, using fallback");
+        useFallbackImage();
+      }
+    } catch (e) {
+      // Network errors, timeouts, etc. - ensure we always show something
+      console.error("Failed to fetch background image:", e);
+      useFallbackImage();
+    }
+  }
 
   function toggleMobileMenu() {
     mobileMenuOpen = !mobileMenuOpen;
@@ -36,9 +249,9 @@
   }
 
   $effect(() => {
-    // Set the background image URL based on screen dimensions (We don't want this on resize, only on initial load)
-    if (bgImage && browser && screenDimensions.width && screenDimensions.height) {
-      bgImage.style.backgroundImage = `url(https://picsum.photos/${screenDimensions.width}/${screenDimensions.height}.webp)`;
+    // Fetch background image when screen dimensions are available
+    if (browser && screenDimensions.width && screenDimensions.height && !imageData) {
+      fetchBackgroundImage(screenDimensions.width, screenDimensions.height);
     }
   });
 
@@ -133,7 +346,15 @@
   </li>
 {/snippet}
 
-<div id="bg-image" bind:this={bgImage} style="opacity: {BASE_BG_IMG_OPACITY};"></div>
+<div id="bg-blur" class:loaded={imageLoaded}>
+  <canvas bind:this={blurCanvas}></canvas>
+</div>
+<div
+  id="bg-image"
+  bind:this={bgImage}
+  class:loaded={imageLoaded}
+  style="opacity: {BASE_BG_IMG_OPACITY};"
+></div>
 
 <!-- Navigation -->
 <nav class="nav no-select">
@@ -193,7 +414,6 @@
       <p>
         {m["about.description"]({
           age: "21",
-          country: m["about.country"](),
         })}
       </p>
     </div>
@@ -259,4 +479,20 @@
 <!-- Footer -->
 <footer class="footer">
   <p>&copy; 2025 LukeZ. All rights reserved.</p>
+
+  <!-- Unsplash requires attribution per their API guidelines -->
+  {#if imageAttribution}
+    <p class="image-attribution">
+      Photo by
+      {#if imageAttribution.authorUrl}
+        <a href={imageAttribution.authorUrl} target="_blank" rel="noopener noreferrer">
+          {imageAttribution.authorName}
+        </a>
+      {:else}
+        {imageAttribution.authorName}
+      {/if}
+      on
+      <a href={imageAttribution.imageUrl} target="_blank" rel="noopener noreferrer">Unsplash</a>
+    </p>
+  {/if}
 </footer>

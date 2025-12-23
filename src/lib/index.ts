@@ -1,13 +1,7 @@
 import type { ClassValue } from "svelte/elements";
 import { m } from "./paraglide/messages";
 
-import {
-  Github,
-  YouTube,
-  Discord,
-  Music,
-  FileText,
-} from "$lib/assets/index.js";
+import { Github, YouTube, Discord, Music, FileText } from "$lib/assets/index.js";
 
 type MaybeClassValue = ClassValue | undefined | null;
 
@@ -17,8 +11,7 @@ export function cn(...classes: MaybeClassValue[]) {
 
 // Helper function to safely access dynamic message keys - utility function first
 export const getMessage = (key: string) => {
-  return ((m as unknown as Record<string, Function>)[key] ||
-    (() => key)) as () => string;
+  return ((m as unknown as Record<string, Function>)[key] || (() => key)) as () => string;
 };
 
 const projects = [
@@ -82,12 +75,11 @@ const socialLinks = [
 
 export { projects, socialLinks };
 
-/**
- * Calculates the age in years from a given date of birth.
- * @param dob - The date of birth as a `Date` object.
- * @returns The calculated age in years.
- */
-export function calculateAge(dob: Date): number {
-  // Calculate the absolute value of the difference in years between the age Date object and the year 1970 (UNIX epoch)
-  return Math.abs(new Date(Date.now() - dob.getTime()).getUTCFullYear() - 1970);
-}
+export const defaultUnsplashImage = {
+  url: "/default_bg.jpg",
+  author: {
+    name: "Daniel Alexandre Páscoa",
+    url: "https://unsplash.com/@daniel_pascoa",
+  },
+  imageLink: "https://unsplash.com/de/fotos/blick-auf-eine-bergkette-von-der-spitze-eines-hugels-HfFq-_SNuZ8",
+};

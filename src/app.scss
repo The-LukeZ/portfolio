@@ -99,6 +99,28 @@ body {
 }
 
 // Background
+#bg-blur {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  opacity: 0.4;
+  @include transition(opacity, 0.5s);
+
+  canvas {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(20px);
+    transform: scale(1.1); // Prevent blur edge artifacts
+  }
+
+  &.loaded {
+    opacity: 0;
+  }
+}
+
 #bg-image {
   position: fixed;
   inset: 0;
@@ -114,6 +136,12 @@ body {
   filter: blur(0.75vh);
   box-shadow: 0 0 200px rgba(0, 0, 0, 0.99) inset;
   z-index: -1;
+  opacity: 0 !important;
+  @include transition(opacity, 0.5s);
+
+  &.loaded {
+    opacity: 0.4 !important;
+  }
 }
 
 // Navigation
@@ -577,6 +605,23 @@ main {
   padding: 2rem;
   border-top: 1px solid map.get($colors, border);
   color: map.get($colors, text-secondary);
+
+  .image-attribution {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    opacity: 0.7;
+
+    a {
+      color: map.get($colors, accent);
+      text-decoration: none;
+      @include transition(opacity);
+
+      &:hover {
+        opacity: 0.8;
+        text-decoration: underline;
+      }
+    }
+  }
 }
 
 // Animation classes
