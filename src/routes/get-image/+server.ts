@@ -2,10 +2,10 @@ import { UNSPLASH_ACCESS_KEY, UNSPLASH_APP_ID } from "$env/static/private";
 import { error, json } from "@sveltejs/kit";
 
 export async function GET(event) {
-  const decision = await event.platform?.env.IMG_RATE_LIMITER.limit({ key: event.getClientAddress() });
+  const decision = await event.platform?.env.IMG_RATE_LIMITER.limit({ key: event.getClientAddress() }); // Even though we configured 1 request/minute, it is somehow using 2
 
   if (!decision?.success) {
-    // Client will handle using cached images from localStorage
+    // Client will handle using cached images from localStorage, if not, they get no image
     return error(429, "Too Many Requests");
   }
 
