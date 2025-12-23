@@ -1,7 +1,13 @@
 # LukeZ Portfolio
 
-This is the portfolio of LukeZ, built with SvelteKit and SCSS. Hosted on [sherpa.sh](https://sherpa.sh).
+This is the portfolio of LukeZ, built with SvelteKit and SCSS. Hosted on [Cloudflare Workers](https://workers.cloudflare.com/).
 
-## TODO
+## Features
 
-- [x] Add language switcher for paraglide (but where???)
+- Multi-language support with Paraglide
+- Responsive design
+- Dynamic project showcase with accordions
+- Smooth navigation and state management
+- BlurHash image placeholders for better loading experience
+- SEO optimization with dynamic meta tags
+- Dynamic background image sourced from Unsplash
