@@ -35,7 +35,7 @@
       "name": "IMG_RATE_LIMITER",
       "namespace_id": "1001",
       "simple": {
-        "limit": 1,
+        "limit": 10,
         "period": 60
       }
     }
