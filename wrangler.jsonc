@@ -44,7 +44,7 @@
     {
       "binding": "UNSPLASH_CACHE",
       "id": "03de99aafdc148e982f219a2c5d3cf68",
-      "remote": true
+      "remote": false
     }
-  ]
+  ],
 }
