@@ -45,7 +45,7 @@
    * 3. Converting from linear color space back to sRGB for display
    *
    * @see https://blurha.sh for the algorithm specification
-   * 
+   *
    * Note: Made by AI
    */
   function decodeBlurHash(
@@ -467,7 +467,11 @@
     </p>
     <div class="social-links">
       {#each socialLinks as social}
-        <a href={social.url} class="social-link scale-up" target="_blank">
+        <a
+          href={social.url}
+          class="social-link scale-up"
+          target={social.url.startsWith("http") ? "_blank" : "_self"}
+        >
           <social.icon />
           {social.name}
         </a>
