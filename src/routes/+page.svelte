@@ -16,14 +16,7 @@
   let blurCanvas: HTMLCanvasElement | null = $state(null);
   let heroSection: HTMLElement | null = $state(null);
   let imageLoaded = $state(false);
-  let imageData = $state<GetImageRes | null>(null);
-
-  // Attribution data for the background image - either from API or fallback
-  let imageAttribution = $state<{
-    authorName: string;
-    authorUrl: string | null;
-    imageUrl: string;
-  } | null>(null);
+  let imageData = $state<CookieUnsplashImage | null>(null);
 
   let screenDimensions = $state<{
     width: number | null;
@@ -168,12 +161,6 @@
    * This ensures users always see a background even when the api fails.
    */
   function useFallbackImage() {
-    imageAttribution = {
-      authorName: defaultUnsplashImage.author.name,
-      authorUrl: defaultUnsplashImage.author.url,
-      imageUrl: defaultUnsplashImage.imageLink,
-    };
-
     // Directly load the fallback - no blur hash available for local images
     const img = new Image();
     img.onload = () => {
@@ -196,14 +183,12 @@
       }
 
       const data: GetImageRes = await res.json();
-      imageData = data;
 
       if (data.type === "success" && blurCanvas) {
-        // Store attribution for display - Unsplash requires crediting photographers
-        imageAttribution = {
+        imageData = {
+          url: data.image.urls.full,
           authorName: data.image.user.name,
-          authorUrl: data.image.user.links.html,
-          imageUrl: data.image.links.html,
+          authorProfileUrl: `https://unsplash.com/@${data.image.user.username}`,
         };
 
         // Render at small size (32x32) since it will be scaled up with CSS blur anyway
@@ -227,6 +212,11 @@
       } else if (data.type === "error") {
         console.warn("Image API returned error response, using fallback");
         useFallbackImage();
+      } else if (data.type === "ratelimit") {
+        // See if any cached image is returned
+        imageData = {
+          ...data.image
+        };
       }
     } catch (e) {
       // Network errors, timeouts, etc. - ensure we always show something
@@ -488,18 +478,14 @@
   <p>&copy; 2025 LukeZ. All rights reserved.</p>
 
   <!-- Unsplash requires attribution per their API guidelines -->
-  {#if imageAttribution}
+  {#if imageData}
     <p class="image-attribution">
       Photo by
-      {#if imageAttribution.authorUrl}
-        <a href={imageAttribution.authorUrl} target="_blank">
-          {imageAttribution.authorName}
-        </a>
-      {:else}
-        {imageAttribution.authorName}
-      {/if}
+      <a href={imageData.authorProfileUrl} target="_blank">
+        {imageData.authorName}
+      </a>
       on
-      <a href={imageAttribution.imageUrl} target="_blank">Unsplash</a>
+      <a href={imageData.url} target="_blank">Unsplash</a>
     </p>
   {/if}
 </footer>
