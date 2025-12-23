@@ -403,7 +403,7 @@ main {
 // Projects section
 .projects {
   .projects-accordion {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 2rem auto 0;
     display: flex;
     flex-direction: column;
@@ -426,6 +426,8 @@ main {
 
       .accordion-header {
         border-bottom: 1px solid map.get($colors, border);
+        user-select: none;
+        -moz-user-select: none;
       }
 
       .accordion-icon::after {
@@ -476,7 +478,7 @@ main {
 
       &::before,
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         background: map.get($colors, accent);
         @include transition(transform);
