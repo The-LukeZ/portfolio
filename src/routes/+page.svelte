@@ -157,6 +157,62 @@
     ctx.putImageData(imageData, 0, 0);
   }
 
+  const IMAGE_CACHE_KEY = "cached_background_images";
+  const MAX_CACHED_IMAGES = 10;
+
+  interface CachedImage {
+    id: string;
+    url: string;
+    authorName: string;
+    authorProfileUrl: string;
+    htmlUrl: string;
+    blurHash: string;
+    timestamp: string;
+  }
+
+  /**
+   * Gets all cached images from localStorage.
+   */
+  function getCachedImages(): CachedImage[] {
+    try {
+      const cached = localStorage.getItem(IMAGE_CACHE_KEY);
+      if (!cached) return [];
+      return JSON.parse(cached) as CachedImage[];
+    } catch {
+      return [];
+    }
+  }
+
+  /**
+   * Saves an image to the localStorage cache.
+   * Maintains a maximum of MAX_CACHED_IMAGES, removing oldest entries when full.
+   */
+  function cacheImage(image: CachedImage) {
+    try {
+      const cached = getCachedImages();
+      // Check if image already exists (by ID)
+      if (cached.some((img) => img.id === image.id)) return;
+
+      cached.push(image);
+      // Remove oldest images if we exceed the max
+      while (cached.length > MAX_CACHED_IMAGES) {
+        cached.shift();
+      }
+      localStorage.setItem(IMAGE_CACHE_KEY, JSON.stringify(cached));
+    } catch (e) {
+      console.warn("Failed to cache image:", e);
+    }
+  }
+
+  /**
+   * Gets a random cached image from localStorage.
+   */
+  function getRandomCachedImage(): CachedImage | null {
+    const cached = getCachedImages();
+    if (cached.length === 0) return null;
+    return cached[Math.floor(Math.random() * cached.length)];
+  }
+
   /**
    * Uses the local fallback image when API fails or is unavailable.
    * This ensures users always see a background even when the api fails.
@@ -174,11 +230,51 @@
     usingFallback = true;
   }
 
+  /**
+   * Uses a cached image from localStorage.
+   */
+  function useCachedImage(cached: CachedImage) {
+    imageData = {
+      url: cached.url,
+      authorName: cached.authorName,
+      authorProfileUrl: cached.authorProfileUrl,
+      htmlUrl: cached.htmlUrl,
+    };
+
+    // Render blur hash if available
+    if (blurCanvas && cached.blurHash) {
+      renderBlurHash(blurCanvas, cached.blurHash, 32, 32);
+    }
+
+    const img = new Image();
+    img.onload = () => {
+      imageLoaded = true;
+      if (bgImage) {
+        bgImage.style.backgroundImage = `url(${cached.url})`;
+      }
+    };
+    img.onerror = () => {
+      // Cached image URL might be expired - fall back gracefully
+      console.warn("Failed to load cached image, using fallback");
+      useFallbackImage();
+    };
+    img.src = cached.url;
+  }
+
   async function fetchBackgroundImage(width: number, height: number) {
     try {
       const res = await fetch(`/get-image?dim=${width}x${height}`);
 
       if (!res.ok) {
+        // Rate limited or other error - try to use cached image
+        if (res.status === 429) {
+          console.warn("Rate limited, using cached image");
+          const cached = getRandomCachedImage();
+          if (cached) {
+            useCachedImage(cached);
+            return;
+          }
+        }
         console.warn("Image API returned error, using fallback");
         useFallbackImage();
         return;
@@ -193,6 +289,17 @@
           authorProfileUrl: `https://unsplash.com/@${data.image.user.username}`,
           htmlUrl: data.image.links.html,
         };
+
+        // Cache the image for future use
+        cacheImage({
+          id: data.image.id,
+          url: data.image.urls.full,
+          authorName: data.image.user.name,
+          authorProfileUrl: `https://unsplash.com/@${data.image.user.username}`,
+          htmlUrl: data.image.links.html,
+          blurHash: data.image.blur_hash,
+          timestamp: new Date().toISOString(),
+        });
 
         // Render at small size (32x32) since it will be scaled up with CSS blur anyway
         // This keeps the decode fast while still providing color information
@@ -214,17 +321,23 @@
         img.src = data.image.urls.full;
       } else if (data.type === "error") {
         console.warn("Image API returned error response, using fallback");
-        useFallbackImage();
-      } else if (data.type === "ratelimit") {
-        // See if any cached image is returned
-        imageData = {
-          ...data.image,
-        };
+        // Try cached image first, then fallback
+        const cached = getRandomCachedImage();
+        if (cached) {
+          useCachedImage(cached);
+        } else {
+          useFallbackImage();
+        }
       }
     } catch (e) {
-      // Network errors, timeouts, etc. - ensure we always show something
+      // Network errors, timeouts, etc. - try cached image first
       console.error("Failed to fetch background image:", e);
-      useFallbackImage();
+      const cached = getRandomCachedImage();
+      if (cached) {
+        useCachedImage(cached);
+      } else {
+        useFallbackImage();
+      }
     }
   }
 

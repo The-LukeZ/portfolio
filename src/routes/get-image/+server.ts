@@ -1,70 +1,11 @@
 import { UNSPLASH_ACCESS_KEY, UNSPLASH_APP_ID } from "$env/static/private";
-import { error, json, type Cookies } from "@sveltejs/kit";
-
-function serializeCookieValue(value: string): CookieUnsplashImage | null {
-  try {
-    const parsed = JSON.parse(value);
-    if (
-      typeof parsed.url === "string" &&
-      typeof parsed.authorName === "string" &&
-      typeof parsed.authorProfileUrl === "string" &&
-      typeof parsed.htmlUrl === "string"
-    ) {
-      return {
-        url: parsed.url,
-        authorName: parsed.authorName,
-        authorProfileUrl: parsed.authorProfileUrl,
-        htmlUrl: parsed.htmlUrl,
-      };
-    }
-  } catch {
-    return null;
-  }
-  return null;
-}
-
-function calcTotalCachedImages(cookies: Cookies): number {
-  return cookies.getAll().filter((cookie) => cookie.name.startsWith("image_cache_")).length;
-}
-
-/**
- * Retrieves a random cached image from browser cookies.
- *
- * @param cookies - The cookies object containing cached image data
- * @returns A tuple containing the random image value (or null if no images found) and the total count of cached images
- *
- * @example
- * ```typescript
- * const [imageValue, totalCount] = getRandomImageFromCookies(cookies);
- * if (imageValue) {
- *   console.log(`Found image: ${imageValue} (${totalCount} total images)`);
- * }
- * ```
- */
-function getRandomImageFromCookies(cookies: Cookies): [CookieUnsplashImage | null, number] {
-  const imgs = cookies
-    .getAll()
-    .filter((cookie) => cookie.name.startsWith("image_cache_"))
-    .map((c) => serializeCookieValue(c.value));
-  if (imgs.length === 0) {
-    return [null, 0];
-  }
-  const randomImg = imgs[Math.floor(Math.random() * imgs.length)];
-  return [randomImg, imgs.length];
-}
+import { error, json } from "@sveltejs/kit";
 
 export async function GET(event) {
   const decision = await event.platform?.env.IMG_RATE_LIMITER.limit({ key: event.getClientAddress() });
 
   if (!decision?.success) {
-    // Return random image from cache if rate limited
-    const [image] = getRandomImageFromCookies(event.cookies);
-    if (image) {
-      return json({
-        type: "ratelimit",
-        image: image,
-      });
-    }
+    // Client will handle using cached images from localStorage
     return error(429, "Too Many Requests");
   }
 
@@ -91,18 +32,6 @@ export async function GET(event) {
       message: "Failed to fetch image from Unsplash",
     });
   }
-
-  const nextIndex = calcTotalCachedImages(event.cookies) + 1;
-  event.cookies.set(
-    `image_cache_${nextIndex}`,
-    JSON.stringify({
-      url: unsplashRes.image.urls.full,
-      authorName: unsplashRes.image.user.name,
-      authorProfileUrl: unsplashRes.image.user.portfolio_url,
-      htmlUrl: unsplashRes.image.links.html,
-    } as CookieUnsplashImage),
-    { path: "/", maxAge: 60 * 60 * 24 }, // 1 day
-  );
 
   return json(unsplashRes);
 }
