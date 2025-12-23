@@ -17,9 +17,13 @@ declare global {
      */
     url: string;
     /**
-     * The author of the image. Can be used to generate attribution url.
+     * The author of the image.
      */
-    author: string;
+    authorName: string;
+    /**
+     * The author's Unsplash profile URL.
+     */
+    authorProfileUrl: string;
   };
 
   type UnsplashImage = {

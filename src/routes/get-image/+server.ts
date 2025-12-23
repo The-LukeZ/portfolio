@@ -4,8 +4,12 @@ import { error, json, type Cookies } from "@sveltejs/kit";
 function serializeCookieValue(value: string): CookieUnsplashImage | null {
   try {
     const parsed = JSON.parse(value);
-    if (typeof parsed.url === "string" && typeof parsed.author === "string") {
-      return { url: parsed.url, author: parsed.author };
+    if (
+      typeof parsed.url === "string" &&
+      typeof parsed.authorName === "string" &&
+      typeof parsed.authorProfileUrl === "string"
+    ) {
+      return { url: parsed.url, authorName: parsed.authorName, authorProfileUrl: parsed.authorProfileUrl };
     }
   } catch {
     return null;
@@ -87,7 +91,8 @@ export async function GET(event) {
     `image_cache_${nextIndex}`,
     JSON.stringify({
       url: unsplashRes.image.urls.full,
-      author: unsplashRes.image.user.portfolio_url,
+      authorName: unsplashRes.image.user.name,
+      authorProfileUrl: unsplashRes.image.user.portfolio_url,
     }),
     { path: "/", maxAge: 60 * 60 * 24 }, // 1 day
   );
