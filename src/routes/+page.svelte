@@ -1,15 +1,15 @@
 <script lang="ts">
-  import { calculateAge, getMessage, projects, socialLinks } from "$lib";
+  import { browser } from "$app/environment";
+  import { getMessage, projects, socialLinks } from "$lib";
+  import { ExternalLink, Menu, XIcon } from "$lib/assets/index.js";
   import { m } from "$lib/paraglide/messages";
   import {
-    setLocale,
-    type Locale,
     getLocale,
     localizeHref,
+    setLocale,
+    type Locale,
   } from "$lib/paraglide/runtime";
   import { scrollY } from "svelte/reactivity/window";
-  import { Menu, XIcon, ExternalLink } from "$lib/assets/index.js";
-  import { browser } from "$app/environment";
   import { fade } from "svelte/transition";
 
   const BASE_BG_IMG_OPACITY = 0.4;
@@ -235,22 +235,29 @@
   <!-- Projects Section -->
   <section id="projects" class="section projects">
     <h2 class="section-title fade-in">{m["projects.title"]()}</h2>
-    <div class="projects-grid">
-      {#each projects as project}
+    <div class="projects-accordion fade-in">
+      {#each projects as project, index}
         {@const projectMsgKey = `project-${project.id}`}
-        <div class="project-card fade-in scale-up">
-          <h3>{getMessage(`${projectMsgKey}.title`)()}</h3>
-          <p>{getMessage(`${projectMsgKey}.description`)()}</p>
-          <a
-            href={project.link}
-            class="project-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {m["projects.cta"]()}
-            <ExternalLink size={14} />
-          </a>
-        </div>
+        {@const accordionId = `accordion-${project.id}`}
+        <details class="accordion-item" name="projects-accordion">
+          <summary class="accordion-header">
+            <span class="accordion-number">{String(index + 1).padStart(2, '0')}</span>
+            <span class="accordion-title">{getMessage(`${projectMsgKey}.title`)()}</span>
+            <span class="accordion-icon"></span>
+          </summary>
+          <div class="accordion-content">
+            <p>{getMessage(`${projectMsgKey}.description`)()}</p>
+            <a
+              href={project.link}
+              class="project-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {m["projects.cta"]()}
+              <ExternalLink size={14} />
+            </a>
+          </div>
+        </details>
       {/each}
     </div>
   </section>
