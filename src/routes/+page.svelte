@@ -603,7 +603,7 @@
         {imageData.authorName}
       </a>
       on
-      <a href={imageData.url} target="_blank">Unsplash</a>
+      <a href={imageData.htmlUrl} target="_blank">Unsplash</a>
     </p>
   {:else if usingFallback}
     <p class="image-attribution">
