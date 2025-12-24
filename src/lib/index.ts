@@ -1,7 +1,7 @@
 import type { ClassValue } from "svelte/elements";
 import { m } from "./paraglide/messages";
 
-import { Github, YouTube, Discord, Music, FileText, Email } from "$lib/assets/index.js";
+import { Discord, Email, FileText, Github, Music, YouTube } from "$lib/assets/index.js";
 
 type MaybeClassValue = ClassValue | undefined | null;
 
@@ -84,7 +84,8 @@ export const defaultUnsplashImage = {
   url: "/default_bg.jpg",
   author: {
     name: "Daniel Alexandre Páscoa",
-    url: "https://unsplash.com/@daniel_pascoa",
+    url: "https://unsplash.com/@daniel_pascoa?utm_source=lukez-portfolio&utm_medium=referral",
   },
-  htmlUrl: "https://unsplash.com/de/fotos/blick-auf-eine-bergkette-von-der-spitze-eines-hugels-HfFq-_SNuZ8",
+  htmlUrl:
+    "https://unsplash.com/de/fotos/blick-auf-eine-bergkette-von-der-spitze-eines-hugels-HfFq-_SNuZ8?utm_source=lukez-portfolio&utm_medium=referral",
 };

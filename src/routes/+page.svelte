@@ -264,7 +264,7 @@
   async function fetchBackgroundImage(width: number, height: number) {
     try {
       const res = await fetch(`/get-image?dim=${width}x${height}`, {
-        credentials: "same-origin"
+        credentials: "same-origin",
       });
 
       if (!res.ok) {
@@ -288,8 +288,8 @@
         imageData = {
           url: data.image.urls.full,
           authorName: data.image.user.name,
-          authorProfileUrl: `https://unsplash.com/@${data.image.user.username}`,
-          htmlUrl: data.image.links.html,
+          authorProfileUrl: `https://unsplash.com/@${data.image.user.username}?utm_source=lukez-portfolio&utm_medium=referral`,
+          htmlUrl: `${data.image.links.html}?utm_source=lukez-portfolio&utm_medium=referral`,
         };
 
         // Cache the image for future use
@@ -297,8 +297,8 @@
           id: data.image.id,
           url: data.image.urls.full,
           authorName: data.image.user.name,
-          authorProfileUrl: `https://unsplash.com/@${data.image.user.username}`,
-          htmlUrl: data.image.links.html,
+          authorProfileUrl: `https://unsplash.com/@${data.image.user.username}?utm_source=lukez-portfolio&utm_medium=referral`,
+          htmlUrl: `${data.image.links.html}?utm_source=lukez-portfolio&utm_medium=referral`,
           blurHash: data.image.blur_hash,
           timestamp: new Date().toISOString(),
         });
