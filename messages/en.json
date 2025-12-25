@@ -42,7 +42,7 @@
   },
   "project-portfolio": {
     "title": "Portfolio",
-    "description": "This portfolio website, built with SvelteKit, showcases my projects and skills. It serves as a platform to share my work and connect with others in the developer community. In December 2025, I added support for an api-endpoint that returns a random image from Unsplash with a cloudflare worker ratelimiting binding protecting it."
+    "description": "This minimalistic portfolio website, built with SvelteKit and SCSS, showcases my projects and skills. It serves as a platform to share my work and connect with others in the developer community. In December 2025, I added support for an api-endpoint that returns a random image from Unsplash with a cloudflare worker ratelimiting binding protecting it."
   },
   "project-upvote-engine": {
     "title": "Upvote Engine",

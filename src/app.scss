@@ -451,20 +451,13 @@ main {
 
 // Projects section
 .projects {
-  .projects-accordion {
+  .projects-section-accordion {
     max-width: 1200px;
     margin: 2rem auto 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .accordion-item {
     background: map.get($colors, secondary-bg);
     border: 1px solid map.get($colors, border);
     border-radius: 12px;
     overflow: hidden;
-    scroll-margin-top: calc(#{$nav-height} + 1rem);
     @include transition(border-color);
 
     &:hover {
@@ -474,21 +467,20 @@ main {
     &[open] {
       border-color: map.get($colors, accent);
 
-      .accordion-header {
+      .section-accordion-header {
         border-bottom: 1px solid map.get($colors, border);
-        user-select: none;
-        -moz-user-select: none;
       }
 
-      .accordion-icon::after {
+      .section-accordion-icon::after {
         transform: rotate(0deg);
       }
     }
   }
 
-  .accordion-header {
+  .section-accordion-header {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 1rem;
     padding: 1.25rem 1.5rem;
     cursor: pointer;
@@ -503,25 +495,17 @@ main {
       background: $accent-background;
     }
 
-    .accordion-number {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: map.get($colors, accent);
-      opacity: 0.7;
-    }
-
-    .accordion-title {
-      flex: 1;
-      font-size: 1.2rem;
+    .section-accordion-title {
+      font-size: 1.3rem;
       font-weight: 600;
       color: map.get($colors, text-primary);
 
       @include mobile {
-        font-size: 1rem;
+        font-size: 1.1rem;
       }
     }
 
-    .accordion-icon {
+    .section-accordion-icon {
       position: relative;
       width: 20px;
       height: 20px;
@@ -552,21 +536,75 @@ main {
     }
   }
 
-  .accordion-content {
-    padding: 1.5rem;
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding: 2rem;
     animation: accordionSlide 0.3s ease-out;
 
-    p {
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding: 1.5rem;
+    }
+  }
+
+  .project-card {
+    background: map.get($colors, primary-bg);
+    border: 1px solid map.get($colors, border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    scroll-margin-top: calc(#{$nav-height} + 1rem);
+    @include transition(all);
+
+    &:hover {
+      border-color: map.get($colors, accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .project-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+
+    .project-number {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: map.get($colors, accent);
+      opacity: 0.7;
+      flex-shrink: 0;
+    }
+
+    .project-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: map.get($colors, text-primary);
+      margin: 0;
+      line-height: 1.3;
+
+      @include mobile {
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  .project-content {
+    .project-description {
       color: map.get($colors, text-secondary);
       margin-bottom: 1.5rem;
       font-size: 1rem;
-      line-height: 1.7;
+      line-height: 1.6;
     }
 
     .project-link {
       @include button-base;
       gap: 0.5rem;
       color: map.get($colors, accent);
+      font-weight: 500;
 
       &:hover {
         color: map.get($colors, accent-hover);

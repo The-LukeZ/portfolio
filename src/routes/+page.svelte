@@ -1,21 +1,19 @@
 <script lang="ts">
   import { browser } from "$app/environment";
-  import { goto } from "$app/navigation";
-  import { page } from "$app/state";
   import { defaultUnsplashImage, getMessage, projects, socialLinks } from "$lib";
   import {
     ExternalLink,
     Menu,
-    XIcon,
-    Supabase,
-    Svelte,
-    Tailwind,
-    Typescript,
-    Symfony,
-    Vue,
-    Swift,
     MongoDB,
     Postgres,
+    Supabase,
+    Svelte,
+    Swift,
+    Symfony,
+    Tailwind,
+    Typescript,
+    Vue,
+    XIcon,
   } from "$lib/assets/index.js";
   import { m } from "$lib/paraglide/messages";
   import { getLocale, localizeHref, setLocale, type Locale } from "$lib/paraglide/runtime";
@@ -558,42 +556,30 @@
   <!-- Projects Section -->
   <section id="projects" class="section projects">
     <h2 class="section-title fade-in">{m["projects.title"]()}</h2>
-    <div class="projects-accordion fade-in">
-      {#each projects as project, index}
-        {@const projectMsgKey = `project-${project.id}`}
-        <details
-          open={true}
-          class="accordion-item"
-          name="projects-accordion"
-          id={projectMsgKey}
-          ontoggle={(e) => {
-            if (e.currentTarget.open) {
-              goto(`#${projectMsgKey}`, { noScroll: true, keepFocus: true });
-              return;
-            }
-
-            if (page.url.hash === `#${projectMsgKey}`) {
-              const newUrl = new URL($state.snapshot(page.url.toString()));
-              newUrl.hash = "";
-              goto(newUrl, { noScroll: true, keepFocus: true });
-            }
-          }}
-        >
-          <summary class="accordion-header">
-            <span class="accordion-number">{String(index + 1).padStart(2, "0")}</span>
-            <span class="accordion-title">{getMessage(`${projectMsgKey}.title`)()}</span>
-            <span class="accordion-icon"></span>
-          </summary>
-          <div class="accordion-content">
-            <p>{getMessage(`${projectMsgKey}.description`)()}</p>
-            <a href={project.link} class="project-link" target="_blank" rel="noopener noreferrer">
-              {m["projects.cta"]()}
-              <ExternalLink size={14} />
-            </a>
+    <details open={true} class="projects-section-accordion fade-in">
+      <summary class="section-accordion-header">
+        <span class="section-accordion-title">{m["projects.title"]()}</span>
+        <span class="section-accordion-icon"></span>
+      </summary>
+      <div class="projects-grid">
+        {#each projects as project, index}
+          {@const projectMsgKey = `project-${project.id}`}
+          <div class="project-card" id={projectMsgKey}>
+            <div class="project-header">
+              <span class="project-number">{String(index + 1).padStart(2, "0")}</span>
+              <h3 class="project-title">{getMessage(`${projectMsgKey}.title`)()}</h3>
+            </div>
+            <div class="project-content">
+              <p class="project-description">{getMessage(`${projectMsgKey}.description`)()}</p>
+              <a href={project.link} class="project-link" target="_blank" rel="noopener noreferrer">
+                {m["projects.cta"]()}
+                <ExternalLink size={14} />
+              </a>
+            </div>
           </div>
-        </details>
-      {/each}
-    </div>
+        {/each}
+      </div>
+    </details>
   </section>
 
   <!-- Social Links Section -->

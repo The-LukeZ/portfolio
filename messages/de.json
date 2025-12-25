@@ -42,7 +42,7 @@
   },
   "project-portfolio": {
     "title": "Portfolio",
-    "description": "Diese Portfolio-Website, entwickelt mit SvelteKit, präsentiert meine Projekte und Fähigkeiten. Sie dient als Plattform, um meine Arbeit zu teilen und mich mit anderen in der Entwickler-Community zu vernetzen. Im Dezember 2025 habe ich die Unterstützung für einen API-Endpunkt hinzugefügt, der ein zufälliges Bild von Unsplash zurückgibt, das durch ein Cloudflare Worker Ratelimiting Binding geschützt ist."
+    "description": "Diese minimalistische Portfolio-Website, entwickelt mit SvelteKit und SCSS, präsentiert meine Projekte und Fähigkeiten. Sie dient als Plattform, um meine Arbeit zu teilen und mich mit anderen in der Entwickler-Community zu vernetzen. Im Dezember 2025 habe ich die Unterstützung für einen API-Endpunkt hinzugefügt, der ein zufälliges Bild von Unsplash zurückgibt, das durch ein Cloudflare Worker Ratelimiting Binding geschützt ist."
   },
   "project-upvote-engine": {
     "title": "Upvote Engine",
