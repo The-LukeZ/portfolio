@@ -108,12 +108,14 @@ async function getRandomUnsplashImage(
   const cachedImg = await env?.UNSPLASH_CACHE.get<UnsplashImage>(cacheKey, "json");
   if (cachedImg) {
     try {
+      console.log("Unsplash cache hit", { id: cachedImg.id });
       return { type: "success", image: cachedImg, cache: true };
     } catch {
       // Cache corrupted, continue to fetch fresh
     }
+    console.log("Unsplash cache miss due to error");
   }
-  if (!env) {
+  if (!env || !env.UNSPLASH_CACHE) {
     console.error("No env available to access Unsplash cache!");
   }
 
@@ -143,9 +145,10 @@ async function getRandomUnsplashImage(
   await env?.UNSPLASH_CACHE.put(cacheKey, JSON.stringify(data), {
     expirationTtl: 300_000,
   });
-  if (!env) {
+  if (!env || !env.UNSPLASH_CACHE) {
     console.error("No env available to cache Unsplash image!");
   }
 
+  console.log("New Unsplash image fetched and cached", { data: data.id });
   return { type: "success", image: data };
 }
