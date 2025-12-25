@@ -9,3 +9,4 @@ import YouTube from "./YouTube.svelte";
 import Email from "./Email.svelte";
 
 export { ExternalLink, FileText, Github, Menu, Discord, Music, XIcon, YouTube, Email };
+export * from "./technologies/index.js";
