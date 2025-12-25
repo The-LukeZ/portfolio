@@ -426,6 +426,27 @@ main {
       line-height: 1.8;
     }
   }
+
+  h3 {
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .tech-stack {
+    $icon-size: 2.5rem;
+    margin-top: 0.75rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 1rem;
+
+    svg {
+      width: $icon-size;
+      height: $icon-size;
+    }
+  }
 }
 
 // Projects section
@@ -610,17 +631,17 @@ main {
     margin-top: 0.5rem;
     font-size: 0.75rem;
     opacity: 0.7;
+  }
+}
 
-    a {
-      color: map.get($colors, accent);
-      text-decoration: none;
-      @include transition(opacity);
+a {
+  color: map.get($colors, accent);
+  text-decoration: none;
+  @include transition(opacity);
 
-      &:hover {
-        opacity: 0.8;
-        text-decoration: underline;
-      }
-    }
+  &:hover {
+    opacity: 0.8;
+    text-decoration: underline;
   }
 }
 
