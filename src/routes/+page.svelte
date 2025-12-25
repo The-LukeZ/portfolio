@@ -3,7 +3,20 @@
   import { goto } from "$app/navigation";
   import { page } from "$app/state";
   import { defaultUnsplashImage, getMessage, projects, socialLinks } from "$lib";
-  import { ExternalLink, Menu, XIcon } from "$lib/assets/index.js";
+  import {
+    ExternalLink,
+    Menu,
+    XIcon,
+    Supabase,
+    Svelte,
+    Tailwind,
+    Typescript,
+    Symfony,
+    Vue,
+    Swift,
+    MongoDB,
+    Postgres,
+  } from "$lib/assets/index.js";
   import { m } from "$lib/paraglide/messages";
   import { getLocale, localizeHref, setLocale, type Locale } from "$lib/paraglide/runtime";
   import { scrollY } from "svelte/reactivity/window";
@@ -520,10 +533,25 @@
     <h2 class="section-title fade-in">{m["about.title"]()}</h2>
     <div class="about-content fade-in">
       <p>
-        {m["about.description"]({
+        {@html m["about.description"]({
           age: "21",
         })}
       </p>
+      <h3>{m["about.aboutAiTitle"]()}</h3>
+      <p>{m["about.aboutAi"]()}</p>
+    </div>
+
+    <h3 class="tech-stack-title">Tech I Use</h3>
+    <div class="tech-stack">
+      <Supabase />
+      <Svelte />
+      <Tailwind />
+      <Typescript />
+      <Symfony />
+      <Vue />
+      <Swift />
+      <MongoDB />
+      <Postgres />
     </div>
   </section>
 
@@ -534,6 +562,7 @@
       {#each projects as project, index}
         {@const projectMsgKey = `project-${project.id}`}
         <details
+          open={true}
           class="accordion-item"
           name="projects-accordion"
           id={projectMsgKey}
