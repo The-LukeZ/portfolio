@@ -541,7 +541,7 @@
       <p>{m["about.aboutAi"]()}</p>
     </div>
 
-    <h3 class="tech-stack-title">Tech I Use</h3>
+    <h3 class="tech-stack-title">{m["about.techstackTitle"]()}</h3>
     <div class="tech-stack">
       <Supabase />
       <Svelte />
