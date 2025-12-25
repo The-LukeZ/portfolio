@@ -15,7 +15,9 @@
   },
   "about": {
     "title": "About Me",
-    "description": "I am a {age}-year-old passionate full-stack developer from Germany with a penchant for developing useful tools. With strong knowledge of technologies such as SvelteKit and Node.js, I enjoy developing user-friendly applications that solve real-world problems rather than focusing on abstract concepts. When I'm not programming, I play the drums (including in the band ´Burning Dezibelz´), play video games, or spend time with my family and cats."
+    "description": "I am a {age}-year-old full-stack developer from Germany with a penchant for developing useful tools. I learned programming at school and started developing my first project in early 2023. Since then, I have mostly taught myself what I know. I started an apprenticeship as an IT specialist for application development in August 2025. Since 2023, I have discovered that I have a penchant for developing helpful tools (see <b>SupportMail</b> and <b>Ticketon</b> below) rather than the next React + Next.js AI web app. I love working with SvelteKit for web applications and Node.js/Bun for backend apps (Discord bots).",
+    "aboutAiTitle": "My statement on AI",
+    "aboutAi": "I believe that AI is a helpful and important tool. However, it cannot completely replace a software developer. As long as you understand the output of AI, recognize the errors it contains, and think critically, it is perfectly fine to use AI."
   },
   "projects": {
     "title": "Featured Projects",
