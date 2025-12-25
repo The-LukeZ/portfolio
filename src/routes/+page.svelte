@@ -556,7 +556,7 @@
   <!-- Projects Section -->
   <section id="projects" class="section projects">
     <h2 class="section-title fade-in">{m["projects.title"]()}</h2>
-    <details open={true} class="projects-section-accordion fade-in">
+    <details open class="projects-section-accordion fade-in">
       <summary class="section-accordion-header">
         <span class="section-accordion-title">{m["projects.title"]()}</span>
         <span class="section-accordion-icon"></span>
