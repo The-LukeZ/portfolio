@@ -83,9 +83,9 @@ export { projects, socialLinks };
 export const defaultUnsplashImage = {
   url: "/default_bg.jpg",
   author: {
-    name: "Daniel Alexandre Páscoa",
-    url: "https://unsplash.com/@daniel_pascoa?utm_source=lukez-portfolio&utm_medium=referral",
+    name: "Javier Miranda",
+    url: "https://unsplash.com/de/@nuvaproductions?utm_source=lukez-portfolio&utm_medium=referral",
   },
   htmlUrl:
-    "https://unsplash.com/de/fotos/blick-auf-eine-bergkette-von-der-spitze-eines-hugels-HfFq-_SNuZ8?utm_source=lukez-portfolio&utm_medium=referral",
+    "https://unsplash.com/de/fotos/ein-planet-im-weltraum-AlJ9TQqeCV0?utm_source=lukez-portfolio&utm_medium=referral",
 };
