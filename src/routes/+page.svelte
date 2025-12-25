@@ -401,9 +401,6 @@
             if (entry.isIntersecting) {
               // Add a class to the hero section when it is in view
               entry.target.classList.add("in-view");
-            } else {
-              // Remove the class when it is out of view
-              entry.target.classList.remove("in-view");
             }
           });
         },
@@ -528,35 +525,35 @@
 
   <!-- About Section -->
   <section id="about" class="section about">
-    <h2 class="section-title fade-in">{m["about.title"]()}</h2>
-    <div class="about-content fade-in">
-      <p>
+    <h2 class="section-title fade-in delay-200">{m["about.title"]()}</h2>
+    <div class="about-content">
+      <p class="fade-in delay-200">
         {@html m["about.description"]({
           age: "21",
         })}
       </p>
-      <h3>{m["about.aboutAiTitle"]()}</h3>
-      <p>{m["about.aboutAi"]()}</p>
+      <h3 class="fade-in delay-200">{m["about.aboutAiTitle"]()}</h3>
+      <p class="fade-in delay-200">{m["about.aboutAi"]()}</p>
     </div>
 
-    <h3 class="tech-stack-title">{m["about.techstackTitle"]()}</h3>
+    <h3 class="tech-stack-title fade-in delay-200">{m["about.techstackTitle"]()}</h3>
     <div class="tech-stack">
-      <Supabase />
-      <Svelte />
-      <Tailwind />
-      <Typescript />
-      <Symfony />
-      <Vue />
-      <Swift />
-      <MongoDB />
-      <Postgres />
+      <Supabase class="fade-in" />
+      <Svelte class="fade-in" />
+      <Tailwind class="fade-in" />
+      <Typescript class="fade-in" />
+      <Symfony class="fade-in" />
+      <Vue class="fade-in" />
+      <Swift class="fade-in" />
+      <MongoDB class="fade-in" />
+      <Postgres class="fade-in" />
     </div>
   </section>
 
   <!-- Projects Section -->
   <section id="projects" class="section projects">
     <h2 class="section-title fade-in">{m["projects.title"]()}</h2>
-    <details open class="projects-section-accordion fade-in">
+    <details open class="projects-section-accordion">
       <summary class="section-accordion-header">
         <span class="section-accordion-title">{m["projects.title"]()}</span>
         <span class="section-accordion-icon"></span>
@@ -564,7 +561,7 @@
       <div class="projects-grid">
         {#each projects as project, index}
           {@const projectMsgKey = `project-${project.id}`}
-          <div class="project-card" id={projectMsgKey}>
+          <div class="project-card fade-in" class:delay-200={index % 2 === 1} id={projectMsgKey}>
             <div class="project-header">
               <span class="project-number">{String(index + 1).padStart(2, "0")}</span>
               <h3 class="project-title">{getMessage(`${projectMsgKey}.title`)()}</h3>
@@ -584,23 +581,16 @@
 
   <!-- Social Links Section -->
   <section id="social" class="section social">
-    <h2 class="section-title fade-in">{m["findMe.title"]()}</h2>
-    <p class="section-description fade-in">
+    <h2 class="section-title">{m["findMe.title"]()}</h2>
+    <p class="section-description">
       {m["findMe.description"]()}
     </p>
     <div class="social-links">
       {#each socialLinks as social}
-        {#if social.url.startsWith("mailto")}
-          <a href={social.url} class="social-link scale-up">
-            <social.icon />
-            {social.name}
-          </a>
-        {:else}
-          <a href={social.url} class="social-link scale-up" target="_blank">
-            <social.icon />
-            {social.name}
-          </a>
-        {/if}
+        <a href={social.url} class="social-link" target="_blank">
+          <social.icon />
+          {social.name}
+        </a>
       {/each}
     </div>
   </section>

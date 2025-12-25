@@ -372,7 +372,7 @@ main {
 
     h1 {
       font-size: 4rem;
-      font-weight: 700;
+      font-weight: 800;
       margin-bottom: 1rem;
       background: linear-gradient(135deg, map.get($colors, text-primary) 0%, map.get($colors, accent) 60%);
       -webkit-background-clip: text;
@@ -411,6 +411,12 @@ main {
 }
 
 // About section
+#about,
+#projects,
+#social {
+  scroll-margin-top: calc(#{$nav-height} + 1rem);
+}
+
 .about {
   background: map.get($colors, secondary-bg);
 
@@ -445,6 +451,13 @@ main {
     svg {
       width: $icon-size;
       height: $icon-size;
+      @include transition(all);
+
+      @for $i from 1 through 10 {
+        &:nth-child(#{$i}) {
+          transition-delay: #{200ms + ($i - 1) * 25ms};
+        }
+      }
     }
   }
 }
