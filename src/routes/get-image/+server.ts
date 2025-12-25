@@ -143,7 +143,7 @@ async function getRandomUnsplashImage(
 
   // Cache the result for 5 minutes
   await env?.UNSPLASH_CACHE.put(cacheKey, JSON.stringify(data), {
-    expirationTtl: 300_000,
+    expirationTtl: 300, // seconds
   });
   if (!env || !env.UNSPLASH_CACHE) {
     console.error("No env available to cache Unsplash image!");
