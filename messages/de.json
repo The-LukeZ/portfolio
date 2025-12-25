@@ -17,7 +17,8 @@
     "title": "Über mich",
     "description": "Ich bin ein {age}-jähriger Full-Stack-Entwickler aus Deutschland mit einer Vorliebe für die Entwicklung nützlicher Tools. Ich habe das Programmieren in der Schule gelernt und Anfang 2023 mit der Entwicklung meines ersten Projekts begonnen. Seitdem habe ich mir das meiste selbst beigebracht. Im August 2025 habe ich eine Ausbildung zum IT-Fachmann für Anwendungsentwicklung begonnen. Seit 2023 habe ich entdeckt, dass ich eine Vorliebe für die Entwicklung nützlicher Tools habe (siehe <b>SupportMail</b> und <b>Ticketon</b> unten) und weniger für die nächste React + Next.js AI-Webanwendung. Ich arbeite gerne mit SvelteKit für Webanwendungen und Node.js/Bun für Backend-Anwendungen (Discord Bots).",
     "aboutAiTitle": "Meine Stellungnahme zu KI",
-    "aboutAi": "Ich glaube, dass KI ein hilfreiches und wichtiges Werkzeug ist. Sie kann einen Softwareentwickler jedoch nicht vollständig ersetzen. Solange man die Ausgabe der KI versteht, die darin enthaltenen Fehler erkennt und kritisch denkt, ist es völlig in Ordnung, KI zu nutzen."
+    "aboutAi": "Ich glaube, dass KI ein hilfreiches und wichtiges Werkzeug ist. Sie kann einen Softwareentwickler jedoch nicht vollständig ersetzen. Solange man die Ausgabe der KI versteht, die darin enthaltenen Fehler erkennt und kritisch denkt, ist es völlig in Ordnung, KI zu nutzen.",
+    "techstackTitle": "Meine Technologien"
   },
   "projects": {
     "title": "Ausgewählte Projekte",
