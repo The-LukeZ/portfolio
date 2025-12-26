@@ -75,9 +75,9 @@
     "imprint": {
       "title": "Angaben gemäß § 5 TMG",
       "noPackages": "Keine Annahme von Paketen oder Paketen.",
-      "vatLabel": "<b>USt-IdNr.:</b> {vatId}",
+      "vatLabel": "<b>USt-IdNr.:</b> <span style=\"font-family: monospace\">{vatId}</span>",
       "contactTitle": "Kontakt",
-      "emailLabel": "<b>E-Mail:</b> {email}"
+      "emailLabel": "<b>E-Mail:</b> <a href=\"mailto:{email}\">{email}</a>"
     }
   },
   "footer": "&copy; 2025 LukeZ. Alle Rechte vorbehalten."

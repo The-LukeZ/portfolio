@@ -76,9 +76,9 @@
     "imprint": {
       "title": "Information according to § 5 TMG",
       "noPackages": "No acceptance of parcels or packages.",
-      "vatLabel": "<b>VAT ID:</b> {vatId}",
+      "vatLabel": "<b>VAT ID:</b> <span style=\"font-family: monospace\">{vatId}</span>",
       "contactTitle": "Contact",
-      "emailLabel": "<b>Email:</b> {email}"
+      "emailLabel": "<b>Email:</b> <a href=\"mailto:{email}\">{email}</a>"
     }
   },
   "footer": "&copy; 2025 LukeZ. All rights reserved."
