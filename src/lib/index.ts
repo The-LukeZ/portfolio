@@ -24,7 +24,7 @@ const projects = [
   },
   {
     id: "upvote-engine",
-    link: "https://vote-handler.lukez.workers.dev/",
+    link: "https://upvote-engine.thelukez.com/",
   },
   {
     id: "burningdezibelz",
