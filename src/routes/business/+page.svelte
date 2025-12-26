@@ -58,11 +58,11 @@
           <small>{m["business.imprint.noPackages"]()}</small>
         </p>
 
-        <p>{m["business.imprint.vatLabel"]({ vatId: "DE457982866" })}</p>
+        <p>{@html m["business.imprint.vatLabel"]({ vatId: "DE457982866" })}</p>
 
         <h3>{m["business.imprint.contactTitle"]()}</h3>
         <p>
-          {m["business.imprint.emailLabel"]({ email: "contact.lukez@proton.me" })}
+          {@html m["business.imprint.emailLabel"]({ email: "contact.lukez@proton.me" })}
         </p>
       </div>
     </div>
