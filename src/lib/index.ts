@@ -1,7 +1,6 @@
 import type { ClassValue } from "svelte/elements";
 import { m } from "./paraglide/messages";
-
-import { Discord, Email, FileText, Github, Music, YouTube } from "$lib/assets/index.js";
+import { Discord, Email, FileText, Github, Music, YouTube } from "$lib/assets/index";
 
 type MaybeClassValue = ClassValue | undefined | null;
 

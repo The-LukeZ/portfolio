@@ -7,7 +7,8 @@
   "navigation": {
     "about": "About",
     "projects": "Projects",
-    "contact": "Find Me"
+    "contact": "Find Me",
+    "home": "Home"
   },
   "hero": {
     "subtitle": "Full-Stack Developer & Creative Problem Solver",
@@ -67,5 +68,18 @@
   "findMe": {
     "title": "Find Me",
     "description": "Find me on various platforms below. Feel free to reach out if you have any questions or just want to chat!"
-  }
+  },
+  "business": {
+    "subtitle": "Independent Software Development",
+    "description": "I'm an independent, freelance software developer specializing in modern web technologies including Svelte, TypeScript, and full-stack development. Please note that I'm <b>not</b> for hire.",
+    "projectsText": "Please see the <a href={projectsLink}>projects section</a> for examples of my work.",
+    "imprint": {
+      "title": "Information according to § 5 TMG",
+      "noPackages": "No acceptance of parcels or packages.",
+      "vatLabel": "<b>VAT ID:</b> {vatId}",
+      "contactTitle": "Contact",
+      "emailLabel": "<b>Email:</b> {email}"
+    }
+  },
+  "footer": "&copy; 2025 LukeZ. All rights reserved."
 }

@@ -717,6 +717,118 @@ a {
   }
 }
 
+// Business page
+.business-page {
+  min-height: calc(100vh - #{$nav-height});
+
+  .business-container {
+    @include center-content;
+    padding: 0 2rem;
+
+    @include mobile {
+      padding: 0 1rem;
+    }
+  }
+
+  .business-about {
+    padding-top: 8rem;
+    padding-bottom: 5rem;
+    text-align: center;
+
+    @include mobile {
+      padding-top: 5rem;
+      padding-bottom: 3rem;
+    }
+
+    .business-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, map.get($colors, text-primary) 0%, map.get($colors, accent) 60%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+
+      @include mobile {
+        font-size: 2.5rem;
+      }
+    }
+
+    .business-subtitle {
+      font-size: 1.5rem;
+      color: map.get($colors, text-secondary);
+      margin-bottom: 2rem;
+      font-weight: 500;
+
+      @include mobile {
+        font-size: 1.2rem;
+      }
+    }
+
+    .business-info {
+      max-width: 700px;
+      margin: 0 auto;
+
+      p {
+        font-size: 1.1rem;
+        color: map.get($colors, text-secondary);
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+      }
+
+      .availability-notice {
+        background: $accent-background;
+        border: 1px solid map.get($colors, accent);
+        border-radius: 8px;
+        padding: 1rem 1.5rem;
+        color: map.get($colors, text-primary);
+        font-size: 1rem;
+
+        strong {
+          color: map.get($colors, accent);
+        }
+      }
+    }
+  }
+
+  .business-imprint {
+    .imprint-content {
+      max-width: 700px;
+      margin: 0 auto;
+      color: map.get($colors, text-secondary);
+
+      h3 {
+        font-size: 1.3rem;
+        color: map.get($colors, text-primary);
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+
+      p {
+        line-height: 1.8;
+        margin-bottom: 1rem;
+      }
+
+      small {
+        opacity: 0.75;
+      }
+
+      a {
+        color: map.get($colors, accent);
+        @include transition(color);
+
+        &:hover {
+          color: map.get($colors, accent-hover);
+        }
+      }
+    }
+  }
+}
+
 // Utility classes
 .font-inter {
   font-family:

@@ -67,5 +67,18 @@
   "findMe": {
     "title": "Soziale Medien",
     "description": "Finden Sie mich auf den verschiedenen Plattformen unten."
-  }
+  },
+  "business": {
+    "subtitle": "Unabhängige Softwareentwicklung",
+    "description": "Ich bin ein unabhängiger, freiberuflicher Softwareentwickler, der sich auf moderne Webtechnologien spezialisiert hat, einschließlich Svelte, TypeScript und Full-Stack-Entwicklung. Bitte beachten Sie, dass ich <b>nicht</b> verfügbar bin für Aufträge.",
+    "projectsText": "Bitte siehe die <a href={projectsLink}>Projektsektion</a> für Beispiele meiner Arbeit.",
+    "imprint": {
+      "title": "Angaben gemäß § 5 TMG",
+      "noPackages": "Keine Annahme von Paketen oder Paketen.",
+      "vatLabel": "<b>USt-IdNr.:</b> {vatId}",
+      "contactTitle": "Kontakt",
+      "emailLabel": "<b>E-Mail:</b> {email}"
+    }
+  },
+  "footer": "&copy; 2025 LukeZ. Alle Rechte vorbehalten."
 }

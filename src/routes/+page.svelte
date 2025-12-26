@@ -598,7 +598,7 @@
 
 <!-- Footer -->
 <footer class="footer">
-  <p>&copy; 2025 LukeZ. All rights reserved.</p>
+  <p>{@html m.footer()}</p>
 
   <!-- Unsplash requires attribution per their API guidelines -->
   {#if imageData}
