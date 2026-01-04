@@ -43,6 +43,10 @@ const projects = [
     link: "https://github.com/The-LukeZ/lukez-monitor",
   },
   {
+    id: "linguadeep",
+    link: "https://github.com/The-LukeZ/LinguaDeep",
+  },
+  {
     id: "djs-command-helper",
     link: "https://github.com/supportmailapp/djsCommandHelper",
   },
