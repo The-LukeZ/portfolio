@@ -581,7 +581,7 @@ main {
   .project-header {
     display: flex;
     align-items: flex-start;
-    justify-content: start;
+    justify-content: space-between;
     gap: 1rem;
     margin-bottom: 1rem;
 
@@ -612,7 +612,6 @@ main {
       color: map.get($colors, accent);
       font-weight: 500;
       display: flex;
-      margin-inline-start: auto;
 
       &:hover {
         color: map.get($colors, accent-hover);

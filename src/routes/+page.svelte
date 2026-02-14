@@ -571,7 +571,6 @@
                 id={projectMsgKey}
               >
                 <div class="project-header">
-                  <span class="project-number">{String(index + 1).padStart(2, "0")}</span>
                   <h3 class="project-title">{getMessage(`${projectMsgKey}.title`)()}</h3>
                   <a
                     href={project.link}
