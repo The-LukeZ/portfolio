@@ -68,7 +68,7 @@
   },
   "project-linguadeep": {
     "title": "LinguaDeep",
-    "description": "A Discord Bot, using BYOK DeepL for translations. Built with discord-hono (pure discord-interactions, no gateway connection), running on Cloudflare Workers. Database is D1 and the stored API keys are de-/encrypted manually using the Web Crypto API before storing them in the database. Why? Because there are no good free translation bots."
+    "description": "A Discord Bot, using BYOK DeepL for translations. Originally built with discod-hono, migrated to honocord (pure discord-interactions, no gateway connection) in February 2026, running on Cloudflare Workers. Database is D1 and the stored API keys are de-/encrypted manually using the Web Crypto API before storing them in the database. Why? Because there are no good free translation bots."
   },
   "project-github-webhook": {
     "title": "GitHub Webhook",
