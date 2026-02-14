@@ -22,7 +22,12 @@
   },
   "projects": {
     "title": "Ausgewählte Projekte",
-    "cta": "Projekt ansehen"
+    "cta": "Ansehen",
+    "topic": {
+      "discord": "Discord Apps & Integrationen",
+      "libraries": "Bibliotheken & Tools",
+      "websites": "Websites & Sonstiges"
+    }
   },
   "project-ticketon": {
     "title": "Ticketon",
@@ -67,6 +72,38 @@
   "project-linguadeep": {
     "title": "LinguaDeep",
     "description": "Ein Discord-Bot, der BYOK DeepL für Übersetzungen verwendet. Gebaut mit discord-hono (reine Discord-Interaktionen, keine Gateway-Verbindung), läuft auf Cloudflare Workers. Die Datenbank ist D1 und die gespeicherten API-Schlüssel werden manuell mit der Web Crypto API ent-/verschlüsselt, bevor sie in der Datenbank gespeichert werden. Warum? Weil es keine guten kostenlosen Übersetzungsbots gibt."
+  },
+  "project-github-webhook": {
+    "title": "GitHub Webhook",
+    "description": "Ein einfacher und leichter GitHub Webhook-Handler für Discord, gebaut mit Hono und Cloudflare Workers."
+  },
+  "project-crossban": {
+    "title": "Crossban",
+    "description": "Ein System zur Synchronisierung von Banns über mehrere Discord-Server hinweg, um eine sicherere Umgebung für Ihre Community zu gewährleisten."
+  },
+  "project-jarvis2": {
+    "title": "Jarvis 2",
+    "description": "In Entwicklung: Persönlicher Management-Bot für einen Server, den ich administriere - Hauptfunktion ist ein Handelssystem für Arc Raiders."
+  },
+  "project-fido-scanner": {
+    "title": "Fido Scanner",
+    "description": "Eine Android-App zum Scannen von FIDO URI QR-Codes für die Authentifizierung mit Passkeys über verschiedene Geräte hinweg. Mit Kotlin erstellt. Mein Telefon unterstützte diese Funktion nicht nativ, daher musste ich selbst was bauen. Sie funktioniert ziemlich gut und ist Open Source, aber ich plane nicht, sie langfristig zu maintainen."
+  },
+  "project-topgg-api-types": {
+    "title": "Top.gg API Types",
+    "description": "Umfassende TypeScript-Typdefinitionen für die Top.gg-API, die es einfacher machen, Integrationen zu erstellen."
+  },
+  "project-honocord": {
+    "title": "Honocord",
+    "description": "Eine Bibliothek zum Entwickeln von Discord HTTP-Interactions Bots unter Verwendung des Hono-Web-Frameworks, optimiert für Cloudflare Workers."
+  },
+  "project-components-v2-for-llms": {
+    "title": "Components V2 for LLMs",
+    "description": "Eine große Textdatei für LLMs, um die neuen Components V2 zu verstehen."
+  },
+  "project-twitter-x-discord-forwarder": {
+    "title": "Twitter/X to Discord Forwarder",
+    "description": "Automatisches Weiterleiten von Tweets von einem Account an einen Discord-Kanal mithilfe von Webhooks."
   },
   "findMe": {
     "title": "Soziale Medien",

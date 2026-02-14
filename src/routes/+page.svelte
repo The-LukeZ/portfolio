@@ -553,30 +553,45 @@
   <!-- Projects Section -->
   <section id="projects" class="section projects">
     <h2 class="section-title fade-in">{m["projects.title"]()}</h2>
-    <details open class="projects-section-accordion">
-      <summary class="section-accordion-header">
-        <span class="section-accordion-title">{m["projects.title"]()}</span>
-        <span class="section-accordion-icon"></span>
-      </summary>
-      <div class="projects-grid">
-        {#each projects as project, index}
-          {@const projectMsgKey = `project-${project.id}`}
-          <div class="project-card fade-in" class:delay-200={index % 2 === 1} id={projectMsgKey}>
-            <div class="project-header">
-              <span class="project-number">{String(index + 1).padStart(2, "0")}</span>
-              <h3 class="project-title">{getMessage(`${projectMsgKey}.title`)()}</h3>
-            </div>
-            <div class="project-content">
-              <p class="project-description">{getMessage(`${projectMsgKey}.description`)()}</p>
-              <a href={project.link} class="project-link" target="_blank" rel="noopener noreferrer">
-                {m["projects.cta"]()}
-                <ExternalLink size={14} />
-              </a>
-            </div>
+    <div class="projects-container">
+      {#each projects as group}
+        <details open class="projects-section-accordion fade-in">
+          <summary class="section-accordion-header">
+            <span class="section-accordion-title">
+              {getMessage(`projects.topic.${group.id}`)()}
+            </span>
+            <span class="section-accordion-icon"></span>
+          </summary>
+          <div class="projects-grid">
+            {#each group.items as project, index}
+              {@const projectMsgKey = `project-${project.id}`}
+              <div
+                class="project-card fade-in"
+                class:delay-200={index % 2 === 1}
+                id={projectMsgKey}
+              >
+                <div class="project-header">
+                  <span class="project-number">{String(index + 1).padStart(2, "0")}</span>
+                  <h3 class="project-title">{getMessage(`${projectMsgKey}.title`)()}</h3>
+                  <a
+                    href={project.link}
+                    class="project-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {m["projects.cta"]()}
+                    <ExternalLink size={14} />
+                  </a>
+                </div>
+                <div class="project-content">
+                  <p class="project-description">{getMessage(`${projectMsgKey}.description`)()}</p>
+                </div>
+              </div>
+            {/each}
           </div>
-        {/each}
-      </div>
-    </details>
+        </details>
+      {/each}
+    </div>
   </section>
 
   <!-- Social Links Section -->

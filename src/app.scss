@@ -19,8 +19,8 @@ $mobile-overlay: oklch(0% 0 0 / 0.5);
 
 // Layout
 $nav-height: 60px;
-$mobile-breakpoint: 700px;
-$max-width: 1200px;
+$mobile-breakpoint: 768px;
+$max-width: 1400px;
 
 // Mixins
 @mixin center-content {
@@ -34,7 +34,7 @@ $max-width: 1200px;
   justify-content: center;
 }
 
-@mixin transition($properties: all, $duration: 0.3s, $timing: ease-in-out) {
+@mixin transition($properties: all, $duration: 200ms, $timing: ease-in-out) {
   transition: $properties $duration $timing;
 }
 
@@ -465,7 +465,6 @@ main {
 // Projects section
 .projects {
   .projects-section-accordion {
-    max-width: 1200px;
     margin: 2rem auto 0;
     background: map.get($colors, secondary-bg);
     border: 1px solid map.get($colors, border);
@@ -564,6 +563,7 @@ main {
   }
 
   .project-card {
+    min-width: 0;
     background: map.get($colors, primary-bg);
     border: 1px solid map.get($colors, border);
     border-radius: 8px;
@@ -572,8 +572,8 @@ main {
     @include transition(all);
 
     &:hover {
-      border-color: map.get($colors, accent);
-      transform: translateY(-2px);
+      // border-color: map.get($colors, accent);
+      // transform: translateY(-2px);
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     }
   }
@@ -581,6 +581,7 @@ main {
   .project-header {
     display: flex;
     align-items: flex-start;
+    justify-content: start;
     gap: 1rem;
     margin-bottom: 1rem;
 
@@ -603,6 +604,20 @@ main {
         font-size: 1.1rem;
       }
     }
+
+    .project-link {
+      @include button-base;
+      @include transition(all, 150ms, linear);
+      gap: 0.5rem;
+      color: map.get($colors, accent);
+      font-weight: 500;
+      display: flex;
+      margin-inline-start: auto;
+
+      &:hover {
+        color: map.get($colors, accent-hover);
+      }
+    }
   }
 
   .project-content {
@@ -611,17 +626,6 @@ main {
       margin-bottom: 1.5rem;
       font-size: 1rem;
       line-height: 1.6;
-    }
-
-    .project-link {
-      @include button-base;
-      gap: 0.5rem;
-      color: map.get($colors, accent);
-      font-weight: 500;
-
-      &:hover {
-        color: map.get($colors, accent-hover);
-      }
     }
   }
 

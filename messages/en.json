@@ -23,7 +23,12 @@
   },
   "projects": {
     "title": "Featured Projects",
-    "cta": "View project"
+    "cta": "View",
+    "topic": {
+      "discord": "Discord Apps & Integrations",
+      "libraries": "Libraries & Tools",
+      "websites": "Websites & Misc"
+    }
   },
   "project-ticketon": {
     "title": "Ticketon",
@@ -68,6 +73,38 @@
   "project-linguadeep": {
     "title": "LinguaDeep",
     "description": "A Discord Bot, using BYOK DeepL for translations. Built with discord-hono (pure discord-interactions, no gateway connection), running on Cloudflare Workers. Database is D1 and the stored API keys are de-/encrypted manually using the Web Crypto API before storing them in the database. Why? Because there are no good free translation bots."
+  },
+  "project-github-webhook": {
+    "title": "GitHub Webhook",
+    "description": "A simple and lightweight GitHub webhook handler for Discord, built with Hono and Cloudflare Workers."
+  },
+  "project-crossban": {
+    "title": "Crossban",
+    "description": "A system to synchronize bans across multiple Discord servers, ensuring a safer environment for your communities."
+  },
+  "project-jarvis2": {
+    "title": "Jarvis 2",
+    "description": "In development: Personal management bot for a server I administrate - main feature is a trading system for Arc Raiders."
+  },
+  "project-fido-scanner": {
+    "title": "Fido Scanner",
+    "description": "An Android app to scan FIDO URI QR codes for cross-device passkey authentication. Built with Kotlin. My phone didn't support this feature natively, so I built it myself. It works pretty well and is open source, but I don't have plans to maintain it long-term."
+  },
+  "project-topgg-api-types": {
+    "title": "Top.gg API Types",
+    "description": "Comprehensive TypeScript type definitions for the Top.gg API, making it easier to build integrations."
+  },
+  "project-honocord": {
+    "title": "Honocord",
+    "description": "A library for developing Discord HTTP interactions bots, using the Hono web framework, optimized for Cloudflare Workers."
+  },
+  "project-components-v2-for-llms": {
+    "title": "Components V2 for LLMs",
+    "description": "One big ass txt file for LLMs to understand the new Components V2."
+  },
+  "project-twitter-x-discord-forwarder": {
+    "title": "Twitter/X to Discord Forwarder",
+    "description": "Automatically forward tweets from an account to a Discord channel using webhooks."
   },
   "findMe": {
     "title": "Find Me",

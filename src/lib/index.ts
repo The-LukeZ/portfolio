@@ -1,6 +1,6 @@
+import { Discord, Email, FileText, Github, Music, YouTube } from "$lib/assets/index";
 import type { ClassValue } from "svelte/elements";
 import { m } from "./paraglide/messages";
-import { Discord, Email, FileText, Github, Music, YouTube } from "$lib/assets/index";
 
 type MaybeClassValue = ClassValue | undefined | null;
 
@@ -15,48 +15,87 @@ export const getMessage = (key: string) => {
 
 const projects = [
   {
-    id: "ticketon",
-    link: "https://ticketon.app",
+    id: "discord",
+    items: [
+      {
+        id: "ticketon",
+        link: "https://ticketon.app",
+      },
+      {
+        id: "supportmail",
+        link: "https://supportmail.dev",
+      },
+      {
+        id: "upvote-engine",
+        link: "https://upvote-engine.thelukez.com/",
+      },
+      {
+        id: "linguadeep",
+        link: "https://github.com/The-LukeZ/LinguaDeep",
+      },
+      {
+        id: "github-webhook",
+        link: "https://github.com/The-LukeZ/github-webhook",
+      },
+      {
+        id: "crossban",
+        link: "https://crossban.thelukez.com/",
+      },
+      {
+        id: "jarvis2",
+        link: "https://github.com/The-LukeZ/jarvis2",
+      },
+    ],
   },
   {
-    id: "supportmail",
-    link: "https://supportmail.dev",
+    id: "libraries",
+    items: [
+      {
+        id: "fido-scanner",
+        link: "https://github.com/The-LukeZ/fido-scanner",
+      },
+      {
+        id: "honocord",
+        link: "https://honocord.thelukez.com/",
+      },
+      {
+        id: "topgg-api-types",
+        link: "https://github.com/The-LukeZ/topgg-api-types",
+      },
+      {
+        id: "timestring-py",
+        link: "https://github.com/The-LukeZ/TimestringPy",
+      },
+      {
+        id: "twitter-x-discord-forwarder",
+        link: "https://github.com/The-LukeZ/twitter-x-discord-forwarder",
+      },
+      {
+        id: "lukez-monitor",
+        link: "https://github.com/The-LukeZ/lukez-monitor",
+      },
+      {
+        id: "components-v2-for-llms",
+        link: "https://github.com/The-LukeZ/ComponentsV2ForLLMs",
+      },
+    ],
   },
   {
-    id: "upvote-engine",
-    link: "https://upvote-engine.thelukez.com/",
-  },
-  {
-    id: "burningdezibelz",
-    link: "https://github.com/The-LukeZ/burning-dezibelz-v2",
-  },
-  {
-    id: "portfolio",
-    link: "https://github.com/The-LukeZ/portfolio",
-  },
-  {
-    id: "ismycodeworking",
-    link: "https://ismycodeworking.today",
-  },
-  {
-    id: "lukez-monitor",
-    link: "https://github.com/The-LukeZ/lukez-monitor",
-  },
-  {
-    id: "linguadeep",
-    link: "https://github.com/The-LukeZ/LinguaDeep",
-  },
-  {
-    id: "djs-command-helper",
-    link: "https://github.com/supportmailapp/djsCommandHelper",
-  },
-  {
-    id: "timestring-py",
-    link: "https://github.com/The-LukeZ/TimestringPy",
-  },
-  {
-    id: "ddv",
-    link: "https://discord-data-viewer.sherpa.software/",
+    id: "websites",
+    items: [
+      {
+        id: "burningdezibelz",
+        link: "https://github.com/The-LukeZ/burning-dezibelz-v3", // stupid ahh versioning
+      },
+      {
+        id: "portfolio",
+        link: "https://thelukez.com",
+      },
+      {
+        id: "ismycodeworking",
+        link: "https://ismycodeworking.today",
+      },
+    ],
   },
 ];
 
