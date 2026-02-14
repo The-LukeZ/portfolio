@@ -48,7 +48,7 @@
   },
   "project-portfolio": {
     "title": "Portfolio",
-    "description": "This minimalistic portfolio website, built with SvelteKit and SCSS, showcases my projects and skills. It serves as a platform to share my work and connect with others in the developer community. In December 2025, I added support for an api-endpoint that returns a random image from Unsplash with a cloudflare worker ratelimiting binding protecting it."
+    "description": "This minimalistic portfolio website, built with SvelteKit and SCSS, showcases my projects and skills. It serves as a platform to share my work and connect with others in the developer community."
   },
   "project-upvote-engine": {
     "title": "Upvote Engine",
@@ -65,10 +65,6 @@
   "project-timestring-py": {
     "title": "TimestringPy",
     "description": "A Python port of the NPM Timestring package. It allows you to parse human-readable time strings into seconds or a specified return unit. Also allows more configuration options than the original package."
-  },
-  "project-ddv": {
-    "title": "DDV - Discord Data Viewer",
-    "description": "A small SPA, where you can see your Discord data (user data and servers) and copy just selected fields to the clipboard. It is built with SvelteKit and uses a cache on the server to store access tokens, because I don't want the hustle of dealing with Privacy Policies."
   },
   "project-linguadeep": {
     "title": "LinguaDeep",
