@@ -832,6 +832,23 @@ a {
   }
 }
 
+// Textarea, darkmode, full-screen
+#text-edit {
+  width: 100vw;
+  height: 100vh;
+  background: map.get($colors, primary-bg);
+  color: map.get($colors, text-primary);
+  border: none;
+  padding: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  resize: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+}
+
 // Utility classes
 .font-inter {
   font-family:
