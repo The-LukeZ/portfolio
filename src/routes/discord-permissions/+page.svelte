@@ -47,7 +47,15 @@
     </div>
     <div>
       <p>Permissions Integer</p>
-      <input readonly value={bitfield.toString()} />
+      <input
+        readonly
+        value={bitfield.toString()}
+        onfocus={() => {
+          navigator.clipboard.writeText(bitfield.toString()).then(() => {
+            alert("Copied to clipboard!");
+          });
+        }}
+      />
     </div>
   </div>
 
