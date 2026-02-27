@@ -273,6 +273,12 @@ export const PermissionFlagsBits = {
    */
   SendVoiceMessages: BigInt(1) << BigInt(46),
   /**
+   * Allows for setting the voice channel status of the current channel (not stable yet)
+   *
+   * Applies to channel types: Voice
+   */
+  SetVoiceChannelStatus: BigInt(1) << BigInt(48),
+  /**
    * Allows sending polls
    *
    * Applies to channel types: Text, Voice, Stage
@@ -527,9 +533,15 @@ export function GetVoicePermissionsArray() {
     "UseEmbeddedActivities",
     "UseSoundboard",
     "UseExternalSounds",
+    "SetVoiceChannelStatus",
   ];
+  const labelOverwrites: Partial<Record<keyof typeof PermissionFlagsBits, string>> = {
+    UseVAD: "Use Voice Activity",
+    Stream: "Video",
+    SetVoiceChannelStatus: "Set Voice Channel Status (not stable yet)",
+  };
   return keys.map((key) => ({
-    label: toTitleCase(key),
+    label: labelOverwrites[key] ?? toTitleCase(key),
     value: PermissionFlagsBits[key],
   }));
 }

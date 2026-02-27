@@ -89,10 +89,6 @@
           {perm.label}
         </label>
       {/each}
-      <label>
-        <Checkbox disabled />
-        Set Voice Channel Status (not in API Docs yet)
-      </label>
     </div>
   </div>
 </div>
