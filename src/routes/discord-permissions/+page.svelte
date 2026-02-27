@@ -24,7 +24,11 @@
     const value = bitfield.toString();
     const newHash = value === "0" ? "" : value;
     if (window.location.hash.slice(1) !== newHash) {
-      goto(newHash ? `#${newHash}` : page.url.pathname);
+      goto(newHash ? `#${newHash}` : page.url.pathname, {
+        replaceState: true,
+        keepFocus: true,
+        noScroll: true,
+      });
     }
   });
 </script>
