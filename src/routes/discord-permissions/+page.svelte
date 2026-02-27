@@ -33,6 +33,13 @@
   });
 </script>
 
+<svelte:head>
+  <title>Discord Permissions Calculator</title>
+  <meta name="description" content="Calculate Discord permissions integers" />
+  <meta name="og:title" content="Discord Permissions Calculator" />
+  <meta name="og:description" content="Calculate Discord permissions integers" />
+</svelte:head>
+
 <div style="padding: 1rem">
   <div class="bitfield-display">
     <div>
