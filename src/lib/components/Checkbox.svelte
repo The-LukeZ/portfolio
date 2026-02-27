@@ -1,9 +1,13 @@
 <script lang="ts">
-  import type { Snippet } from "svelte";
-
-  let { checked = $bindable<boolean>(false), children }: { checked?: boolean; children?: Snippet } = $props();
+  let { disabled = false, checked = $bindable<boolean>(false) }: { disabled?: boolean; checked?: boolean } =
+    $props();
 </script>
 
-<button class="toggle" data-state={checked ? "checked" : "unchecked"} onclick={() => (checked = !checked)}>
+<button
+  class="toggle"
+  data-state={checked ? "checked" : "unchecked"}
+  onclick={() => (checked = !checked)}
+  {disabled}
+>
   <span class="sr-only">Toggle checkbox</span>
 </button>

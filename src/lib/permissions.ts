@@ -3,11 +3,11 @@
 import { toTitleCase } from "$lib";
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags}
- *
  * These flags are exported as `BigInt`s and NOT numbers. Wrapping them in `Number()`
  * may cause issues, try to use BigInts as much as possible or modules that can
  * replicate them in some way
+ *
+ * @see {@link https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags}
  */
 export const PermissionFlagsBits = {
   /**
@@ -309,6 +309,7 @@ const PermissionAliases: Partial<Record<keyof typeof PermissionFlagsBits, string
   PrioritySpeaker: "Use Priority Speaker",
   CreateGuildExpressions: "Create Expressions",
   ManageGuildExpressions: "Manage Expressions",
+  SendTTSMessages: "Send TTS Messages",
 };
 
 /**
@@ -335,4 +336,200 @@ export function GetPermissionsArray(stringified?: boolean) {
     },
     [] as { label: string; value: string | bigint }[],
   );
+}
+
+/**
+Administrator
+
+View Audit Log
+
+Manage Server
+
+Manage Roles
+
+Manage Channels
+
+Kick Members
+
+Ban Members
+
+Create Instant Invite
+
+Change Nickname
+
+Manage Nicknames
+
+Manage Expressions
+
+Create Expressions
+
+Manage Webhooks
+
+View Channels
+
+Manage Events
+
+Create Events
+
+Moderate Members
+
+View Server Insights
+
+View Server Subscription Insights
+ */
+export function GetGeneralPermissionsArray() {
+  const keys: (keyof typeof PermissionFlagsBits)[] = [
+    "Administrator",
+    "ViewAuditLog",
+    "ManageGuild",
+    "ManageRoles",
+    "ManageChannels",
+    "KickMembers",
+    "BanMembers",
+    "CreateInstantInvite",
+    "ChangeNickname",
+    "ManageNicknames",
+    "ManageGuildExpressions",
+    "CreateGuildExpressions",
+    "ManageWebhooks",
+    "ViewChannel",
+    "ManageEvents",
+    "CreateEvents",
+    "ModerateMembers",
+    "ViewGuildInsights",
+    "ViewCreatorMonetizationAnalytics",
+  ];
+  const labelOverwrites: Partial<Record<keyof typeof PermissionFlagsBits, string>> = {
+    ViewChannel: "View Channels",
+    ViewGuildInsights: "View Server Insights",
+    ViewCreatorMonetizationAnalytics: "View Server Subscription Insights",
+    ManageGuild: "Manage Server",
+    CreateGuildExpressions: "Create Expressions",
+    ManageGuildExpressions: "Manage Expressions",
+  };
+  return keys.map((key) => ({
+    label: labelOverwrites[key] ?? toTitleCase(key),
+    value: PermissionFlagsBits[key],
+  }));
+}
+
+/**
+Send Messages
+
+Create Public Threads
+
+Create Private Threads
+
+Send Messages in Threads
+
+Send TTS Messages
+
+Manage Messages
+
+Pin Messages
+
+Manage Threads
+
+Embed Links
+
+Attach Files
+
+Read Message History
+
+Mention Everyone
+
+Use External Emojis
+
+Use External Stickers
+
+Add Reactions
+
+Use Slash Commands
+
+Use Embedded Activities
+
+Use External Apps
+
+Create Polls
+
+Bypass Slowmode
+
+Send Voice Messages
+ */
+export function GetTextPermissionsArray() {
+  const keys: (keyof typeof PermissionFlagsBits)[] = [
+    "SendMessages",
+    "CreatePublicThreads",
+    "CreatePrivateThreads",
+    "SendMessagesInThreads",
+    "SendTTSMessages",
+    "ManageMessages",
+    "PinMessages",
+    "ManageThreads",
+    "EmbedLinks",
+    "AttachFiles",
+    "ReadMessageHistory",
+    "MentionEveryone",
+    "UseExternalEmojis",
+    "UseExternalStickers",
+    "AddReactions",
+    "UseApplicationCommands",
+    "UseEmbeddedActivities",
+    "UseExternalApps",
+    "SendPolls",
+    "BypassSlowmode",
+    "SendVoiceMessages",
+  ];
+  return keys.map((key) => ({
+    label: toTitleCase(key),
+    value: PermissionFlagsBits[key],
+  }));
+}
+
+/**
+Connect
+
+Speak
+
+Video
+
+Mute Members
+
+Deafen Members
+
+Move Members
+
+Use Voice Activity
+
+Priority Speaker
+
+Request To Speak
+
+Use Embedded Activities
+
+Use Soundboard
+
+Use External Sounds
+
+Set Voice Channel Status (not in API Docs yet)
+ */
+export function GetVoicePermissionsArray() {
+  const keys: (keyof typeof PermissionFlagsBits)[] = [
+    "Connect",
+    "Speak",
+    "Stream",
+    "MuteMembers",
+    "DeafenMembers",
+    "MoveMembers",
+    "UseVAD",
+    "PrioritySpeaker",
+    "RequestToSpeak",
+    "UseEmbeddedActivities",
+    "UseSoundboard",
+    "UseExternalSounds",
+  ];
+  return keys.map((key) => ({
+    label: toTitleCase(key),
+    value: PermissionFlagsBits[key],
+  }));
 }

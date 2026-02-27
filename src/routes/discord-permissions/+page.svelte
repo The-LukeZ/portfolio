@@ -1,10 +1,67 @@
 <script lang="ts">
+  import "./permissions.css";
   import { SvelteBitfield } from "$lib/bitfield.svelte";
   import Checkbox from "$lib/components/Checkbox.svelte";
+  import {
+    GetGeneralPermissionsArray,
+    GetTextPermissionsArray,
+    GetVoicePermissionsArray,
+  } from "$lib/permissions";
 
   const bitfield = new SvelteBitfield();
 </script>
 
-<h1>Discord Permissions</h1>
+<div style="padding: 1rem">
+  <div class="bitfield-display">
+    <div>
+      <h1>Discord Permissions Calculator</h1>
+    </div>
+    <div>
+      <p>Permissions Integer</p>
+      <input readonly value={bitfield.toString()} />
+    </div>
+  </div>
 
-<Checkbox />
+  <div class="permissions">
+    <div>
+      <h2>General Permissions</h2>
+      {#each GetGeneralPermissionsArray() as perm}
+        <label>
+          <Checkbox bind:checked={() => bitfield.has(perm.value), () => bitfield.toggle(perm.value)} />
+          {perm.label}
+        </label>
+      {/each}
+    </div>
+
+    <div>
+      <h2>Text Permissions</h2>
+      {#each GetTextPermissionsArray() as perm}
+        <label>
+          <Checkbox bind:checked={() => bitfield.has(perm.value), () => bitfield.toggle(perm.value)} />
+          {perm.label}
+        </label>
+      {/each}
+    </div>
+
+    <div>
+      <h2>Voice Permissions</h2>
+      {#each GetVoicePermissionsArray() as perm}
+        <label>
+          <Checkbox bind:checked={() => bitfield.has(perm.value), () => bitfield.toggle(perm.value)} />
+          {perm.label}
+        </label>
+      {/each}
+      <label>
+        <Checkbox disabled />
+        Set Voice Channel Status (not in API Docs yet)
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <small>
+    Are there any permissions missing?
+    <a href="https://github.com/The-LukeZ/portfolio/issues/new">Let me know!</a>
+  </small>
+</div>
