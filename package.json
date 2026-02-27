@@ -36,6 +36,7 @@
   "dependencies": {
     "@fontsource/poppins": "^5.2.7",
     "@sveltejs/adapter-node": "^5.5.3",
+    "discord-api-types": "^0.38.40",
     "jsonwebtoken": "^9.0.3"
   },
   "packageManager": "pnpm@10.29.3"

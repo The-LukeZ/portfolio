@@ -4,6 +4,12 @@ import { randomBytes } from "crypto";
 import jwt from "jsonwebtoken";
 
 export async function load({ cookies, url }) {
+  if (!env.JWT_SECRET) {
+    return {
+      message: "JWT_SECRET not set",
+    }
+  }
+
   const token = jwt.sign(
     {
       accessKey: randomBytes(16).toString("hex"),
