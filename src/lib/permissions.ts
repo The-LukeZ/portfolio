@@ -316,6 +316,7 @@ const PermissionAliases: Partial<Record<keyof typeof PermissionFlagsBits, string
   CreateGuildExpressions: "Create Expressions",
   ManageGuildExpressions: "Manage Expressions",
   SendTTSMessages: "Send TTS Messages",
+  SendPolls: "Create Polls",
 };
 
 /**
@@ -486,6 +487,10 @@ export function GetTextPermissionsArray() {
     "BypassSlowmode",
     "SendVoiceMessages",
   ];
+  const labelOverwrites: Partial<Record<keyof typeof PermissionFlagsBits, string>> = {
+    SendTTSMessages: "Send TTS Messages",
+    SendPolls: "Create Polls",
+  };
   return keys.map((key) => ({
     label: toTitleCase(key),
     value: PermissionFlagsBits[key],
