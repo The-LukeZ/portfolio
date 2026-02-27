@@ -9,7 +9,7 @@ $colors: (
   accent-hover: oklch(80.357% 0.16873 73.344),
   text-primary: white,
   text-secondary: oklch(80% 0 271),
-  border: oklch(32% 0 271)
+  border: oklch(32% 0 271),
 );
 
 // Derived colors
@@ -880,7 +880,6 @@ a {
   flex-shrink: 0;
   background: map.get($colors, border);
   @include transition(background, 200ms);
-
   &::after {
     content: "";
     position: absolute;
@@ -892,6 +891,10 @@ a {
     background: white;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
     @include transition(transform, 200ms);
+  }
+
+  &[data-state="unchecked"]:hover {
+    background: color-mix(in oklch, map.get($colors, border), map.get($colors, accent) 20%);
   }
 
   &[data-state="checked"] {
