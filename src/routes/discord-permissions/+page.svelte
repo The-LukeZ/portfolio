@@ -7,8 +7,26 @@
     GetTextPermissionsArray,
     GetVoicePermissionsArray,
   } from "$lib/permissions";
+  import { goto } from "$app/navigation";
+  import { page } from "$app/state";
+  import { onMount } from "svelte";
 
   const bitfield = new SvelteBitfield();
+
+  onMount(() => {
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+      bitfield.set(BigInt(hash));
+    }
+  });
+
+  $effect(() => {
+    const value = bitfield.toString();
+    const newHash = value === "0" ? "" : value;
+    if (window.location.hash.slice(1) !== newHash) {
+      goto(newHash ? `#${newHash}` : page.url.pathname);
+    }
+  });
 </script>
 
 <div style="padding: 1rem">
