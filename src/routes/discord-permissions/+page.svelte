@@ -57,7 +57,17 @@
         >
           Copy
         </button>
-        <input readonly value={bitfield.toString()} />
+        <input
+          value={bitfield.toString()}
+          oninput={(e) => {
+            const raw = e.currentTarget.value.trim();
+            try {
+              bitfield.bits = BigInt(raw || "0");
+            } catch {
+              // ignore invalid input
+            }
+          }}
+        />
       </div>
     </div>
   </div>
