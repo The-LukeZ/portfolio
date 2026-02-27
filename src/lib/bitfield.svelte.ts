@@ -81,15 +81,11 @@ export class SvelteBitfield {
   }
 
   /**
-   * Get the raw bits value
+   * The raw bits value
    */
   get bits(): bigint {
     return this._bits;
   }
-
-  /**
-   * Set the raw bits value
-   */
   set bits(value: bigint | number) {
     this._bits = BigInt(value);
   }
