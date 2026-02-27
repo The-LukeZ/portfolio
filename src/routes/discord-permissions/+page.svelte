@@ -50,9 +50,10 @@
       <input
         readonly
         value={bitfield.toString()}
-        onfocus={() => {
+        onfocus={(e) => {
           navigator.clipboard.writeText(bitfield.toString()).then(() => {
             alert("Copied to clipboard!");
+            e.currentTarget.blur();
           });
         }}
       />
