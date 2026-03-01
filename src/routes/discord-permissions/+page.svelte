@@ -1,5 +1,6 @@
 <script lang="ts">
-  import "./permissions.css";
+  import { goto } from "$app/navigation";
+  import { page } from "$app/state";
   import { SvelteBitfield } from "$lib/bitfield.svelte";
   import Checkbox from "$lib/components/Checkbox.svelte";
   import {
@@ -7,9 +8,8 @@
     GetTextPermissionsArray,
     GetVoicePermissionsArray,
   } from "$lib/permissions";
-  import { goto } from "$app/navigation";
-  import { page } from "$app/state";
   import { onMount } from "svelte";
+  import "./permissions.css";
 
   const bitfield = new SvelteBitfield();
 
@@ -69,6 +69,7 @@
   }
 
   function onMouseDown(e: MouseEvent) {
+    if (navigator.maxTouchPoints > 0) return;
     document.body.style.userSelect = "none";
     document.body.style.pointerEvents = "none";
     if ((e.target as HTMLElement).closest("button, input, a")) return;
