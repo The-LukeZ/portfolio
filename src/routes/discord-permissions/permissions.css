@@ -85,7 +85,6 @@
 /* Prevent text selection while dragging */
 .permissions.selecting {
   user-select: none;
-  pointer-events: none;
 }
 
 label.hovered {
