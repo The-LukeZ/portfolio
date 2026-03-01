@@ -156,6 +156,14 @@
   <meta name="description" content="Calculate Discord permissions integers" />
   <meta name="og:title" content="Discord Permissions Calculator" />
   <meta name="og:description" content="Calculate Discord permissions integers" />
+  <meta name="keywords" content="discord, permissions, calculator, bitfield, integer, svelte" />
+  <!-- OG Tags -->
+  <meta property="og:url" content="https://thelukez.com/discord-permissions" />
+  <meta property="author" content="LukeZ" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Discord Permissions Calculator" />
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://thelukez.com/discord-permissions" />
 </svelte:head>
 
 <div style="padding: 1rem">

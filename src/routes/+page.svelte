@@ -436,6 +436,22 @@
   }}
 />
 
+<svelte:head>
+  <!-- Localized meta tags -->
+  <title>LukeZ Development</title>
+  <meta name="description" content={m["seo.description"]()} />
+  <meta name="keywords" content={m["seo.keywords"]()} />
+  <meta name="og:description" content={m["seo.description"]()} />
+  <!-- OG Tags -->
+  <meta property="og:title" content="LukeZ Portfolio" />
+  <meta property="og:image" content="https://thelukez.com/LukeZ.webp" />
+  <meta property="og:url" content="https://thelukez.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="LukeZ Development" />
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://thelukez.com/" />
+</svelte:head>
+
 {#snippet navItems()}
   <li>
     <a href="#about" onclick={closeMobileMenu}>{m["navigation.about"]()}</a>
@@ -565,19 +581,10 @@
           <div class="projects-grid">
             {#each group.items as project, index}
               {@const projectMsgKey = `project-${project.id}`}
-              <div
-                class="project-card fade-in"
-                class:delay-200={index % 2 === 1}
-                id={projectMsgKey}
-              >
+              <div class="project-card fade-in" class:delay-200={index % 2 === 1} id={projectMsgKey}>
                 <div class="project-header">
                   <h3 class="project-title">{getMessage(`${projectMsgKey}.title`)()}</h3>
-                  <a
-                    href={project.link}
-                    class="project-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <a href={project.link} class="project-link" target="_blank" rel="noopener noreferrer">
                     {m["projects.cta"]()}
                     <ExternalLink size={14} />
                   </a>
