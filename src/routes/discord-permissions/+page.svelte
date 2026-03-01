@@ -162,9 +162,12 @@
   <div class="bitfield-display">
     <div>
       <h1>Discord Permissions Calculator</h1>
+      <p style="font-size: 0.8rem; color: var(--text-secondary); font-style: italic; text-align: start;">
+        Drag across the permissions to select multiple at once.
+      </p>
     </div>
     <div>
-      <p>Permissions Integer</p>
+      <p style="text-align: end;">Permissions Integer</p>
       <div class="bitfield-value">
         <button
           onclick={() => {
