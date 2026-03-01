@@ -39,7 +39,7 @@
   },
   "project-supportmail": {
     "title": "SupportMail",
-    "description": "Ein moderner Discord Modmail-Bot, einschließlich des Bots selbst (entwickelt mit Node.js und TypeScript) und umgebender Services wie einer Website, die mit SvelteKit erstellt wurde. Ein Dashboard ist derzeit in Entwicklung."
+    "description": "Ein moderner Discord Modmail-Bot, einschließlich des Bots selbst (entwickelt mit Node.js und TypeScript) und umgebender Services wie einer Website, die mit SvelteKit erstellt wurde. Das Dashboard wurde im Januar 2026 fertiggestellt."
   },
   "project-ismycodeworking": {
     "title": "IsMyCodeWorking.Today",
