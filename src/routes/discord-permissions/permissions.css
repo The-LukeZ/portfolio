@@ -2,6 +2,7 @@
   padding: 1rem;
   display: flex;
   flex-wrap: wrap;
+  gap: 1.3rem;
 
   > div {
     flex: 1 1 300px;
@@ -14,6 +15,8 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    padding-inline: 5px;
+    transition: background-color 75ms;
   }
 }
 
@@ -68,6 +71,118 @@
     p {
       text-align: left;
     }
+  }
+}
 
+.selection-rect {
+  position: fixed;
+  pointer-events: none;
+  background-color: oklch(64.176% 0.19627 253.572 / 0.2);
+  border: 1px solid oklch(64.176% 0.19627 253.572);
+  border-radius: 2px;
+  z-index: 9999;
+}
+
+/* Prevent text selection while dragging */
+.permissions.selecting {
+  user-select: none;
+}
+
+label.hovered {
+  background-color: oklch(64.946% 0.15005 250.06 / 0.26);
+  border-radius: 4px;
+}
+
+dialog {
+  /* Appearance */
+  background: oklch(20.019% 0.00002 271.152 / 0.452);
+  backdrop-filter: blur(10px);
+  border: 0;
+  color: oklch(85% 0 0);
+
+  /* Always full-screen, always out of flow */
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 100dvw;
+  max-height: 100dvh;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+
+  /* Animation defaults (closed state) */
+  opacity: 0;
+  transition:
+    opacity 0.2s ease,
+    overlay 0.2s allow-discrete;
+
+  > * {
+    scale: 0.95;
+    transition: scale 0.2s ease;
+  }
+
+  &:open {
+    opacity: 1;
+    pointer-events: none;
+
+    @starting-style {
+      opacity: 0;
+    }
+  }
+
+  &:open > * {
+    pointer-events: auto;
+    opacity: 1;
+    scale: 1;
+
+    @starting-style {
+      opacity: 0;
+      scale: 0.95;
+    }
+  }
+
+  &::backdrop {
+    background-color: oklch(0% 0 0 / 0);
+    transition: background-color 0.2s ease;
+  }
+
+  &:open::backdrop {
+    background-color: oklch(0% 0 0 / 0.5);
+
+    @starting-style {
+      background-color: oklch(0% 0 0 / 0);
+    }
+  }
+
+  p {
+    margin: 0 0 1rem;
+  }
+}
+
+.modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  button {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: 1px solid oklch(60% 0 0);
+    background: oklch(25% 0 0);
+    color: oklch(85% 0 0);
+    cursor: pointer;
+    transition: background 0.1s;
+
+    &:hover {
+      background: oklch(35% 0 0);
+    }
+
+    &.cancel {
+      border-color: oklch(50% 0.15 20);
+      color: oklch(70% 0.1 20);
+    }
   }
 }
