@@ -70,10 +70,10 @@
 
   function onMouseDown(e: MouseEvent) {
     if (navigator.maxTouchPoints > 0) return;
-    document.body.style.userSelect = "none";
-    document.body.style.pointerEvents = "none";
     if ((e.target as HTMLElement).closest("button, input, a")) return;
     if (e.button !== 0) return;
+    document.body.style.userSelect = "none";
+    document.body.style.pointerEvents = "none";
     dragStart = { x: e.clientX, y: e.clientY };
     dragCurrent = { x: e.clientX, y: e.clientY };
     isDragging = false;
