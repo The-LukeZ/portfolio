@@ -59,6 +59,10 @@ const projects = [
         link: "https://honocord.thelukez.com/",
       },
       {
+        id: "fastdeepequal",
+        link: "https://github.com/The-LukeZ/fast-deep-equal",
+      },
+      {
         id: "topgg-api-types",
         link: "https://github.com/The-LukeZ/topgg-api-types",
       },
