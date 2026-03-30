@@ -102,6 +102,10 @@
     "title": "Twitter/X to Discord Forwarder",
     "description": "Automatically forward tweets from an account to a Discord channel using webhooks."
   },
+  "project-fastdeepequal": {
+    "title": "fast-deep-equal",
+    "description": "A modern fork of fast-deep-equal, now rewritten in TypeScript with dual ESM/CJS output."
+  },
   "findMe": {
     "title": "Find Me",
     "description": "Find me on various platforms below. Feel free to reach out if you have any questions or just want to chat!"
