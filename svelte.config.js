@@ -19,7 +19,7 @@ const config = {
       preloadStrategy: "modulepreload",
     },
     version: {
-      name: "v1",
+      name: "1",
       pollInterval: 300_000,
     },
   },

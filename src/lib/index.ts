@@ -1,12 +1,6 @@
-import { Discord, Email, FileText, Github, Music, YouTube } from "$lib/assets/index";
-import type { ClassValue } from "svelte/elements";
+import { Discord, Email, FileText, Github, Music, YouTube } from "$lib/assets/index.js";
 import { m } from "./paraglide/messages";
 
-type MaybeClassValue = ClassValue | undefined | null;
-
-export function cn(...classes: MaybeClassValue[]) {
-  return classes.filter(Boolean).join(" ").trim();
-}
 
 // Helper function to safely access dynamic message keys - utility function first
 export const getMessage = (key: string) => {
@@ -100,19 +94,31 @@ const projects = [
 ];
 
 const socialLinks = [
-  { name: "GitHub", icon: Github, url: "https://github.com/The-LukeZ" },
+  {
+    name: "GitHub",
+    icon: Github,
+    url: "https://github.com/The-LukeZ",
+  },
   {
     name: "YouTube",
     icon: YouTube,
     url: "https://youtube.com/@The_LukeZ",
   },
-  { name: "Dev.to", icon: FileText, url: "https://dev.to/thelukez" },
+  {
+    name: "Dev.to",
+    icon: FileText,
+    url: "https://dev.to/thelukez",
+  },
   {
     name: "Discord",
     icon: Discord,
     url: "discord://-/users/506893652266844162",
   },
-  { name: "Spotify", icon: Music, url: "https://stats.fm/lukez" },
+  {
+    name: "Spotify",
+    icon: Music,
+    url: "https://stats.fm/lukez",
+  },
   {
     name: "Email",
     icon: Email,
