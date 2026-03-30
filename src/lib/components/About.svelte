@@ -1,5 +1,6 @@
 <script lang="ts">
   import {
+    Astro,
     MongoDB,
     Postgres,
     Supabase,
@@ -11,6 +12,7 @@
     Vue,
   } from "$lib/assets/index.js";
   import { m } from "$lib/paraglide/messages";
+  import ExternalLink from "./ExternalLink.svelte";
 </script>
 
 <section id="about" class="section about">
@@ -27,15 +29,36 @@
 
   <h3 class="tech-stack-title fade-in delay-200">{m["about.techstackTitle"]()}</h3>
   <div class="tech-stack">
-    <Supabase class="fade-in" />
-    <Svelte class="fade-in" />
-    <Tailwind class="fade-in" />
-    <Typescript class="fade-in" />
-    <Symfony class="fade-in" />
-    <Vue class="fade-in" />
-    <Swift class="fade-in" />
-    <MongoDB class="fade-in" />
-    <Postgres class="fade-in" />
+    <ExternalLink href="https://supabase.com/">
+      <Supabase class="fade-in" />
+    </ExternalLink>
+    <ExternalLink href="https://svelte.dev/">
+      <Svelte class="fade-in" />
+    </ExternalLink>
+    <ExternalLink href="https://tailwindcss.com/">
+      <Tailwind class="fade-in" />
+    </ExternalLink>
+    <ExternalLink href="https://www.typescriptlang.org/">
+      <Typescript class="fade-in" />
+    </ExternalLink>
+    <ExternalLink href="https://symfony.com/">
+      <Symfony class="fade-in" />
+    </ExternalLink>
+    <ExternalLink href="https://vuejs.org/">
+      <Vue class="fade-in" />
+    </ExternalLink>
+    <ExternalLink href="https://www.swift.org/">
+      <Swift class="fade-in" />
+    </ExternalLink>
+    <ExternalLink href="https://www.mongodb.com/">
+      <MongoDB class="fade-in" />
+    </ExternalLink>
+    <ExternalLink href="https://www.postgresql.org/">
+      <Postgres class="fade-in" />
+    </ExternalLink>
+    <ExternalLink href="https://astro.build/">
+      <Astro class="fade-in" />
+    </ExternalLink>
   </div>
 </section>
 

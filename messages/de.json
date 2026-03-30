@@ -31,7 +31,7 @@
   },
   "project-ticketon": {
     "title": "Ticketon",
-    "description": "Ein moderner, umfangreicher Ticketing-Bot für Discord. Er wurde in nur etwa 120 Arbeitsstunden entwickelt und verfügt über ein mit SvelteKit erstelltes Web-Dashboard und den mit Discord.js erstellten Bot selbst. Alles läuft in einem Docker-Netzwerk. Die Dokumentation wurde mit Astro Starlight erstellt und läuft auf Cloudflare Pages. Ich liebe es!"
+    "description": "Ein moderner, umfangreicher Ticketing-Bot für Discord. Er wurde in nur etwa 120 Arbeitsstunden entwickelt und verfügt über ein mit SvelteKit erstelltes Web-Dashboard und den mit Discord.js erstellten Bot selbst. Die Dokumentation wurde mit Astro Starlight erstellt und läuft auf Cloudflare Pages. Ich liebe es!"
   },
   "project-burningdezibelz": {
     "title": "Burning Dezibelz",
@@ -56,10 +56,6 @@
   "project-lukez-monitor": {
     "title": "LukeZ Monitor",
     "description": "Ein Cloudflare Worker, der den Status meiner verschiedenen Projekte und Services überwacht. Er prüft die Verfügbarkeit und benachrichtigt mich über Telegram, wenn Probleme auftreten. Stand Dezember 2025 funktioniert das nur so semi."
-  },
-  "project-djs-command-helper": {
-    "title": "DJS Command Helper",
-    "description": "Ein npm-Package, das eine einfache Möglichkeit bietet, Application Commands mit Discord.js zu verwalten."
   },
   "project-timestring-py": {
     "title": "TimestringPy",

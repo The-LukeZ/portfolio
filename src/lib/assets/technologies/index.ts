@@ -7,5 +7,6 @@ import Vue from "./Vue.svelte";
 import Swift from "./Swift.svelte";
 import MongoDB from "./MongoDB.svelte";
 import Postgres from "./Postgres.svelte";
+import Astro from "./Astro.svelte";
 
-export { Supabase, Svelte, Tailwind, Typescript, Symfony, Vue, Swift, MongoDB, Postgres };
+export { Supabase, Svelte, Tailwind, Typescript, Symfony, Vue, Swift, MongoDB, Postgres, Astro };
