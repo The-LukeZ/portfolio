@@ -2,9 +2,12 @@
   import { Menu, XIcon } from "$lib/assets/index.js";
   import { m } from "$lib/paraglide/messages";
   import { getLocale, localizeHref, setLocale, type Locale } from "$lib/paraglide/runtime";
+  import { scrollY } from "svelte/reactivity/window";
   import { fade } from "svelte/transition";
 
   let mobileMenuOpen = $state(false);
+
+  let isScrolled = $derived((scrollY.current ?? 0) > 20);
 
   function toggleMobileMenu() {
     mobileMenuOpen = !mobileMenuOpen;
@@ -17,13 +20,13 @@
 
 {#snippet navItems()}
   <li>
-    <a href="#about" onclick={closeMobileMenu}>{m["navigation.about"]()}</a>
+    <a href={localizeHref("/#about")} onclick={closeMobileMenu}>{m["navigation.about"]()}</a>
   </li>
   <li>
-    <a href="#projects" onclick={closeMobileMenu}>{m["navigation.projects"]()}</a>
+    <a href={localizeHref("/#projects")} onclick={closeMobileMenu}>{m["navigation.projects"]()}</a>
   </li>
   <li>
-    <a href="#social" onclick={closeMobileMenu}>{m["navigation.contact"]()}</a>
+    <a href={localizeHref("/#social")} onclick={closeMobileMenu}>{m["navigation.contact"]()}</a>
   </li>
   <li>
     <select
@@ -41,7 +44,7 @@
   </li>
 {/snippet}
 
-<nav class="nav no-select">
+<nav class="nav no-select" class:scrolled={isScrolled}>
   <div class="nav-container">
     <a href={localizeHref("/")} class="logo font-inter">LukeZ</a>
 
@@ -95,12 +98,17 @@
   }
 
   .nav-container {
-    max-width: var(--max-width);
+    max-width: 800px;
     margin: 0 auto;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: max-width 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .nav.scrolled .nav-container {
+    max-width: var(--max-width);
   }
 
   .mobile-menu-btn {

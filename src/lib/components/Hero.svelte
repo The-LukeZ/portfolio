@@ -5,7 +5,7 @@
 <section id="home" class="hero">
   <div class="hero-content">
     <h1>LukeZ</h1>
-    <p class="subtitle">{m["hero.subtitle"]()}</p>
+    <h2 class="subtitle">{m["hero.subtitle"]()}</h2>
     <a href="#about" class="cta-button">
       {m["hero.cta"]()}
     </a>
