@@ -102,6 +102,10 @@
     "title": "fast-deep-equal",
     "description": "A modern fork of fast-deep-equal, now rewritten in TypeScript with dual ESM/CJS output."
   },
+  "project-li18n": {
+    "title": "li18n",
+    "description": "A simple internationalization library for JS/TS server applications. Define your messages in JSON, get fully-typed TypeScript functions out. Difference to paraglide.js is, that li18n is not usable in the browser really - it is designed for server-side use."
+  },
   "findMe": {
     "title": "Find Me",
     "description": "Find me on various platforms below. Feel free to reach out if you have any questions or just want to chat!"

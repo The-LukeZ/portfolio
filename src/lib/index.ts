@@ -45,16 +45,20 @@ const projects = [
     id: "libraries",
     items: [
       {
-        id: "fido-scanner",
-        link: "https://github.com/The-LukeZ/fido-scanner",
-      },
-      {
         id: "honocord",
         link: "https://honocord.thelukez.com/",
       },
       {
+        id: "li18n",
+        link: "https://github.com/The-LukeZ/li18n",
+      },
+      {
         id: "fastdeepequal",
         link: "https://github.com/The-LukeZ/fast-deep-equal",
+      },
+      {
+        id: "fido-scanner",
+        link: "https://github.com/The-LukeZ/fido-scanner",
       },
       {
         id: "topgg-api-types",
