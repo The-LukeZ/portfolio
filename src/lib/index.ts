@@ -35,10 +35,6 @@ const projects = [
         id: "crossban",
         link: "https://crossban.thelukez.com/",
       },
-      {
-        id: "jarvis2",
-        link: "https://github.com/The-LukeZ/jarvis2",
-      },
     ],
   },
   {
@@ -55,10 +51,6 @@ const projects = [
       {
         id: "fastdeepequal",
         link: "https://github.com/The-LukeZ/fast-deep-equal",
-      },
-      {
-        id: "fido-scanner",
-        link: "https://github.com/The-LukeZ/fido-scanner",
       },
       {
         id: "topgg-api-types",
