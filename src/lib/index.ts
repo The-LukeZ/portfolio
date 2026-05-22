@@ -45,10 +45,6 @@ const projects = [
     id: "libraries",
     items: [
       {
-        id: "fido-scanner",
-        link: "https://github.com/The-LukeZ/fido-scanner",
-      },
-      {
         id: "honocord",
         link: "https://honocord.thelukez.com/",
       },
@@ -81,10 +77,6 @@ const projects = [
   {
     id: "websites",
     items: [
-      {
-        id: "burningdezibelz",
-        link: "https://github.com/The-LukeZ/burning-dezibelz-v3", // stupid ahh versioning
-      },
       {
         id: "portfolio",
         link: "https://thelukez.com",
