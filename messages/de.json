@@ -87,7 +87,7 @@
   },
   "project-honocord": {
     "title": "Honocord",
-    "description": "Eine Bibliothek zum Entwickeln von Discord HTTP-Interactions Bots unter Verwendung des Hono-Web-Frameworks, optimiert für Cloudflare Workers."
+    "description": "Eine Library zum Entwickeln von Discord HTTP-Interactions Bots unter Verwendung des Hono-Web-Frameworks, optimiert für Cloudflare Workers."
   },
   "project-components-v2-for-llms": {
     "title": "Components V2 for LLMs",
@@ -100,6 +100,10 @@
   "project-fastdeepequal": {
     "title": "fast-deep-equal",
     "description": "Eine moderne Fork von fast-deep-equal, umgeschrieben in TypeScript mit dualem ESM/CJS output."
+  },
+  "project-li18n": {
+    "title": "li18n",
+    "description": "Eine einfache Internationalization-Library für JS/TS-Server-Anwendungen. Definieren der \"Messages\" in JSON und man erhält vollständig getypte TypeScript-Funktionen. Der Unterschied zu paraglide.js ist, dass li18n nicht wirklich im Browser nutzbar ist - es ist für serverseitigen Gebrauch konzipiert."
   },
   "findMe": {
     "title": "Soziale Medien",
