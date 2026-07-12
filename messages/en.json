@@ -24,87 +24,14 @@
   "projects": {
     "title": "Featured Projects",
     "cta": "View",
-    "topic": {
-      "discord": "Discord Apps & Integrations",
+    "tag": {
+      "all": "All",
+      "discord": "All Discord Stuff",
+      "discord-bot": "Discord Bots",
       "libraries": "Libraries & Tools",
-      "websites": "Websites & Misc"
+      "websites": "Websites",
+      "other": "Other"
     }
-  },
-  "project-ticketon": {
-    "title": "Ticketon",
-    "description": "A modern, advanced ticketing bot for Discord. Made in just about 120 hours of work, it features a web dashboard built with SvelteKit and the bot itself built with Discord.js. The documentation is made with Astro Starlight and running on Cloudflare Pages. Love it!"
-  },
-  "project-burningdezibelz": {
-    "title": "Burning Dezibelz",
-    "description": "The website for the Burning Dezibelz band (which I am a member of). Built with SvelteKit and Supabase, it showcases the band, concerts and has a gallery for our images. It has a dashboard for managing concerts, venues, images and more. In December 2025, the login was completely revamped to not use only Google OAuth, but also email/password and magic links."
-  },
-  "project-supportmail": {
-    "title": "SupportMail",
-    "description": "A modern Discord Modmail bot, including the bot itself (built with Node.js and Typescript) and surrounding services such as a website built with SvelteKit. A dashboard was finished in January 2026."
-  },
-  "project-ismycodeworking": {
-    "title": "IsMyCodeWorking.Today",
-    "description": "Get an answer to the eternal developer question. Over-engineered (but a fun and challenging project),  deployed with Clouflare Workers and uses Durable Objects for storage."
-  },
-  "project-portfolio": {
-    "title": "Portfolio",
-    "description": "This minimalistic portfolio website, built with SvelteKit and SCSS, showcases my projects and skills. It serves as a platform to share my work and connect with others in the developer community."
-  },
-  "project-upvote-engine": {
-    "title": "Upvote Engine",
-    "description": "A performant Discord vote handler built on a FaaS architecture using Cloudflare Workers, Queues and D1."
-  },
-  "project-lukez-monitor": {
-    "title": "LukeZ Monitor",
-    "description": "A Cloudflare Worker that monitors the status of my various projects and services. It checks for uptime and notifies me via Telegram if any issues arise. As of December 2025, this only works to a limited extent."
-  },
-  "project-timestring-py": {
-    "title": "TimestringPy",
-    "description": "A Python port of the NPM Timestring package. It allows you to parse human-readable time strings into seconds or a specified return unit. Also allows more configuration options than the original package."
-  },
-  "project-linguadeep": {
-    "title": "LinguaDeep",
-    "description": "A Discord Bot, using BYOK DeepL for translations. Originally built with discod-hono, migrated to honocord (pure discord-interactions, no gateway connection) in February 2026, running on Cloudflare Workers. Database is D1 and the stored API keys are de-/encrypted manually using the Web Crypto API before storing them in the database. Why? Because there are no good free translation bots."
-  },
-  "project-github-webhook": {
-    "title": "GitHub Webhook",
-    "description": "A simple and lightweight GitHub webhook handler for Discord, built with Hono and Cloudflare Workers."
-  },
-  "project-crossban": {
-    "title": "Crossban",
-    "description": "A system to synchronize bans across multiple Discord servers, ensuring a safer environment for your communities."
-  },
-  "project-jarvis2": {
-    "title": "Jarvis 2",
-    "description": "In development: Personal management bot for a server I administrate - main feature is a trading system for Arc Raiders."
-  },
-  "project-fido-scanner": {
-    "title": "Fido Scanner",
-    "description": "An Android app to scan FIDO URI QR codes for cross-device passkey authentication. Built with Kotlin. My phone didn't support this feature natively, so I built it myself. It works pretty well and is open source, but I don't have plans to maintain it long-term."
-  },
-  "project-topgg-api-types": {
-    "title": "Top.gg API Types",
-    "description": "Comprehensive TypeScript type definitions for the Top.gg API, making it easier to build integrations."
-  },
-  "project-honocord": {
-    "title": "Honocord",
-    "description": "A library for developing Discord HTTP interactions bots, using the Hono web framework, optimized for Cloudflare Workers."
-  },
-  "project-components-v2-for-llms": {
-    "title": "Components V2 for LLMs",
-    "description": "One big ass txt file for LLMs to understand the new Components V2."
-  },
-  "project-twitter-x-discord-forwarder": {
-    "title": "Twitter/X to Discord Forwarder",
-    "description": "Automatically forward tweets from an account to a Discord channel using webhooks."
-  },
-  "project-fastdeepequal": {
-    "title": "fast-deep-equal",
-    "description": "A modern fork of fast-deep-equal, now rewritten in TypeScript with dual ESM/CJS output."
-  },
-  "project-li18n": {
-    "title": "li18n",
-    "description": "A simple internationalization library for JS/TS server applications. Define your messages in JSON, get fully-typed TypeScript functions out. Difference to paraglide.js is, that li18n is not usable in the browser really - it is designed for server-side use."
   },
   "findMe": {
     "title": "Find Me",

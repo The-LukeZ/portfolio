@@ -1,0 +1,122 @@
+# Source of truth for project data. Tag ids here become "projects.tag.<id>" paraglide message keys.
+tags:
+  - discord
+  - discord-bot
+  - libraries
+  - websites
+  - other
+
+projects:
+  - id: ticketon
+    title: Ticketon
+    description: A modern, advanced ticketing bot for Discord. Made in just about 120 hours of work, it features a web dashboard built with SvelteKit and the bot itself built with Discord.js. The documentation is made with Astro Starlight and running on Cloudflare Pages. Love it!
+    link: https://ticketon.app
+    tags: [discord, discord-bot]
+
+  - id: supportmail
+    title: SupportMail
+    description: A modern Discord Modmail bot, including the bot itself (built with Node.js and Typescript) and surrounding services such as a website built with SvelteKit. A dashboard was finished in January 2026.
+    link: https://supportmail.dev
+    tags: [discord, discord-bot]
+
+  - id: upvote-engine
+    title: Upvote Engine
+    description: A performant Discord vote handler built on a FaaS architecture using Cloudflare Workers, Queues and D1.
+    link: https://upvote-engine.thelukez.com/
+    tags: [discord, discord-bot]
+
+  - id: linguadeep
+    title: LinguaDeep
+    description: A Discord Bot, using BYOK DeepL for translations. Originally built with discod-hono, migrated to honocord (pure discord-interactions, no gateway connection) in February 2026, running on Cloudflare Workers. Database is D1 and the stored API keys are de-/encrypted manually using the Web Crypto API before storing them in the database. Why? Because there are no good free translation bots.
+    link: https://github.com/The-LukeZ/LinguaDeep
+    tags: [discord, discord-bot]
+
+  - id: github-webhook
+    title: GitHub Webhook
+    description: A simple and lightweight GitHub webhook handler for Discord, built with Hono and Cloudflare Workers.
+    link: https://github.com/The-LukeZ/github-webhook
+    tags: [discord]
+
+  - id: crossban
+    title: Crossban
+    description: A system to synchronize bans across multiple Discord servers, ensuring a safer environment for your communities.
+    link: https://crossban.thelukez.com/
+    tags: [discord, discord-bot]
+
+  - id: honocord
+    title: Honocord
+    description: A library for developing Discord HTTP interactions bots, using the Hono web framework, optimized for Cloudflare Workers.
+    link: https://honocord.thelukez.com/
+    tags: [libraries]
+
+  - id: li18n
+    title: li18n
+    description: A simple internationalization library for JS/TS server applications. Define your messages in JSON, get fully-typed TypeScript functions out. Difference to paraglide.js is, that li18n is not usable in the browser really - it is designed for server-side use.
+    link: https://github.com/The-LukeZ/li18n
+    tags: [libraries]
+
+  - id: fastdeepequal
+    title: fast-deep-equal
+    description: A modern fork of fast-deep-equal, now rewritten in TypeScript with dual ESM/CJS output.
+    link: https://github.com/The-LukeZ/fast-deep-equal
+    tags: [libraries]
+
+  - id: topgg-api-types
+    title: Top.gg API Types
+    description: Comprehensive TypeScript type definitions for the Top.gg API, making it easier to build integrations.
+    link: https://github.com/The-LukeZ/topgg-api-types
+    tags: [libraries]
+
+  - id: timestring-py
+    title: TimestringPy
+    description: A Python port of the NPM Timestring package. It allows you to parse human-readable time strings into seconds or a specified return unit. Also allows more configuration options than the original package.
+    link: https://github.com/The-LukeZ/TimestringPy
+    tags: [libraries]
+
+  - id: twitter-x-discord-forwarder
+    title: Twitter/X to Discord Forwarder
+    description: Automatically forward tweets from an account to a Discord channel using webhooks.
+    link: https://github.com/The-LukeZ/twitter-x-discord-forwarder
+    tags: [libraries]
+
+  - id: lukez-monitor
+    title: LukeZ Monitor
+    description: A Cloudflare Worker that monitors the status of my various projects and services. It checks for uptime and notifies me via Telegram if any issues arise. As of December 2025, this only works to a limited extent.
+    link: https://github.com/The-LukeZ/lukez-monitor
+    tags: [libraries]
+
+  - id: components-v2-for-llms
+    title: Components V2 for LLMs
+    description: One big ass txt file for LLMs to understand the new Components V2.
+    link: https://github.com/The-LukeZ/ComponentsV2ForLLMs
+    tags: [libraries]
+
+  - id: portfolio
+    title: Portfolio
+    description: This minimalistic portfolio website, built with SvelteKit and plain CSS, showcases my projects and skills. It has a Discord permissions-calculator and serves as a platform to share my work and connect with others in the developer community.
+    link: https://thelukez.com
+    tags: [websites]
+
+  - id: ismycodeworking
+    title: IsMyCodeWorking.Today
+    description: Get an answer to the eternal developer question. Over-engineered (but a fun and challenging project),  deployed with Clouflare Workers and uses Durable Objects for storage.
+    link: https://ismycodeworking.today
+    tags: [websites]
+
+  - id: echohawk
+    title: Echohawk
+    description: A Discord bot written in Go that detects repeated or highly similar messages from the same user and alerts moderators, optionally taking automated moderation actions (delete, DM, timeout, kick, ban). Uses Valkey for lightweight in-memory state with TTLs. My first Go project, built for a server with up to 70k messages/day.
+    link: https://github.com/The-LukeZ/Echohawk
+    tags: [discord, discord-bot]
+
+  - id: lz-proxy
+    title: lz-proxy
+    description: A single-node, transparent Discord REST ratelimit proxy written in Rust. Tracks per-bucket and per-bot global ratelimits, paces requests so clients can fire freely, and forwards everything else byte-for-byte. A stripped-down alternative to nirn-proxy with no clustering, no Redis, just one binary.
+    link: https://github.com/The-LukeZ/lz-proxy
+    tags: [discord, other]
+
+  - id: sveltekit-cloudflare-do
+    title: sveltekit-cloudflare-do
+    description: Bridges SvelteKit and Cloudflare Durable Objects by automatically exporting Durable Object classes into the worker bundle generated by @sveltejs/adapter-cloudflare, via a Vite plugin or CLI tool. Forked from jillesme/sveltekit-cloudflare-durable-objects to fix an outstanding issue and add tsdown as bundler.
+    link: https://github.com/The-LukeZ/sveltekit-cloudflare-do
+    tags: [libraries]

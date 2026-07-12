@@ -1,0 +1,78 @@
+# Localization overrides for projects/en.yaml. Only id/title/description here -
+# link and tags are structural and always come from en.yaml.
+projects:
+  - id: ticketon
+    title: Ticketon
+    description: Ein moderner, umfangreicher Ticketing-Bot für Discord. Er wurde in nur etwa 120 Arbeitsstunden entwickelt und verfügt über ein mit SvelteKit erstelltes Web-Dashboard und den mit Discord.js erstellten Bot selbst. Die Dokumentation wurde mit Astro Starlight erstellt und läuft auf Cloudflare Pages. Ich liebe es!
+
+  - id: supportmail
+    title: SupportMail
+    description: Ein moderner Discord Modmail-Bot, einschließlich des Bots selbst (entwickelt mit Node.js und TypeScript) und umgebender Services wie einer Website, die mit SvelteKit erstellt wurde. Das Dashboard wurde im Januar 2026 fertiggestellt.
+
+  - id: upvote-engine
+    title: Upvote Engine
+    description: Ein performanter Discord Vote-Handler auf Basis einer FaaS-Architektur mit Cloudflare Workers, Queues und D1.
+
+  - id: linguadeep
+    title: LinguaDeep
+    description: Ein Discord-Bot, der BYOK DeepL für Übersetzungen verwendet. Ursprünglich mit discod-hono gebaut, im Februrar 2026 jedoch zu honocord migriert (reine Discord-Interaktionen, keine Gateway-Verbindung), läuft auf Cloudflare Workers. Die Datenbank ist D1 und die gespeicherten API-Schlüssel werden manuell mit der Web Crypto API ent-/verschlüsselt, bevor sie in der Datenbank gespeichert werden. Warum? Weil es keine guten kostenlosen Übersetzungsbots gibt.
+
+  - id: github-webhook
+    title: GitHub Webhook
+    description: Ein einfacher und leichter GitHub Webhook-Handler für Discord, gebaut mit Hono und Cloudflare Workers.
+
+  - id: crossban
+    title: Crossban
+    description: Ein System zur Synchronisierung von Banns über mehrere Discord-Server hinweg, um eine sicherere Umgebung für Ihre Community zu gewährleisten.
+
+  - id: honocord
+    title: Honocord
+    description: Eine Library zum Entwickeln von Discord HTTP-Interactions Bots unter Verwendung des Hono-Web-Frameworks, optimiert für Cloudflare Workers.
+
+  - id: li18n
+    title: li18n
+    description: Eine einfache Internationalization-Library für JS/TS-Server-Anwendungen. Definieren der "Messages" in JSON und man erhält vollständig getypte TypeScript-Funktionen. Der Unterschied zu paraglide.js ist, dass li18n nicht wirklich im Browser nutzbar ist - es ist für serverseitigen Gebrauch konzipiert.
+
+  - id: fastdeepequal
+    title: fast-deep-equal
+    description: Eine moderne Fork von fast-deep-equal, umgeschrieben in TypeScript mit dualem ESM/CJS output.
+
+  - id: topgg-api-types
+    title: Top.gg API Types
+    description: Umfassende TypeScript-Typdefinitionen für die Top.gg-API, die es einfacher machen, Integrationen zu erstellen.
+
+  - id: timestring-py
+    title: TimestringPy
+    description: Ein Python-Port der NPM Bibliothek "Timestring". Es ermöglicht das Parsen von menschenlesbaren Zeitangaben in Sekunden oder eine bestimmte Rückgabeeinheit. Bietet auch mehr Konfigurationsoptionen als das ursprüngliche Paket.
+
+  - id: twitter-x-discord-forwarder
+    title: Twitter/X to Discord Forwarder
+    description: Automatisches Weiterleiten von Tweets von einem Account an einen Discord-Kanal mithilfe von Webhooks.
+
+  - id: lukez-monitor
+    title: LukeZ Monitor
+    description: Ein Cloudflare Worker, der den Status meiner verschiedenen Projekte und Services überwacht. Er prüft die Verfügbarkeit und benachrichtigt mich über Telegram, wenn Probleme auftreten. Stand Dezember 2025 funktioniert das nur so semi.
+
+  - id: components-v2-for-llms
+    title: Components V2 for LLMs
+    description: Eine große Textdatei für LLMs, um die neuen Components V2 zu verstehen.
+
+  - id: portfolio
+    title: Portfolio
+    description: Diese minimalistische Portfolio-Website, die mit SvelteKit und reinem CSS erstellt wurde, präsentiert meine Projekte und Fähigkeiten. Sie enthält einen Discord-Berechtigungsrechner und dient als Plattform, um meine Arbeit zu teilen und mit anderen Mitgliedern der Entwickler-Community in Kontakt zu treten.
+
+  - id: ismycodeworking
+    title: IsMyCodeWorking.Today
+    description: Erhalte eine Antwort auf die ewige Frage der Entwickler. Over-engineered, aber ein spaßiges und herausforderndes Projekt, deployed auf Clouflare Workers und verwendet Durable Objects als Speicher.
+
+  - id: echohawk
+    title: Echohawk
+    description: Ein in Go geschriebener Discord-Bot, der wiederholte oder sehr ähnliche Nachrichten desselben Nutzers erkennt und Moderatoren alarmiert, optional mit automatisierten Moderationsaktionen (Löschen, DM, Timeout, Kick, Bann). Nutzt Valkey für leichtgewichtigen In-Memory-State mit TTLs. Mein erstes Go-Projekt, gebaut für einen Server mit bis zu 70.000 Nachrichten pro Tag.
+
+  - id: lz-proxy
+    title: lz-proxy
+    description: Ein transparenter Discord-REST-Ratelimit-Proxy für einen einzelnen Knoten, geschrieben in Rust. Verfolgt Ratelimits pro Bucket und pro Bot global, drosselt Anfragen, damit Clients frei senden können, und leitet alles andere byte-genau weiter. Eine abgespeckte Alternative zu nirn-proxy ohne Clustering, ohne Redis, nur eine Binary.
+
+  - id: sveltekit-cloudflare-do
+    title: sveltekit-cloudflare-do
+    description: Verbindet SvelteKit und Cloudflare Durable Objects, indem Durable-Object-Klassen automatisch in das von @sveltejs/adapter-cloudflare erzeugte Worker-Bundle exportiert werden, per Vite-Plugin oder CLI-Tool. Fork von jillesme/sveltekit-cloudflare-durable-objects, behebt ein offenes Issue und fügt tsdown als Bundler hinzu.

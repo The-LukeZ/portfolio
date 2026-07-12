@@ -7,88 +7,6 @@ export const getMessage = (key: string) => {
   return ((m as unknown as Record<string, Function>)[key] || (() => key)) as () => string;
 };
 
-const projects = [
-  {
-    id: "discord",
-    items: [
-      {
-        id: "ticketon",
-        link: "https://ticketon.app",
-      },
-      {
-        id: "supportmail",
-        link: "https://supportmail.dev",
-      },
-      {
-        id: "upvote-engine",
-        link: "https://upvote-engine.thelukez.com/",
-      },
-      {
-        id: "linguadeep",
-        link: "https://github.com/The-LukeZ/LinguaDeep",
-      },
-      {
-        id: "github-webhook",
-        link: "https://github.com/The-LukeZ/github-webhook",
-      },
-      {
-        id: "crossban",
-        link: "https://crossban.thelukez.com/",
-      },
-    ],
-  },
-  {
-    id: "libraries",
-    items: [
-      {
-        id: "honocord",
-        link: "https://honocord.thelukez.com/",
-      },
-      {
-        id: "li18n",
-        link: "https://github.com/The-LukeZ/li18n",
-      },
-      {
-        id: "fastdeepequal",
-        link: "https://github.com/The-LukeZ/fast-deep-equal",
-      },
-      {
-        id: "topgg-api-types",
-        link: "https://github.com/The-LukeZ/topgg-api-types",
-      },
-      {
-        id: "timestring-py",
-        link: "https://github.com/The-LukeZ/TimestringPy",
-      },
-      {
-        id: "twitter-x-discord-forwarder",
-        link: "https://github.com/The-LukeZ/twitter-x-discord-forwarder",
-      },
-      {
-        id: "lukez-monitor",
-        link: "https://github.com/The-LukeZ/lukez-monitor",
-      },
-      {
-        id: "components-v2-for-llms",
-        link: "https://github.com/The-LukeZ/ComponentsV2ForLLMs",
-      },
-    ],
-  },
-  {
-    id: "websites",
-    items: [
-      {
-        id: "portfolio",
-        link: "https://thelukez.com",
-      },
-      {
-        id: "ismycodeworking",
-        link: "https://ismycodeworking.today",
-      },
-    ],
-  },
-];
-
 const socialLinks = [
   {
     name: "GitHub",
@@ -122,7 +40,7 @@ const socialLinks = [
   },
 ];
 
-export { projects, socialLinks };
+export { socialLinks };
 
 export const defaultUnsplashImage = {
   url: "/default_bg.jpg",

@@ -23,87 +23,14 @@
   "projects": {
     "title": "Ausgewählte Projekte",
     "cta": "Ansehen",
-    "topic": {
-      "discord": "Discord Apps & Integrationen",
+    "tag": {
+      "all": "Alle",
+      "discord": "Alles Discord Zeug",
+      "discord-bot": "Discord Bots",
       "libraries": "Bibliotheken & Tools",
-      "websites": "Websites & Sonstiges"
+      "websites": "Websites",
+      "other": "Sonstiges"
     }
-  },
-  "project-ticketon": {
-    "title": "Ticketon",
-    "description": "Ein moderner, umfangreicher Ticketing-Bot für Discord. Er wurde in nur etwa 120 Arbeitsstunden entwickelt und verfügt über ein mit SvelteKit erstelltes Web-Dashboard und den mit Discord.js erstellten Bot selbst. Die Dokumentation wurde mit Astro Starlight erstellt und läuft auf Cloudflare Pages. Ich liebe es!"
-  },
-  "project-burningdezibelz": {
-    "title": "Burning Dezibelz",
-    "description": "Die Website für die Band Burning Dezibelz (deren Mitglied ich bin). Entwickelt mit SvelteKit und Supabase, präsentiert sie die Band, Konzerte und verfügt über eine Galerie für unsere Bilder. Sie hat ein Dashboard zur Verwaltung von Konzerten, Veranstaltungsorten, Bildern und mehr. Im Dezember 2025 wurde die Anmeldung komplett überarbeitet, sodass nun nicht mehr nur Google OAuth, sondern auch E-Mail/Passwort und Magic Links verwendet werden können."
-  },
-  "project-supportmail": {
-    "title": "SupportMail",
-    "description": "Ein moderner Discord Modmail-Bot, einschließlich des Bots selbst (entwickelt mit Node.js und TypeScript) und umgebender Services wie einer Website, die mit SvelteKit erstellt wurde. Das Dashboard wurde im Januar 2026 fertiggestellt."
-  },
-  "project-ismycodeworking": {
-    "title": "IsMyCodeWorking.Today",
-    "description": "Erhalte eine Antwort auf die ewige Frage der Entwickler. Over-engineered (aber ein spaßiges und herausforderndes Projekt), deployed auf Clouflare Workers und verwendet Durable Objects als Speicher."
-  },
-  "project-portfolio": {
-    "title": "Portfolio",
-    "description": "Diese minimalistische Portfolio-Website, entwickelt mit SvelteKit und SCSS, präsentiert meine Projekte und Fähigkeiten. Sie dient als Plattform, um meine Arbeit zu teilen und mich mit anderen in der Entwickler-Community zu vernetzen."
-  },
-  "project-upvote-engine": {
-    "title": "Upvote Engine",
-    "description": "Ein performanter Discord Vote-Handler auf Basis einer FaaS-Architektur mit Cloudflare Workers, Queues und D1."
-  },
-  "project-lukez-monitor": {
-    "title": "LukeZ Monitor",
-    "description": "Ein Cloudflare Worker, der den Status meiner verschiedenen Projekte und Services überwacht. Er prüft die Verfügbarkeit und benachrichtigt mich über Telegram, wenn Probleme auftreten. Stand Dezember 2025 funktioniert das nur so semi."
-  },
-  "project-timestring-py": {
-    "title": "TimestringPy",
-    "description": "Ein Python-Port des NPM Timestring-Pakets. Es ermöglicht das Parsen von menschenlesbaren Zeitangaben in Sekunden oder eine bestimmte Rückgabeeinheit. Bietet auch mehr Konfigurationsoptionen als das ursprüngliche Paket."
-  },
-  "project-linguadeep": {
-    "title": "LinguaDeep",
-    "description": "Ein Discord-Bot, der BYOK DeepL für Übersetzungen verwendet. Ursprünglich mit discod-hono gebaut, im Februrar 2026 jedoch zu honocord migriert (reine Discord-Interaktionen, keine Gateway-Verbindung), läuft auf Cloudflare Workers. Die Datenbank ist D1 und die gespeicherten API-Schlüssel werden manuell mit der Web Crypto API ent-/verschlüsselt, bevor sie in der Datenbank gespeichert werden. Warum? Weil es keine guten kostenlosen Übersetzungsbots gibt."
-  },
-  "project-github-webhook": {
-    "title": "GitHub Webhook",
-    "description": "Ein einfacher und leichter GitHub Webhook-Handler für Discord, gebaut mit Hono und Cloudflare Workers."
-  },
-  "project-crossban": {
-    "title": "Crossban",
-    "description": "Ein System zur Synchronisierung von Banns über mehrere Discord-Server hinweg, um eine sicherere Umgebung für Ihre Community zu gewährleisten."
-  },
-  "project-jarvis2": {
-    "title": "Jarvis 2",
-    "description": "In Entwicklung: Persönlicher Management-Bot für einen Server, den ich administriere - Hauptfunktion ist ein Handelssystem für Arc Raiders."
-  },
-  "project-fido-scanner": {
-    "title": "Fido Scanner",
-    "description": "Eine Android-App zum Scannen von FIDO URI QR-Codes für die Authentifizierung mit Passkeys über verschiedene Geräte hinweg. Mit Kotlin erstellt. Mein Telefon unterstützte diese Funktion nicht nativ, daher musste ich selbst was bauen. Sie funktioniert ziemlich gut und ist Open Source, aber ich plane nicht, sie langfristig zu maintainen."
-  },
-  "project-topgg-api-types": {
-    "title": "Top.gg API Types",
-    "description": "Umfassende TypeScript-Typdefinitionen für die Top.gg-API, die es einfacher machen, Integrationen zu erstellen."
-  },
-  "project-honocord": {
-    "title": "Honocord",
-    "description": "Eine Library zum Entwickeln von Discord HTTP-Interactions Bots unter Verwendung des Hono-Web-Frameworks, optimiert für Cloudflare Workers."
-  },
-  "project-components-v2-for-llms": {
-    "title": "Components V2 for LLMs",
-    "description": "Eine große Textdatei für LLMs, um die neuen Components V2 zu verstehen."
-  },
-  "project-twitter-x-discord-forwarder": {
-    "title": "Twitter/X to Discord Forwarder",
-    "description": "Automatisches Weiterleiten von Tweets von einem Account an einen Discord-Kanal mithilfe von Webhooks."
-  },
-  "project-fastdeepequal": {
-    "title": "fast-deep-equal",
-    "description": "Eine moderne Fork von fast-deep-equal, umgeschrieben in TypeScript mit dualem ESM/CJS output."
-  },
-  "project-li18n": {
-    "title": "li18n",
-    "description": "Eine einfache Internationalization-Library für JS/TS-Server-Anwendungen. Definieren der \"Messages\" in JSON und man erhält vollständig getypte TypeScript-Funktionen. Der Unterschied zu paraglide.js ist, dass li18n nicht wirklich im Browser nutzbar ist - es ist für serverseitigen Gebrauch konzipiert."
   },
   "findMe": {
     "title": "Soziale Medien",
