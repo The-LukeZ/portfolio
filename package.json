@@ -14,7 +14,7 @@
     "format": "prettier --write .",
     "lint": "prettier --check .",
     "deploy": "pnpm run build && wrangler deploy",
-    "cf-typegen": "wrangler types ./src/worker-configuration.d.ts"
+    "gen": "wrangler types ./src/worker-configuration.d.ts"
   },
   "devDependencies": {
     "@inlang/paraglide-js": "^2.21.0",

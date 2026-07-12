@@ -9,10 +9,10 @@
   --color-text-secondary: oklch(80% 0 271);
   --color-border: oklch(32% 0 271);
   --color-accent-background: oklch(75.053% 0.17907 58.273 / 0.1);
-  
+
   --nav-overlay: oklch(0% 0 0 / 0.3);
   --mobile-overlay: oklch(0% 0 0 / 0.5);
-  
+
   --nav-height: 60px;
   --max-width: 1400px;
 }
@@ -214,7 +214,7 @@ a:hover {
 }
 
 .toggle::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 3px;
   left: 3px;
@@ -226,15 +226,15 @@ a:hover {
   transition: transform 200ms ease-in-out;
 }
 
-.toggle[data-state='unchecked']:hover {
+.toggle[data-state="unchecked"]:hover {
   background: color-mix(in oklch, var(--color-border), var(--color-accent) 20%);
 }
 
-.toggle[data-state='checked'] {
+.toggle[data-state="checked"] {
   background: var(--color-accent);
 }
 
-.toggle[data-state='checked']::after {
+.toggle[data-state="checked"]::after {
   transform: translateX(26px);
 }
 
@@ -247,4 +247,3 @@ a:hover {
   opacity: 0.4;
   cursor: not-allowed;
 }
-

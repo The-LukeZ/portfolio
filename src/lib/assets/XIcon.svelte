@@ -21,6 +21,5 @@
   stroke-linecap="round"
   stroke-linejoin="round"
   class={cn("lucide lucide-x-icon lucide-x", className)}
-  style="width: {size}px; height: {size}px"
-  ><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg
+  style="width: {size}px; height: {size}px"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg
 >

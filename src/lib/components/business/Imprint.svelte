@@ -76,7 +76,7 @@
     color: var(--color-accent);
     transition: color 200ms ease-in-out;
   }
-  
+
   :global(.imprint-content a:hover) {
     color: var(--color-accent-hover);
   }
