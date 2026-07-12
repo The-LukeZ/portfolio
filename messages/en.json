@@ -41,8 +41,7 @@
     "subtitle": "Independent Software Development",
     "description": "I'm an independent, freelance software developer specializing in modern web technologies including Svelte, TypeScript, and full-stack development. Please note that I'm <b>not</b> for hire.",
     "projectsText": "Please see the <a href={projectsLink}>projects section</a> for examples of my work.",
-    "imprint": {
-      "title": "Information according to § 5 TMG",
+    "legalNotice": {
       "noPackages": "No acceptance of parcels or packages.",
       "vatLabel": "<b>VAT ID:</b> <span style=\"font-family: monospace\">{vatId}</span>",
       "contactTitle": "Contact",

@@ -40,8 +40,7 @@
     "subtitle": "Unabhängige Softwareentwicklung",
     "description": "Ich bin ein unabhängiger, freiberuflicher Softwareentwickler, der sich auf moderne Webtechnologien spezialisiert hat, einschließlich Svelte, TypeScript und Full-Stack-Entwicklung. Bitte beachten Sie, dass ich <b>nicht</b> verfügbar bin für Aufträge.",
     "projectsText": "Bitte siehe die <a href={projectsLink}>Projektsektion</a> für Beispiele meiner Arbeit.",
-    "imprint": {
-      "title": "Angaben gemäß § 5 TMG",
+    "legalNotice": {
       "noPackages": "Keine Annahme von Paketen oder Paketen.",
       "vatLabel": "<b>USt-IdNr.:</b> <span style=\"font-family: monospace\">{vatId}</span>",
       "contactTitle": "Kontakt",

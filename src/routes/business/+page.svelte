@@ -2,7 +2,7 @@
   import Footer from "$lib/components/Footer.svelte";
   import Navigation from "$lib/components/Navigation.svelte";
   import BusinessHero from "$lib/components/business/BusinessHero.svelte";
-  import Imprint from "$lib/components/business/Imprint.svelte";
+  import LegalNotice from "$lib/components/business/LegalNotice.svelte";
   import { m } from "$lib/paraglide/messages";
 </script>
 
@@ -26,7 +26,7 @@
 
 <main class="business-page">
   <BusinessHero />
-  <Imprint />
+  <LegalNotice />
 </main>
 
 <Footer />

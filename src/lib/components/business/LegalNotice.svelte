@@ -2,23 +2,22 @@
   import { m } from "$lib/paraglide/messages";
 </script>
 
-<section class="section business-imprint" id="imprint">
+<section class="section business-notice" id="notice">
   <div class="business-container">
-    <div class="imprint-content">
-      <h3>{m["business.imprint.title"]()}</h3>
+    <div class="notice-content">
       <p>
         LukeZ Development by Luca Hentschel<br />
         Schneeberger Str. 31<br />
         08112 Wilkau-Haßlau<br />
         Germany<br />
-        <small>{m["business.imprint.noPackages"]()}</small>
+        <small>{m["business.legalNotice.noPackages"]()}</small>
       </p>
 
-      <p>{@html m["business.imprint.vatLabel"]({ vatId: "DE457982866" })}</p>
+      <p>{@html m["business.legalNotice.vatLabel"]({ vatId: "DE457982866" })}</p>
 
-      <h3>{m["business.imprint.contactTitle"]()}</h3>
+      <h3>{m["business.legalNotice.contactTitle"]()}</h3>
       <p>
-        {@html m["business.imprint.emailLabel"]({ email: "contact.lukez@proton.me" })}
+        {@html m["business.legalNotice.emailLabel"]({ email: "contact.lukez@proton.me" })}
       </p>
     </div>
   </div>
@@ -37,47 +36,39 @@
     }
   }
 
-  /* Imprint Section */
-  .imprint-content {
+  /* Legal Notice Section */
+  .notice-content {
     max-width: 700px;
     margin: 0 auto;
     color: var(--color-text-secondary);
   }
 
-  .imprint-content h3 {
+  .notice-content h3 {
     font-size: 1.3rem;
     color: var(--color-text-primary);
     margin-top: 2rem;
     margin-bottom: 1rem;
   }
 
-  .imprint-content h3:first-child {
+  .notice-content h3:first-child {
     margin-top: 0;
   }
 
-  .imprint-content p {
+  .notice-content p {
     line-height: 1.8;
     margin-bottom: 1rem;
   }
 
-  .imprint-content small {
+  .notice-content small {
     opacity: 0.75;
   }
 
-  /* .imprint-content a {
+  :global(.notice-content a) {
     color: var(--color-accent);
     transition: color 200ms ease-in-out;
   }
 
-  .imprint-content a:hover {
-    color: var(--color-accent-hover);
-  } */
-  :global(.imprint-content a) {
-    color: var(--color-accent);
-    transition: color 200ms ease-in-out;
-  }
-
-  :global(.imprint-content a:hover) {
+  :global(.notice-content a:hover) {
     color: var(--color-accent-hover);
   }
 </style>
