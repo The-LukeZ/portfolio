@@ -3,11 +3,11 @@
 projects:
   - id: ticketon
     title: Ticketon
-    description: Ein moderner, umfangreicher Ticketing-Bot für Discord. Er wurde in nur etwa 120 Arbeitsstunden entwickelt und verfügt über ein mit SvelteKit erstelltes Web-Dashboard und den mit Discord.js erstellten Bot selbst. Die Dokumentation wurde mit Astro Starlight erstellt und läuft auf Cloudflare Pages. Ich liebe es!
+    description: Ein moderner, umfangreicher Ticketing-Bot für Discord. Nach 130 Arbeitsstunden gelauncht, mit einem kompletten Dashboard-Rewrite Anfang 2026. Wächst weiter, mittlerweile auf fast 100 Servern. Website und Dashboard mit SvelteKit gebaut, der Bot selbst mit Bun + Discord.js, mit einem richtig guten Automatisierungs-Feature, welches die Leute lieben. Die Dokumentation wurde mit Astro Starlight erstellt und läuft auf Cloudflare Workers.
 
   - id: supportmail
     title: SupportMail
-    description: Ein moderner Discord Modmail-Bot, einschließlich des Bots selbst (entwickelt mit Node.js und TypeScript) und umgebender Services wie einer Website, die mit SvelteKit erstellt wurde. Das Dashboard wurde im Januar 2026 fertiggestellt.
+    description: Ein moderner Discord Modmail-Bot auf fast 1000 Servern, gestartet 2023. Entwickelt mit Bun und TypeScript, dazu umgebende Services wie eine Website mit Blog und einem eigenen CMS, das ich in das Dashboard eingebaut habe, mit Sätteri als Markdown-Prozessor und einem Content-Editor mit Markdown-QOL-Features (Bilder einfügen, Hyperlinks, etc). 2026 wurde Sharding und eine Shard-Status-Seite dafür hinzugefügt, nachdem der Bot auf einem Server mit über 1 Mio. Nutzern hinzugefügt wurde.
 
   - id: upvote-engine
     title: Upvote Engine

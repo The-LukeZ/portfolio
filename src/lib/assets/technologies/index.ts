@@ -11,4 +11,17 @@ import Astro from "./Astro.svelte";
 import Workers from "./Workers.svelte";
 import SQLite from "./SQLite.svelte";
 
-export { Supabase, Svelte, Tailwind, Typescript, Symfony, Vue, Swift, MongoDB, Postgres, Astro, Workers, SQLite };
+export {
+  Supabase,
+  Svelte,
+  Tailwind,
+  Typescript,
+  Symfony,
+  Vue,
+  Swift,
+  MongoDB,
+  Postgres,
+  Astro,
+  Workers,
+  SQLite,
+};
