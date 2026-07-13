@@ -1,17 +1,14 @@
 <script lang="ts">
   import { browser } from "$app/environment";
   import About from "$lib/components/About.svelte";
-  import Background from "$lib/components/Background.svelte";
   import Footer from "$lib/components/Footer.svelte";
+  import Header from "$lib/components/Header.svelte";
   import Hero from "$lib/components/Hero.svelte";
-  import Navigation from "$lib/components/Navigation.svelte";
   import Projects from "$lib/components/Projects.svelte";
   import Social from "$lib/components/Social.svelte";
   import { m } from "$lib/paraglide/messages";
 
   let observedElements: HTMLElement[] = [];
-  let imageData = $state<any>(null);
-  let usingFallback = $state(false);
 
   $effect(() => {
     if (browser) {
@@ -61,8 +58,7 @@
   <link rel="canonical" href="https://thelukez.com/" />
 </svelte:head>
 
-<Background bind:imageData bind:usingFallback />
-<Navigation />
+<Header />
 
 <main>
   <Hero />
@@ -71,4 +67,4 @@
   <Social />
 </main>
 
-<Footer {imageData} {usingFallback} />
+<Footer />

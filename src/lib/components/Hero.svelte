@@ -6,9 +6,6 @@
   <div class="hero-content">
     <h1>LukeZ</h1>
     <h2 class="subtitle">{m["hero.subtitle"]()}</h2>
-    <a href="#about" class="cta-button">
-      {m["hero.cta"]()}
-    </a>
   </div>
 </section>
 
@@ -51,24 +48,5 @@
     .subtitle {
       font-size: 1.2rem;
     }
-  }
-
-  .cta-button {
-    display: inline-flex;
-    align-items: center;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 200ms ease-in-out;
-    background: var(--color-accent);
-    color: var(--color-primary-bg);
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    font-weight: 600;
-  }
-
-  .cta-button:hover {
-    background: var(--color-accent-hover);
-    transform: translateY(-2px);
   }
 </style>

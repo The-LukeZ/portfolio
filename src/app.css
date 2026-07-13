@@ -82,14 +82,14 @@ main {
 }
 
 .section {
-  padding: 5rem 2rem;
+  padding: 3rem 2rem;
   max-width: var(--max-width);
   margin: 0 auto;
 }
 
 @media screen and (max-width: 768px) {
   .section {
-    padding: 3rem 1rem;
+    padding: 2rem 1rem;
   }
 }
 
@@ -98,6 +98,17 @@ main {
   font-weight: 700;
   text-align: center;
   color: var(--color-accent);
+  margin-bottom: 0.75rem;
+}
+
+.section .section-subtitle {
+  font-size: 1rem;
+  text-align: center;
+  color: var(--color-text-secondary);
+  margin-bottom: 3rem;
+}
+
+.section .section-title:not(:has(+ .section-subtitle)) {
   margin-bottom: 1rem;
 }
 
@@ -107,12 +118,12 @@ main {
   }
 }
 
-.section:not(:has(.section-description)) .section-title {
+.section:not(:has(.section-description)):not(:has(.section-subtitle)) .section-title {
   margin-bottom: 3rem;
 }
 
 @media screen and (max-width: 768px) {
-  .section:not(:has(.section-description)) .section-title {
+  .section:not(:has(.section-description)):not(:has(.section-subtitle)) .section-title {
     margin-bottom: 2rem;
   }
 }
@@ -158,6 +169,10 @@ a:hover {
   .scale-up.in-view {
     transform: scale(1);
   }
+}
+
+.delay-200 {
+  transition-delay: 200ms;
 }
 
 .font-inter {

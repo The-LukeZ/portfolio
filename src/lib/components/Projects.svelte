@@ -53,6 +53,7 @@
 
 <section id="projects" class="section projects">
   <h2 class="section-title fade-in">{m["projects.title"]()}</h2>
+  <p class="section-subtitle fade-in delay-200">{m["projects.subtitle"]()}</p>
   <div class="projects-container fade-in">
     <div class="tabs-wrapper">
       <div
@@ -78,19 +79,22 @@
       </div>
     </div>
 
+    {#snippet projectLink(link: string, mobileState: "hide" | "show")}
+      <a href={link} class="project-link mobile-{mobileState}" target="_blank" rel="noopener noreferrer">
+        {m["projects.cta"]()}
+        <ExternalLink size={14} />
+      </a>
+    {/snippet}
+
     <div class="projects-grid">
       {#each filteredProjects as project, index (project.id)}
         <div class="project-card fade-in" class:delay-200={index % 2 === 1} id={`project-${project.id}`}>
           <div class="project-header">
             <h3 class="project-title">{project.title}</h3>
-            <a href={project.link} class="project-link" target="_blank" rel="noopener noreferrer">
-              {m["projects.cta"]()}
-              <ExternalLink size={14} />
-            </a>
+            {@render projectLink(project.link, "hide")}
           </div>
-          <div class="project-content">
-            <p class="project-description">{project.description}</p>
-          </div>
+          <p class="project-description">{project.description}</p>
+          {@render projectLink(project.link, "show")}
         </div>
       {/each}
     </div>
@@ -98,10 +102,6 @@
 </section>
 
 <style>
-  .projects {
-    scroll-margin-top: calc(var(--nav-height) + 1rem);
-  }
-
   .projects-container {
     margin-top: 2rem;
   }
@@ -149,39 +149,63 @@
   }
 
   .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    column-count: 3;
+    column-gap: 2rem;
     padding: 2rem 0;
   }
 
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1280px) {
     .projects-grid {
-      grid-template-columns: repeat(2, 1fr);
+      column-count: 2;
     }
   }
 
   @media screen and (max-width: 768px) {
     .projects-grid {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
+      column-count: 2;
+      column-gap: 1rem;
       padding: 1.5rem 0;
     }
   }
 
   .project-card {
-    min-width: 0;
-    background: var(--color-secondary-bg);
+    display: flex;
+    flex-direction: column;
+    break-inside: avoid;
+    margin-bottom: 2rem;
+    background: transparent;
     border: 1px solid var(--color-border);
     border-radius: 12px;
     padding: 1.5rem;
-    scroll-margin-top: calc(var(--nav-height) + 1rem);
     transition: all 200ms ease-in-out;
+  }
+
+  /* mobile-only view button lives at card bottom; hidden on desktop.
+     classes are applied via interpolation, so scope through the static
+     .project-card parent with :global() to survive Svelte's CSS pruning */
+  .project-card :global(.mobile-show) {
+    display: none;
+  }
+
+  @media screen and (max-width: 768px) {
+    .project-card {
+      margin-bottom: 1rem;
+      padding: 0.875rem;
+    }
+
+    .project-card :global(.mobile-hide) {
+      display: none;
+    }
+
+    .project-card :global(.mobile-show) {
+      display: inline-flex;
+      align-self: flex-start;
+      margin-top: 0.25rem;
+    }
   }
 
   .project-card:hover {
     border-color: var(--color-accent);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   }
 
   .project-header {
@@ -228,5 +252,13 @@
     margin-bottom: 1.5rem;
     font-size: 1rem;
     line-height: 1.6;
+  }
+
+  @media screen and (max-width: 768px) {
+    .project-description {
+      margin-bottom: 0.5rem;
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
   }
 </style>

@@ -18,10 +18,13 @@
     "description": "Ich bin ein {age}-jähriger Full-Stack-Entwickler aus Deutschland. Ich habe das Programmieren in der Schule gelernt und Anfang 2023 mit der Entwicklung meines ersten Projekts begonnen. Seitdem habe ich mir das meiste selbst beigebracht. Im August 2025 habe ich eine Ausbildung zum IT-Fachmann für Anwendungsentwicklung begonnen. Seit 2023 habe ich entdeckt, dass ich eine Vorliebe für die Entwicklung nützlicher Tools habe (siehe <b>SupportMail</b> und <b>Ticketon</b> unten) und weniger für die nächste React + Next.js AI-Webanwendung. Ich arbeite gerne mit SvelteKit für Webanwendungen und Node.js/Bun für Backend-Anwendungen (Discord Bots). Seit Ende 2025 experimentiere ich auch mit Vue+Nuxt, aber ich bevorzuge SvelteKit. Ich bin ebenfalls ein Cloudflare Workers-Enthusiast und baue viele meiner Projekte damit. Wer hat eigentlich beschlossen, dass 2026 das Jahr der Hardwarekrise wird?",
     "aboutAiTitle": "Meine Stellungnahme zu KI",
     "aboutAi": "Ich bin der Meinung, dass KI ein hilfreiches und wichtiges Werkzeug ist. Allerdings kann sie einen Softwareentwickler nicht vollständig ersetzen. Solange man die Ergebnisse der KI versteht, die darin enthaltenen Fehler erkennt und kritisch denkt, ist es völlig in Ordnung, KI zu nutzen. Ja, ich gebe zu, dass ich in letzter Zeit häufig KI nutze, um Dinge zu entwickeln und Ideen für die beste Umsetzung zu brainstormen, da es mir manchmal schwerfällt, einen strukturierten Plan zu entwerfen und niederzuschreiben. Das liegt unter anderem an meiner begrenzten Zeit und begrenzten finanziellen Mitteln. Ich bin kein Befürworter des Einsatzes von KI zum Verfassen von Aufsätzen oder Hausarbeiten oder von generativer KI für Kunst (insbesondere Musik, Bilder, Videos). Ich halte KI für ein großartiges Werkzeug für Entwickler, aber sie sollte nicht dazu dienen, menschliche Kreativität und kritisches Denken zu ersetzen. Außerdem möchte ich mir 2026 noch einen neuen PC leisten können und nicht mit dem Wissen leben müssen, dass KI-Rechenzentren mehr Energie verbrauchen als der gesamte Landkreis, in dem sie sich befinden.",
-    "techstackTitle": "Meine Technologien"
+    "techstackTitle": "Meine Technologien",
+    "showMore": "Mehr anzeigen",
+    "showLess": "Weniger anzeigen"
   },
   "projects": {
     "title": "Ausgewählte Projekte",
+    "subtitle": "Ja, ich baue eine Menge Zeug.",
     "cta": "Ansehen",
     "tag": {
       "all": "Alle",

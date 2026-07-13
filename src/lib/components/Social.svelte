@@ -19,11 +19,6 @@
 </section>
 
 <style>
-  .social {
-    background: var(--color-secondary-bg);
-    scroll-margin-top: calc(var(--nav-height) + 1rem);
-  }
-
   .social-links {
     display: flex;
     justify-content: center;

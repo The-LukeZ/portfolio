@@ -15,18 +15,42 @@
   import Workers from "$lib/assets/technologies/Workers.svelte";
   import { m } from "$lib/paraglide/messages";
   import ExternalLink from "./ExternalLink.svelte";
+
+  let descExpanded = $state(false);
+  let aiExpanded = $state(false);
 </script>
 
 <section id="about" class="section about">
   <h2 class="section-title fade-in delay-200">{m["about.title"]()}</h2>
   <div class="about-content">
-    <p class="fade-in delay-200">
-      {@html m["about.description"]({
-        age: "21",
-      })}
-    </p>
+    <div class="collapsible fade-in delay-200" class:expanded={descExpanded}>
+      <p>
+        {@html m["about.description"]({
+          age: "21",
+        })}
+      </p>
+    </div>
+    <button
+      type="button"
+      class="toggle-btn fade-in delay-200"
+      aria-expanded={descExpanded}
+      onclick={() => (descExpanded = !descExpanded)}
+    >
+      {descExpanded ? m["about.showLess"]() : m["about.showMore"]()}
+    </button>
+
     <h3 class="fade-in delay-200">{m["about.aboutAiTitle"]()}</h3>
-    <p class="fade-in delay-200">{m["about.aboutAi"]()}</p>
+    <div class="collapsible fade-in delay-200" class:expanded={aiExpanded}>
+      <p>{m["about.aboutAi"]()}</p>
+    </div>
+    <button
+      type="button"
+      class="toggle-btn fade-in delay-200"
+      aria-expanded={aiExpanded}
+      onclick={() => (aiExpanded = !aiExpanded)}
+    >
+      {aiExpanded ? m["about.showLess"]() : m["about.showMore"]()}
+    </button>
   </div>
 
   <h3 class="tech-stack-title fade-in delay-200">{m["about.techstackTitle"]()}</h3>
@@ -71,15 +95,6 @@
 </section>
 
 <style>
-  .about {
-    background: var(--color-secondary-bg);
-  }
-
-  /* The scroll-margin-top logic can just be inside standard css */
-  .about {
-    scroll-margin-top: calc(var(--nav-height) + 1rem);
-  }
-
   .about-content {
     max-width: 800px;
     margin: 0 auto;
@@ -91,6 +106,50 @@
     font-size: 1.2rem;
     color: var(--color-text-secondary);
     line-height: 1.8;
+    margin: 0;
+  }
+
+  .collapsible {
+    position: relative;
+    max-height: 7.2rem; /* ~4 lines at line-height 1.8 */
+    overflow: hidden;
+    transition: max-height 300ms ease-in-out;
+  }
+
+  .collapsible.expanded {
+    max-height: 100rem;
+  }
+
+  /* Fade-out mask while collapsed */
+  .collapsible::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 3rem;
+    background: linear-gradient(to bottom, transparent, var(--color-primary-bg));
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 200ms ease-in-out;
+  }
+
+  .collapsible.expanded::after {
+    opacity: 0;
+  }
+
+  .toggle-btn {
+    margin-top: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    padding: 0.25rem 0.5rem;
+  }
+
+  .toggle-btn:hover {
+    text-decoration: underline;
   }
 
   h3 {

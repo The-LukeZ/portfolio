@@ -1,6 +1,6 @@
 <script lang="ts">
   import Footer from "$lib/components/Footer.svelte";
-  import Navigation from "$lib/components/Navigation.svelte";
+  import Header from "$lib/components/Header.svelte";
   import BusinessHero from "$lib/components/business/BusinessHero.svelte";
   import LegalNotice from "$lib/components/business/LegalNotice.svelte";
   import { m } from "$lib/paraglide/messages";
@@ -22,7 +22,7 @@
   <link rel="canonical" href="https://thelukez.com/" />
 </svelte:head>
 
-<Navigation />
+<Header />
 
 <main class="business-page">
   <BusinessHero />
