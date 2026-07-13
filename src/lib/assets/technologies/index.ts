@@ -8,5 +8,7 @@ import Swift from "./Swift.svelte";
 import MongoDB from "./MongoDB.svelte";
 import Postgres from "./Postgres.svelte";
 import Astro from "./Astro.svelte";
+import Workers from "./Workers.svelte";
+import SQLite from "./SQLite.svelte";
 
-export { Supabase, Svelte, Tailwind, Typescript, Symfony, Vue, Swift, MongoDB, Postgres, Astro };
+export { Supabase, Svelte, Tailwind, Typescript, Symfony, Vue, Swift, MongoDB, Postgres, Astro, Workers, SQLite };

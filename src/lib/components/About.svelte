@@ -11,6 +11,8 @@
     Typescript,
     Vue,
   } from "$lib/assets/index.js";
+  import SQLite from "$lib/assets/technologies/SQLite.svelte";
+  import Workers from "$lib/assets/technologies/Workers.svelte";
   import { m } from "$lib/paraglide/messages";
   import ExternalLink from "./ExternalLink.svelte";
 </script>
@@ -56,8 +58,14 @@
     <ExternalLink href="https://www.postgresql.org/">
       <Postgres class="fade-in" />
     </ExternalLink>
+    <ExternalLink href="https://workers.cloudflare.com/">
+      <Workers class="fade-in" />
+    </ExternalLink>
     <ExternalLink href="https://astro.build/">
       <Astro class="fade-in" />
+    </ExternalLink>
+    <ExternalLink href="https://sqlite.org/">
+      <SQLite class="fade-in" />
     </ExternalLink>
   </div>
 </section>
@@ -136,5 +144,11 @@
   }
   .tech-stack :global(svg:nth-child(10)) {
     transition-delay: 425ms;
+  }
+  .tech-stack :global(svg:nth-child(11)) {
+    transition-delay: 450ms;
+  }
+  .tech-stack :global(svg:nth-child(12)) {
+    transition-delay: 475ms;
   }
 </style>
