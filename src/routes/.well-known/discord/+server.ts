@@ -3,3 +3,5 @@ export async function GET() {
     headers: { "Content-Type": "text/plain" },
   });
 }
+
+export const prerender = true;
