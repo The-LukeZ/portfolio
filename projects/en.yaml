@@ -94,7 +94,7 @@ projects:
   - id: portfolio
     title: Portfolio
     description: This minimalistic portfolio website, built with SvelteKit and plain CSS, showcases my projects and skills. It has a Discord permissions-calculator and serves as a platform to share my work and connect with others in the developer community.
-    link: https://thelukez.com
+    link: https://github.com/The-LukeZ/portfolio
     tags: [websites]
 
   - id: ismycodeworking
