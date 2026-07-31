@@ -36,6 +36,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
   }
 
   .header-container {
