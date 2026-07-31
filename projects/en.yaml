@@ -15,7 +15,7 @@ projects:
 
   - id: supportmail
     title: SupportMail
-    description: A modern Discord Modmail bot running on almost 1000 servers, started in 2023. Built with Bun and TypeScript, plus surrounding services such as a website with a blog and a custom CMS I built into the dashboard, powered by Sätteri as its markdown processor and a content editor with markdown QOL features (image insertion, hyperlinks, etc). Sharding and a shard-status page was added in 2026 after the bot got added to a server with over 1M users.
+    description: A modern Discord Modmail bot running on almost 1000 servers, started in 2023. Built with Bun and TypeScript, plus surrounding services such as a website with a blog and a custom CMS I built into the dashboard, powered by Sätteri as its markdown processor and a content editor with markdown QOL features (image insertion, hyperlinks, etc). Sharding and a shard-status page was added in 2026 after the bot got added to a server with over 1M users. Sharing V2 (introduced in July 2026) is a completely custom sharing system with a manager written in Go and many more things.
     link: https://supportmail.dev
     tags: [discord, discord-bot]
 
