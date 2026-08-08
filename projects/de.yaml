@@ -7,8 +7,7 @@ projects:
 
   - id: supportmail
     title: SupportMail
-    description: Ein moderner Discord Modmail-Bot auf fast 1000 Servern, gestartet 2023. Entwickelt mit Bun und TypeScript, dazu umgebende Services wie eine Website mit Blog und einem eigenen CMS, das ich in das Dashboard eingebaut habe, mit Sätteri als Markdown-Prozessor und einem Content-Editor mit Markdown-QOL-Features (Bilder einfügen, Hyperlinks, etc). 2026 wurde Sharding und eine Shard-Status-Seite dafür hinzugefügt, nachdem der Bot auf einem Server mit über 1 Mio. Nutzern hinzugefügt wurde.
-
+    description: Ein moderner Discord Modmail-Bot auf fast 1000 Servern, gestartet 2023. Entwickelt mit Bun und TypeScript, dazu umgebende Services wie eine Website mit Blog und einem eigenen CMS, das ich in das Dashboard eingebaut habe, mit Sätteri als Markdown-Prozessor und einem Content-Editor mit Markdown-QOL-Features (Bilder einfügen, Hyperlinks, etc). 2026 wurde Sharding und eine Shard-Status-Seite dafür hinzugefügt, nachdem der Bot auf einem Server mit über 1 Mio. Nutzern hinzugefügt wurde. Sharing V2 (eingeführt im Juli 2026) ist ein komplett eigenes Sharding-System mit einem in Go geschriebenen Manager und vielen weiteren Funktionen.
   - id: upvote-engine
     title: Upvote Engine
     description: Ein performanter Discord Vote-Handler auf Basis einer FaaS-Architektur mit Cloudflare Workers, Queues und D1.
