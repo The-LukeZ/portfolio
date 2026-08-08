@@ -1,19 +1,18 @@
 <script lang="ts">
   import { tick } from "svelte";
+  import { fadeInView } from "$lib/attachments/fadeInView.js";
   import { getMessage } from "$lib/index.js";
   import { projectsByLocale, tags } from "$lib/projects/index.js";
   import { getLocale } from "$lib/paraglide/runtime";
   import { ExternalLink } from "$lib/assets/index.js";
   import { m } from "$lib/paraglide/messages";
 
-  const ALL = "all";
-
-  let selectedTag = $state<string>(ALL);
+  let selectedTag = $state<string>("all");
 
   const localeProjects = $derived(projectsByLocale[getLocale()] ?? projectsByLocale.en);
 
   const filteredProjects = $derived(
-    selectedTag === ALL ? localeProjects : localeProjects.filter((p) => p.tags.includes(selectedTag)),
+    selectedTag === "all" ? localeProjects : localeProjects.filter((p) => p.tags.includes(selectedTag)),
   );
 
   let tabsEl: HTMLElement | undefined = $state();
@@ -63,8 +62,13 @@
         style:mask-image={tabsMask}
         style:-webkit-mask-image={tabsMask}
       >
-        <button type="button" class="tab" class:active={selectedTag === ALL} onclick={() => selectTag(ALL)}>
-          {getMessage(`projects.tag.${ALL}`)()}
+        <button
+          type="button"
+          class="tab"
+          class:active={selectedTag === "all"}
+          onclick={() => selectTag("all")}
+        >
+          {getMessage(`projects.tag.all`)()}
         </button>
         {#each tags as tagId (tagId)}
           <button
@@ -88,7 +92,12 @@
 
     <div class="projects-grid">
       {#each filteredProjects as project, index (project.id)}
-        <div class="project-card fade-in" class:delay-200={index % 2 === 1} id={`project-${project.id}`}>
+        <div
+          class="project-card fade-in"
+          class:delay-200={index % 2 === 1}
+          id={`project-${project.id}`}
+          {@attach fadeInView}
+        >
           <div class="project-header">
             <h3 class="project-title">{project.title}</h3>
             {@render projectLink(project.link, "hide")}
