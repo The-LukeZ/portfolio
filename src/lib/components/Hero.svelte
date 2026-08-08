@@ -48,6 +48,7 @@
   @media screen and (max-width: 768px) {
     .subtitle {
       font-size: 1.2rem;
+      padding-inline: 1rem;
     }
   }
 </style>

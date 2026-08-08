@@ -222,6 +222,8 @@
     color: var(--color-text-primary);
     margin: 0;
     line-height: 1.3;
+    min-width: 0;
+    overflow-wrap: break-word;
   }
 
   @media screen and (max-width: 768px) {
