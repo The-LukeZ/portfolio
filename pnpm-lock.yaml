@@ -33,9 +33,6 @@ importers:
       '@types/node':
         specifier: ^26.1.2
         version: 26.1.2
-      husky:
-        specifier: ^9.1.7
-        version: 9.1.7
       prettier:
         specifier: ^3.9.6
         version: 3.9.6
@@ -1202,11 +1199,6 @@ packages:
 
   human-id@4.2.0:
     resolution: {integrity: sha512-K3GbkIWqyvvlpfhBPlbEvD97TtqBpAYA4kt+cn2lD2x2HuohzZCibcA2nOlnJT6exqvJLggoB5nv2dNf192nEA==}
-    hasBin: true
-
-  husky@9.1.7:
-    resolution: {integrity: sha512-5gs5ytaNjBrh5Ow3zrvdUUY+0VxIuWVL4i9irt6friV+BqdCfmV11CQTWMiBYWHbXhco+J1kHfTOUkePhCDvMA==}
-    engines: {node: '>=18'}
     hasBin: true
 
   immutable@5.1.9:
@@ -2502,8 +2494,6 @@ snapshots:
       function-bind: 1.1.2
 
   human-id@4.2.0: {}
-
-  husky@9.1.7: {}
 
   immutable@5.1.9:
     optional: true
