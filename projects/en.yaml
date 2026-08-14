@@ -129,3 +129,9 @@ projects:
       Old backups restore with the new tool, and new backups restore with the old scripts. Has encryption support for the archive via age-encryption.
     link: https://gitlab.com/lukez-bots/ticketonapp/mongo-backup
     tags: [other]
+
+  - id: falubot
+    title: Falu
+    description: A Discord bot that delegates role assignments with a command - admins can configure conditions for role assignment which get compiled into a tree of rules, executed at runtime. Built in a monorepo with a dashboard (SvelteKit of course) and a bot (HTTP interactions only) - both on Cloudflare Workers. Using my own Honocord library for the bot. Source-available on GitLab, but not "open source".
+    link: https://gitlab.com/lukez-bots/falu
+    tags: [discord, discord-bot]

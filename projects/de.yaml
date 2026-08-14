@@ -82,3 +82,7 @@ projects:
       Ein kleines, sicheres und portables Tool zur Sicherung von MongoDB Datenbanken. Es erstellt ein gzip-Archiv der Datenbank, speichert es in einem S3-kompatiblen Bucket (entwickelt für Cloudflare R2) und verwaltet die Aufbewahrungsdauer - als einzelne statische Go-Binary, die man auf jedem Server installieren können, auf dem MongoDB läuft.
       Es ist ein abwärtskompatibler Ersatz für eine Backup-Lösung mit Shell-Skript und Docker, welche ich vorher benutzt habe: dasselbe Archivformat, dasselbe Layout der Objekt-Keys, dieselbe Aufbewahrungsrichtlinie.
       Alte Backups lassen sich mit dem neuen Tool wiederherstellen, neue Backups hingegen mit den alten Skripten (zumindst, wennn nicht verschlüsselt). Das Archiv wird über "age-encryption" verschlüsselt.
+
+  - id: falubot
+    title: Falu
+    description: Ein Discord-Bot, der die Zuweisung von Rollen über einen Befehl delegiert – Admins können Bedingungen für die Rollenzuweisung konfigurieren, die zu einem Baum aus Regeln zusammengestellt und zur Laufzeit ausgeführt werden. Erstellt in einem Monorepo mit einem Dashboard (SvelteKit natürlich) und einem Bot (nur HTTP-Interactions) – beides auf Cloudflare Workers. Für den Bot verwende ich meine eigene Honocord-Bibliothek. Der Quellcode ist auf GitLab verfügbar, aber nicht "Open Source".
