@@ -135,3 +135,9 @@ projects:
     description: A Discord bot that delegates role assignments with a command - admins can configure conditions for role assignment which get compiled into a tree of rules, executed at runtime. Built in a monorepo with a dashboard (SvelteKit of course) and a bot (HTTP interactions only) - both on Cloudflare Workers. Using my own Honocord library for the bot. Source-available on GitLab, but not "open source".
     link: https://gitlab.com/lukez-bots/falu
     tags: [discord, discord-bot]
+
+  - id: discord-bots-recommendations
+    title: Discord Bots Recommendations
+    description: A website that recommends Discord bots I use and recommend. Built with Plain Svelte + Vite, deployed again on Cloudflare Workers - but as Static Assets, not as a Worker. Bots are described similarly to the projects in this repository in YAML files, which are then bundled with a Vite plugin into a .js file consumed by the website.
+    link: https://bots.thelukez.com
+    tags: [websites]

@@ -86,3 +86,7 @@ projects:
   - id: falubot
     title: Falu
     description: Ein Discord-Bot, der die Zuweisung von Rollen über einen Befehl delegiert – Admins können Bedingungen für die Rollenzuweisung konfigurieren, die zu einem Baum aus Regeln zusammengestellt und zur Laufzeit ausgeführt werden. Erstellt in einem Monorepo mit einem Dashboard (SvelteKit natürlich) und einem Bot (nur HTTP-Interactions) – beides auf Cloudflare Workers. Für den Bot verwende ich meine eigene Honocord-Bibliothek. Der Quellcode ist auf GitLab verfügbar, aber nicht "Open Source".
+
+  - id: discord-bots-recommendations
+    title: Discord Bots Recommendations
+    description: Eine Website, die Discord-Bots empfiehlt, die ich nutze und empfehle. Mit Plain Svelte + Vite gebaut, mal wieder auf Cloudflare Workers deployed - aber als Static Assets, nicht als Worker. Bots werden ähnlich wie die Projekte in diesem Repository in YAML-Dateien beschrieben, die dann mit einem Vite-Plugin in eine .js Datei gebündelt werden, die dann von der Website genutzt wird.
