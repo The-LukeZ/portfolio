@@ -1,0 +1,4 @@
+/.well-known/discord
+  Content-Type: text/plain
+/.well-known/microsoft-identity-association.json
+  Content-Type: application/json
