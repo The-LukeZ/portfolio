@@ -90,3 +90,15 @@ projects:
   - id: discord-bots-recommendations
     title: Discord Bots Recommendations
     description: Eine Website, die Discord-Bots empfiehlt, die ich nutze und empfehle. Mit Plain Svelte + Vite gebaut, mal wieder auf Cloudflare Workers deployed - aber als Static Assets, nicht als Worker. Bots werden ähnlich wie die Projekte in diesem Repository in YAML-Dateien beschrieben, die dann mit einem Vite-Plugin in eine .js Datei gebündelt werden, die dann von der Website genutzt wird.
+
+  - id: mailer
+    title: Mailer
+    description: Versende E-Mails von deinen eigenen Domain-Adressen über Cloudflare Email Sending. In Markdown schreiben, Absender wählen, Empfänger auflisten (auch per CSV/XLSX-Import mit Variablen pro Empfänger) - jeder bekommt seine eigene Kopie, und die App protokolliert, was verschickt wurde. SvelteKit-App plus ein Queue-basierter Worker, der jede Kopie versendet, mit D1 und Drizzle. Quellcode auf GitLab.
+
+  - id: spellcode
+    title: Spellcode
+    description: Ein Buchstabierhelfer, der Texte nach DIN 5009 buchstabiert. Der Code ist noch nicht öffentlich, wird es aber bald.
+
+  - id: mytranslate
+    title: MyTranslate
+    description: Ein Frontend für die DeepL-API zum Übersetzen von Texten und Verwalten von DeepL-v3-Glossaren. Ähnlich wie deepl.com/translate, nur schneller und ohne Ballast. Gebaut mit SvelteKit (Svelte 5 Runes) und als Cloudflare Worker deployed. Muss selbst gehostet werden.

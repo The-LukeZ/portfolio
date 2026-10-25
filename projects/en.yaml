@@ -141,3 +141,21 @@ projects:
     description: A website that recommends Discord bots I use and recommend. Built with Plain Svelte + Vite, deployed again on Cloudflare Workers - but as Static Assets, not as a Worker. Bots are described similarly to the projects in this repository in YAML files, which are then bundled with a Vite plugin into a .js file consumed by the website.
     link: https://bots.thelukez.com
     tags: [websites]
+
+  - id: mailer
+    title: Mailer
+    description: Send email from your own domain addresses through Cloudflare Email Sending. Write in markdown, pick a sender, list recipients (also via CSV/XLSX import with per-recipient variables) - everyone gets their own copy, and the app keeps a record of what went out. SvelteKit app plus a queue-based worker that sends each copy, with D1 and Drizzle. Source on GitLab.
+    link: https://gitlab.com/lz-workshop/web/mailer
+    tags: [websites, other]
+
+  - id: spellcode
+    title: Spellcode
+    description: A spelling helper that spells out texts according to DIN 5009 (the German spelling alphabet). The code is not public yet, but will be shortly.
+    link: https://spell.thelukez.com/
+    tags: [websites]
+
+  - id: mytranslate
+    title: MyTranslate
+    description: A front-end for the DeepL API to translate text and manage DeepL v3 glossaries. Very similar to deepl.com/translate, just faster and without the bloat. Built with SvelteKit 3 and deployed as a Cloudflare Worker. Must be self-hosted.
+    link: https://github.com/The-LukeZ/mytranslate
+    tags: [websites]
