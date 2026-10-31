@@ -159,3 +159,9 @@ projects:
     description: A front-end for the DeepL API to translate text and manage DeepL v3 glossaries. Very similar to deepl.com/translate, just faster and without the bloat. Built with SvelteKit 3 and deployed as a Cloudflare Worker. Must be self-hosted.
     link: https://github.com/The-LukeZ/mytranslate
     tags: [websites]
+
+  - id: bugcord-mcp
+    title: Bugcord MCP
+    description: A public, authless MCP server that gives AI assistants fast, precise access to Discord's developer docs. Structured lookups for endpoints, objects and enums, identifier-aware search, stable section ids and change tracking between refreshes. A daily workflow indexes the official docs repository into D1 (SQLite full-text search). Everything runs on Cloudflare Workers, built with Hono and the Agents SDK.
+    link: https://bugcord-mcp.dev/
+    tags: [discord, other]
