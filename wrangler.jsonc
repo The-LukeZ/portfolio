@@ -15,15 +15,6 @@
   "preview_urls": false,
   "observability": {
     "enabled": false,
-    "logs": {
-      "enabled": true,
-      "head_sampling_rate": 0.8,
-      "persist": true,
-      "invocation_logs": true,
-    },
-    "traces": {
-      "enabled": false,
-    },
   },
   "route": {
     "custom_domain": true,
