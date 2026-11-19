@@ -6,6 +6,7 @@
   import { m } from "#lib/paraglide/messages.js";
   import { getLocale, localizeHref } from "#lib/paraglide/runtime.js";
   import { projectsByLocale } from "#lib/projects/index.js";
+  import { ArrowLeft } from "@lucide/svelte";
   import type { PageProps } from "./$types";
 
   let { data }: PageProps = $props();
@@ -43,7 +44,7 @@
 
 <main class="post-page">
   <article class="wrap">
-    <a class="back" href={localizeHref("/feed")}>&larr; {m["feed.back"]()}</a>
+    <a class="back" href={localizeHref("/feed")}><ArrowLeft aria-hidden="true" /> {m["feed.back"]()}</a>
 
     <header class="post-head">
       <p class="meta mono">
@@ -88,9 +89,16 @@
   }
 
   .back {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
     margin-bottom: 1.5rem;
     font-weight: 600;
+  }
+
+  .back :global(svg) {
+    width: 1.125rem;
+    height: 1.125rem;
   }
 
   .post-head {

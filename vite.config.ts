@@ -8,6 +8,8 @@ import { generateProjectsPlugin } from "./vite-plugins/generate-projects.js";
 import { generatePostsPlugin } from "./vite-plugins/generate-posts.js";
 
 export default defineConfig({
+  // @lucide/svelte ships Svelte components; pre-bundling them breaks their compilation.
+  optimizeDeps: { exclude: ["@lucide/svelte"] },
   plugins: [
     devtoolsJson(),
     generateProjectsPlugin(),

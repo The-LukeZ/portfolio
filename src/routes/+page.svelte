@@ -7,6 +7,7 @@
   import Social from "#lib/components/Social.svelte";
   import { m } from "#lib/paraglide/messages.js";
   import { localizeHref } from "#lib/paraglide/runtime.js";
+  import { ArrowRight } from "@lucide/svelte";
 </script>
 
 <svelte:head>
@@ -30,7 +31,7 @@
   <Hero />
   <Projects />
   <p class="feed-link">
-    <a href={localizeHref("/feed")}>{m["home.feedLink"]()} &rarr;</a>
+    <a href={localizeHref("/feed")}>{m["home.feedLink"]()} <ArrowRight aria-hidden="true" /></a>
   </p>
   <About />
   <Social />
@@ -44,5 +45,16 @@
     margin: 0 auto 3rem;
     padding: 0 1.5rem;
     font-weight: 700;
+  }
+
+  .feed-link a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  .feed-link :global(svg) {
+    width: 1.125rem;
+    height: 1.125rem;
   }
 </style>
