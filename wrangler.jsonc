@@ -5,6 +5,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "portfolio",
+  "account_id": "92d72ac72fb811275ce6e8d5263a9816",
   "main": "src/worker.ts",
   // The SvelteKit build output, imported by src/worker.ts (custom entry for the cron trigger).
   "alias": { "sveltekit-worker": "./.svelte-kit/cloudflare/_worker.js" },
@@ -20,7 +21,7 @@
       // Tracks which feed posts were announced to Discord (migrations/).
       "binding": "FEED_DB",
       "database_name": "portfolio-feed",
-      "database_id": "00000000-0000-0000-0000-000000000000",
+      "database_id": "cd952de0-c546-4449-bd45-d1cfbb3cbed3",
       "migrations_dir": "migrations",
     },
   ],
