@@ -13,28 +13,31 @@
     "format": "prettier --write .",
     "lint": "prettier --check .",
     "deploy": "pnpm run build && wrangler deploy",
-    "gen": "wrangler types ./src/worker-configuration.d.ts"
+    "gen": "wrangler types ./src/worker-configuration.d.ts --include-main-module=false"
   },
   "devDependencies": {
-    "@inlang/paraglide-js": "^2.23.1",
-    "@sveltejs/adapter-cloudflare": "^7.2.9",
-    "@sveltejs/kit": "^2.70.2",
-    "@sveltejs/vite-plugin-svelte": "^7.2.0",
-    "@types/node": "^26.1.2",
-    "prettier": "^3.9.6",
+    "@inlang/paraglide-js": "^3.2.2",
+    "@sveltejs/adapter-cloudflare": "^8.0.2",
+    "@sveltejs/kit": "^3.2.0",
+    "@sveltejs/vite-plugin-svelte": "^7.3.1",
+    "@types/node": "^26.6.6",
+    "prettier": "^3.10.1",
     "prettier-plugin-svelte": "^4.1.1",
-    "svelte": "^5.56.8",
-    "svelte-check": "^4.7.4",
-    "typescript": "7.0.2",
-    "vite": "^8.2.1",
-    "vite-plugin-devtools-json": "^1.1.0",
-    "wrangler": "^4.119.0",
-    "yaml": "^2.9.0"
+    "svelte": "^5.57.3",
+    "svelte-check": "^4.7.8",
+    "typescript": "^6.0.3",
+    "vite": "^8.3.8",
+    "vite-plugin-devtools-json": "^1.1.2",
+    "wrangler": "^4.164.0",
+    "yaml": "^2.9.1"
   },
   "dependencies": {
     "@fontsource/poppins": "^5.3.0",
-    "@sveltejs/adapter-node": "^5.5.7",
-    "discord-api-types": "^0.38.52"
+    "discord-api-types": "^0.38.59"
   },
-  "packageManager": "pnpm@11.20.0"
+  "packageManager": "pnpm@12.21.0",
+  "imports": {
+    "#lib": "./src/lib/index.ts",
+    "#lib/*": "./src/lib/*"
+  }
 }

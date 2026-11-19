@@ -1,4 +1,4 @@
-import { baseLocale, locales } from "$lib/paraglide/runtime";
+import { baseLocale, locales } from "#lib/paraglide/runtime.js";
 
 export const prerender = true;
 

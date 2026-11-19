@@ -1,6 +1,6 @@
 // From discord-api-types/v10:
 
-import { toTitleCase } from "$lib";
+import { toTitleCase } from "#lib";
 
 /**
  * These flags are exported as `BigInt`s and NOT numbers. Wrapping them in `Number()`

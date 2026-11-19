@@ -10,10 +10,10 @@
     Tailwind,
     Typescript,
     Vue,
-  } from "$lib/assets/index.js";
-  import SQLite from "$lib/assets/technologies/SQLite.svelte";
-  import Workers from "$lib/assets/technologies/Workers.svelte";
-  import { m } from "$lib/paraglide/messages";
+  } from "#lib/assets/index.js";
+  import SQLite from "#lib/assets/technologies/SQLite.svelte";
+  import Workers from "#lib/assets/technologies/Workers.svelte";
+  import { m } from "#lib/paraglide/messages.js";
   import ExternalLink from "./ExternalLink.svelte";
 
   let descExpanded = $state(false);

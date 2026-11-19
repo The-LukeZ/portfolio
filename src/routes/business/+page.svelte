@@ -1,9 +1,9 @@
 <script lang="ts">
-  import Footer from "$lib/components/Footer.svelte";
-  import Header from "$lib/components/Header.svelte";
-  import BusinessHero from "$lib/components/business/BusinessHero.svelte";
-  import LegalNotice from "$lib/components/business/LegalNotice.svelte";
-  import { m } from "$lib/paraglide/messages";
+  import Footer from "#lib/components/Footer.svelte";
+  import Header from "#lib/components/Header.svelte";
+  import BusinessHero from "#lib/components/business/BusinessHero.svelte";
+  import LegalNotice from "#lib/components/business/LegalNotice.svelte";
+  import { m } from "#lib/paraglide/messages.js";
 </script>
 
 <svelte:head>

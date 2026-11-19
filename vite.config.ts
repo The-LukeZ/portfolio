@@ -1,3 +1,5 @@
+import adapter from "@sveltejs/adapter-cloudflare";
+import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
 import { paraglideVitePlugin } from "@inlang/paraglide-js";
 import { sveltekit } from "@sveltejs/kit/vite";
 import { defineConfig } from "vite";
@@ -17,6 +19,21 @@ export default defineConfig({
       cleanOutdir: true, // Clean the output directory before generating files
       emitPrettierIgnore: true, // Emit a .prettierignore file to ignore generated files
     }),
-    sveltekit(),
+    sveltekit({
+      // Consult https://svelte.dev/docs/kit/integrations
+      // for more information about preprocessors
+      preprocess: vitePreprocess(),
+      // See https://svelte.dev/docs/kit/adapters for more information about adapters.
+      adapter: adapter({
+        fallback: "plaintext",
+      }),
+      output: {
+        bundleStrategy: "single",
+      },
+      version: {
+        name: "1",
+        pollInterval: 300_000,
+      },
+    }),
   ],
 });

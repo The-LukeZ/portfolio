@@ -1,4 +1,4 @@
-import { Discord, Email, FileText, Github, Music, YouTube } from "$lib/assets/index.js";
+import { Discord, Email, FileText, Github, Music, YouTube } from "#lib/assets/index.js";
 import { m } from "./paraglide/messages";
 
 // Helper function to safely access dynamic message keys - utility function first

@@ -1,13 +1,13 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
   import { page } from "$app/state";
-  import { SvelteBitfield } from "$lib/bitfield.svelte";
-  import Checkbox from "$lib/components/Checkbox.svelte";
+  import { SvelteBitfield } from "#lib/bitfield.svelte.ts";
+  import Checkbox from "#lib/components/Checkbox.svelte";
   import {
     GetGeneralPermissionsArray,
     GetTextPermissionsArray,
     GetVoicePermissionsArray,
-  } from "$lib/permissions";
+  } from "#lib/permissions.ts";
   import { onMount } from "svelte";
   import "./permissions.css";
 
@@ -23,9 +23,8 @@
     const newHash = value === "0" ? "" : value;
     if (window.location.hash.slice(1) !== newHash) {
       goto(newHash ? `#${newHash}` : page.url.pathname, {
-        replaceState: true,
-        keepFocus: true,
-        noScroll: true,
+        replace: true,
+        reset: false,
       });
     }
   });

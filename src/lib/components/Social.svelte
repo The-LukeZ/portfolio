@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { socialLinks } from "$lib/index.js";
-  import { m } from "$lib/paraglide/messages";
+  import { socialLinks } from "#lib/index.js";
+  import { m } from "#lib/paraglide/messages.js";
 </script>
 
 <section id="social" class="section social">

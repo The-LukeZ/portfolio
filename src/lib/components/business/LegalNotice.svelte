@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { m } from "$lib/paraglide/messages";
+  import { m } from "#lib/paraglide/messages.js";
 </script>
 
 <section class="section business-notice" id="notice">

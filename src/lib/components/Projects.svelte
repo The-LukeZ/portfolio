@@ -1,11 +1,11 @@
 <script lang="ts">
   import { tick } from "svelte";
-  import { fadeInView } from "$lib/attachments/fadeInView.js";
-  import { getMessage } from "$lib/index.js";
-  import { projectsByLocale, tags } from "$lib/projects/index.js";
-  import { getLocale } from "$lib/paraglide/runtime";
-  import { ExternalLink } from "$lib/assets/index.js";
-  import { m } from "$lib/paraglide/messages";
+  import { fadeInView } from "#lib/attachments/fadeInView.js";
+  import { getMessage } from "#lib/index.js";
+  import { projectsByLocale, tags } from "#lib/projects/index.js";
+  import { getLocale } from "#lib/paraglide/runtime.js";
+  import { ExternalLink } from "#lib/assets/index.js";
+  import { m } from "#lib/paraglide/messages.js";
 
   let selectedTag = $state<string>("all");
 

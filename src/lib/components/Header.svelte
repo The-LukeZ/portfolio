@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { getLocale, localizeHref, setLocale, type Locale } from "$lib/paraglide/runtime";
+  import { getLocale, localizeHref, setLocale, type Locale } from "#lib/paraglide/runtime.js";
 </script>
 
 <header class="header no-select">

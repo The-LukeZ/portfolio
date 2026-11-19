@@ -1,13 +1,13 @@
 <script lang="ts">
-  import { browser } from "$app/environment";
-  import { observeAll } from "$lib/attachments/fadeInView.js";
-  import About from "$lib/components/About.svelte";
-  import Footer from "$lib/components/Footer.svelte";
-  import Header from "$lib/components/Header.svelte";
-  import Hero from "$lib/components/Hero.svelte";
-  import Projects from "$lib/components/Projects.svelte";
-  import Social from "$lib/components/Social.svelte";
-  import { m } from "$lib/paraglide/messages";
+  import { browser } from "$app/env";
+  import { observeAll } from "#lib/attachments/fadeInView.js";
+  import About from "#lib/components/About.svelte";
+  import Footer from "#lib/components/Footer.svelte";
+  import Header from "#lib/components/Header.svelte";
+  import Hero from "#lib/components/Hero.svelte";
+  import Projects from "#lib/components/Projects.svelte";
+  import Social from "#lib/components/Social.svelte";
+  import { m } from "#lib/paraglide/messages.js";
 
   $effect(() => {
     if (browser) {
