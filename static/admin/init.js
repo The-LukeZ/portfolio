@@ -17,6 +17,8 @@ CMS.init({
       auth_endpoint: "api/cms/auth",
     },
     site_url: "https://thelukez.com",
+    // ASCII-only slugs (the build rejects anything but a-z, 0-9 and -).
+    slug: { encoding: "ascii", clean_accents: true },
     display_url: "https://thelukez.com/feed",
     media_folder: "static/media/feed",
     public_folder: "/media/feed",
@@ -32,19 +34,14 @@ CMS.init({
         extension: "md",
         format: "frontmatter",
         create: true,
-        slug: "{{fields.slug}}",
+        // posts/<unix timestamp of the publish date>/<slugified title>.md, URL /feed/<ts>/<title>.
+        // Generated once on the first save; editing the title or date later keeps the URL.
+        slug: "{{slug}}",
+        path: "{{fields.date | date('X')}}/{{slug}}",
         identifier_field: "title",
         summary: "{{title}} ({{date}})",
         sortable_fields: ["date", "title"],
-        preview_path: "feed/{{fields.slug}}",
         fields: [
-          {
-            name: "slug",
-            label: "Slug",
-            widget: "string",
-            pattern: ["^[a-z0-9-]+$", "Only a-z, 0-9 and -"],
-            hint: "Part of the URL (/feed/<slug>). Never change it after publishing.",
-          },
           { name: "title", label: "Title", widget: "string", maxlength: 200 },
           { name: "date", label: "Publish date", ...datetime, default: "{{now}}" },
           {
@@ -83,7 +80,15 @@ CMS.init({
             default: true,
             hint: "Drafts are never published. Turn off to publish at the date above.",
           },
-          { name: "updated", label: "Updated", ...datetime, required: false },
+          {
+            name: "updated",
+            label: "Updated",
+            ...datetime,
+            required: false,
+            // Stamped on every save of an existing entry. The site only shows it when it is
+            // later than the publish date.
+            auto_now: ["update"],
+          },
           { name: "body", label: "Body", widget: "markdown" },
         ],
       },

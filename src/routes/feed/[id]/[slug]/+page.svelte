@@ -7,9 +7,8 @@
   import { getLocale, localizeHref } from "#lib/paraglide/runtime.js";
   import { projectsByLocale } from "#lib/projects/index.js";
   import ArrowLeft from "@lucide/svelte/icons/arrow-left";
-  import type { PageProps } from "./$types";
 
-  let { data }: PageProps = $props();
+  let { data } = $props();
   const post = $derived(data.post);
 
   // Kept in sync with SITE_URL/postUrl in #lib/server/feed (server-only module).

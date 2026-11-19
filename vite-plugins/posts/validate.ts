@@ -5,7 +5,8 @@ export const MAX_SUMMARY = 300;
 export const MAX_IMAGE_BYTES = 2 * 1024 * 1024;
 export const IMAGE_PREFIX = "/media/feed/";
 
-const SLUG = /^[a-z0-9-]+$/;
+/** "<unix seconds>/<title slug>", the path the CMS creates (posts/<ts>/<slug>.md). */
+const SLUG = /^\d{9,11}\/[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const OFFSET = /(Z|[+-]\d{2}:\d{2})$/;
 const IMAGE_EXT = /\.(png|jpe?g|webp|gif)$/i;
 
@@ -35,14 +36,13 @@ export function validatePosts(posts: PostSource[], ctx: ValidationContext): stri
   for (const post of posts) {
     const problems: string[] = [];
 
-    for (const field of ["slug", "title", "date", "summary", "body"] as const) {
+    for (const field of ["title", "date", "summary", "body"] as const) {
       if (!isText(post[field])) problems.push(`${field} is required`);
     }
 
     if (isText(post.slug)) {
-      if (!SLUG.test(post.slug)) problems.push(`slug "${post.slug}" may only contain a-z, 0-9 and -`);
-      if (post.slug !== post.file.replace(/\.md$/, "")) {
-        problems.push(`slug "${post.slug}" must equal the file name without .md`);
+      if (!SLUG.test(post.slug)) {
+        problems.push(`path must be posts/<unix timestamp>/<slug>.md, slug only a-z, 0-9 and single -`);
       }
       const other = seen.get(post.slug);
       if (other) problems.push(`duplicate slug "${post.slug}" (also used by ${other})`);

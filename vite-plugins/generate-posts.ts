@@ -20,10 +20,11 @@ function readSources(): { sources: PostSource[]; problems: string[] } {
   if (!fs.existsSync(POSTS_DIR)) return { sources: [], problems: [] };
   const sources: PostSource[] = [];
   const problems: string[] = [];
-  for (const file of fs
-    .readdirSync(POSTS_DIR)
+  const files = (fs.readdirSync(POSTS_DIR, { recursive: true }) as string[])
+    .map((f) => f.split(path.sep).join("/"))
     .filter((f) => f.endsWith(".md"))
-    .sort()) {
+    .sort();
+  for (const file of files) {
     try {
       sources.push(parsePostFile(file, fs.readFileSync(path.join(POSTS_DIR, file), "utf-8")));
     } catch (err) {
@@ -61,7 +62,10 @@ function generate(render: Render): string[] {
         summary: s.summary,
         project: s.project,
         image: s.image ? { src: SITE_URL + s.image.src, alt: s.image.alt } : null,
-        updated: s.updated ? new Date(s.updated).toISOString() : null,
+        // The CMS stamps `updated` on every save, including the one that publishes a draft:
+        // only an edit after the publish date counts as an update.
+        updated:
+          s.updated && Date.parse(s.updated) > date.getTime() ? new Date(s.updated).toISOString() : null,
         html: render(s.body),
       };
     })

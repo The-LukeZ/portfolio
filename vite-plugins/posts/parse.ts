@@ -1,9 +1,10 @@
 import { parse } from "yaml";
 
-/** A post file as written in posts/*.md, before validation. */
+/** A post file as written in posts/<unix-ts>/<title-slug>.md, before validation. */
 export interface PostSource {
-  /** File name, e.g. "my-post.md". */
+  /** Path relative to posts/ with forward slashes, e.g. "1763650000/my-post.md". */
   file: string;
+  /** Derived from the path: "<unix-ts>/<title-slug>". Never written in the file. */
   slug: string;
   title: string;
   /** As written; must carry a timezone offset. */
@@ -47,7 +48,7 @@ export function parsePostFile(file: string, raw: string): PostSource {
 
   return {
     file,
-    slug: fm.slug as string,
+    slug: file.replace(/\.md$/, ""),
     title: fm.title as string,
     date: fm.date as string,
     summary: fm.summary as string,
