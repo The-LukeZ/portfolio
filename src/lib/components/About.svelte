@@ -14,200 +14,189 @@
   import SQLite from "#lib/assets/technologies/SQLite.svelte";
   import Workers from "#lib/assets/technologies/Workers.svelte";
   import { m } from "#lib/paraglide/messages.js";
-  import ExternalLink from "./ExternalLink.svelte";
 
-  let descExpanded = $state(false);
-  let aiExpanded = $state(false);
+  const tech = [
+    { name: "Svelte", href: "https://svelte.dev/", icon: Svelte },
+    { name: "TypeScript", href: "https://www.typescriptlang.org/", icon: Typescript },
+    { name: "Cloudflare Workers", href: "https://workers.cloudflare.com/", icon: Workers },
+    { name: "Supabase", href: "https://supabase.com/", icon: Supabase },
+    { name: "Tailwind CSS", href: "https://tailwindcss.com/", icon: Tailwind },
+    { name: "Vue", href: "https://vuejs.org/", icon: Vue },
+    { name: "Astro", href: "https://astro.build/", icon: Astro },
+    { name: "Symfony", href: "https://symfony.com/", icon: Symfony },
+    { name: "Swift", href: "https://www.swift.org/", icon: Swift },
+    { name: "PostgreSQL", href: "https://www.postgresql.org/", icon: Postgres },
+    { name: "SQLite", href: "https://sqlite.org/", icon: SQLite },
+    { name: "MongoDB", href: "https://www.mongodb.com/", icon: MongoDB },
+  ];
 </script>
 
-<section id="about" class="section about">
-  <h2 class="section-title fade-in delay-200">{m["about.title"]()}</h2>
-  <div class="about-content">
-    <div class="collapsible fade-in delay-200" class:expanded={descExpanded}>
-      <p>
-        {@html m["about.description"]({
-          age: "21",
-        })}
-      </p>
-    </div>
-    <button
-      type="button"
-      class="toggle-btn fade-in delay-200"
-      aria-expanded={descExpanded}
-      onclick={() => (descExpanded = !descExpanded)}
-    >
-      {descExpanded ? m["about.showLess"]() : m["about.showMore"]()}
-    </button>
+<section id="about" class="about" aria-labelledby="about-title">
+  <div class="text">
+    <h2 id="about-title">{m["about.title"]()}</h2>
+    <p>
+      {@html m["about.description"]({
+        age: "21",
+      })}
+    </p>
 
-    <h3 class="fade-in delay-200">{m["about.aboutAiTitle"]()}</h3>
-    <div class="collapsible fade-in delay-200" class:expanded={aiExpanded}>
+    <details class="ai">
+      <summary>{m["about.aboutAiTitle"]()}</summary>
       <p>{m["about.aboutAi"]()}</p>
-    </div>
-    <button
-      type="button"
-      class="toggle-btn fade-in delay-200"
-      aria-expanded={aiExpanded}
-      onclick={() => (aiExpanded = !aiExpanded)}
-    >
-      {aiExpanded ? m["about.showLess"]() : m["about.showMore"]()}
-    </button>
+    </details>
   </div>
 
-  <h3 class="tech-stack-title fade-in delay-200">{m["about.techstackTitle"]()}</h3>
-  <div class="tech-stack">
-    <ExternalLink href="https://supabase.com/">
-      <Supabase class="fade-in" />
-    </ExternalLink>
-    <ExternalLink href="https://svelte.dev/">
-      <Svelte class="fade-in" />
-    </ExternalLink>
-    <ExternalLink href="https://tailwindcss.com/">
-      <Tailwind class="fade-in" />
-    </ExternalLink>
-    <ExternalLink href="https://www.typescriptlang.org/">
-      <Typescript class="fade-in" />
-    </ExternalLink>
-    <ExternalLink href="https://symfony.com/">
-      <Symfony class="fade-in" />
-    </ExternalLink>
-    <ExternalLink href="https://vuejs.org/">
-      <Vue class="fade-in" />
-    </ExternalLink>
-    <ExternalLink href="https://www.swift.org/">
-      <Swift class="fade-in" />
-    </ExternalLink>
-    <ExternalLink href="https://www.mongodb.com/">
-      <MongoDB class="fade-in" />
-    </ExternalLink>
-    <ExternalLink href="https://www.postgresql.org/">
-      <Postgres class="fade-in" />
-    </ExternalLink>
-    <ExternalLink href="https://workers.cloudflare.com/">
-      <Workers class="fade-in" />
-    </ExternalLink>
-    <ExternalLink href="https://astro.build/">
-      <Astro class="fade-in" />
-    </ExternalLink>
-    <ExternalLink href="https://sqlite.org/">
-      <SQLite class="fade-in" />
-    </ExternalLink>
-  </div>
+  <aside class="tech" aria-labelledby="tech-title">
+    <h3 id="tech-title">{m["about.techstackTitle"]()}</h3>
+    <ul role="list">
+      {#each tech as t (t.name)}
+        <li>
+          <a href={t.href} target="_blank" rel="noopener noreferrer" title={t.name}>
+            <t.icon />
+            <span>{t.name}</span>
+          </a>
+        </li>
+      {/each}
+    </ul>
+  </aside>
 </section>
 
 <style>
-  .about-content {
-    max-width: 800px;
+  .about {
+    max-width: var(--max-width);
     margin: 0 auto;
-    text-align: center;
+    padding: 0 1.5rem 5rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 22rem;
+    gap: 4rem;
+    align-items: start;
   }
 
-  .about-content p {
-    text-wrap: balance;
-    font-size: 1.2rem;
-    color: var(--color-text-secondary);
-    line-height: 1.8;
-    margin: 0;
+  h2 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    font-stretch: 75%;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    margin-bottom: 1rem;
   }
 
-  .collapsible {
-    position: relative;
-    max-height: 7.2rem; /* ~4 lines at line-height 1.8 */
-    overflow: hidden;
-    transition: max-height 300ms ease-in-out;
+  .text > p {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--ink-2);
+    max-width: 68ch;
+    text-wrap: pretty;
   }
 
-  .collapsible.expanded {
-    max-height: 100rem;
+  .text > p :global(b) {
+    color: var(--ink);
+    font-weight: 700;
   }
 
-  /* Fade-out mask while collapsed */
-  .collapsible::after {
-    content: "";
-    position: absolute;
-    inset-inline: 0;
-    bottom: 0;
-    height: 3rem;
-    background: linear-gradient(to bottom, transparent, var(--color-primary-bg));
-    pointer-events: none;
-    opacity: 1;
-    transition: opacity 200ms ease-in-out;
+  .ai {
+    margin-top: 1.75rem;
+    max-width: 68ch;
+    border-top: 1px solid var(--steel-2);
+    border-bottom: 1px solid var(--steel-2);
   }
 
-  .collapsible.expanded::after {
-    opacity: 0;
-  }
-
-  .toggle-btn {
-    margin-top: 0.5rem;
-    background: none;
-    border: none;
+  .ai summary {
     cursor: pointer;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--color-accent);
-    padding: 0.25rem 0.5rem;
+    list-style: none;
+    padding: 0.875rem 0;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  .toggle-btn:hover {
-    text-decoration: underline;
+  .ai summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .ai summary::after {
+    content: "";
+    width: 0.5rem;
+    height: 0.5rem;
+    border-right: 2px solid var(--label);
+    border-bottom: 2px solid var(--label);
+    rotate: 45deg;
+    translate: 0 -2px;
+    transition: rotate 300ms var(--ease-out);
+  }
+
+  .ai[open] summary::after {
+    rotate: 225deg;
+    translate: 0 2px;
+  }
+
+  .ai summary:hover {
+    color: var(--label);
+  }
+
+  .ai p {
+    color: var(--ink-2);
+    padding-bottom: 1.25rem;
+    line-height: 1.7;
+  }
+
+  .tech {
+    padding-top: 0.5rem;
   }
 
   h3 {
-    text-align: center;
-    margin-top: 2rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    font-stretch: 80%;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-3);
+    margin-bottom: 0.75rem;
   }
 
-  .tech-stack {
-    margin-top: 0.75rem;
+  .tech ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.25rem 1rem;
+  }
+
+  .tech a {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100%;
-    gap: 1rem;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.375rem 0;
+    color: var(--ink-2);
+    font-size: 0.9375rem;
   }
 
-  .tech-stack :global(svg) {
-    width: 2.5rem;
-    height: 2.5rem;
-    transition: all 200ms ease-in-out;
+  .tech a:hover {
+    opacity: 1;
+    text-decoration: none;
+    color: var(--ink);
   }
 
-  /* Staggering transition delay */
-  .tech-stack :global(svg:nth-child(1)) {
-    transition-delay: 200ms;
+  .tech a :global(svg) {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
   }
-  .tech-stack :global(svg:nth-child(2)) {
-    transition-delay: 225ms;
+
+  @media (max-width: 900px) {
+    .about {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
   }
-  .tech-stack :global(svg:nth-child(3)) {
-    transition-delay: 250ms;
-  }
-  .tech-stack :global(svg:nth-child(4)) {
-    transition-delay: 275ms;
-  }
-  .tech-stack :global(svg:nth-child(5)) {
-    transition-delay: 300ms;
-  }
-  .tech-stack :global(svg:nth-child(6)) {
-    transition-delay: 325ms;
-  }
-  .tech-stack :global(svg:nth-child(7)) {
-    transition-delay: 350ms;
-  }
-  .tech-stack :global(svg:nth-child(8)) {
-    transition-delay: 375ms;
-  }
-  .tech-stack :global(svg:nth-child(9)) {
-    transition-delay: 400ms;
-  }
-  .tech-stack :global(svg:nth-child(10)) {
-    transition-delay: 425ms;
-  }
-  .tech-stack :global(svg:nth-child(11)) {
-    transition-delay: 450ms;
-  }
-  .tech-stack :global(svg:nth-child(12)) {
-    transition-delay: 475ms;
+
+  @media (max-width: 640px) {
+    .about {
+      padding: 0 1rem 3.5rem;
+    }
+
+    .text > p {
+      font-size: 1.0625rem;
+    }
   }
 </style>

@@ -1,45 +1,78 @@
-@import "@fontsource/poppins";
+@import "@fontsource-variable/archivo/wdth.css";
+@import "@fontsource/jetbrains-mono/500.css";
 
 :root {
-  --color-primary-bg: oklch(14.479% 0.00002 271.152);
-  --color-secondary-bg: oklch(21.779% 0.00002 271.152);
-  --color-accent: oklch(75.053% 0.17907 58.273);
+  color-scheme: dark;
+
+  /* Steel cabinet */
+  --steel-0: oklch(13.5% 0.004 250);
+  --steel-1: oklch(17% 0.005 250);
+  --steel-2: oklch(21.5% 0.006 250);
+  --steel-3: oklch(26% 0.007 250);
+  --steel-edge: oklch(33% 0.008 250);
+  --steel-hi: oklch(40% 0.008 250);
+
+  /* Label strip */
+  --label: oklch(75.053% 0.17907 58.273);
+  --label-ink: oklch(22% 0.045 58);
+
+  --ink: oklch(94% 0.006 85);
+  --ink-2: oklch(76% 0.008 250);
+  --ink-3: oklch(64% 0.008 250);
+
+  --font-sans: "Archivo Variable", "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Legacy tokens, still used by /business and tools */
+  --color-primary-bg: var(--steel-1);
+  --color-secondary-bg: var(--steel-2);
+  --color-accent: var(--label);
   --color-accent-hover: oklch(80.357% 0.16873 73.344);
-  --color-text-primary: white;
-  --color-text-secondary: oklch(80% 0 271);
-  --color-border: oklch(32% 0 271);
+  --color-text-primary: var(--ink);
+  --color-text-secondary: var(--ink-2);
+  --color-border: var(--steel-edge);
   --color-accent-background: oklch(75.053% 0.17907 58.273 / 0.1);
 
-  --nav-overlay: oklch(0% 0 0 / 0.3);
+  --nav-overlay: oklch(17% 0.005 250 / 0.85);
   --mobile-overlay: oklch(0% 0 0 / 0.5);
 
   --nav-height: 60px;
-  --max-width: 1400px;
+  --max-width: 1280px;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family:
-    "Poppins",
-    "Inter",
-    Roboto,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+  font-family: var(--font-sans);
 }
 
 html {
   scroll-behavior: smooth;
+  scrollbar-color: var(--steel-hi) var(--steel-0);
 }
 
 body {
-  background-color: var(--color-primary-bg);
-  color: var(--color-text-primary);
+  background-color: var(--steel-1);
+  color: var(--ink);
   line-height: 1.6;
   overflow-x: hidden;
+  font-variant-numeric: tabular-nums;
+}
+
+::selection {
+  background: var(--label);
+  color: var(--label-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--label);
+  outline-offset: 3px;
+}
+
+.mono {
+  font-family: var(--font-mono);
 }
 
 .no-select {

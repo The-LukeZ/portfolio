@@ -8,10 +8,11 @@
 
 <style>
   .footer {
-    background-color: var(--color-primary-bg);
+    background-color: var(--steel-0);
     text-align: center;
-    padding: 2rem;
-    border-top: 1px solid var(--color-border);
-    color: var(--color-text-secondary);
+    padding: 1.5rem;
+    border-top: 1px solid var(--steel-2);
+    color: var(--ink-3);
+    font-size: 0.875rem;
   }
 </style>

@@ -2,53 +2,64 @@
   import { m } from "#lib/paraglide/messages.js";
 </script>
 
-<section id="home" class="hero">
-  <div class="hero-content">
+<section id="home" class="nameplate">
+  <img src="/LukeZ.webp" alt="" width="96" height="96" class="avatar" />
+  <div>
     <h1>LukeZ</h1>
-    <h2 class="subtitle">{m["hero.subtitle"]()}</h2>
+    <p class="subtitle">{m["hero.subtitle"]()}</p>
   </div>
 </section>
 
 <style>
-  .hero {
-    min-height: 60vh;
-    padding: 6rem 0;
+  .nameplate {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2.75rem 1.5rem 1.75rem;
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
+    gap: 1.75rem;
   }
 
-  .hero-content {
-    max-width: 800px;
+  .avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: 4px;
+    border: 1px solid var(--steel-edge);
+    flex-shrink: 0;
+    object-fit: cover;
   }
 
-  .hero-content h1 {
-    font-size: 4rem;
+  h1 {
+    font-size: clamp(3rem, 8vw, 5.5rem);
     font-weight: 800;
-    margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--color-text-primary) 0%, var(--color-accent) 60%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  @media screen and (max-width: 768px) {
-    .hero-content h1 {
-      font-size: 2.5rem;
-    }
+    font-stretch: 72%;
+    text-transform: uppercase;
+    line-height: 0.9;
+    letter-spacing: -0.01em;
   }
 
   .subtitle {
-    font-size: 1.5rem;
-    color: var(--color-text-secondary);
-    margin-bottom: 2rem;
+    margin-top: 0.75rem;
+    font-size: clamp(1.0625rem, 2vw, 1.3125rem);
+    color: var(--ink-2);
+    max-width: 44ch;
+    text-wrap: balance;
   }
 
-  @media screen and (max-width: 768px) {
+  @media (max-width: 640px) {
+    .nameplate {
+      padding: 1.75rem 1rem 1.25rem;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .avatar {
+      width: 56px;
+      height: 56px;
+    }
+
     .subtitle {
-      font-size: 1.2rem;
-      padding-inline: 1rem;
+      margin-top: 0.5rem;
     }
   }
 </style>

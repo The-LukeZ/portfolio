@@ -18,7 +18,7 @@
     "showLess": "Show less"
   },
   "projects": {
-    "title": "Featured Projects",
+    "title": "Projects",
     "subtitle": "Yes, I build a lot of stuff.",
     "cta": "View",
     "tag": {
@@ -28,7 +28,13 @@
       "libraries": "Libraries & Tools",
       "websites": "Websites",
       "other": "Other"
-    }
+    },
+    "details": "Details",
+    "close": "Close",
+    "dormant": "Not actively maintained",
+    "count": "{count} projects",
+    "main": "Main projects",
+    "more": "There is a ton more on my <a href=\"https://github.com/The-LukeZ\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub</a> and GitLab..."
   },
   "findMe": {
     "title": "Find Me",
@@ -45,5 +51,8 @@
       "emailLabel": "<b>Email:</b> <a href=\"mailto:{email}\">{email}</a>"
     }
   },
-  "footer": "&copy; 2025 LukeZ. All rights reserved."
+  "footer": "&copy; 2025 LukeZ. All rights reserved.",
+  "header": {
+    "language": "Language"
+  }
 }

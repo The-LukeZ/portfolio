@@ -1,4 +1,10 @@
 # Source of truth for project data. Tag ids here become "projects.tag.<id>" paraglide message keys.
+# Optional per-project fields:
+#   featured: true   -> shown as a large drawer at the top (add `proof` and `summary` too)
+#   proof: ...       -> short proof line, e.g. usage numbers (localizable)
+#   summary: ...     -> one-sentence summary for featured drawers (localizable)
+#   dormant: true    -> no longer actively maintained (hollow label)
+# The order of projects defines their part numbers (LZ-01, LZ-02, ...).
 tags:
   - discord
   - discord-bot
@@ -12,18 +18,27 @@ projects:
     description: A modern, advanced ticketing bot for Discord. Launched after 130 hours of work, with a full dashboard rewrite in early 2026. Continues to grow, now on almost 100 servers. Website and dashboard built with SvelteKit, bot itself built with Bun + Discord.js, with a really good automation feature people love. Documentation made with Astro Starlight and running on Cloudflare Workers.
     link: https://ticketon.app
     tags: [discord, discord-bot]
+    featured: true
+    proof: 100+ servers
+    summary: Ticketing bot for Discord with a SvelteKit dashboard and automations people love.
 
   - id: supportmail
     title: SupportMail
     description: A modern Discord Modmail bot running on almost 1000 servers, started in 2023. Built with Bun and TypeScript, plus surrounding services such as a website with a blog and a custom CMS I built into the dashboard, powered by Sätteri as its markdown processor and a content editor with markdown QOL features (image insertion, hyperlinks, etc). Sharding and a shard-status page was added in 2026 after the bot got added to a server with over 1M users. Sharing V2 (introduced in July 2026) is a completely custom sharding system with a manager written in Go and many more things.
     link: https://supportmail.dev
     tags: [discord, discord-bot]
+    featured: true
+    proof: 1000+ servers, since 2023
+    summary: Modmail bot for Discord with its own sharding system, dashboard, blog and CMS.
 
   - id: tomu
     title: Tomu
     description: Shared lists for family, flatmates and friends. No account, no password - lists are shared via a label (e.g. "Family") passed on once by link or QR code, and everyone with that label gets all its lists, including future ones. Changes sync instantly, the app works offline and lists are end-to-end encrypted on the device, so not even I can read them. Web app (installable to the home screen), currently in beta.
     link: https://tomu.foo/
     tags: [websites]
+    featured: true
+    proof: Beta, end-to-end encrypted
+    summary: Shared lists for family, flatmates and friends. No account, works offline.
 
   - id: upvote-engine
     title: Upvote Engine

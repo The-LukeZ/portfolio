@@ -1,23 +1,36 @@
 <script lang="ts">
-  import { getLocale, localizeHref, setLocale, type Locale } from "#lib/paraglide/runtime.js";
+  import { page } from "$app/state";
+  import { m } from "#lib/paraglide/messages.js";
+  import { getLocale, localizeHref, type Locale } from "#lib/paraglide/runtime.js";
+
+  const languages: { id: Locale; label: string; name: string }[] = [
+    { id: "en", label: "EN", name: "English" },
+    { id: "de", label: "DE", name: "Deutsch" },
+  ];
+
+  // Re-read on every navigation so the active state always matches the URL.
+  const current = $derived((page.url, getLocale()));
 </script>
 
 <header class="header no-select">
   <div class="header-container">
-    <a href={localizeHref("/")} class="logo font-inter">LukeZ</a>
+    <a href={localizeHref("/")} class="logo">LukeZ</a>
 
-    <select
-      id="language-select"
-      aria-label="Select Language"
-      class="language-select"
-      onchange={(e) => {
-        const lang = e.currentTarget.value;
-        setLocale(lang as Locale, { reload: true });
-      }}
-    >
-      <option value="en" selected={getLocale() === "en"}>English</option>
-      <option value="de" selected={getLocale() === "de"}>Deutsch</option>
-    </select>
+    <div class="lang" role="group" aria-label={m["header.language"]()}>
+      {#each languages as lang (lang.id)}
+        <a
+          class="lang-btn mono"
+          href={localizeHref(page.url.pathname, { locale: lang.id })}
+          hreflang={lang.id}
+          lang={lang.id}
+          aria-current={current === lang.id ? "true" : undefined}
+          aria-label={lang.name}
+          data-sveltekit-reload
+        >
+          {lang.label}
+        </a>
+      {/each}
+    </div>
   </div>
 </header>
 
@@ -30,13 +43,11 @@
     height: var(--nav-height);
     background: var(--nav-overlay);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--steel-edge);
     z-index: 1000;
-    padding: 0.5rem 1.5rem;
+    padding: 0 1.5rem;
     display: flex;
     align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
   }
 
   .header-container {
@@ -49,42 +60,55 @@
   }
 
   .logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--color-accent);
+    font-size: 1.375rem;
+    font-weight: 800;
+    font-stretch: 75%;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--ink);
     text-decoration: none;
-    transition: color 150ms ease-in-out;
   }
 
   .logo:hover {
-    color: var(--color-accent-hover);
-  }
-
-  .language-select {
-    display: inline-flex;
-    align-items: center;
-    border: none;
-    border-radius: 8px;
-    font-weight: 500;
-    cursor: pointer;
+    opacity: 1;
     text-decoration: none;
-    appearance: none;
-    background: var(--color-secondary-bg);
-    border: 1px solid var(--color-border);
-    padding: 0.5rem 1rem;
-    color: var(--color-text-primary);
-    font-size: 1rem;
-    transition: all 200ms ease-in-out;
+    color: var(--label);
   }
 
-  .language-select:hover {
-    border-color: var(--color-accent);
-    background: var(--color-accent-background);
+  .lang {
+    display: flex;
+    border: 1px solid var(--steel-edge);
+    border-radius: 3px;
+    overflow: hidden;
   }
 
-  .language-select option {
-    background: var(--color-secondary-bg);
-    color: var(--color-text-primary);
-    width: fit-content;
+  .lang-btn {
+    background: var(--steel-1);
+    border: 0;
+    color: var(--ink-3);
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    padding: 0.375rem 0.75rem;
+    text-decoration: none;
+    transition: color 150ms var(--ease-out);
+  }
+
+  .lang-btn + .lang-btn {
+    border-left: 1px solid var(--steel-edge);
+  }
+
+  .lang-btn:hover {
+    opacity: 1;
+    text-decoration: none;
+    color: var(--ink);
+  }
+
+  .lang-btn[aria-current="true"] {
+    background: var(--label);
+    color: var(--label-ink);
+  }
+
+  .lang-btn:focus-visible {
+    outline-offset: -3px;
   }
 </style>
