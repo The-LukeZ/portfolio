@@ -26,7 +26,10 @@ export async function sendWebhook(
   webhookUrl: string,
   payload: RESTPostAPIWebhookWithTokenJSONBody,
 ): Promise<void> {
-  const res = await fetch(`${webhookUrl}?wait=true`, {
+  // The URL may already carry a query (e.g. ?thread_id= for forum threads).
+  const url = new URL(webhookUrl);
+  url.searchParams.set("wait", "true");
+  const res = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
