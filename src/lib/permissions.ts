@@ -492,7 +492,7 @@ export function GetTextPermissionsArray() {
     SendPolls: "Create Polls",
   };
   return keys.map((key) => ({
-    label: toTitleCase(key),
+    label: labelOverwrites[key] ?? toTitleCase(key),
     value: PermissionFlagsBits[key],
   }));
 }
