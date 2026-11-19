@@ -7,6 +7,7 @@
   import { getLocale, localizeHref } from "#lib/paraglide/runtime.js";
   import { projectsByLocale } from "#lib/projects/index.js";
   import ArrowLeft from "@lucide/svelte/icons/arrow-left";
+  import type { Attachment } from "svelte/attachments";
 
   let { data } = $props();
   const post = $derived(data.post);
@@ -17,6 +18,19 @@
   const project = $derived(
     post.project ? projectsByLocale[getLocale()].find((p) => p.id === post.project) : undefined,
   );
+
+  // Opens links to other origins in a new tab. Delegated, so it covers the {@html} body.
+  const externalLinksInNewTab: Attachment<HTMLElement> = (node) => {
+    function onclick(event: MouseEvent) {
+      const link = (event.target as Element | null)?.closest("a[href]");
+      if (!(link instanceof HTMLAnchorElement) || link.origin === location.origin) return;
+      // Set before the default action runs, so the browser opens it in a new tab.
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+    }
+    node.addEventListener("click", onclick);
+    return () => node.removeEventListener("click", onclick);
+  };
 </script>
 
 <svelte:head>
@@ -65,7 +79,7 @@
       <img class="cover" src={post.image.src} alt={post.image.alt} />
     {/if}
 
-    <div class="prose selectable">
+    <div class="prose selectable" {@attach externalLinksInNewTab}>
       <!-- eslint-disable-next-line svelte/no-at-html-tags -- rendered at build time from our own posts, raw HTML escaped -->
       {@html post.html}
     </div>
