@@ -32,3 +32,13 @@ pnpm deploy   # build then wrangler deploy
 ```
 
 See `CLAUDE.md` for architecture details.
+
+## Ko-Fi Feed Template
+
+```txt
+[Title]
+
+[1-2 sentences: what's new / why it matters]
+
+Read more: https://thelukez.com/feed/<ts>/<slug>
+```
