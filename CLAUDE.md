@@ -34,6 +34,8 @@ No test suite exists in this repo.
 
 **Project data is generated, not hand-maintained**: `projects/en.yaml` and `projects/de.yaml` are the source of truth (id, title, description, link, tags). `vite-plugins/generate-projects.ts` (a custom vite plugin, runs on dev/build) reads both YAML files and emits `src/lib/projects/index.ts` (`projectsByLocale`, `tags`) — do not hand-edit that generated file. Tag ids become `projects.tag.<id>` Paraglide message keys. `src/lib/components/Projects.svelte` consumes `projectsByLocale[locale]` and supports client-side tag filtering.
 
+**Feed posts are generated too**: posts live in `posts/<slug>.md` (frontmatter + Markdown, cover images in `static/media/feed/`). `vite-plugins/generate-posts.ts` validates them (invalid posts fail the build), renders Markdown at build time with `satteri` + `shiki` (`vite-plugins/posts/`) and emits the gitignored, server-only `src/lib/server/feed/generated/posts.ts` (drafts dropped). Do not hand-edit it. `satteri` is a native module: only `vite-plugins/**` may import it. Runtime code reads posts via `src/lib/server/feed/index.ts` (`publishedPosts`, `publishedPost`), which applies the published rule (date not in the future) per request.
+
 **Social links**: `socialLinks` lives in `src/lib/index.ts` (hand-maintained, not generated) and drives `src/lib/components/Social.svelte`.
 
 **Discord permissions calculator** (`src/routes/discord-permissions/`): a standalone tool independent of the main portfolio content.

@@ -5,11 +5,13 @@ import { sveltekit } from "@sveltejs/kit/vite";
 import { defineConfig } from "vite";
 import devtoolsJson from "vite-plugin-devtools-json";
 import { generateProjectsPlugin } from "./vite-plugins/generate-projects.js";
+import { generatePostsPlugin } from "./vite-plugins/generate-posts.js";
 
 export default defineConfig({
   plugins: [
     devtoolsJson(),
     generateProjectsPlugin(),
+    generatePostsPlugin(),
     paraglideVitePlugin({
       project: "./project.inlang",
       outdir: "./src/lib/paraglide",
