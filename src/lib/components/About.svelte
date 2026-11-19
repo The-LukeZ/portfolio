@@ -34,7 +34,7 @@
 <section id="about" class="about" aria-labelledby="about-title">
   <div class="text">
     <h2 id="about-title">{m["about.title"]()}</h2>
-    <p>
+    <p class="selectable">
       {@html m["about.description"]({
         age: "21",
       })}
@@ -42,7 +42,7 @@
 
     <details class="ai">
       <summary>{m["about.aboutAiTitle"]()}</summary>
-      <p>{m["about.aboutAi"]()}</p>
+      <p class="selectable">{m["about.aboutAi"]()}</p>
     </details>
   </div>
 
@@ -181,6 +181,12 @@
     width: 1.25rem;
     height: 1.25rem;
     flex-shrink: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ai summary::after {
+      transition: none;
+    }
   }
 
   @media (max-width: 900px) {

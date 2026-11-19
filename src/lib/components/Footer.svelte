@@ -3,7 +3,7 @@
 </script>
 
 <footer class="footer">
-  <p>{@html m.footer()}</p>
+  <p>{@html m.footer({ year: String(new Date().getFullYear()) })}</p>
 </footer>
 
 <style>

@@ -4,7 +4,7 @@
 
 <section class="section business-notice" id="notice">
   <div class="business-container">
-    <div class="notice-content">
+    <div class="notice-content selectable">
       <p>
         LukeZ Development by Luca Hentschel<br />
         Schneeberger Str. 31<br />

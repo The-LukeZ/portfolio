@@ -23,7 +23,7 @@
   <link rel="canonical" href="https://thelukez.com/" />
 </svelte:head>
 
-<Header />
+<Header showLogo={false} />
 
 <main>
   <Hero />

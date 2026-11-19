@@ -8,7 +8,7 @@
     <h1 class="business-title">LukeZ Development by Luca Hentschel</h1>
     <p class="business-subtitle">{m["business.subtitle"]()}</p>
 
-    <div class="business-info">
+    <div class="business-info selectable">
       <p>{@html m["business.description"]()}</p>
       <p>{@html m["business.projectsText"]({ projectsLink: localizeHref("/#projects") })}</p>
     </div>

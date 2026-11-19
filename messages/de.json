@@ -34,7 +34,7 @@
     "dormant": "Nicht mehr aktiv gepflegt",
     "count": "{count} Projekte",
     "main": "Hauptprojekte",
-    "more": "Auf meinem <a href=\"https://github.com/The-LukeZ\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub</a> und GitLab liegt noch jede Menge mehr..."
+    "more": "Auf meinem <a href=\"https://github.com/The-LukeZ\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub</a> und <a href=\"https://gitlab.com/TheLukeZ\" target=\"_blank\" rel=\"noopener noreferrer\">GitLab</a> liegt noch jede Menge mehr..."
   },
   "findMe": {
     "title": "Soziale Medien",
@@ -51,7 +51,7 @@
       "emailLabel": "<b>E-Mail:</b> <a href=\"mailto:{email}\">{email}</a>"
     }
   },
-  "footer": "&copy; 2025 LukeZ. Alle Rechte vorbehalten.",
+  "footer": "&copy; {year} LukeZ. Alle Rechte vorbehalten.",
   "header": {
     "language": "Sprache"
   }

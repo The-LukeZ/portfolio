@@ -25,7 +25,7 @@ const socialLinks = [
   {
     name: "Discord",
     icon: Discord,
-    url: "discord://-/users/506893652266844162",
+    url: "https://discord.gg/CkreDcF2PU",
   },
   {
     name: "Spotify",

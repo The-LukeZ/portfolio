@@ -10,11 +10,18 @@
 
   // Re-read on every navigation so the active state always matches the URL.
   const current = $derived((page.url, getLocale()));
+
+  /** The homepage nameplate already carries the name, so the header drops its wordmark there. */
+  let { showLogo = true }: { showLogo?: boolean } = $props();
 </script>
 
-<header class="header no-select">
+<header class="header" class:bare={!showLogo}>
   <div class="header-container">
-    <a href={localizeHref("/")} class="logo">LukeZ</a>
+    {#if showLogo}
+      <a href={localizeHref("/")} class="logo">LukeZ</a>
+    {:else}
+      <span></span>
+    {/if}
 
     <div class="lang" role="group" aria-label={m["header.language"]()}>
       {#each languages as lang (lang.id)}
@@ -42,12 +49,18 @@
     right: 0;
     height: var(--nav-height);
     background: var(--nav-overlay);
-    backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--steel-edge);
     z-index: 1000;
     padding: 0 1.5rem;
     display: flex;
     align-items: center;
+  }
+
+  /* On the homepage the nameplate is the rail: the switch sits on the page, not on a bar. */
+  .header.bare {
+    position: absolute;
+    background: transparent;
+    border-bottom: 0;
   }
 
   .header-container {

@@ -1,17 +1,18 @@
 # Localization overrides for projects/en.yaml. Only id/title/description/proof/summary here -
 # link and tags are structural and always come from en.yaml.
 projects:
+  - id: supportmail
+    title: SupportMail
+    description: Ein moderner Discord Modmail-Bot auf fast 1000 Servern, gestartet 2023. Entwickelt mit Bun und TypeScript, dazu umgebende Services wie eine Website mit Blog und einem eigenen CMS, das ich in das Dashboard eingebaut habe, mit Sätteri als Markdown-Prozessor und einem Content-Editor mit Markdown-QOL-Features (Bilder einfügen, Hyperlinks, etc). 2026 wurde Sharding und eine Shard-Status-Seite dafür hinzugefügt, nachdem der Bot auf einem Server mit über 1 Mio. Nutzern hinzugefügt wurde. Sharing V2 (eingeführt im Juli 2026) ist ein komplett eigenes Sharding-System mit einem in Go geschriebenen Manager und vielen weiteren Funktionen.
+    proof: 1000+ Server, seit 2023
+    summary: Modmail-Bot für Discord mit eigenem Sharding-System, Dashboard, Blog und CMS.
+
   - id: ticketon
     title: Ticketon
     description: Ein moderner, umfangreicher Ticketing-Bot für Discord. Nach 130 Arbeitsstunden gelauncht, mit einem kompletten Dashboard-Rewrite Anfang 2026. Wächst weiter, mittlerweile auf fast 100 Servern. Website und Dashboard mit SvelteKit gebaut, der Bot selbst mit Bun + Discord.js, mit einem richtig guten Automatisierungs-Feature, welches die Leute lieben. Die Dokumentation wurde mit Astro Starlight erstellt und läuft auf Cloudflare Workers.
     proof: 100+ Server
     summary: Ticketing-Bot für Discord mit SvelteKit-Dashboard und Automatisierungen, die die Leute lieben.
 
-  - id: supportmail
-    title: SupportMail
-    description: Ein moderner Discord Modmail-Bot auf fast 1000 Servern, gestartet 2023. Entwickelt mit Bun und TypeScript, dazu umgebende Services wie eine Website mit Blog und einem eigenen CMS, das ich in das Dashboard eingebaut habe, mit Sätteri als Markdown-Prozessor und einem Content-Editor mit Markdown-QOL-Features (Bilder einfügen, Hyperlinks, etc). 2026 wurde Sharding und eine Shard-Status-Seite dafür hinzugefügt, nachdem der Bot auf einem Server mit über 1 Mio. Nutzern hinzugefügt wurde. Sharing V2 (eingeführt im Juli 2026) ist ein komplett eigenes Sharding-System mit einem in Go geschriebenen Manager und vielen weiteren Funktionen.
-    proof: 1000+ Server, seit 2023
-    summary: Modmail-Bot für Discord mit eigenem Sharding-System, Dashboard, Blog und CMS.
   - id: tomu
     title: Tomu
     description: Gemeinsame Listen für Familie, WG und Freunde. Kein Konto, kein Passwort - Listen werden über ein Label (z.B. "Familie") geteilt, das einmal per Link oder QR-Code weitergegeben wird, und alle mit diesem Label bekommen dessen Listen, auch zukünftige. Änderungen werden sofort synchronisiert, die App funktioniert offline und Listen werden auf dem Gerät Ende-zu-Ende verschlüsselt, sodass nicht mal ich sie lesen kann. Web-App (auf dem Homescreen installierbar), aktuell in der Beta.

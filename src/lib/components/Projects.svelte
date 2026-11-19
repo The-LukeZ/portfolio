@@ -36,6 +36,12 @@
     return escaped.replace(/([./-])(?=\S)/g, "$1<wbr>");
   }
 
+  /** Keep hyphenated words like "end-to-end" on one line in the proof headline. */
+  function keepHyphens(text: string) {
+    const escaped = text.replace(/[&<>"]/g, (c) => `&#${c.charCodeAt(0)};`);
+    return escaped.replace(/(\S+-\S+)/g, '<span class="nowrap">$1</span>');
+  }
+
   /** Open drawer per row (one at a time). */
   let open = $state<Record<string, string | null>>({});
   /** Last opened drawer per row, kept so the tray content stays put while it closes. */
@@ -95,10 +101,10 @@
                     <span class="part mono">{project.partNo}</span>
                   </div>
                   {#if project.proof}
-                    <p class="proof">{project.proof}</p>
+                    <p class="proof">{@html keepHyphens(project.proof)}</p>
                   {/if}
                   {#if project.summary}
-                    <p class="summary">{project.summary}</p>
+                    <p class="summary selectable">{project.summary}</p>
                   {/if}
                   <div class="actions">
                     <a href={project.link} class="visit" target="_blank" rel="noopener noreferrer">
@@ -142,13 +148,13 @@
             {#if current}
               <div class="tray-body">
                 <div class="tray-head">
-                  <h4>{current.title}</h4>
+                  <h4 class="selectable">{current.title}</h4>
                   <span class="part mono">{current.partNo}</span>
                   {#if current.dormant}
                     <span class="dormant-note">{m["projects.dormant"]()}</span>
                   {/if}
                 </div>
-                <p class="description">{current.description}</p>
+                <p class="description selectable">{current.description}</p>
                 <div class="tray-actions">
                   <a href={current.link} class="tray-link" target="_blank" rel="noopener noreferrer">
                     {m["projects.cta"]()}
@@ -233,8 +239,7 @@
 
   .row {
     display: grid;
-    grid-template-columns: 11rem 1fr;
-    column-gap: 1rem;
+    grid-template-columns: 1fr;
     padding: 0.75rem 0.25rem;
   }
 
@@ -243,12 +248,12 @@
   }
 
   .plate {
-    align-self: start;
-    margin-top: 0.5rem;
+    justify-self: start;
+    margin: 0 0 0.625rem;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    gap: 0.5rem;
+    gap: 0.75rem;
     font-size: 0.875rem;
     font-weight: 700;
     font-stretch: 80%;
@@ -272,7 +277,7 @@
     list-style: none;
     display: grid;
     gap: 0.5rem;
-    grid-template-columns: repeat(auto-fill, minmax(10.5rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
   }
 
   .row.big .drawers {
@@ -305,7 +310,7 @@
     content: "";
     position: absolute;
     left: 50%;
-    bottom: 0.625rem;
+    bottom: 0.5rem;
     width: 2.75rem;
     height: 0.4375rem;
     translate: -50% 0;
@@ -351,16 +356,16 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.375rem;
-    min-height: 5.5rem;
-    padding: 0.75rem 0.75rem 1.5rem;
+    gap: 0.3rem;
+    min-height: 4.625rem;
+    padding: 0.625rem 0.625rem 1.125rem;
     cursor: pointer;
     font: inherit;
     color: inherit;
   }
 
   .drawer-small .label {
-    font-size: 0.9375rem;
+    font-size: 0.8125rem;
   }
 
   .drawer-small:hover {
@@ -396,9 +401,17 @@
   }
 
   .proof {
-    font-size: 1.0625rem;
-    font-weight: 700;
+    font-size: clamp(1.75rem, 2.6vw, 2.5rem);
+    font-weight: 800;
+    font-stretch: 72%;
+    line-height: 1.05;
+    letter-spacing: -0.005em;
     color: var(--ink);
+    text-wrap: balance;
+  }
+
+  .proof :global(.nowrap) {
+    white-space: nowrap;
   }
 
   .summary {
@@ -459,7 +472,6 @@
 
   /* ---- Tray (the pulled-out drawer contents) ---- */
   .tray {
-    grid-column: 2;
     display: grid;
     grid-template-rows: 0fr;
     transition: grid-template-rows 420ms var(--ease-out);
@@ -553,10 +565,6 @@
       margin: 0 0 0.625rem;
       gap: 0.75rem;
     }
-
-    .tray {
-      grid-column: 1;
-    }
   }
 
   @media (max-width: 640px) {
@@ -572,8 +580,40 @@
       padding: 0.5rem;
     }
 
-    .drawers {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+    /* Phones: small drawers shrink to single-line label tags that wrap like a parts list. */
+    .row:not(.big) .drawers {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.375rem;
+    }
+
+    .row:not(.big) .drawers li {
+      flex: 0 1 auto;
+      max-width: 100%;
+    }
+
+    .drawer-small {
+      flex-direction: row;
+      align-items: center;
+      gap: 0.5rem;
+      min-height: 0;
+      padding: 0.375rem 0.5rem 0.4375rem 0.375rem;
+      box-shadow:
+        inset 0 1px 0 var(--steel-hi),
+        inset 0 -3px 0 var(--steel-1),
+        0 1px 2px oklch(0% 0 0 / 0.35);
+    }
+
+    .drawer-small::after {
+      display: none;
+    }
+
+    .drawer-small .label {
+      padding: 0.2rem 0.4rem;
+    }
+
+    .drawer-small .part {
+      font-size: 0.6875rem;
     }
 
     .row.big .drawers {
