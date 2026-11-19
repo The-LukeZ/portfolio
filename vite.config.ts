@@ -26,8 +26,11 @@ export default defineConfig({
       // for more information about preprocessors
       preprocess: vitePreprocess(),
       // See https://svelte.dev/docs/kit/adapters for more information about adapters.
+      // The adapter overwrites `main` of its config, so it gets its own file; dev bindings still come from wrangler.jsonc.
       adapter: adapter({
         fallback: "plaintext",
+        config: "wrangler.sveltekit.jsonc",
+        platformProxy: { configPath: "wrangler.jsonc" },
       }),
       output: {
         bundleStrategy: "single",

@@ -5,7 +5,9 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "portfolio",
-  "main": ".svelte-kit/cloudflare/_worker.js",
+  "main": "src/worker.ts",
+  // The SvelteKit build output, imported by src/worker.ts (custom entry for the cron trigger).
+  "alias": { "sveltekit-worker": "./.svelte-kit/cloudflare/_worker.js" },
   "compatibility_date": "2026-07-12",
   "compatibility_flags": ["nodejs_compat"],
   "assets": {
@@ -13,9 +15,19 @@
     "directory": ".svelte-kit/cloudflare",
   },
   "preview_urls": false,
-  "observability": {
-    "enabled": false,
-  },
+  "d1_databases": [
+    {
+      // Tracks which feed posts were announced to Discord (migrations/).
+      "binding": "FEED_DB",
+      "database_name": "portfolio-feed",
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "migrations",
+    },
+  ],
+  // Announces newly published feed posts to Discord.
+  "triggers": { "crons": ["*/5 * * * *"] },
+  "secrets": { "required": ["DISCORD_WEBHOOK_URL", "GITHUB_CLIENT_ID", "GITHUB_CLIENT_SECRET"] },
+  "observability": { "enabled": true, "logs": { "invocation_logs": false } },
   "route": {
     "custom_domain": true,
     "pattern": "thelukez.com",
