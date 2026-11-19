@@ -66,5 +66,5 @@ Worker secrets (required, see `secrets.required` in `wrangler.jsonc`; local valu
 - Path alias `#lib` → `src/lib`, declared as Node subpath imports in `package.json` `imports` (SvelteKit 3 dropped `$lib`). Imports need file extensions, e.g. `#lib/utils.js`, `#lib/bitfield.svelte.ts`.
 - Icons from `@lucide/svelte`: always import each icon by its own path, e.g. `import ArrowRight from "@lucide/svelte/icons/arrow-right";`. Never use the package barrel (`import { ArrowRight } from "@lucide/svelte"`): it loads `aliases.js`, which ad blockers block, and the page then fails with a 500 in dev. The package stays in `optimizeDeps.exclude` in `vite.config.ts`.
 - Route types are generated automatically: never write `import type { ... } from "./$types"` or annotate `load`, `GET`, `$props()` with `PageProps`/`PageServerLoad`/`RequestHandler` by hand.
-- `prerender = true` is set once in `src/routes/+layout.ts`; routes only export `prerender = false` to opt out, never a redundant `true`.
+- `prerender = true` is set once in `src/routes/+layout.ts`; pages only export `prerender = false` to opt out. Exception: a `+server.ts` endpoint that no page links to is never found by the crawler, so it needs its own `export const prerender = true` (e.g. `src/routes/admin/projects.json`).
 - `tsconfig.json` excludes `src/lib/paraglide` (generated JS; types come from its `.d.ts` files).
