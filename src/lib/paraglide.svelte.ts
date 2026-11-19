@@ -19,7 +19,7 @@ export class Locale {
 
     overwriteSetLocale((locale) => {
       this.#current = locale;
-      goto(localizeUrl(page.url.pathname, { locale }).href);
+      goto(localizeUrl(page.url.pathname, { locale }).href, { shallow: true });
     });
   }
 }
