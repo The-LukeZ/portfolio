@@ -4,8 +4,8 @@ date: 2026-11-20T00:13:00+01:00
 summary: 'A small update feed for my projects, built into my SvelteKit site on Cloudflare Workers: posts live in git, a CMS writes them, a cron job announces them on Discord.'
 project: portfolio
 image: null
-draft: true
-updated: ''
+draft: false
+updated: 2026-11-20T00:39:56+01:00
 ---
 
 I build a lot of stuff, but news about it was scattered across Discord servers, GitHub releases and Ko-fi. So I added a small feed to my own site. My site is the source of truth, everything else links back here.
