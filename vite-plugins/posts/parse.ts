@@ -17,6 +17,11 @@ export interface PostSource {
   body: string;
 }
 
+const isEmptyImage = (value: unknown) =>
+  value == null ||
+  value === "" ||
+  (typeof value === "object" && Object.values(value as object).every((v) => v == null || v === ""));
+
 const FRONTMATTER = /^---\n([\s\S]*?)\n---(?:\n|$)/;
 
 /**
@@ -25,7 +30,7 @@ const FRONTMATTER = /^---\n([\s\S]*?)\n---(?:\n|$)/;
  * of an unquoted date survives.
  */
 export function parsePostFile(file: string, raw: string): PostSource {
-  const text = raw.replace(/^﻿/, "").replace(/\r\n?/g, "\n");
+  const text = raw.replace(/^\s*(?=---)/, "").replace(/\r\n?/g, "\n");
   const match = FRONTMATTER.exec(text);
   if (!match) throw new Error(`${file}: missing frontmatter block (--- ... ---)`);
 
@@ -47,7 +52,8 @@ export function parsePostFile(file: string, raw: string): PostSource {
     date: fm.date as string,
     summary: fm.summary as string,
     project: (fm.project as string | undefined) || null,
-    image: (fm.image as PostSource["image"] | undefined) ?? null,
+    // The CMS may save an unset optional image as an object with empty values.
+    image: isEmptyImage(fm.image) ? null : (fm.image as PostSource["image"]),
     draft: (fm.draft as boolean | undefined) ?? false,
     updated: (fm.updated as string | undefined) || null,
     body: text.slice(match[0].length).replace(/^\n+/, ""),

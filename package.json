@@ -5,15 +5,16 @@
   "version": "1.3.0",
   "type": "module",
   "scripts": {
-    "dev": "vite dev",
-    "build": "vite build",
+    "dev": "node scripts/sveltia.mjs check && vite dev",
+    "build": "node scripts/sveltia.mjs check && vite build",
     "preview": "wrangler dev",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "format": "prettier --write .",
     "lint": "prettier --check .",
     "deploy": "pnpm run build && wrangler deploy",
-    "gen": "wrangler types ./src/worker-configuration.d.ts --include-main-module=false"
+    "gen": "wrangler types ./src/worker-configuration.d.ts --include-main-module=false",
+    "sveltia:update": "node scripts/sveltia.mjs update"
   },
   "devDependencies": {
     "@inlang/paraglide-js": "^3.2.2",

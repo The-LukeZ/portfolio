@@ -2,3 +2,10 @@
   Content-Type: text/plain
 /.well-known/microsoft-identity-association.json
   Content-Type: application/json
+
+# Sveltia CMS: keep out of search engines.
+/admin/*
+  X-Robots-Tag: noindex
+/admin/sveltia-cms.js
+  Cross-Origin-Resource-Policy: same-origin
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
