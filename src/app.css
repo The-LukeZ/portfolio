@@ -223,16 +223,6 @@ a:hover {
   transition-delay: 200ms;
 }
 
-.font-inter {
-  font-family:
-    "Inter",
-    Roboto,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
-}
-
 .sr-only {
   position: absolute;
   width: 1px;
