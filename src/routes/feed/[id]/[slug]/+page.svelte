@@ -217,6 +217,11 @@
     line-height: 1.5;
   }
 
+  /* The global `*` rule in app.css sets the sans font on every element, so Shiki's spans need it reset. */
+  .prose :global(pre *) {
+    font-family: inherit;
+  }
+
   .prose :global(table) {
     display: block;
     max-width: 100%;

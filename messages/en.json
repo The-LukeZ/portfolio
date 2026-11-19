@@ -117,6 +117,7 @@
     "empty": "No posts yet.",
     "emptyFilter": "No posts for this filter.",
     "resetFilter": "Show all posts",
+    "loading": "Loading posts…",
     "loadError": "Could not load posts. Try again later.",
     "noscript": "This list needs JavaScript. You can follow the feed via RSS instead:",
     "rss": "RSS feed",

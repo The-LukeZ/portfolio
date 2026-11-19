@@ -11,6 +11,10 @@
   import { getLocale, localizeHref } from "#lib/paraglide/runtime.js";
   import { projectsByLocale } from "#lib/projects/index.js";
   import { onMount } from "svelte";
+  import { flip } from "svelte/animate";
+  import { cubicOut } from "svelte/easing";
+  import { prefersReducedMotion } from "svelte/motion";
+  import { fade } from "svelte/transition";
 
   let status = $state<"loading" | "ready" | "error">("loading");
   let items = $state<FeedListItem[]>([]);
@@ -39,6 +43,9 @@
   );
   const shown = $derived(applyFilter(items, filter));
 
+  // Svelte transitions ignore the media query on their own.
+  const motion = $derived(prefersReducedMotion.current ? 0 : 1);
+
   function setFilter(value: string | null) {
     const url = new URL(page.url.href);
     if (value === null) url.searchParams.delete("project");
@@ -56,6 +63,14 @@
   <meta property="og:image" content="https://thelukez.com/LukeZ.webp" />
   <meta property="og:url" content="https://thelukez.com/feed" />
   <meta property="og:type" content="website" />
+  <!-- Without JS the posts never load: hide the placeholders, the noscript notice explains. -->
+  <noscript
+    ><style>
+      .feed-loading {
+        display: none;
+      }
+    </style></noscript
+  >
 </svelte:head>
 
 <Header />
@@ -74,36 +89,59 @@
       </p>
     </noscript>
 
-    {#if status === "error"}
-      <p class="notice" role="alert">{m["feed.loadError"]()}</p>
+    <!-- Placeholders have the same boxes as the real filters and post, so nothing shifts when they load. -->
+    {#if status === "loading"}
+      <div class="filters feed-loading" aria-hidden="true">
+        <span class="bar pill-bar"></span>
+        <span class="bar pill-bar wide"></span>
+      </div>
+    {:else if status === "ready" && items.length > 0 && options.length > 0}
+      <div class="filters appear" role="group" aria-label={m["feed.filter.label"]()}>
+        <button type="button" aria-pressed={filter === null} onclick={() => setFilter(null)}>
+          {m["feed.filter.all"]()}
+        </button>
+        {#each options as option (option)}
+          <button type="button" aria-pressed={filter === option} onclick={() => setFilter(option)}>
+            {option === GENERAL ? m["feed.filter.general"]() : projectTitle(option)}
+          </button>
+        {/each}
+      </div>
+    {/if}
+
+    {#if status === "loading"}
+      <div class="feed-loading" aria-busy="true">
+        <p class="sr-only" role="status">{m["feed.loading"]()}</p>
+        <ol class="posts" aria-hidden="true">
+          <li class="post">
+            <span class="bar meta-bar"></span>
+            <span class="bar title-bar"></span>
+            <span class="bar summary-bar"></span>
+            <span class="bar summary-bar short"></span>
+          </li>
+        </ol>
+      </div>
+    {:else if status === "error"}
+      <p class="notice appear" role="alert">{m["feed.loadError"]()}</p>
     {:else if status === "ready"}
       {#if items.length === 0}
-        <p class="notice">{m["feed.empty"]()}</p>
+        <p class="notice appear">{m["feed.empty"]()}</p>
       {:else}
-        {#if options.length > 0}
-          <div class="filters" role="group" aria-label={m["feed.filter.label"]()}>
-            <button type="button" aria-pressed={filter === null} onclick={() => setFilter(null)}>
-              {m["feed.filter.all"]()}
-            </button>
-            {#each options as option (option)}
-              <button type="button" aria-pressed={filter === option} onclick={() => setFilter(option)}>
-                {option === GENERAL ? m["feed.filter.general"]() : projectTitle(option)}
-              </button>
-            {/each}
-          </div>
-        {/if}
-
         {#if shown.length === 0}
-          <p class="notice">
+          <p class="notice appear">
             {m["feed.emptyFilter"]()}
             <a href={localizeHref("/feed")} onclick={(e) => (e.preventDefault(), setFilter(null))}>
               {m["feed.resetFilter"]()}
             </a>
           </p>
         {:else}
-          <ol class="posts" role="list">
+          <!-- Removed posts leave at once (an outro would hold their space), the rest slide into place. -->
+          <ol class="posts appear" role="list">
             {#each shown as item (item.slug)}
-              <li class="post">
+              <li
+                class="post"
+                animate:flip={{ duration: 250 * motion, easing: cubicOut }}
+                in:fade={{ duration: 200 * motion, delay: 100 * motion }}
+              >
                 <p class="meta mono">
                   <LocalTime iso={item.date} />
                   <span>{item.project ? projectTitle(item.project) : m["feed.filter.general"]()}</span>
@@ -184,7 +222,10 @@
     font-size: 0.875rem;
     font-weight: 700;
     cursor: pointer;
-    transition: color 150ms var(--ease-out);
+    transition:
+      color 150ms var(--ease-out),
+      background-color 150ms var(--ease-out),
+      border-color 150ms var(--ease-out);
   }
 
   .filters button:hover {
@@ -242,5 +283,70 @@
   .summary {
     margin-top: 0.375rem;
     color: var(--ink-2);
+  }
+
+  .bar {
+    display: block;
+    border-radius: 2px;
+    background: var(--steel-hi);
+    opacity: 0.45;
+  }
+
+  /* Heights match the line boxes of .meta (0.75rem), h2 (1.25rem) and .summary (1rem). */
+  .meta-bar {
+    width: 9rem;
+    height: calc(0.75rem * 1.6);
+  }
+
+  .title-bar {
+    width: 60%;
+    height: calc(1.25rem * 1.2);
+    margin-top: 0.25rem;
+  }
+
+  /* Two summary lines: most summaries wrap once. Each bar is shorter than its line box, the margins fill the rest. */
+  .summary-bar {
+    width: 90%;
+    height: 1rem;
+    margin-top: calc(0.375rem + 0.3rem);
+  }
+
+  .summary-bar.short {
+    width: 55%;
+    margin-top: 0.6rem;
+    margin-bottom: 0.3rem;
+  }
+
+  /* Same box as a filter button: 0.875rem text at line-height 1.6, 0.3rem padding, 1px border. */
+  .pill-bar {
+    width: 2.75rem;
+    height: calc(0.875rem * 1.6 + 0.6rem + 2px);
+  }
+
+  .pill-bar.wide {
+    width: 5.5rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .bar {
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+
+    /* Content replacing a placeholder (or another notice) fades in where the placeholder was. */
+    .appear {
+      animation: appear 250ms var(--ease-out);
+    }
+  }
+
+  @keyframes appear {
+    from {
+      opacity: 0;
+    }
+  }
+
+  @keyframes pulse {
+    50% {
+      opacity: 0.2;
+    }
   }
 </style>

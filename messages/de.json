@@ -117,6 +117,7 @@
     "empty": "Noch keine Beiträge.",
     "emptyFilter": "Keine Beiträge für diesen Filter.",
     "resetFilter": "Alle Beiträge zeigen",
+    "loading": "Beiträge werden geladen…",
     "loadError": "Beiträge konnten nicht geladen werden. Versuch es später nochmal.",
     "noscript": "Diese Liste braucht JavaScript. Du kannst den Feed stattdessen per RSS abonnieren:",
     "rss": "RSS-Feed",
