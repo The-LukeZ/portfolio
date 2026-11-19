@@ -23,21 +23,25 @@
       <span></span>
     {/if}
 
-    <div class="lang" role="group" aria-label={m["header.language"]()}>
-      {#each languages as lang (lang.id)}
-        <a
-          class="lang-btn mono"
-          href={localizeHref(page.url.pathname, { locale: lang.id })}
-          hreflang={lang.id}
-          lang={lang.id}
-          aria-current={current === lang.id ? "true" : undefined}
-          aria-label={lang.name}
-          data-sveltekit-reload
-        >
-          {lang.label}
-        </a>
-      {/each}
-    </div>
+    <nav class="nav">
+      <a class="nav-link" href={localizeHref("/feed")}>{m["nav.feed"]()}</a>
+
+      <div class="lang" role="group" aria-label={m["header.language"]()}>
+        {#each languages as lang (lang.id)}
+          <a
+            class="lang-btn mono"
+            href={localizeHref(page.url.pathname, { locale: lang.id })}
+            hreflang={lang.id}
+            lang={lang.id}
+            aria-current={current === lang.id ? "true" : undefined}
+            aria-label={lang.name}
+            data-sveltekit-reload
+          >
+            {lang.label}
+          </a>
+        {/each}
+      </div>
+    </nav>
   </div>
 </header>
 
@@ -83,6 +87,25 @@
   }
 
   .logo:hover {
+    opacity: 1;
+    text-decoration: none;
+    color: var(--label);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .nav-link {
+    color: var(--ink-2);
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 150ms var(--ease-out);
+  }
+
+  .nav-link:hover {
     opacity: 1;
     text-decoration: none;
     color: var(--label);
