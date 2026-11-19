@@ -1,12 +1,15 @@
 import { baseLocale, locales } from "#lib/paraglide/runtime.js";
+import { postUrl, publishedPosts } from "#lib/server/feed/index.js";
 
-export const prerender = true;
+// Dynamic so scheduled posts appear once their date has passed.
+export const prerender = false;
 
 const SITE_URL = "https://thelukez.com";
 
 /** Routes to expose in the sitemap, one entry per localized path. */
 const routes: { path: string; changefreq: string; priority: string }[] = [
   { path: "", changefreq: "monthly", priority: "1.0" },
+  { path: "feed", changefreq: "weekly", priority: "0.7" },
   { path: "business", changefreq: "monthly", priority: "0.6" },
   { path: "discord-permissions", changefreq: "monthly", priority: "0.5" },
   { path: "textedit", changefreq: "yearly", priority: "0.3" },
@@ -45,14 +48,25 @@ ${alternates}
     })
     .join("\n");
 
+  // Posts are locale-agnostic: one entry each, no alternates.
+  const postUrls = publishedPosts()
+    .map(
+      (post) => `  <url>
+    <loc>${postUrl(post.slug)}</loc>
+    <lastmod>${(post.updated ?? post.date).slice(0, 10)}</lastmod>
+  </url>`,
+    )
+    .join("\n");
+
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${urls}
+${postUrls}
 </urlset>
 `;
 
   return new Response(body, {
-    headers: { "Content-Type": "application/xml" },
+    headers: { "Content-Type": "application/xml", "Cache-Control": "public, max-age=60" },
   });
 }
