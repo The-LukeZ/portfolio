@@ -1,10 +1,13 @@
 <script lang="ts">
   import { page } from "$app/state";
+  import Pegboard from "#lib/components/Pegboard.svelte";
   import { locales, localizeHref } from "#lib/paraglide/runtime.js";
   import "../app.css";
 
   let { children } = $props();
 </script>
+
+<Pegboard />
 
 {@render children()}
 
