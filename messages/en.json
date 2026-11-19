@@ -99,5 +99,33 @@
     "copyLinkFailed": "Copy was blocked. Copy the link by hand:",
     "selectShown": "Set the shown {group} permissions",
     "clearShown": "Clear the shown {group} permissions"
+  },
+  "nav": {
+    "feed": "Feed"
+  },
+  "home": {
+    "feedLink": "Read project updates"
+  },
+  "feed": {
+    "title": "Feed",
+    "subtitle": "News about my projects: releases, features, milestones.",
+    "filter": {
+      "label": "Filter by project",
+      "all": "All",
+      "general": "General"
+    },
+    "empty": "No posts yet.",
+    "emptyFilter": "No posts for this filter.",
+    "resetFilter": "Show all posts",
+    "loadError": "Could not load posts. Try again later.",
+    "noscript": "This list needs JavaScript. You can follow the feed via RSS instead:",
+    "rss": "RSS feed",
+    "back": "All posts",
+    "updated": "Updated",
+    "project": "Project",
+    "kofi": {
+      "title": "Like what I build?",
+      "cta": "Support me on Ko-fi"
+    }
   }
 }

@@ -1,10 +1,12 @@
-import { Discord, Email, FileText, Github, Music, YouTube } from "#lib/assets/index.js";
+import { Discord, Email, FileText, Github, KoFi, Music, YouTube } from "#lib/assets/index.js";
 import { m } from "./paraglide/messages";
 
 // Helper function to safely access dynamic message keys - utility function first
 export const getMessage = (key: string) => {
   return ((m as unknown as Record<string, Function>)[key] || (() => key)) as () => string;
 };
+
+export const KOFI_URL = "https://ko-fi.com/lukez";
 
 const socialLinks = [
   {
@@ -31,6 +33,11 @@ const socialLinks = [
     name: "Spotify",
     icon: Music,
     url: "https://stats.fm/lukez",
+  },
+  {
+    name: "Ko-fi",
+    icon: KoFi,
+    url: KOFI_URL,
   },
   {
     name: "Email",

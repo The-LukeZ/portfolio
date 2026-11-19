@@ -99,5 +99,33 @@
     "copyLinkFailed": "Kopieren wurde blockiert. Kopier den Link von Hand:",
     "selectShown": "Angezeigte Berechtigungen in {group} setzen",
     "clearShown": "Angezeigte Berechtigungen in {group} entfernen"
+  },
+  "nav": {
+    "feed": "Feed"
+  },
+  "home": {
+    "feedLink": "Projekt-Updates lesen"
+  },
+  "feed": {
+    "title": "Feed",
+    "subtitle": "Neues aus meinen Projekten: Releases, Features, Meilensteine.",
+    "filter": {
+      "label": "Nach Projekt filtern",
+      "all": "Alle",
+      "general": "Allgemein"
+    },
+    "empty": "Noch keine Beiträge.",
+    "emptyFilter": "Keine Beiträge für diesen Filter.",
+    "resetFilter": "Alle Beiträge zeigen",
+    "loadError": "Beiträge konnten nicht geladen werden. Versuch es später nochmal.",
+    "noscript": "Diese Liste braucht JavaScript. Du kannst den Feed stattdessen per RSS abonnieren:",
+    "rss": "RSS-Feed",
+    "back": "Alle Beiträge",
+    "updated": "Aktualisiert",
+    "project": "Projekt",
+    "kofi": {
+      "title": "Gefällt dir, was ich baue?",
+      "cta": "Unterstütze mich auf Ko-fi"
+    }
   }
 }
