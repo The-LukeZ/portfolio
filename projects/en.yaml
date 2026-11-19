@@ -19,6 +19,12 @@ projects:
     link: https://supportmail.dev
     tags: [discord, discord-bot]
 
+  - id: tomu
+    title: Tomu
+    description: Shared lists for family, flatmates and friends. No account, no password - lists are shared via a label (e.g. "Family") passed on once by link or QR code, and everyone with that label gets all its lists, including future ones. Changes sync instantly, the app works offline and lists are end-to-end encrypted on the device, so not even I can read them. Web app (installable to the home screen), currently in beta.
+    link: https://tomu.foo/
+    tags: [websites]
+
   - id: upvote-engine
     title: Upvote Engine
     description: A performant Discord vote handler built on a FaaS architecture using Cloudflare Workers, Queues and D1.
@@ -165,3 +171,15 @@ projects:
     description: A public, authless MCP server that gives AI assistants fast, precise access to Discord's developer docs. Structured lookups for endpoints, objects and enums, identifier-aware search, stable section ids and change tracking between refreshes. A daily workflow indexes the official docs repository into D1 (SQLite full-text search). Everything runs on Cloudflare Workers, built with Hono and the Agents SDK.
     link: https://bugcord-mcp.dev/
     tags: [discord, other]
+
+  - id: emoji-picker
+    title: Emoji Picker
+    description: A small native emoji picker for Windows, written in Rust. Lives in the notification area, opens with a global hotkey (Win+. by default, replacing the Windows emoji panel) and types the chosen emoji into the app you were using. Uses Twemoji art and Emojibase data for search, stays out of the way of fullscreen games and updates itself from GitHub Releases.
+    link: https://github.com/The-LukeZ/emoji-picker
+    tags: [other]
+
+  - id: lzssh
+    title: lzssh
+    description: A free, native SSH host manager for Windows, loosely inspired by Termius. Written in Rust with egui. Hosts in folders, an encrypted secrets vault (Argon2id + XChaCha20-Poly1305, wrapped with DPAPI) with Windows Hello / FIDO2 quick unlock, FIDO security key creation and end-to-end encrypted P2P push sync between devices via a small mailbox on your own Cloudflare Worker.
+    link: https://github.com/The-LukeZ/lzssh
+    tags: [other]
