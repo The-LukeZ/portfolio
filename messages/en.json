@@ -42,17 +42,25 @@
   },
   "business": {
     "subtitle": "Independent Software Development",
-    "description": "I'm an independent, freelance software developer specializing in modern web technologies including Svelte, TypeScript, and full-stack development. Please note that I'm <b>not</b> for hire.",
+    "description": "I'm an independent, freelance software developer specializing in modern web technologies including Svelte, TypeScript, and full-stack development. Please note that I'm <mark>not for hire</mark>.",
     "projectsText": "Please see the <a href={projectsLink}>projects section</a> for examples of my work.",
     "legalNotice": {
       "noPackages": "No acceptance of parcels or packages.",
       "vatLabel": "<b>VAT ID:</b> <span style=\"font-family: monospace\">{vatId}</span>",
       "contactTitle": "Contact",
-      "emailLabel": "<b>Email:</b> <a href=\"mailto:{email}\">{email}</a>"
+      "emailLabel": "<b>Email:</b> <a href=\"mailto:{email}\">{email}</a>",
+      "title": "Legal notice",
+      "addressTitle": "Address"
     }
   },
   "footer": "&copy; {year} LukeZ. All rights reserved.",
   "header": {
     "language": "Language"
+  },
+  "footerNav": {
+    "label": "Site",
+    "textedit": "Text editor",
+    "permissions": "Discord permissions calculator",
+    "legal": "Legal notice"
   }
 }

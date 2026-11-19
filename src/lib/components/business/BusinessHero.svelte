@@ -3,82 +3,101 @@
   import { localizeHref } from "#lib/paraglide/runtime.js";
 </script>
 
-<section class="section business-about" id="about">
-  <div class="business-container">
-    <h1 class="business-title">LukeZ Development by Luca Hentschel</h1>
-    <p class="business-subtitle">{m["business.subtitle"]()}</p>
+<section class="business-about" id="about">
+  <h1 class="selectable">LukeZ Development <span>by Luca Hentschel</span></h1>
+  <p class="subtitle">{m["business.subtitle"]()}</p>
 
-    <div class="business-info selectable">
-      <p>{@html m["business.description"]()}</p>
-      <p>{@html m["business.projectsText"]({ projectsLink: localizeHref("/#projects") })}</p>
-    </div>
+  <div class="info selectable">
+    <p>{@html m["business.description"]()}</p>
+    <p>{@html m["business.projectsText"]({ projectsLink: localizeHref("/#projects") })}</p>
   </div>
 </section>
 
 <style>
-  .business-container {
+  .business-about {
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 4rem 1.5rem 3rem;
   }
 
-  @media screen and (max-width: 768px) {
-    .business-container {
-      padding: 0 1rem;
-    }
-  }
-
-  .business-about {
-    padding-top: 8rem;
-    padding-bottom: 5rem;
-    text-align: center;
-  }
-
-  @media screen and (max-width: 768px) {
-    .business-about {
-      padding-top: 5rem;
-      padding-bottom: 3rem;
-    }
-  }
-
-  .business-title {
-    font-size: 3.5rem;
+  h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
     font-weight: 800;
-    margin-bottom: 0.5rem;
-    background: linear-gradient(135deg, var(--color-text-primary) 0%, var(--color-accent) 60%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-stretch: 72%;
+    text-transform: uppercase;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
   }
 
-  @media screen and (max-width: 768px) {
-    .business-title {
-      font-size: 2.5rem;
+  h1 span {
+    display: block;
+    color: var(--ink-3);
+  }
+
+  .subtitle {
+    margin-top: 1rem;
+    display: inline-block;
+    background: var(--label);
+    color: var(--label-ink);
+    font-weight: 700;
+    font-stretch: 78%;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 0.3rem 0.6rem;
+    border-radius: 1px;
+  }
+
+  .info {
+    margin-top: 2rem;
+    max-width: 68ch;
+  }
+
+  .info p {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--ink-2);
+    text-wrap: pretty;
+  }
+
+  .info p + p {
+    margin-top: 1rem;
+  }
+
+  .info :global(b) {
+    color: var(--ink);
+  }
+
+  /* "not for hire": set on the orange label tape so nobody misses it */
+  .info :global(mark) {
+    background: var(--label);
+    color: var(--label-ink);
+    font-weight: 700;
+    padding: 0.05em 0.35em;
+    border-radius: 1px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  .info :global(a) {
+    color: var(--label);
+    text-decoration: underline;
+    text-decoration-color: oklch(75% 0.179 58 / 0.4);
+    text-underline-offset: 0.2em;
+  }
+
+  .info :global(a:hover) {
+    opacity: 1;
+    text-decoration-color: currentColor;
+  }
+
+  @media (max-width: 640px) {
+    .business-about {
+      padding: 2.5rem 1rem 2rem;
     }
-  }
 
-  .business-subtitle {
-    font-size: 1.5rem;
-    color: var(--color-text-secondary);
-    margin-bottom: 2rem;
-    font-weight: 500;
-  }
-
-  @media screen and (max-width: 768px) {
-    .business-subtitle {
-      font-size: 1.2rem;
+    .info p {
+      font-size: 1.0625rem;
     }
-  }
-
-  .business-info {
-    max-width: 700px;
-    margin: 0 auto;
-  }
-
-  .business-info p {
-    font-size: 1.1rem;
-    color: var(--color-text-secondary);
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
   }
 </style>

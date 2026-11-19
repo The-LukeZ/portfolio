@@ -35,7 +35,7 @@ const socialLinks = [
   {
     name: "Email",
     icon: Email,
-    url: "mailto:contact.lukez@proton.me",
+    url: "mailto:hello@thelukez.com",
   },
 ];
 

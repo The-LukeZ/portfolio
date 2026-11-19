@@ -42,17 +42,25 @@
   },
   "business": {
     "subtitle": "Unabhängige Softwareentwicklung",
-    "description": "Ich bin ein unabhängiger, freiberuflicher Softwareentwickler, der sich auf moderne Webtechnologien spezialisiert hat, einschließlich Svelte, TypeScript und Full-Stack-Entwicklung. Bitte beachten Sie, dass ich <b>nicht</b> verfügbar bin für Aufträge.",
+    "description": "Ich bin ein unabhängiger, freiberuflicher Softwareentwickler, der sich auf moderne Webtechnologien spezialisiert hat, einschließlich Svelte, TypeScript und Full-Stack-Entwicklung. Bitte beachten Sie, dass ich <mark>nicht für Aufträge verfügbar</mark> bin.",
     "projectsText": "Bitte siehe die <a href={projectsLink}>Projektsektion</a> für Beispiele meiner Arbeit.",
     "legalNotice": {
       "noPackages": "Keine Annahme von Paketen oder Paketen.",
       "vatLabel": "<b>USt-IdNr.:</b> <span style=\"font-family: monospace\">{vatId}</span>",
       "contactTitle": "Kontakt",
-      "emailLabel": "<b>E-Mail:</b> <a href=\"mailto:{email}\">{email}</a>"
+      "emailLabel": "<b>E-Mail:</b> <a href=\"mailto:{email}\">{email}</a>",
+      "title": "Impressum",
+      "addressTitle": "Anschrift"
     }
   },
   "footer": "&copy; {year} LukeZ. Alle Rechte vorbehalten.",
   "header": {
     "language": "Sprache"
+  },
+  "footerNav": {
+    "label": "Seiten",
+    "textedit": "Texteditor",
+    "permissions": "Discord-Berechtigungsrechner",
+    "legal": "Impressum"
   }
 }
