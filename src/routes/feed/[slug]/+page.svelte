@@ -6,7 +6,7 @@
   import { m } from "#lib/paraglide/messages.js";
   import { getLocale, localizeHref } from "#lib/paraglide/runtime.js";
   import { projectsByLocale } from "#lib/projects/index.js";
-  import { ArrowLeft } from "@lucide/svelte";
+  import ArrowLeft from "@lucide/svelte/icons/arrow-left";
   import type { PageProps } from "./$types";
 
   let { data }: PageProps = $props();

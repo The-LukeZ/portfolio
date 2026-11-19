@@ -26,7 +26,7 @@ No test suite exists in this repo.
 
 **Runtime target**: this app runs as a Cloudflare Worker, not Node. Server code accesses Cloudflare bindings via `import { env, waitUntil } from "cloudflare:workers"` (adapter-cloudflare 8 removed `event.platform`; `cf` is on `request.cf`), not via `process.env`. There is no SvelteKit config file: all kit options live in `sveltekit({...})` in `vite.config.ts`. Bindings are declared in `wrangler.jsonc` and typed in `src/worker-configuration.d.ts` (regenerate with `pnpm gen` after changing bindings). The deployed entry is `src/worker.ts` (`main` in `wrangler.jsonc`): it re-exports the SvelteKit handler (imported as `sveltekit-worker`, an alias for `.svelte-kit/cloudflare/_worker.js`) and adds a `scheduled` handler. The adapter writes its handler to the `main` of `wrangler.sveltekit.jsonc` (its own config, see `vite.config.ts`); never point the adapter at `wrangler.jsonc`, or it overwrites `src/worker.ts`. Bindings: `ASSETS`, D1 `FEED_DB` (database `portfolio-feed`, schema in `migrations/`).
 
-**Discord announcements**: a cron trigger (`*/5 * * * *`) runs `runScheduled` in `src/lib/server/feed/announce.ts`. It posts each newly published feed post once to `DISCORD_WEBHOOK_URL`, tracking state per slug in `FEED_DB.announcements` (`sent`, `skipped`, `pending`, `given_up`). Posts older than 24 h are marked `skipped`, failures are retried and given up after 5 attempts. Test locally: `pnpm wrangler d1 migrations apply portfolio-feed --local`, put a test webhook in `.dev.vars`, `pnpm build && pnpm wrangler dev --test-scheduled`, then `curl "http://localhost:8787/__scheduled?cron=*/5+*+*+*+*"`.
+**Discord announcements**: a cron trigger (`*/5 * * * *`) runs `runScheduled` in `src/lib/server/feed/announce.ts`. It posts each newly published feed post once to `DISCORD_WEBHOOK_URL`, tracking state per slug in `FEED_DB.announcements` (`sent`, `skipped`, `pending`, `given_up`). Posts older than 24 h are marked `skipped`, failures are retried and given up after 5 attempts. Test locally: `pnpm wrangler d1 migrations apply portfolio-feed --local`, put a test webhook in `.env`, `pnpm build && pnpm wrangler dev --test-scheduled`, then `curl "http://localhost:8787/__scheduled?cron=*/5+*+*+*+*"`.
 
 **i18n via Paraglide**: `src/lib/paraglide/` is generated output (from `project.inlang/` + `messages/*.json` sources) — do not hand-edit files in there. The vite plugin regenerates it on build/dev. Locale routing works through:
 
@@ -58,7 +58,7 @@ No test suite exists in this repo.
 
 ## Environment variables
 
-Worker secrets (required, see `secrets.required` in `wrangler.jsonc`; local values in `.dev.vars`, template `.dev.vars.example`): `DISCORD_WEBHOOK_URL` (feed announcements), `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET` (Sveltia CMS OAuth). Read them via `env` from `cloudflare:workers` or the `env` passed to handlers, never commit them.
+Worker secrets (required, see `secrets.required` in `wrangler.jsonc`; local values in `.env` (read by `wrangler dev` and, via `platformProxy`, by `pnpm dev`), template `.env.example`): `DISCORD_WEBHOOK_URL` (feed announcements), `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET` (Sveltia CMS OAuth). Read them via `env` from `cloudflare:workers` or the `env` passed to handlers, never commit them.
 
 ## Conventions
 

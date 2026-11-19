@@ -32,7 +32,7 @@ export default defineConfig({
       adapter: adapter({
         fallback: "plaintext",
         config: "wrangler.sveltekit.jsonc",
-        platformProxy: { configPath: "wrangler.jsonc" },
+        platformProxy: { configPath: "wrangler.jsonc", envFiles: [".env"] },
       }),
       output: {
         bundleStrategy: "single",

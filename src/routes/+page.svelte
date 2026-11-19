@@ -7,7 +7,7 @@
   import Social from "#lib/components/Social.svelte";
   import { m } from "#lib/paraglide/messages.js";
   import { localizeHref } from "#lib/paraglide/runtime.js";
-  import { ArrowRight } from "@lucide/svelte";
+  import ArrowRight from "@lucide/svelte/icons/arrow-right";
 </script>
 
 <svelte:head>
