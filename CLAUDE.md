@@ -64,4 +64,5 @@ Worker secrets (required, see `secrets.required` in `wrangler.jsonc`; local valu
 
 - Prettier config: 2-space indent, double quotes, trailing commas, printWidth 110 (`.prettierrc`). Run `pnpm format` before committing.
 - Path alias `#lib` → `src/lib`, declared as Node subpath imports in `package.json` `imports` (SvelteKit 3 dropped `$lib`). Imports need file extensions, e.g. `#lib/utils.js`, `#lib/bitfield.svelte.ts`.
+- Icons from `@lucide/svelte`: always import each icon by its own path, e.g. `import ArrowRight from "@lucide/svelte/icons/arrow-right";`. Never use the package barrel (`import { ArrowRight } from "@lucide/svelte"`): it loads `aliases.js`, which ad blockers block, and the page then fails with a 500 in dev. The package stays in `optimizeDeps.exclude` in `vite.config.ts`.
 - `tsconfig.json` excludes `src/lib/paraglide` (generated JS; types come from its `.d.ts` files).
