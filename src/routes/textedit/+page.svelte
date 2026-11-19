@@ -1,3 +1,7 @@
+<script lang="ts">
+  import Footer from "#lib/components/Footer.svelte";
+</script>
+
 <svelte:head>
   <title>text editor</title>
   <meta name="description" content="The simplest text editor." />
@@ -13,4 +17,9 @@
   <link rel="canonical" href="https://thelukez.com/textedit" />
 </svelte:head>
 
-<textarea id="text-edit" placeholder="The simplest text editor"></textarea>
+<div class="text-edit-wrap">
+  <!-- svelte-ignore a11y_autofocus: the editor is the whole page -->
+  <textarea id="text-edit" placeholder="The simplest text editor" autofocus></textarea>
+</div>
+
+<Footer />
