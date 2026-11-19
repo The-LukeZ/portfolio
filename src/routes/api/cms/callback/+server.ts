@@ -1,10 +1,9 @@
 import { env } from "cloudflare:workers";
 import { callbackHtml, COOKIE_PATH, exchangeCode, STATE_COOKIE } from "#lib/server/cms-auth.js";
-import type { RequestHandler } from "./$types";
 
 export const prerender = false;
 
-export const GET: RequestHandler = async ({ url, cookies }) => {
+export const GET = async ({ url, cookies }) => {
   const code = url.searchParams.get("code");
   const state = url.searchParams.get("state");
   const expected = cookies.get(STATE_COOKIE);

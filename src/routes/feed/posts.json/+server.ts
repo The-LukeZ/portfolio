@@ -1,4 +1,3 @@
-import { json } from "@sveltejs/kit";
 import type { FeedListItem } from "#lib/feed.js";
 import { publishedPosts } from "#lib/server/feed/index.js";
 
@@ -12,5 +11,5 @@ export const GET = () => {
     summary,
     project,
   }));
-  return json(items, { headers: { "cache-control": "public, max-age=60" } });
+  return Response.json(items, { headers: { "cache-control": "public, max-age=60" } });
 };

@@ -1,11 +1,10 @@
 import { redirect } from "@sveltejs/kit";
 import { env } from "cloudflare:workers";
 import { authorizeUrl, COOKIE_PATH, STATE_COOKIE } from "#lib/server/cms-auth.js";
-import type { RequestHandler } from "./$types";
 
 export const prerender = false;
 
-export const GET: RequestHandler = ({ url, cookies }) => {
+export const GET = ({ url, cookies }) => {
   const state = crypto.randomUUID();
   cookies.set(STATE_COOKIE, state, {
     path: COOKIE_PATH,
