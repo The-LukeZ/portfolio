@@ -73,7 +73,7 @@ projects:
   - id: li18n
     title: li18n
     description: A simple internationalization library for JS/TS server applications. Define your messages in JSON, get fully-typed TypeScript functions out. Difference to paraglide.js is, that li18n is not usable in the browser really - it is designed for server-side use.
-    link: https://github.com/The-LukeZ/li18n
+    link: https://li18n.thelukez.com
     tags: [libraries]
 
   - id: fastdeepequal
@@ -85,7 +85,7 @@ projects:
   - id: topgg-api-types
     title: Top.gg API Types
     description: Comprehensive TypeScript type definitions for the Top.gg API, making it easier to build integrations.
-    link: https://github.com/The-LukeZ/topgg-api-types
+    link: https://topgg-api-types.thelukez.com
     tags: [libraries]
 
   - id: timestring-py
@@ -154,7 +154,7 @@ projects:
   - id: falubot
     title: Falu
     description: A Discord bot that delegates role assignments with a command - admins can configure conditions for role assignment which get compiled into a tree of rules, executed at runtime. Built in a monorepo with a dashboard (SvelteKit of course) and a bot (HTTP interactions only) - both on Cloudflare Workers. Using my own Honocord library for the bot. Source-available on GitLab, but not "open source".
-    link: https://gitlab.com/lukez-bots/falu
+    link: https://falubot.dev
     tags: [discord, discord-bot]
 
   - id: discord-bots-recommendations
@@ -198,3 +198,45 @@ projects:
     description: A free, native SSH host manager for Windows, loosely inspired by Termius. Written in Rust with egui. Hosts in folders, an encrypted secrets vault (Argon2id + XChaCha20-Poly1305, wrapped with DPAPI) with Windows Hello / FIDO2 quick unlock, FIDO security key creation and end-to-end encrypted P2P push sync between devices via a small mailbox on your own Cloudflare Worker.
     link: https://github.com/The-LukeZ/lzssh
     tags: [other]
+
+  - id: lzdrop
+    title: lzdrop
+    description: A private file drop service on Cloudflare. I create upload links limited by expiry, file count and size, share them, and anyone can drop files without an account. Files go straight to R2 via presigned URLs (the Worker never proxies file data), and I get an email when they land. SvelteKit on Workers with D1 + Drizzle, R2, Cloudflare Email Service and Cloudflare Access for the admin side.
+    link: https://drop.thelukez.com
+    tags: [websites]
+
+  - id: satteri-preview
+    title: Sätteri Markdown Preview
+    description: A VS Code extension that renders a live Markdown preview with Sätteri (a Rust Markdown/MDX engine) instead of the built-in markdown-it renderer. Early development.
+    link: https://github.com/The-LukeZ/satteri-preview-vsc
+    tags: [other]
+
+  - id: lz-notes
+    title: lz-notes
+    description: Turns recorded meetings into structured notes, for regular meetings and "learning meetings" where one person teaches others. Transcription with speaker diarization via the Mistral API, so the notes know who said what. Export as PDF, DOCX and Markdown. A SvelteKit app plus a queue consumer Worker for the long transcription jobs, sharing D1 and R2.
+    link: https://github.com/The-LukeZ/lz-notes
+    tags: [websites, other]
+
+  - id: discord-intent-application
+    title: Discord Intent Application Skill
+    description: A Claude skill that helps write the justification for Discord privileged intent applications (Message Content, Server Members, Presence). It screens the bot's features against known rejection triggers and drafts the application text from a plain description of the bot and, optionally, its codebase.
+    link: https://github.com/The-LukeZ/discord-intent-application
+    tags: [discord, other]
+
+  - id: lazarus-pascal-gui-skill
+    title: Lazarus Pascal GUI Skill
+    description: A Claude Code skill for developing desktop applications with the Lazarus IDE and Object Pascal (LCL).
+    link: https://github.com/The-LukeZ/lazarus-pascal-gui-skill
+    tags: [other]
+
+  - id: timeshare
+    title: Timeshare
+    description: Share a moment in time with anyone. Pick a date and time, get a link, and whoever opens it sees that moment in their own timezone. SvelteKit on Cloudflare Workers with D1, Tailwind CSS and Paraglide.
+    link: https://timeshare.thelukez.com
+    tags: [websites]
+
+  - id: atlassian-webhook-discord
+    title: Atlassian Status Webhook
+    description: A Cloudflare Worker that forwards Atlassian Statuspage webhooks to Discord as color-coded embeds, for component status changes and incident updates.
+    link: https://github.com/The-LukeZ/atlassian-webhook-discord
+    tags: [discord]

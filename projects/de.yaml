@@ -125,3 +125,31 @@ projects:
   - id: lzssh
     title: lzssh
     description: Ein kostenloser, nativer SSH-Host-Manager für Windows, lose inspiriert von Termius. Geschrieben in Rust mit egui. Hosts in Ordnern, ein verschlüsselter Secrets-Tresor (Argon2id + XChaCha20-Poly1305, zusätzlich mit DPAPI geschützt) mit Schnellentsperrung per Windows Hello / FIDO2, Erstellung von FIDO-Security-Keys und Ende-zu-Ende-verschlüsselter P2P-Push-Synchronisation zwischen Geräten über eine kleine Mailbox auf dem eigenen Cloudflare Worker.
+
+  - id: lzdrop
+    title: lzdrop
+    description: Ein privater File-Drop-Service auf Cloudflare. Ich erstelle Upload-Links mit Ablaufdatum und Limits für Dateianzahl und Größe, teile sie, und jeder kann ohne Konto Dateien hochladen. Die Dateien gehen per Presigned URLs direkt nach R2 (der Worker leitet keine Dateidaten durch), und ich bekomme eine E-Mail, sobald sie ankommen. SvelteKit auf Workers mit D1 + Drizzle, R2, Cloudflare Email Service und Cloudflare Access für den Admin-Bereich.
+
+  - id: satteri-preview
+    title: Sätteri Markdown Preview
+    description: Eine VS-Code-Erweiterung, die eine Live-Markdown-Vorschau mit Sätteri (einer Markdown/MDX-Engine in Rust) statt dem eingebauten markdown-it-Renderer anzeigt. Frühe Entwicklungsphase.
+
+  - id: lz-notes
+    title: lz-notes
+    description: Macht aus aufgenommenen Meetings strukturierte Notizen, für normale Meetings und "Lern-Meetings", in denen eine Person anderen etwas beibringt. Transkription mit Sprechererkennung über die Mistral API, sodass die Notizen wissen, wer was gesagt hat. Export als PDF, DOCX und Markdown. Eine SvelteKit-App plus ein Queue-Consumer-Worker für die langen Transkriptions-Jobs, die sich D1 und R2 teilen.
+
+  - id: discord-intent-application
+    title: Discord Intent Application Skill
+    description: Ein Claude-Skill, der beim Schreiben der Begründung für Discords Privileged-Intent-Anträge hilft (Message Content, Server Members, Presence). Er prüft die Features des Bots auf bekannte Ablehnungsgründe und entwirft den Antragstext aus einer einfachen Beschreibung des Bots und optional seiner Codebasis.
+
+  - id: lazarus-pascal-gui-skill
+    title: Lazarus Pascal GUI Skill
+    description: Ein Claude-Code-Skill für die Entwicklung von Desktop-Anwendungen mit der Lazarus IDE und Object Pascal (LCL).
+
+  - id: timeshare
+    title: Timeshare
+    description: Teile einen Zeitpunkt mit jedem. Datum und Uhrzeit wählen, Link bekommen, und wer ihn öffnet, sieht den Zeitpunkt in seiner eigenen Zeitzone. SvelteKit auf Cloudflare Workers mit D1, Tailwind CSS und Paraglide.
+
+  - id: atlassian-webhook-discord
+    title: Atlassian Status Webhook
+    description: Ein Cloudflare Worker, der Webhooks von Atlassian Statuspage als farbcodierte Embeds an Discord weiterleitet, bei Statusänderungen von Komponenten und Incident-Updates.
