@@ -7,8 +7,10 @@ image:
   src: /media/feed/019f4380-5032-70ab-bec9-fa61639b7d6f.webp
   alt: How the Bot Survived a Server Going From 100k to 1.3M Users
 draft: false
-updated: ''
+updated: 2026-11-20T23:08:49+01:00
 ---
+
+Note: This post is from the old blog on the homepage of SupportMail, which is removed now.
 
 A few months ago, SupportMail was added to a server with about a hundred thousand members.
 That number sounds large. For a Discord modmail bot, it mostly is. But the server kept growing - fast. Within weeks it crossed a million users, and my bot was sitting in the middle of it,
