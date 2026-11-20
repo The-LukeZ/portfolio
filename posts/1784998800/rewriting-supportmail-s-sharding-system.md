@@ -68,7 +68,7 @@ The manager branches on whether `op` is one of the five structural codes. If yes
 
 The topology diagram below shows everything in context, including the manager, the clusters, the bot, and the API.
 
-![Infrastructure diagram of how everything's working together around the manager](019f9614-f0e5-77cb-b38a-88e15442dd11.png "Infrastructure diagram")
+![Infrastructure diagram of how everything's working together around the manager](/media/feed/019f9614-f0e5-77cb-b38a-88e15442dd11.webp "Infrastructure diagram")
 
 One terminology note: the transport under all of this is a Unix domain socket, not TCP. Go listens with `net.Listen("unix", ...)`; the Bun-side consumers (the API and the cluster harness) connect to the same socket path with `Bun.listen`/`Bun.connect`. I still call this "IPC" throughout - IPC means inter-process communication, and a Unix socket is one mechanism for that, in the same family as pipes or shared memory.
 

@@ -23,7 +23,13 @@ CMS.init({
     media_folder: "static/media/feed",
     public_folder: "/media/feed",
     media_libraries: {
-      default: { config: { max_file_size: 2_097_152 } },
+      default: {
+        config: {
+          max_file_size: 2_097_152,
+          // Uploads are re-encoded in the browser before they are committed (no PNGs in the repo).
+          transformations: { raster_image: { format: "webp", quality: 85, width: 2048 } },
+        },
+      },
     },
     collections: [
       {
@@ -34,6 +40,10 @@ CMS.init({
         extension: "md",
         format: "frontmatter",
         create: true,
+        // Absolute (leading /) so uploads go to static/media/feed, not next to the entry: the
+        // subfolder in `path` made Sveltia store them entry-relative, which the build rejects.
+        media_folder: "/static/media/feed",
+        public_folder: "/media/feed",
         // posts/<unix timestamp of the publish date>/<slugified title>.md, URL /feed/<ts>/<title>.
         // Generated once on the first save; editing the title or date later keeps the URL.
         slug: "{{slug}}",

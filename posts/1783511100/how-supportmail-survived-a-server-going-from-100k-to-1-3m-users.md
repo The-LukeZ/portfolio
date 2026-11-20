@@ -4,7 +4,7 @@ date: 2026-07-08T13:45:00+02:00
 summary: When a Discord server hit a million members, most bots would have buckled. Here's how SupportMail's early architecture decisions bought enough breathing room to shard properly instead of scrambling through a major outage.
 project: supportmail
 image:
-  src: 019f4380-5032-70ab-bec9-fa61639b7d6f.png
+  src: /media/feed/019f4380-5032-70ab-bec9-fa61639b7d6f.webp
   alt: How the Bot Survived a Server Going From 100k to 1.3M Users
 draft: false
 updated: ''
@@ -148,4 +148,4 @@ Most of this is invisible when traffic is normal. At a million users, it's the d
 
 Fun fact: This was when I added sharding:
 
-![How the Bot Survived a Server Going From 100k to 1.3M Users](019f4380-5032-70ab-bec9-fa61639b7d6f.png)
+![How the Bot Survived a Server Going From 100k to 1.3M Users](/media/feed/019f4380-5032-70ab-bec9-fa61639b7d6f.webp)
