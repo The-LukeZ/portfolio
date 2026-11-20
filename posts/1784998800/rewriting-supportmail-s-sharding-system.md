@@ -5,8 +5,10 @@ summary: Replaced SupportMail's Bun-based sharding library with a Go supervisor 
 project: supportmail
 image: null
 draft: false
-updated: ''
+updated: 2026-11-20T23:08:40+01:00
 ---
+
+Note: This post is from the old blog on the homepage of SupportMail, which is removed now.
 
 SupportMail is a Discord bot - modmail to be specific - managing so many users that it can't live in a single gateway connection anymore. Like every bot at that size, it has to shard: split its servers across multiple connections and, past a certain point, multiple processes. For a long time that machinery was a standalone Node/Bun scaling library, spawning and managing cluster child processes around the bot. Over the last few weeks I replaced it with a purpose-built supervisor written in Go, a rewritten cluster harness, and a proper split between the bot's REST API and the bot itself.
 
