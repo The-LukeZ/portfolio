@@ -2,6 +2,7 @@
   import Footer from "#lib/components/Footer.svelte";
   import Header from "#lib/components/Header.svelte";
   import KofiCta from "#lib/components/KofiCta.svelte";
+  import LikeButton from "#lib/components/LikeButton.svelte";
   import LocalTime from "#lib/components/LocalTime.svelte";
   import { m } from "#lib/paraglide/messages.js";
   import { getLocale, localizeHref } from "#lib/paraglide/runtime.js";
@@ -84,6 +85,8 @@
       {@html post.html}
     </div>
 
+    <LikeButton slug={post.slug} siteKey={data.turnstileSiteKey} />
+
     <KofiCta />
   </article>
 </main>
@@ -151,7 +154,7 @@
   }
 
   .prose {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     font-size: 1.0625rem;
     line-height: 1.7;
     color: var(--ink);

@@ -124,6 +124,13 @@
     "back": "All posts",
     "updated": "Updated",
     "project": "Project",
+    "like": {
+      "label": "Like",
+      "unlike": "Remove like",
+      "count": "{count}",
+      "error": "Could not save your like. Try again.",
+      "limited": "Too many likes from your network today."
+    },
     "kofi": {
       "title": "Like what I build?",
       "cta": "Support me on Ko-fi"

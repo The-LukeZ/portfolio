@@ -124,6 +124,13 @@
     "back": "Alle Beiträge",
     "updated": "Aktualisiert",
     "project": "Projekt",
+    "like": {
+      "label": "Gefällt mir",
+      "unlike": "Gefällt mir nicht mehr",
+      "count": "{count}",
+      "error": "Dein Like konnte nicht gespeichert werden. Versuch es nochmal.",
+      "limited": "Heute zu viele Likes aus deinem Netzwerk."
+    },
     "kofi": {
       "title": "Gefällt dir, was ich baue?",
       "cta": "Unterstütze mich auf Ko-fi"
