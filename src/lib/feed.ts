@@ -26,3 +26,11 @@ export function applyFilter(items: FeedListItem[], filter: string | null): FeedL
   if (filter === GENERAL) return items.filter((i) => i.project === null);
   return items.filter((i) => i.project === filter);
 }
+
+/** Like state of one post for the requesting device, from /api/feed/likes/<id>/<slug>. */
+export interface LikeState {
+  count: number;
+  liked: boolean;
+  /** The request carried a valid device cookie, so liking needs no Turnstile challenge. */
+  verified: boolean;
+}
