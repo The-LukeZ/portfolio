@@ -4,3 +4,4 @@ worker-configuration.d.ts
 project.inlang/
 src/lib/projects/
 static/admin/sveltia-cms.js
+posts/
