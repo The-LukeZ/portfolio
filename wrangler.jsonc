@@ -18,7 +18,7 @@
   "preview_urls": false,
   "d1_databases": [
     {
-      // Tracks which feed posts were announced to Discord (migrations/).
+      // Feed state: Discord announcements and post likes (migrations/).
       "binding": "FEED_DB",
       "database_name": "portfolio-feed",
       "database_id": "cd952de0-c546-4449-bd45-d1cfbb3cbed3",
@@ -27,7 +27,17 @@
   ],
   // Announces newly published feed posts to Discord.
   "triggers": { "crons": ["*/5 * * * *"] },
-  "secrets": { "required": ["DISCORD_WEBHOOK_URL", "GITHUB_CLIENT_ID", "GITHUB_CLIENT_SECRET"] },
+  // Public Turnstile site key for the feed like button (widget for thelukez.com). .env overrides it locally with the test key.
+  "vars": { "TURNSTILE_SITE_KEY": "REPLACE_WITH_PRODUCTION_SITE_KEY" },
+  "secrets": {
+    "required": [
+      "DISCORD_WEBHOOK_URL",
+      "GITHUB_CLIENT_ID",
+      "GITHUB_CLIENT_SECRET",
+      "LIKE_SECRET",
+      "TURNSTILE_SECRET_KEY",
+    ],
+  },
   "observability": { "enabled": true, "logs": { "invocation_logs": false } },
   "route": {
     "custom_domain": true,
