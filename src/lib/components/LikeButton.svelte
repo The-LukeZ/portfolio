@@ -4,6 +4,7 @@
   import { m } from "#lib/paraglide/messages.js";
   import { getTurnstileToken } from "#lib/turnstile.ts";
   import Heart from "@lucide/svelte/icons/heart";
+  import LoaderCircle from "@lucide/svelte/icons/loader-circle";
 
   let { slug }: { slug: string } = $props();
 
@@ -68,9 +69,15 @@
     aria-pressed={likes?.liked ?? false}
     disabled={!likes}
     aria-disabled={busy}
+    aria-busy={busy}
     onclick={toggle}
   >
-    <Heart aria-hidden="true" />
+    <!-- Turnstile plus the request can take a few seconds, so show that the click registered. -->
+    {#if busy}
+      <LoaderCircle class="spinner" aria-hidden="true" />
+    {:else}
+      <Heart aria-hidden="true" />
+    {/if}
     <!-- Constant name plus aria-pressed; the count below joins the accessible name. -->
     <span class="sr-only">{m["feed.like.label"]()}</span>
     <span class="count mono">{likes ? m["feed.like.count"]({ count: likes.count }) : ""}</span>
@@ -113,6 +120,10 @@
     cursor: default;
   }
 
+  .like-button[aria-busy="true"] {
+    opacity: 0.7;
+  }
+
   .like-button.liked {
     background: var(--label);
     border-color: var(--label);
@@ -144,6 +155,16 @@
   }
 
   @media (prefers-reduced-motion: no-preference) {
+    .like-button :global(.spinner) {
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
     .like-button {
       transition:
         color 150ms var(--ease-out),
