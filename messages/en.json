@@ -126,7 +126,6 @@
     "project": "Project",
     "like": {
       "label": "Like",
-      "unlike": "Remove like",
       "count": "{count}",
       "error": "Could not save your like. Try again.",
       "limited": "Too many likes from your network today."

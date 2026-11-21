@@ -66,15 +66,18 @@
     type="button"
     class={["like-button", likes?.liked && "liked"]}
     aria-pressed={likes?.liked ?? false}
-    aria-label={likes?.liked ? m["feed.like.unlike"]() : m["feed.like.label"]()}
-    disabled={!likes || busy}
+    disabled={!likes}
+    aria-disabled={busy}
     onclick={toggle}
   >
     <Heart aria-hidden="true" />
+    <!-- Constant name plus aria-pressed; the count below joins the accessible name. -->
+    <span class="sr-only">{m["feed.like.label"]()}</span>
     <span class="count mono">{likes ? m["feed.like.count"]({ count: likes.count }) : ""}</span>
   </button>
   <div class="challenge" bind:this={challengeBox}></div>
-  <p class="message" aria-live="polite">{message}</p>
+  <!-- Kept in the accessibility tree while empty, so screen readers announce the message when it appears. -->
+  <p class={["message", !message && "sr-only"]} aria-live="polite">{message}</p>
 </div>
 
 <style>
@@ -105,7 +108,8 @@
     color: var(--ink);
   }
 
-  .like-button:disabled {
+  .like-button:disabled,
+  .like-button[aria-disabled="true"] {
     cursor: default;
   }
 
@@ -130,8 +134,7 @@
     text-align: left;
   }
 
-  .challenge:empty,
-  .message:empty {
+  .challenge:empty {
     display: none;
   }
 
