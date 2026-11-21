@@ -27,8 +27,6 @@
   ],
   // Announces newly published feed posts to Discord.
   "triggers": { "crons": ["*/5 * * * *"] },
-  // Public Turnstile site key for the feed like button (widget for thelukez.com). .env overrides it locally with the test key.
-  "vars": { "TURNSTILE_SITE_KEY": "REPLACE_WITH_PRODUCTION_SITE_KEY" },
   "secrets": {
     "required": [
       "DISCORD_WEBHOOK_URL",
@@ -36,6 +34,7 @@
       "GITHUB_CLIENT_SECRET",
       "LIKE_SECRET",
       "TURNSTILE_SECRET_KEY",
+      "TURNSTILE_SITE_KEY",
     ],
   },
   "observability": { "enabled": true, "logs": { "invocation_logs": false } },

@@ -5,8 +5,8 @@ export const variables = defineEnvVars({
   TURNSTILE_SITE_KEY: {
     public: true,
     description:
-      "Public Turnstile site key for the feed like button. Set in wrangler.jsonc vars; .env overrides it locally with the test key.",
-    // Read at runtime from the Worker's vars. Workers Builds has no .env, so the build must not require it.
+      "Public Turnstile site key for the feed like button. A Worker secret in production, the test key in .env locally.",
+    // Read at runtime from the Worker's env. Workers Builds has no .env, so the build must not require it.
     schema: (value) => {
       if (value) return value;
       if (building) return "";
