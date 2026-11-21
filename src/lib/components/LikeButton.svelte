@@ -1,10 +1,11 @@
 <script lang="ts">
+  import { TURNSTILE_SITE_KEY } from "$app/env/public";
   import type { LikeState } from "#lib/feed.ts";
   import { m } from "#lib/paraglide/messages.js";
   import { getTurnstileToken } from "#lib/turnstile.ts";
   import Heart from "@lucide/svelte/icons/heart";
 
-  let { slug, siteKey }: { slug: string; siteKey: string } = $props();
+  let { slug }: { slug: string } = $props();
 
   let likes = $state.raw<LikeState | null>(null);
   let busy = $state(false);
@@ -26,7 +27,7 @@
   });
 
   async function like(current: LikeState): Promise<Response> {
-    const token = current.verified ? undefined : await getTurnstileToken(challengeBox, siteKey);
+    const token = current.verified ? undefined : await getTurnstileToken(challengeBox, TURNSTILE_SITE_KEY);
     return fetch(url, {
       method: "POST",
       headers: { "content-type": "application/json" },

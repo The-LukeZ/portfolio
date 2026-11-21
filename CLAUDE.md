@@ -60,7 +60,7 @@ No test suite exists in this repo.
 
 ## Environment variables
 
-Worker secrets (required, see `secrets.required` in `wrangler.jsonc`; local values in `.env` (read by `wrangler dev` and, via `platformProxy`, by `pnpm dev`), template `.env.example`): `DISCORD_WEBHOOK_URL` (feed announcements), `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET` (Sveltia CMS OAuth), `LIKE_SECRET` (feed like cookies and IP hashes) and `TURNSTILE_SECRET_KEY` (feed likes). The public `TURNSTILE_SITE_KEY` is a var in `wrangler.jsonc`; `.env` overrides it locally with the test key. Read them via `env` from `cloudflare:workers` or the `env` passed to handlers, never commit them.
+Worker secrets (required, see `secrets.required` in `wrangler.jsonc`; local values in `.env` (read by `wrangler dev` and, via `platformProxy`, by `pnpm dev`), template `.env.example`): `DISCORD_WEBHOOK_URL` (feed announcements), `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET` (Sveltia CMS OAuth), `LIKE_SECRET` (feed like cookies and IP hashes) and `TURNSTILE_SECRET_KEY` (feed likes). The public `TURNSTILE_SITE_KEY` is a var in `wrangler.jsonc` (`.env` overrides it locally with the test key), declared in `src/env.ts` (SvelteKit 3 explicit env, `public: true`, dynamic) and imported in client code from `$app/env/public`. Its validator allows it to be missing at build time, because Workers Builds has no `.env`. Read them via `env` from `cloudflare:workers` or the `env` passed to handlers, never commit them.
 
 ## Conventions
 

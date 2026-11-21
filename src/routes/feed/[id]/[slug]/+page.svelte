@@ -85,7 +85,7 @@
       {@html post.html}
     </div>
 
-    <LikeButton slug={post.slug} siteKey={data.turnstileSiteKey} />
+    <LikeButton slug={post.slug} />
 
     <KofiCta />
   </article>
