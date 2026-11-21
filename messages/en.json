@@ -61,7 +61,8 @@
     "label": "Site",
     "textedit": "Text editor",
     "permissions": "Discord permissions calculator",
-    "legal": "Legal notice"
+    "legal": "Legal notice",
+    "privacy": "Privacy"
   },
   "permissions": {
     "title": "Discord permissions",

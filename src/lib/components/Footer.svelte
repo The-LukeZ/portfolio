@@ -6,6 +6,7 @@
     { href: "/discord-permissions", label: m["footerNav.permissions"] },
     { href: "/textedit", label: m["footerNav.textedit"] },
     { href: "/business", label: m["footerNav.legal"] },
+    { href: "/privacy", label: m["footerNav.privacy"] },
   ];
 </script>
 

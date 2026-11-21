@@ -61,7 +61,8 @@
     "label": "Seiten",
     "textedit": "Texteditor",
     "permissions": "Discord-Berechtigungsrechner",
-    "legal": "Impressum"
+    "legal": "Impressum",
+    "privacy": "Datenschutz"
   },
   "permissions": {
     "title": "Discord-Berechtigungen",

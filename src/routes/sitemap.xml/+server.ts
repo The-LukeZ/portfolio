@@ -11,6 +11,7 @@ const routes: { path: string; changefreq: string; priority: string }[] = [
   { path: "", changefreq: "monthly", priority: "1.0" },
   { path: "feed", changefreq: "weekly", priority: "0.7" },
   { path: "business", changefreq: "monthly", priority: "0.6" },
+  { path: "privacy", changefreq: "yearly", priority: "0.3" },
   { path: "discord-permissions", changefreq: "monthly", priority: "0.5" },
   { path: "textedit", changefreq: "yearly", priority: "0.3" },
 ];
