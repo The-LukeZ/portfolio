@@ -240,3 +240,9 @@ projects:
     description: A Cloudflare Worker that forwards Atlassian Statuspage webhooks to Discord as color-coded embeds, for component status changes and incident updates.
     link: https://github.com/The-LukeZ/atlassian-webhook-discord
     tags: [discord]
+
+  - id: svelte-dnd
+    title: svelte-dnd
+    description: Drag and drop for Svelte 5, published as @lukez/svelte-dnd. A hard fork of Isaac Hagoel's svelte-dnd-action. Same engine underneath (touch, keyboard, screen readers, nested zones, iframes and popups), plus a docs site with live demos and a generated API reference.
+    link: https://svelte-dnd.thelukez.com
+    tags: [libraries]

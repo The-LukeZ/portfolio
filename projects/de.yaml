@@ -153,3 +153,7 @@ projects:
   - id: atlassian-webhook-discord
     title: Atlassian Status Webhook
     description: Ein Cloudflare Worker, der Webhooks von Atlassian Statuspage als farbcodierte Embeds an Discord weiterleitet, bei Statusänderungen von Komponenten und Incident-Updates.
+
+  - id: svelte-dnd
+    title: svelte-dnd
+    description: Drag and Drop für Svelte 5, veröffentlicht als @lukez/svelte-dnd. Ein Hard Fork von Isaac Hagoels svelte-dnd-action. Darunter dieselbe Engine (Touch, Tastatur, Screenreader, verschachtelte Zonen, iframes und Popups), dazu eine Docs-Seite mit Live-Demos und generierter API-Referenz.
