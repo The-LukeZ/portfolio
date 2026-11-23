@@ -1,11 +1,11 @@
 ---
 title: Porting svelte-dnd-action to Svelte 5 without breaking the drag and drop
 date: 2026-11-22T22:10:00+01:00
-summary: Why @lukez/svelte-dnd is a hard fork of svelte-dnd-action, how it was ported in six stages with the tests green at every step, and what changed in the API.
+summary: Why @lukez/svelte-dnd is a hard fork of svelte-dnd-action, how it was ported in six stages, and what changed in the API.
 project: svelte-dnd
 image: null
 draft: false
-updated: ''
+updated: 2026-11-23T13:20:53+01:00
 ---
 
 `svelte-dnd-action` by Isaac Hagoel has been the drag and drop library for Svelte since 2020. It handles pointer, touch and keyboard drags, screen reader announcements, auto-scrolling, nested zones, drag handles, flip animations, and since 0.9.80 even zones in same-origin iframes and popups. A lot of hard-won edge-case handling lives in that code.
