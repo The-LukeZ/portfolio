@@ -5,7 +5,7 @@ summary: "Most people abroad know Germany for the Autobahn, Oktoberfest and bure
 project: ''
 image: null
 draft: false
-updated: ''
+updated: 2026-11-26T17:53:48+01:00
 ---
 
 Ask people abroad about Germany and you usually get three answers: the Autobahn, Oktoberfest and bureaucracy. The bureaucracy part is fair (more on that later), but the rest is a small slice of what the country actually is. One thing to clear up first: Oktoberfest is a Bavarian thing, not a German one. Plenty of Germans will tell you dead serious, that Bavaria could be handed over to Austria, since it has more in common with those over there than with Germany.
@@ -34,7 +34,7 @@ The finance ministry is planning several new taxes. The sugar tax caused the big
 
 If you pay €2 per liter of gasoline (about $8.70 per US gallon), roughly 96 to 98 cents of that goes to the government. That's about 32 cents of value-added tax, about 51 cents of energy tax and somewhere around 13 to 15 cents for the CO2 price.
 
-It isn't even more only because of a temporary energy tax cut of 14.04 cents per liter (about 17 cents once you add VAT). That cut runs out at the end of December. If it isn't extended, prices go up in January and in 2027 the CO2 price will be set by the market for the first time, which most people expect to push it higher. The federal government says it will bring in a fuel price cap by January 1 at the latest, modeled on Luxembourg and Belgium. Critics doubt it can do much against rising wholesale and refinery prices. Expoerts' opionions have been ignored successfully ever since.
+It isn't even more only because of a temporary energy tax cut of 14.04 cents per liter (about 17 cents once you add VAT). That cut runs out at the end of December. If it isn't extended, prices go up in January and in 2027 the CO2 price will be set by the market for the first time, which most people expect to push it higher. The federal government says it will bring in a fuel price cap by January 1 at the latest, modeled on Luxembourg and Belgium. Critics doubt it can do much against rising wholesale and refinery prices. Experts' opionions have been ignored successfully ever since.
 
 ## Political violence is rising and some attacks could have been prevented
 
